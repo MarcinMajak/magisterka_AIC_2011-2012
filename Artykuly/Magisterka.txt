@@ -1,0 +1,26 @@
+http://books.google.pl/books?id=HY5Zeeql-ZEC&pg=PA105&lpg=PA105&dq=multiple+classifiers+master+thesis&source=bl&ots=GNLniqfFvl&sig=gZVawIY7TiPALXZx0WHyKElaPWY&hl=pl&ei=7WbaTu-dIcvbsgay_tzxCw&sa=X&oi=book_result&ct=result&resnum=1&ved=0CCEQ6AEwAA#v=onepage&q=multiple%20classifiers%20master%20thesis&f=false
+
+http://spectrum.library.concordia.ca/8493/
+
+http://www.scribd.com/doc/509901/Master-Thesis-Diplomarbeit-Christian-Thiel-2004#outer_page_43
+
+-- Bardzo ciekawy temat na prace magisterska
+http://www.hindawi.com/journals/ijbi/2009/680508/
+
+-- polaczenie Rough set z kolonia mrowek
+https://docs.google.com/viewer?a=v&q=cache:bBGPascYVLsJ:ijitce.co.uk/download/July/IJITCE_July2.pdf+hybrid+classifier+using+fuzzy+and+rough+sets&hl=pl&gl=pl&pid=bl&srcid=ADGEESjYv24rjOveo3rN09U-bm8TFo-BlwpFkPceTKzx_QSgIZbcGG8hvKVy3PvIr3PNkMyU2FZqf-w34XKPDB57Ots4HQdo4KwmX1gEfgzAlGeK4xNvESZjcRflbWelkjeCG-BzTx7F&sig=AHIEtbRT-VWSWa3NoLZ34lpl87FVDIMoIg
+
+Artykul na temat wykorzystania rough sets i fuzzy logic w rozpoznawaniu obrazow.
+https://docs.google.com/viewer?a=v&q=cache:b5KeJx4GNBwJ:www.softcomputing.net/wcci08-aajg.pdf+hybrid+classifier+using+fuzzy+and+rough+sets&hl=pl&gl=pl&pid=bl&srcid=ADGEESidZmAZoJMWRI4wMSmqvbVLzFsvx3qJr8TManryuibc6LKZ5qcLHfaFmTHPOOkYKIcrOz0Sgksncx99GTdY7PcoMEIcguKTQpupTnTS-ec_EpAe209Dazv0GiNXWGfhDuclBv9k&sig=AHIEtbRM7qFz8VbABvtcX8eP-tSY8XsgXw
+
+Wstep do prezentacji na temat wielowymiarowosci danych: po co uzywa sie w ogole ten rough set data
+https://docs.google.com/viewer?a=v&q=cache:HDv54a-K4qsJ:www.siam.org/proceedings/datamining/2005/dm05_18huq.pdf+hybrid+classifier+using+fuzzy+and+rough+sets&hl=pl&gl=pl&pid=bl&srcid=ADGEESh9d1DMRxQBQM1nYdSDdIVOYDDdYtqzhSVQjGQ9VCLIqhVbru0m9YuU4hGPW1YgoQusmPaWUnwq7QHDyHB-IisOgWqYmzoCUN9DKsIUWPugv7CIEDiCNp7xWi10Z493xkl-jh_8&sig=AHIEtbRMZtGxzd_AR14GrmYDQLg-8yXcBw
+
+Powiedziec o PCA, ICA, LDA czemu to nie jest takie wydajne i czemu lepszym rozwiazaniem 
+bedzie zastosowanie RoughSet.
+
+Przewaga RoughSet poniewaz dzialaja tylko na nominalnych danych i sa w stanie 
+powiedziec w jakim momencie jest za malo danych aby podjac wlasciwa decyzje.
+
+http://www.springerlink.com/content/w741271276t00102/
+

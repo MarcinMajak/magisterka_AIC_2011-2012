@@ -1,0 +1,306 @@
+Jak opisać co to jest lower approximation and upper approximation:
+
+The lower approximation of the set consists
+of all the samples that can be described as definitely
+belonging to the set, “positive cases”, whilst the upper
+approximation of the set consists of all the samples that are
+described as possibly belonging to the set, “possible cases”
+
+Ogólnie wszedzie gdzie sie to czyta to Rough Set sa uzywane
+
+do resukcji cech. I u nas tez to robimy, bo mowimy, ze dzielimy
+obszar na mniejsze podobszary i pozniej tworzymy regule na tej 
+podstawie.
+
+Najwazniejsze co trzeba opisac to Information System:
+czyli wiedza, ktora jest zawarta w materiale uczacym 
+(knowledge about the domain). An information system can 
+be designed as a decision table. 
+
+Opisać co to jest Indiscernibility Relation.
+
+Bardzo wazne jest aby opisac temat zwiazany z Data discretization.
+Tutaj ciekawym aspektem jest clusetization, to pomaga analizowac 
+strukture przestrzeni danego atrybutu. In terms of its high
+dimensionality, discovering clusters of arbitrary shapes, and
+dealing with different types of attributes, a hierarchical
+clustering method is presented [3] and adopted for data
+discretization before attribute reduction. This method has
+advantages such as embedded flexibility regarding the level
+of granularity and ease of handling any forms of similarity
+or distances. It can be divided into agglomerative and
+divisive algorithms.
+
+Potem musimy opisać czym jest Feature Reduction:
+
+, zmniejsza to
+zlozonosc problemu. The aim of attribute reduction is to find a minimal
+subset of related attributes that preserves the classification
+accuracy of the original attributes of the decision table. Consistency
+principle- opisac co to w ogole jest.
+Rough sets seeks data reduction
+through the concept of equivalence classes
+
+
+
+Opisać co to jest fuzzy logic:
+
+A fuzzy set can be represented as membership
+function μ that associates with each element x of the
+universe of disclosure X, a number μ(x), i.e. membership
+grade, in the interval [0, 1]. Dwa typy funckji klasyfikujacych:
+= jednolite albo 1 albo zero
+= jednostajne tzn. od 1 do zera.
+
+Opisać co to jest entropy-based method i na czym ona 
+polega
+
+Główna zaleta RoughSet:
+
+An important idea of rough sets is to remove redundant
+attributes where there is a large amount of sample data.
+Elimination of redundant attributes can help identify strong,
+non-redundant classification rules. The rough set method
+for feature selection is particularly useful for dealing with
+imprecise, inconsistent and overlapping information.
+
+N-fold cross-validation- czy bedzie to potrzebne, czy trzeba
+tego uzywac i jak ogolnie to trzeba zrobic.
+
+The most important fact about Rough Sets is that feature 
+reduction is NP-hard problem.
+The computation of all minimal
+length decision rules in order to manage the uncertainty in ex-
+pert systems was proposed by Grzymala-Busse [2]. A variable
+precision model of rough sets was generalized and introduced
+by Ziarko [3]. The incremental identification of decision rules
+was proposed by Skowron et al. [4], whose study also elabo-
+rated the discernibility matrices and functions. Shan et al. [5]
+proposed an incremental algorithm for identifying all minimal
+length decision rules. WZIETE Z ARTYKULU art_40.pdf
+
+Model decision table include condition attributes, condition attribute
+values and decision classes.
+
+firstly we have to find lower approximation which gives certain decision
+about class of a given object x. This is the first step before going into 
+deriving decision rules of minimal length.
+
+Generally when we talk about rough set we have information system 
+and a decision system. The former includes a finite set of objects and
+attributes. A decision system deals with condition attribute values.
+
+W art_40 jest bardzo dokladnie opisane co to jest information system, 
+co to jest decision system, a takze jest podany przyklad.
+
+However,
+there are some differences in describing the uncertainty and
+incomplete knowledge. Fuzzy sets emphasize the vagueness
+of a set, but rough set theory base on the indiscernibility of
+objects in universe. The method of rough sets is the
+expression and reduction of the knowledge and fuzzy sets is
+
+
+W artykule art_36.pdf jest opisane jaka jest relacja pomiedzy 
+Rough Set i Fuzzy Logic.
+
+Feature reduction and Zipf's law.
+
+Czy jest ogólnie istota rozpoznawania:
+A role of classification is to classify objects, events and
+real-life situations into classes. Each of the reviewed
+objects is unique, original and its classification means a
+certain degree of generalization. Let’s define a system
+for the particular objects i.e. input and output variables,
+elements (objects) and their mutual relations. Defining
+and collecting the data of input/output variables cannot
+be generalized, even though this stage influences the
+classification result. An application of classification
+methods based on computational intelligence (CI)
+represents an effective tool for realization of a
+classification model.
+
+Every investigated object is connected to a specific piece
+of information, to specific data. The objects which are
+characterized by the same pieces of information are
+mutually undistinguishable from the point of view of the
+accessible pieces of information. This is expressed in
+RST by the indiscernibity relations.
+
+
+Values of attribute
+may be uncertain because of many reasons. Generally
+we can define four types of uncertainty: discretization of
+quantitative attributes; imprecise values of quantitative
+attribute; multiple values of attribute and unknown or
+missing values of attribute.
+
+The assumption that objects can be seen only through
+the information available about them leads to the view
+that knowledge has granular structure. Thus some
+objects appear as similar and undiscerned. Therefore in
+RST we assume that any vague concept is replaced by a
+pair of precise concepts – the lower and the upper
+approximation of the vague concept.
+
+The effort to maximize accuracy leads to the
+disproportionate rise of the number of definitions and
+conditions.
+The solution to deal with continuous valued attributes is to
+partition numeric variables into a number of intervals and
+treat each such interval as a category. This process of
+partitioning continuous variables is usually termed as
+discretization. Data can be reduced and simplified through
+discretization. In case of continuous valued attributes, large
+number of objects are generated with a very few objects
+mapping into each of these classes. 
+
+W moich opracowaniach mozna wprowadzic KHAT statistic.
+This statistics
+serves as an indicator of the extent to which the percentage
+correct values of an error matrix are due to "true" agreement
+versus chance agreement, for example a K value of 0.67 can
+be thought of as an indication that an observed classification is
+67% better than the one resulting from chance.
+The KHAT statistics is computed as
+
+Opisac na czym polega cross-validation:
+Cross-Validation is a statistical method of evaluating
+and comparing learning algorithms by dividing data
+into two segments: one used to learn or train a model
+and the other used to validate the model. In typical
+cross-validation, the training and validation sets must
+cross-over in successive rounds such that each data
+point has a chance of being validated against. The basic
+form of cross-validation is k-fold cross-validation.
+Other forms of cross-validation are special cases of
+k-fold cross-validation or involve repeated rounds
+of k-fold cross-validation.
+
+Napisac pare slow na temat indiscernibility ( new_6).
+To find irreductible set of cuts P in the decision system 
+is NP-complete while the effort to find the optimal set of cuts 
+P in a decision system is NP-hard.
+
+Opisać najważniejsze sposoby cięcia tych zbiorów (new_8...)
+
+The theory of FSs, due to prof. Zadeh, is a
+relatively new approach to uncertainty. In this
+theory an element belongs to a set according to the
+membership degree (membership function values)
+[44,45,46], i.e. in a closed interval. It is an
+enlargement of the traditional sets theory in which
+an element either is or is not a set member. If we
+endeavour to describe and model a particular reality
+problem we encounter a certain discrepancy. On one
+hand, there is the accuracy of mathematical methods
+by which a specific problem is described and, on the
+other hand, there is a very complicated reality
+necessitating a range of simplifications and the
+consequent inaccuracy, infidelity of the model
+arising from them.
+
+For our convenience in this paper four types of
+uncertainty [41] need to be distinguished:
+discretization of quantitative attributes; imprecise
+values of quantitative attribute; multiple values of
+attribute and unknown or missing values of attribute
+
+
+The theory FSs and RST are now attracting attention
+among researchers due to the representation of the
+knowledge processing. These two theories
+complement each other and as such they constitute
+important components of CI. There are various
+extensions of these two theories for processing.
+The developments of rough and fuzzy extensions
+to the data processing make the hybrid approaches
+potentially rewarding research opportunities as well.
+A rough-fuzzy approach [25] has two main lines of
+thought in a hybridization of fuzzy and rough sets,
+the constructive approach and the axiomatic
+approach. The first one, generalized LA and UA are
+defined based on fuzzy relations that are called
+fuzzy-rough sets. The second [25] approach
+introduces the definitions for generalized fuzzy LA
+and fuzzy UA operators determined by a residual.
+The assumptions are found that allow a given fuzzy
+set-theoretic operator to represent LA or UA from a
+fuzzy relation. Different types of fuzzy relations
+produce different classes of fuzzy-rough set
+algebras.
+
+Intelligent pattern recognition systems have been success-
+ful in many application areas. However, complex applica-
+tion problems, such as reliable monitoring and diagnosis of
+industrial plants and rapid detection and estimation of en-
+vironmental changes, have emphasised the issue of knowl-
+edge acquisition and modelling. These problems are likely
+to present large numbers of features, not all of which will
+be essential for the task at hand. Inaccurate and=or uncertain
+values cannot be ruled out, either. Furthermore, such appli-
+cations typically require convincing explanations about the
+inference performed. A method to allow automated gener-
+ation of knowledge models of clear semantics is, therefore,
+highly desirable.
+The most common approach to developing expressive and
+human readable representations of knowledge is the use of
+if-then production rules. Yet, real-life problem domains
+usually lack generic and systematic expert rules for map-
+ping feature patterns onto their underlying classes.
+rough set theory [5], reduces
+the dimensionality of potentially very large feature sets
+without losing information needed for rule induction,
+insofar as this is possible in the domain at hand. It
+has an advantageous side-e ect in that it removes re-
+dundancy from the historical data. This also helps sim-
+plify the design and implementation of the actual pattern
+classiÿer itself, by determining what features should be
+made available to the system.
+
+Napisac troche o importance region, ktory wyznaczany jest 
+na tej samej podstawie co ja licze w swojej pracy na temat
+Rough Set (wiecej informacji znajduje sie w artykule (new_10.pdf)
+
+Na czym polega supervised i unsupervised learning?
+
+The basic operators in rough set theory are approximations. There are at
+least two approaches for the development of the rough set theory, the con-
+structive and axiomatic approaches. In constructive approach, binary relations
+on the universe, partitions of the universe, neighborhood systems, and Boolean
+algebras are all the primitive notions. The lower and upper approximation
+operators are constructed by means of these notions The constructive approach is suitable for practical applications of rough sets.
+On the other hand, the axiomatic approach, which is appropriate for studying
+the structures of rough set algebras, takes the lower and upper approximation
+operators as primitive notions. In this approach, a set of axioms is used to
+characterize approximation operators that are the same as the ones produced
+by using constructive approach
+On the other hand, by using an equivalence relation on
+U , one can introduce lower and upper approximations in fuzzy set theory to
+obtain an extended notion called rough fuzzy set [2,3]. Alternatively, a fuzzy
+similarity relation can be used to replace an equivalence relation. The result is a
+deviation of rough set theory called fuzzy rough sets
+
+Najwazniejsze o co w tym wszystkim chodzi to idea crisp sets
+In this paper we present a multi-scale method based on the hybrid notion of rough fuzzy sets, com-
+ing from the combination of two models of uncertainty like vagueness by handling rough sets and
+coarseness by handling fuzzy sets.
+Rough sets embody the idea of indiscernibility between objects in a set, while
+fuzzy sets model the ill-definition of the boundary of a sub-class of this
+set. Marrying both
+notions lead to consider, as instance, approximation of sets by means of
+similarity rela-
+tions or fuzzy partitions. The proposed multi-scale mechanism, based on the
+model of
+rough fuzzy sets, named C-calculus, introduced by Caianiello [9] is adopted to
+spread
+out local into more global information.
+Fuzzy rough sets were proposed as a mathematical tool to deal with uncertainty. Noise is a main source of uncertainty
+in real-world applications. We show that fuzzy rough sets are very sensitive to mislabeled samples. we introduce a
+robust model of fuzzy rough sets in this work, called soft fuzzy rough sets and discuss the connections between the
+soft fuzzy rough set model and other models. In addition, we design a soft fuzzy rough classifier based on the model.
+
+
+
+
+
