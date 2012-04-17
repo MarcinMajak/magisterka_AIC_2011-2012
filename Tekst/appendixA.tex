@@ -1,0 +1,132 @@
+\appendix
+\makeatletter
+\def\Pref@section{Appendix~}
+\def\@seccntformat#1{\csname Pref@#1\endcsname \csname the#1\endcsname\quad}
+\makeatother
+
+\section{Program description}
+\label{Appendix}
+\subsection{Libraries}
+To successfully run the program attached to this project few steps have to be
+made. Firstly, it was compiled and tested on Linux platform so it is strongly
+recommended to run it on the same platform mainly because of libraries.  Another
+thing to take care of is pvm framework and GAlib library. The first one has to
+be installed on machines used for testing:
+\begin{verbatim}
+sudo apt-get install pvm
+\end{verbatim}
+Additionally, few environment variables should be set properly(the best solution
+is to put them into bashrc file):
+\begin{verbatim}
+export PVM_ROOT=/usr/lib/pvm3
+export PVM_ARCH=`pvmgetarch`
+export PVM_HOME=$HOME/pvm3/bin/$PVM_ARCH
+export PVM_SRC=$HOME/pvm3/src
+export PATH=$PATH:$PVM_ROOT/bin:$PVM_ROOT/lib:$PVM_HOME
+\end{verbatim}
+Having this done pvm is ready to use and to run a program executable binaries have
+to be placed in PVM\_HOME directory. The second library-GAlib can be downloaded from
+\hyperef{http://lancet.mit.edu/galib-2.4/} and after correct compilation it can
+be used in programs, but remember to put $\textsc{-lga}$ while compiling program
+from the command line. The last library needed in this project is lpthread. It
+is used in parallel genetic algorithm, to speak more clearly in slave process to
+read messages from other slaves. 
+\subsection{Files structure}
+In this project genetic algorithm was run with many setting parameters, so
+setting them all the time in the program and later compiling would be very hard
+and laborious. To avoid that situation all parameters are written in the file which name was given as one of the program's parameter
+list. In this file one can set the following parameters(the order is very
+important and should be the same as presented below):
+\begin{itemize}
+	\item Algorithm type (0 for simple sequential $\mathcal{GA}$,
+		1 for $\mathcal{PGA}$)
+	\item Function type (1-6)
+	\item Number of generations 
+	\item Number of repetitions
+	\item Number of variables in objective function. This value is determined by
+		function type is chosen(for more information see function.h file)
+	\item Population size
+	\item Number of iteration to look back if convergence is turned on
+	\item Percentage of convergence- this value indicates how many individuals should be
+		the same to stop algorithm and signal convergence
+	\item Probability of mutation
+	\item Probability of crossover
+	\item Interval of migration
+	\item Number of individuals taking part in migration process. 
+	\item Direction of migration
+	\item Maximum range of variable. This value is determined by
+		function type(for more information see function.h file)
+	\item Minimum range of variable. This value is determined by
+		function type(for more information see function.h file)
+	\item A-priori known global minimum of objective function. This value is determined by
+		function type(for more information see function.h file)
+\end{itemize}
+Results from simulation are written in csv file, which structure is as follows:
+\begin{itemize}
+	\item Function type(1-6)
+	\item Average time of simulation
+	\item Average time of one slave duration
+	\item Number of generations
+	\item $B$ value(for more information about efficiency indicators see section
+		\ref{cha:indicators})
+	\item $W$ value
+	\item $A$ value
+	\item $\sigma^2$ value
+\end{itemize}
+\subsection{Program start-up}
+In the testing procedure, compiling the program required writing many commands in
+command line and linking with libraries. To simplify this process
+\textsc{Makefile} was written which allowed compiling all three
+programs($\mathcal{SGA}$, $\mathcal{PGA}_b$, $\mathcal{PGA}_f$) at one time. To
+successfully run the program the following steps must be made:
+\begin{enumerate}
+	\item Compile project using \textsc{Makefile}
+	\item Copy created file to PVM\_HOME directory
+	\item Run pvm daemon. (Without this daemon it is impossible to run programs
+		in distributed environment)
+	\item Run master program, which later spawns slaves units. For example
+		\begin{verbatim}
+		./MASTER Setting.txt 5 1
+		\end{verbatim}
+		where:
+		\begin{itemize}
+			\item Setting.txt- name of file in which settings parameters are
+				stored
+			\item 5- number of slaves to spawn
+			\item 1- seed used to set random generator. It can be any integer
+				value, note that running many times program with the same seed
+				value you will receive the same results.
+		\end{itemize}
+\end{enumerate}
+Final results from simulations are written by default in file named Summary.csv
+where each value is separated by ``;''.
+\subsection{Program structure}
+To easy rewrite and modify program written for this project the whole structure
+is described below with short comments:
+\begin{enumerate}
+	\item Makefile- file used for compiling project, it creates executable
+		binaries.
+	\item SGA.cpp- implementation of standard sequential genetic algorithm. It
+		uses GALib library.
+	\item function.h- in this file test functions are declared, one can easily
+		add new functions, but SGA.cpp and Slave.cpp file have to be updated
+	\item Master.cpp- this is the main program used in parallel genetic algorithm.
+		It is responsible for spawning slaves units and collecting final results
+		from slaves.
+	\item Slave.cpp- this is slave program, started by the master. After
+		creation slave unit waits for messages from master and after
+		synchronization it starts genetic algorithm. Additionally, in this file
+		communication logic is implemented. 
+	\item PGA.h, PGA.cpp- implementation of parallel genetic algorithm, it uses
+		GaLib library for standard operations such as mutation, crossover or
+		replacement.
+	\item PGAGenome.h, PGAGenome.cpp- this file is used in parallel genetic
+		algorithm. It defines methods for individuals' encoding and packing
+		chromosomes into buffer to send to other slaves.
+	\item Setting.h, Setting.cpp- this class is responsible for reading setting
+		parameters from a file. 
+	\item Summary.h, Summary.cpp- this class is used for storing the final
+		results from each simulation. It is responsible for calculating
+		efficiency indicators and later storing them in a file. 
+\end{enumerate}
+

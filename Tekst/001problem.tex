@@ -1,0 +1,20 @@
+\section{Problem statement}
+Genetic algorithms can be computationally expensive as the result of
+complexity within particular application or due to the sheer numbers needed to
+reach an acceptable solution. In many problems found in the literature the
+expense of a genetic algorithm is due to both these factors \cite{bib5},
+\cite{bib7}, \cite{bib11}. The genetic algorithm is a global searching process
+based on Darwin's principle of natural selection and evolution, so taking into
+account this fact many scientists have noticed that program simulating genetic
+algorithms can be implemented in various ways, from
+simple sequential program to different method of parallelization. The advent of
+multiprocessors has spawned a number of $\mathcal{GA}$ implementations which take advantage
+of parallelism available in the algorithm(migration process, subpopulations,
+diffusion) \cite{bib8}, \cite{bib9}. In recent years, multi-population genetic algorithms $\mathcal{MGA}$ 
+have been recognized as being more effective both in speed and solution quality 
+than single-population genetic algorithms $\mathcal{SGA}$. Despite of these advantages,
+the behavior and performance of $\mathcal{MGA}$ is still heavily 
+affected by a~judicious choice of parameters, such as connection topology, 
+migration method, migration interval, migration rate, population number and many
+others. The main problem in this topic is to find the best topology, configuration
+parameters and balance between the potential speedup and number of slaves.

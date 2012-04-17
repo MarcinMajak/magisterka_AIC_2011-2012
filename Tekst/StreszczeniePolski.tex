@@ -1,0 +1,149 @@
+\selectlanguage{polish}
+\begin{center}
+	Streszczenie
+\end{center}
+
+Niniejsza praca porusza problem równoległej realizacji algorytmów genetycznych
+i~procesów ewolucyjnych. W ostatnich czasach nastąpił znaczący rozwój komputerów
+wieloprocesorowych, dzięki czemu pojawiła się możliwość prowadzenia obliczeń
+rozproszonych; jako przykład można podać ``cloud computing'' czy też struktury
+meshowe. Analizę równoległej realizacji algorytmów można przeprowadzić na dwóch
+płaszczyznach: pierwsza to rozkład struktury algorytmu i wydzielenie części, które
+mogą zostać zrealizowane równolegle, a także określenie opłacalności tego
+zrównoleglenia; druga płaszczyzna to implementacja algorytmu i wybór
+odpowiedniego środowiska do testowania. 
+
+Przeprowadzone symulacje skupiają się na zbadaniu efektywności realizacji
+równoległego algorytmu genetycznego w stosunku do wersji sekwencyjnej,
+szczególnie pod kątem czasu trwania algorytmu, a także uzyskanej dokładności
+rozwiązania. Algorytm genetyczny został wzięty do analizy ze względu na
+swoją budowę i łatwość zrównoleglenia pewnych operacji, takich jak mutacja,
+reprodukcja. Aby przeprowadzić wszystkie symulacje, został napisany program w
+języku C++ symulujący prosty sekwencyjny algorytm genetyczny, a także jego
+równoległy odpowiednikm, gdzie migracja odbywa się na dwa sposoby: w~pierwszym
+przypadku tylko do jednego sąsiada danego procesu slave, natomiast w~drugim do
+dwóch sąsiednich procesów slave jednocześnie. Do testowania zostały wykorzystane
+dobrze znane w~literaturze przedmiotu funkcje testowe, m.in. funkcje De Jong'a,
+ze wględu na swoją różnorodność, a~także występowanie kilku wartości lokalnego
+minimum ale tylko jednego globalnego co znacznie utrudnia znalezienie właściwej
+wartości przy małej różnorodności osobników. 
+Zadaniem stworzonego algorytmu było znalezienie minimum danej funkcji w~określonym przedziale.
+Z~racji tego, że znane było globalne minimum pojawiła się możliwość
+jednoznacznej oceny wydajności algorytmów za pomocą zaproponowanych wskaźników
+efektywności:
+\begin{itemize}
+	\item Błąd bezwzględny pomiędzy znalezionym rozwiązaniem, a wartością
+		a-priori globalnego minimum. Wyróżniono trzy wskaźniki:
+		\begin{itemize}
+			\item Najmniejsza wartość błędu z~$n$ symulacji 
+				\begin{equation}
+					B=MIN\left | f^{*}(\underline{x})-f(\underline{x}) \right |
+					\label{min1}
+				\end{equation}
+			\item Największa wartość błędu z~$n$ symulacji 
+				\begin{equation}
+					W=MAX\left | f^{*}(\underline{x})-f(\underline{x}) \right |
+					\label{min3}
+				\end{equation}
+			\item Średnia wartość błędu z~$n$ symulacji
+				\begin{equation}
+					A=\frac{1}{n}\sum_{n=1}^n\left | f^{*}(\underline{x})-f(\underline{x}) \right |
+					\label{min2}
+				\end{equation}
+		\end{itemize}
+		gdzie $f^{*}(\underline{x})$ oznacza wartość funkcji wyznaczoną przez
+		testowany algorytm, a~$f(\underline{x})$ to globalne minimum.
+	\item Wariancja błędu z~$n$ symulacji 
+		\begin{equation}
+			\sigma^2=\frac{1}{n-1}\sum_{i=1}^n\left[A-B\right]^2
+			\label{min4}
+		\end{equation}
+	\item Średni czas trwania algorytmu z~$n$ symulacji, gdzie $T_i$ to $i-ty$ 
+		czas symulacji
+		\begin{equation}
+			T=\frac{1}{n}\sum_{i=1}^nT_i
+			\label{min4}
+		\end{equation}
+\end{itemize}
+
+
+Symulacje zostały przeprowadzone na platformie Linux z wykorzystaniem
+oprogramowania pvm(Parallel Virtual Machine), które pozwala na wirtualizację
+kilkunastu procesorów na jednej stacji roboczej pełniącej rolę mastera. W
+przypadku algorytmów genetycznych bardzo ważną rolę odgrywają parametry
+konfiguracyjne. Źle dobrane mogą wpłynąć znacznie na wydajność, szczególnie na
+czas trwania algorytmu, a~także jakość znalezionego rowiązania. Często przed
+przystąpieniem do symulacji parametry te ze względu na skomplikowane zależności
+wybierane są losowo, jednak w tej pracy konfiguracja została ustalona na
+podstawie literatury przedmiotu, analizując dostępne rozwiązania i rezultaty
+zaprezentowanych aplikacji. Program stworzony na potrzeby tego projektu był
+uruchamiany z wykorzystaniem lini komend, a~do kompilacji zdefiniowano reguły
+w~pliku \tescsc{MAKEFILE}. Dokładniejszy opis programu i~wykorzystanych
+bibliotek znajduje się w~dołączonym do pracy załączniku. 
+Ze względu na stochastyczny charakter działania algorytmów genetycznych każda z
+symulacji była powtórzona $200$~razy, a ostateczne wyniki uśredniono. 
+
+Praca została podzielona na dwie części. Rozdziały 2~i~3 stanowią wprowadzenie
+do tematyki równoległych algorytmów genetycznych; zostały tam opisane kryteria
+podziału, a także sposoby równoległej realizacji wraz z matematycznym
+uzasadnieniem opłacalności ich stosowania. Środowisko testowania, a~także
+stworzony program zostały przedstawione w rozdziale~4, natomiast właściwe
+wyniki badań wraz z komentarzem znajdują się w rozdziale~5. Zostały
+wykorzystane tam dwa typy algorytmów genetycznych: pierwszy to prosty
+sekwencyjny przypadek, natomiast drugi to implementacja realizująca równoległy
+algorytm genetyczny z kilkoma subpopulacjami, określany w literaturze jako
+``Gruboziarnisty równoległy algorytm genetyczny''. Symulacje miały na celu zbadanie
+ogólnych zależności pomiędzy liczbą CPU, częstością migracji i~liczbą
+osobników, a~także ich wpływ na efektywność algorytmu. Propozycje przyszłych
+badań oraz ogólne podsumowanie pracy można znaleźć w rozdziałach 6~i~7.
+
+Biorąc pod uwagę fakt, że projekt ten jest pierwszym w dziedzinie równoległej
+realizacji algorytmów genetycznych, warto było na początku przeprowadzić
+podstawowe badania które miały na celu nakreślić ogólny charakter algorytmów
+równoległych w~stosunku do wersji sekwencyjnej, a~także wpływ parametrów
+konfiguracyjnych. Przeprowadzone w tym projekcie badania symulacyjne skupiły się
+głównie na trzech podstawowych ale bardzo ważnych aspektach realizacji algorytmów równoległych:
+\begin{enumerate}
+	\item Liczba CPU w stosunku do czasu trwania algorytmu, a~także jakości
+		uzyskanego rozwiązania. W przypadku algorytmów genetycznych bardzo
+		ważną rolę odgrywa narzut komunikacyjny, który w pewnym momecie może być
+		nawet większy niż czas obliczenia funkcji przystosowania danego
+		osobnika. 
+	\item Częstość migracji- tutaj pojawia się pytanie jaka konfiguracja jest
+		optymalna. Czy lepiej jest częściej dokonywać wymiany osobników aby ustrzec
+		się przed zbyt szybką konwergencją, jednak z drugiej strony zbyt
+		intensywna migracja zwiększa narzut komunikacyjny i~może prowadzić do
+		zachwiania stabilności rozwiązania. 
+	\item Liczba osobników biorących udział w procesie migracji- podobnie jak w
+		poprzednim punkcie należy znaleźć balans pomiędzy narzutem
+		komunikacyjnym, a~jakością otrzymanego rozwiązania i~czasem trwania
+		algorytmu.
+\end{enumerate}
+Jak można zauważyć na podstawie powyższych punktów nawet podstawowe parametry
+konfiguracyjne mają ogromny wpływ na wydajność algorytmu.
+
+Przeprowadzone w tym projekcie badania potwierdziły, że aby zaimplementować wydajny równoległy
+algorytm genetyczny parametry konfiguracyjne muszą być wybrane z dużą rozwagą.
+Wiele rzeczy musi być wziętych pod uwagę, takich jak topologia, częstość
+migracji czy też liczność populacji. Generalny wniosek płynący z przeprowadzonych 
+eksperymentów to opłacalność stosowania $\mathcal{PGA}$, w stosunku do
+$\mathcal{SGA}$, jednak należy tutaj podkreślić, że tylko w sytuacji dobrania
+odpowiedniej konfiguracji wejściowej. W pracy zostały zaprezentowane przypadki,
+w których nawet jeden niewłaściwie dobrany parametr negatywnie wpływał na
+wydajność $\mathcal{PGA}$. Zbadany $\mathcal{CPGA}$ był w stanie znaleźć
+generalnie o~wiele lepsze, w sensie
+jakościowym, rozwiązania dla testowanych problemów optymalizacyjnych niż standardowy
+$\mathcal{SGA}$. Prócz tego charakteryzował się ogólnie większą stabilnością, 
+a~zatem i większą przewidywalnością i niezawodnością działania. Zjawisko to było
+szczególnie widoczne w odniesieniu do problemów o względnie skomplikowanej naturze.
+
+Podsumowując należy zaznaczyć, że niniejsza praca zrealizowała w całości
+sformułowane cele, mianowicie: przedstawiona została jednolita systematyka występujących
+w literaturze przedmiotu, współbieżnych implementacji $\mathcal{GA}$ wraz z
+metodyką doboru konkretnego sposobu realizacji równoległej w zależności od
+dostępnych zasobów. Opisana została teoretyczna analiza oczekiwanych ze zrównoleglenia
+korzyści wraz z~matemtycznym uzasadnieniem oraz przeprowadzone zostały badania eksperymentalne
+wybranej arbitralnie techniki realizacji równoległej, którą w tym przypadku
+reprezentował algorytm $\mathcal{CPGA}.
+
+

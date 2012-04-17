@@ -1,0 +1,115 @@
+\section{Heuristic methods of optimization }
+\label{cha:Introduction}
+\subsection{Heuristic algorithms}
+\label{cha:HeurysticAlgorithms}
+In the last decade there has been a great increase of interest in heuristic
+method of optimization to solve hard problems in the case of complexity and time computation.
+To name only the few of well known methods it is $\mathcal{SA}$(Simulated
+Annealing), Ant algorithms or $\mathcal{TS}$ (Tabu Search). Algorithms presented
+above, have many practical adaptations which are broadly described in the literature, 
+but in this paper $\mathcal{GA}$ (Genetic algorithm) is taken into closer look
+in respect of obtained solution accuracy, time of evaluation and possible parallelization advantages.
+
+\subsection{Genetic algorithm}
+\label{cha:GeneticAlgorithm}
+Genetic Algorithm is an element of evolutionary computation, which is a~rapidly 
+growing area of soft computing. $\mathcal{GA}$ is based on the principles of natural selection 
+and genetic modification. As optimization methods, $\mathcal{GA}$ operates on a population of points, 
+designated as individuals. Each individual of the population represents a~possible 
+solution of the optimization problem. Individuals are evaluated depending upon 
+their fitness which indicates how well an individual of the population 
+solves the optimization problem. To sum up, $\mathcal{GA}$ has the following general 
+features:
+\begin{enumerate}
+\item $\mathcal{GA}$ operates with a population of possible solutions (individuals) 
+instead of a single individual. Thus, the searching process can be carried out in a
+parallel form or sequentially. 
+\item $\mathcal{GA}$ is able to find the optimal or sub-optimal solutions in complex and large search 
+spaces. Moreover, it can be applied to nonlinear optimization problems with 
+constraints defined in discrete or continuous search spaces. 
+\item $\mathcal{GA}$ examines many possible solutions at the same time, so there is a~higher probability
+that the search process can converge to an optimal solution. 
+\end{enumerate}
+
+   There are four main parts in each $\mathcal{GA}$ process to reconsider: the problem representation or encoding, 
+fitness or objective function definition, fitness-based selection, and evolutionary reproduction of 
+candidate solutions (individuals or chromosomes). To successfully implement
+genetic algorithm in programming language one has to define an encoding method,
+fitness function, selection method, and reproduction method as well as criteria rules 
+for the $\mathcal{GA}$ formulation. 
+
+
+Genetic algorithms are widely used as a search techniques in the various fields \cite{bib6}, \cite{bib14},
+\cite{bib16}. The success of a~genetic
+ algorithm can be quantified by estimating the cost, time required 
+ and the quality of final obtained solution. In the literature there can 
+ be found many examples of how $\mathcal{GA}$ is useful in solving hard optimizations problems, 
+ but beside unquestionable advantages there also exist downsides. A traditional
+ $\mathcal{GA}$ without any diversity maintenance mechanism often suffers from
+ getting stuck on the suboptimal peaks, because 
+ almost the entire $\mathcal{GA}$ population would have converged to a single peak, as a result 
+ of the rapid loss of population diversity. To verify $\mathcal{GA}$
+ implementations quality, programs are very often tested with functions which
+ have many local minimum, but only one global minimum \cite{bib25}.
+ 
+ Implementation of a successful genetic algorithm requires optimal parameter setting
+ which in many situations turns out to be very complicated because of great
+ number of parameters and their dependencies. For example, for small population
+ the genetic algorithm tends to make large mistakes(it has small diversity of
+ individuals so very often it can stuck in one of the local minimum), while for the grater size
+ of population it is capable of~discriminating bad solutions, but for the prize
+ of algorithm duration and resources usage. There is a great deal of~work showing how to set
+ the optimal parameters in an evolutionary algorithm to obtain required speedup
+ and solution accuracy \cite{bib1}.
+
+\subsection{Parallel Genetic algorithms}
+\label{cha:ParallelGeneticAlgorithm}
+Multi-agent systems have attracted a considerable amount of interest in recent
+years \cite{bib17}, \cite{bib21}, \cite{bib22}. For many real world problems, 
+these applications showed appealing properties such as robustness, 
+increasing capabilities and failure tolerance. Additional reason which spawned
+multi-agent systems development is that very large amount of data or data arising at 
+different geographical locations are difficult to be handled by traditional, 
+sequential and centralized systems. Parallel and distributed architectures have
+become inevitable for the reason of computation abilities. Some 
+studies have been done on parallel and distributed learning before, but nowadays
+when more advanced computer are created, distributed computing has become very
+popular. Now, many paradigms like fuzzy logic, neurocomputing, 
+genetic algorithm, as elements of soft computing, can augment stochastic
+learning procedures to create autonomous control system \cite{bib2}, \cite{bib4}
+
+In case of $\mathcal{GA}$, parallelization can be achieved by creating number of 
+separate populations which exchange genetic information during migration
+process. This $\mathcal{PGA}$(Parallel Genetic Algorithm) variant is known as migration 
+model. The alternative master-slave model uses only one population on master processor
+which assigns some computations (usually the evaluation of individual) to
+slaves, so parallelization affects only evaluation of the population. Each slave processor
+receives an individual to evaluate while master is responsible for other parts of $\mathcal{GA}$ process
+such as: mutation, crossover, replacement and exchanging information between slaves
+which involves collecting results and sending additional individuals to slaves. This method is useful 
+especially for large-scale problems and for computationally demanding evaluation operators. 
+Its main drawback is the idleness of slave processors during other phases of
+genetic algorithm and high communication ratio between master and slave units. 
+
+The second solution of $\mathcal{PGA}$ which is called ``island model'' can be
+described as each processor maintains its own
+population of individuals and evaluates it using the same genetic
+operators used in simple sequential genetic algorithm. Occasionally migration occurs - every processor 
+sends a part of its population (”best” individuals) to all 
+other units and receives their representatives as well. On 
+every island ”worst” individuals are replaced by newcomers.
+The presented approach is also called ”pure” migration 
+model and its type is strongly determined by how the migration process is taking
+place. It is possible to choose different migration schemes 
+i.e. sending of individuals only to neighbouring islands, 
+migrating random groups of representatives or replacing random individuals. The
+main advantage of this solution is the low communication ratio between master and
+slaves because each processor evolves its own population and does not waste time on
+waiting for master command as it was described in model of master-slave with one
+population.
+
+The main goal of this paragraph was to present the
+basic types of parallel genetic algorithms, but this short description is
+not enough so in section \ref{cha:PgaTypes} this
+topic will be tackled in greater details, paying attention to parallel genetic time
+realisation and possible speedup. 

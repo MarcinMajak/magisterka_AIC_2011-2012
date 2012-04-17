@@ -1,0 +1,62 @@
+\section{Summary and conclusions}
+\label{cha:Summary}
+\subsection{Conclusions from conducted experiments}
+In this paper there were four basic simulations carried out focused on 
+parameters setting such as population size, migration interval and number of slave units.
+They have shown the general relationship between chosen
+configuration and algorithm performance. The first simulation indicated
+superiority of $\mathcal{PGA}$ over standard $\mathcal{GA}$ in case of algorithm
+duration and obtained solution accuracy. The second research confirmed that
+there exists the optimal number of slaves. Too many slaves can increase time of
+execution without any improvement in solution and spoil diversity inside
+populations. The best value for population
+counted 300 individuals would be 5 or 6 slaves. One of the most important
+experiment in this thesis was to find the best interval migration and how many
+individuals should be sent in this process(section \ref{cha:both}). The lower bound
+($\mathcal{I}=0$) and upper bound ($\mathcal{I}=1$) has the negative impact on
+performance of algorithm especially in respect of time duration and stability of
+solution.
+The optimal number of individuals to send in migration process for
+$\mathcal{PGA}_b$ was from the range of $5$~to~$10$ when migration was triggered after every $20$ 
+iterations. Another relatively good solution was obtained for $\mathcal{M}=10$ and
+$\mathcal{I}=50$. 
+
+Another issue worth few words of comments is the program implementation which
+was used to
+simulate ``island model'' of parallel genetic algorithm. To manage communication
+between slaves pvm library was applied, one of the simplest and
+easiest solution used for dispersed systems, especially on the Linux platform.
+Communication logic is implemented on the server side so sending messages
+between processes requires only giving process $id$. Another important thing
+which was successfully implemented is the synchronization between slaves units.
+Without threads and synchronization mechanism it was impossible to ensure that
+each slave receives the same number of individuals in migration process, but
+with the help of mutex and thread signalization problem was resolved.
+
+\subsection{General conclusions}
+This paper reviewed some of the most representative publications on parallel
+genetic algorithms and showed experiments results to support the thesis that
+parallelization is profitable for certain parameters configuration. 
+In recent years there have been many experiments carried 
+out to show $\mathcal{PGA}$ speedup advantages over simple sequential algorithm. To design
+fast and reliable parallel genetic algorithm firstly configuration has to be
+chosen carefully. There are many things to reconsider such as topology,
+migration rate, number and size of demes. Each parameter affects the quality of
+the search and the efficiency of the algorithm in non-linear ways. It seems that
+the only way to achieve a greater understanding of parallel $\mathcal{GA}$ is to
+study individual parameters independently and check their impact on algorithm
+performance.
+
+In particular, the design of parallel $\mathcal{GA}$ involves choices such as using one
+population or multiple populations. In both cases, the size of the population
+must be determined carefully, and when multiple populations are chosen, one
+must also decide how many to use, additionally populations may remain isolated
+or may communicate. Communication involves extra costs and extra
+decisions on topologies such as how many individuals are exchanged, and the
+frequency of communications. The main advantage coming from properly chosen
+migration step is improving  diversity in population.
+
+Although, as presented in this paper parallelization of genetic algorithm can be
+effectively used to improve performance, some additional experimentation is
+necessary in the future to calibrate prepared program to the
+particular and hardware environment to fully confirm its usefulness.

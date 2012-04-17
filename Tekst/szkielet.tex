@@ -1,0 +1,177 @@
+\documentclass[12pt,a4paper]{article}
+\addtolength{\textwidth}{1.5cm} 
+\addtolength{\textheight}{1cm} 
+\usepackage[T1,plmath]{english}
+\usepackage{palatino}				% czcionka palatino
+\usepackage[utf8]{inputenc}
+\usepackage[pdftex]{graphicx}
+\usepackage{amsmath}					% matematyka
+\usepackage{url}
+\usepackage[toc,page]{appendix}
+\usepackage{slashbox}				% do podzielonej na pol komorki w~tabeli
+\usepackage{fancyhdr}				% do nagłówkow, linia w~nagłówku
+\usepackage{longtable}				% duze tabele > 1 strona
+\usepackage[splitrule]{footmisc}	% ustawienia stopki
+\usepackage{rotating}				% do obracania obiektów
+\usepackage{indentfirst}	% na nazwie sekcji pierwszy akapit ze wcieciem
+%\usepackage{polski}
+\usepackage[T1]{fontenc} %dziwna szerokosc czcionki
+% \usepackage{a4wide} % marginesy mniejsze
+\usepackage[english]{babel}
+\usepackage[polish]{babel}
+
+\usepackage[
+breaklinks=true,
+colorlinks=true,
+citecolor=black,
+linkcolor=black,
+anchorcolor=black,
+urlcolor=black
+]{hyperref}						% linki w~spisie tresci, rysukacj etc.
+\usepackage[all]{hypcap}	% czasami hyperref le podaje \ref
+
+\usepackage{textcomp} %wymagane przez listings - upquote=true
+
+\usepackage{listings}
+\lstset{
+    language=Java,
+    basicstyle=\scriptsize,
+    aboveskip={1.5\baselineskip},
+    columns=fixed,
+    showstringspaces=false,
+    extendedchars=true,
+    breaklines=true,
+    tabsize=4,
+    prebreak = \raisebox{0ex}[0ex][0ex]{\ensuremath{\hookleftarrow}},
+    showtabs=false,
+    showspaces=false,
+    showstringspaces=false,
+    identifierstyle=\ttfamily,
+    keywordstyle=\color[rgb]{0,0,0},
+    commentstyle=\color[rgb]{0,0,0},
+    stringstyle=\color[rgb]{0,0,0},
+    numbers=left,
+    numberstyle=\tiny,
+    stepnumber=1,
+    numbersep=5pt,
+    captionpos=b,
+}
+
+\renewcommand*\thelstnumber{\the\value{lstnumber}:} % dwukropek po numerze linii
+
+%\usepackage[small,bf]{caption} % mniejsza czcionka dla podpisów
+
+\sloppy		% mniej staranne łamanie wierszy, zapobiega wystawaniu wyrazom po za 
+% szaltę dokumentu
+
+\headheight=15pt
+\pagestyle{fancy}
+\fancyhead[R]{\small \thepage}
+\fancyhead[C]{\small \leftmark}
+\fancyhead[L]{}
+\fancyfoot{}
+\renewcommand{\sectionmark}[1]{%
+\markboth{\thesection.\ #1}{}}
+\renewcommand{\headrulewidth}{0.4pt}
+\renewcommand{\footrulewidth}{0.4pt}
+
+
+\renewcommand{\textfraction}{0.05}
+\renewcommand{\baselinestretch}{1.05}
+
+\newcommand{\ninter}{\renewcommand{\baselinestretch}{1.5}}
+\newcommand{\sinter}{\renewcommand{\baselinestretch}{1.0}}
+\newcommand{\eng}[1]{(ang.\ \emph{#1})}
+\renewcommand\labelitemi{\textbullet}
+\renewcommand\labelitemii{$\circ$}  
+\renewcommand\labelitemiii{---} %{\textasteriskcentered}
+\renewcommand\labelitemiv{---}  %{\textperiodcentered} 
+
+\renewcommand\figurename{Fig.}
+\renewcommand\tablename{Table}
+\renewcommand\lstlistingname{Listing}
+\renewcommand\lstlistlistingname{Code listing}
+
+\makeatletter
+\renewcommand{\fnum@table}{\textbf{\tablename~\thetable}}
+\makeatother
+
+% numerowaie obrazkow 1.1 1.2 1.3... 2.1 2.2 2.3
+\renewcommand{\thefigure}{\arabic{section}.\arabic{figure}}
+\renewcommand{\theequation}{\arabic{section}.\arabic{equation}}
+\let\stdsection\section
+\renewcommand\section{\setcounter{figure}{0}\setcounter{equation}{0}\setcounter{table}{0}\setcounter{lstlisting}{0}\stdsection}
+
+%numerowanie tabel
+\renewcommand{\thetable}{\arabic{section}.\arabic{table}}
+
+
+%%%%%%%COUNTER DO TABEL%%%%%%%%%
+%\newcounter{tableindex}
+%\newcommand{\tindex} { \thetableindex \stepcounter{tableindex} }
+%DOCUMENT%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
+
+%%%%%%%%TO~NALEZY UZUPELNIC%%%%%%%%%%%%%%%%
+\def\temat{Efficiency evaluation of parallel genetic algorithms and
+evolutionary programs}
+\def\tematen{Badanie efektywności równoległej realizacji algorytmów genetycznych
+i programów ewolucyjnych}
+\def\autor{Marcin Majak}
+\def\prowadzacy{Leszek Koszałka, PhD, W4/K2}
+\def\opiekun{dr inż. Leszek Koszałka, W4/K2}
+\def\rok{2010}
+
+\newcommand{\mojaSugestia}[1]{\textcolor{blue}{#1}}
+\newcommand{\mojaZmiana}[1]{\textcolor{green}{#1}}
+\newcommand{\kodWTexcie}[1]{\texttt{#1}}
+
+\usepackage{placeins}  % to many unprocessed floats - problem z numerowaniem wiecej niz 20 obrazkow
+
+\begin{document}
+
+%numerowanie listingów
+\renewcommand{\thelstlisting}{\arabic{section}.\arabic{lstlisting}}
+
+%po wpisaniu makr przed \begin{document} strona
+%tytulowa uzupelni sie automatycznie
+
+\input{stronaTytulowaPolski.tex}
+\newpage
+\input{StreszczeniePolski.tex}
+\newpage
+
+\input{stronaTytulowa.tex}
+\newpage
+\input{Streszczenie.tex}
+\newpage
+\tableofcontents
+\newpage
+
+%od tego miejsca mozna zaczac wpisywac tresc.
+%polecam korzystac z~polecenia input i~kazdy rozdzial robic w~innym pliku
+%tak jak jest wciagnieta titlepage
+
+\newpage
+\input{00celPracy.tex}
+
+%\input{001problem.tex}
+
+\input{01wstep.tex}
+
+\input{02teoria.tex}
+
+\newpage
+\input{03analiza.tex}
+
+\newpage
+\input{04przyszlosc.tex}
+
+\input{05wnioski.tex}
+
+\newpage \clearpage
+\input{referencje.tex}
+\newpage\clearpage
+\appendix
+\input{appendixA}
+
+\end{document}

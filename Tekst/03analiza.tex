@@ -1,0 +1,715 @@
+\section{Experimentation system}
+\label{cha:ExperimentAnalysis}
+\subsection{Assumptions}
+This section starts the second part of this thesis. In the first it was proved
+that for the certain parameters settings it is advisable to use parallel genetic
+algorithm instead of sequential one. There were formulas presented showing the
+optimal number of slaves for master-slave and deme configuration. The main goal
+of this part is to check how other parameters(not only number of slave units)
+affects efficiency of tested algorithm. Experiments were carried out to compare 
+required time to run the same $\mathcal{GA}$
+sequentially on a single machine against the time it takes to run on the
+distributed environment, to find out what is the quality of solution in both cases and try to answer 
+the question when and in what situation it is reasonably to use parallel
+genetic algorithms.
+
+For this project there were three genetic algorithms implemented, one simple
+sequential program and two parallel counterparts. 
+\begin{itemize}
+	\item Sequential genetic algorithm, it is the basic algorithm with one
+		population and standard method of selection, mutation and replacement.
+	\item Parallel genetic algorithm with the ``island'' model. It was assumed
+		that there is one master program which triggers the slave processes and
+		collects the final results from them.
+		Additional assumption is that each slave has its own population to
+		evaluate and occasionally sends individuals to other units in the process
+		of migration. There are two possible migration types: the first denoted
+		as PGA\_f assumes that migration is to the forward neighbour, while the
+		second one-PGA\_b sends its genomes in both directions. Described here
+		topologies were presented in figure \ref{fig:topology}
+\end{itemize}
+\begin{figure}[!htpb]
+	\begin{center}
+		\includegraphics[width=\textwidth]{rys/topology}
+	\end{center}
+	\caption{Schematic topology for PGA\_f(on the left) and PGA\_b}
+	\label{fig:topology}
+\end{figure}
+At the beginning of the project it was a problem to choose a reliable environment
+to perform all tests. One possible solution was to set LAN network but because
+of shortage of time and resources different approach was applied. In all researches
+pvm(Parallel Virtual Machine) framework was used to virtualize slave units. One 
+computer played the role of master CPU and later started other processes. This is 
+maybe not the most reliable environment but to perform basic tests and simulate
+communication and migration between slave units it is enough. Of course there 
+are programs ready to use, for
+example Matlab software, but in those cases they only simulate multideme population
+on one processor where algorithm is run sequentially, so it would
+not be possible to check parallel program speedup to the sequential one.
+In that situation it was advisable to write special program for project's purposes.
+
+
+Implemented algorithms were used to solve optimization problem which required
+finding the global minimum in test functions. This approach is very often used
+to check if algorithm is resistant to falling into one local minimum as a result
+of small diversity in population. Genetic algorithms have stochastic nature so each
+simulation was repeated 200 times and every time individuals were encoded using
+the floating point representation.
+
+
+\subsection{Test functions}
+\label{cha:function}
+In the introduction it was said that the most important thing in implementing
+the parallel genetic algorithm is the ratio $\frac{T_f}{T_c}$, to ensure that time spent on
+genome fitness evaluation must be much longer than time wasted on communication
+between slaves units. For that reason costly effective functions will be used in this
+project, chosen from \cite{bib25}. 
+Objective functions to evaluate effectiveness of algorithm implementation are De Jong's 
+functions(very often used in the literature to check performance of
+$\mathcal{GA}$ algorithms) which will be listed below with a~priori known global
+minimum(This information was used in the project to compare with results
+obtained by designed program) 
+\begin{enumerate}
+\item De Jong's function-F1(four variables)
+	\begin{equation}
+		F(\underline{x})=\sum_{i=1}^n x^2_i; \textnormal{  } \bigvee_i x_i \in
+		[-5.12, 5.12]
+		\label{dj1}
+	\end{equation}
+	where $\min(F(x_1,x_2,x_3,x_4))=F(0,0,0,0)=0$
+	\nopagebreak
+	\begin{figure}[!htpb]
+		\begin{center}
+			\includegraphics{rys/F1}
+		\end{center}
+		\caption{Visualisation(for two variables) of De Jong's function-F1}
+		\label{fig:F1}
+	\end{figure}
+\item De Jong's function-F2(two variables)
+	\begin{equation}
+		F(\underline{x})=\sum_{i=1}^{n-1}100\cdot(x_i^2-x_{i+1})^2+(x_i-1)^2;
+		\textnormal{  } \bigvee_i x_i \in [-5.12,5.12]
+		\label{dj2}
+	\end{equation}
+	where $\min(F(x_1, x_2))=F(1,1)=0$
+	\pagebreak
+	\begin{figure}[!htpb]
+		\begin{center}
+			\includegraphics{rys/F2}
+		\end{center}
+		\caption{Visualisation(for two variables) of De Jong's function-F2}
+		\label{fig:F2}
+	\end{figure}
+\item De Jong's function-F3(four variables)
+	\begin{equation}
+		F(\underline{x})=\sum_{i=1}^n\lfloor x_i \rfloor ; \textnormal{  }
+		\bigvee_i x_i \in [-5.12,5.12]
+		\label{dj3}
+	\end{equation}
+	where $\min(F(x_1,x_2,x_3,x_4))=F(-5.12, -5.12, -5.12, -5.12)=-24$
+	\nopagebreak
+	\begin{figure}[!h]
+		\begin{center}
+			\includegraphics{rys/F3}
+		\end{center}
+		\caption{Visualisation(for two variables) of De Jong function-F3}
+		\label{fig:F3}
+	\end{figure}
+\item De Jong's function-F4(four variables)
+	\begin{equation}
+		F(\underline{x})=\sum_{i=i}^n i\cdot x_i^4+\textnormal{gauss(0,1)}; \textnormal{  }
+		\bigvee_i x_i \in [-1.028, 1.028]
+		\label{dj4}
+	\end{equation}
+	where $\min(F(x_1, x_2, x_3, x_4))=F(0, 0, 0, 0)=0$
+	\nopagebreak
+	\begin{figure}[!htpb]
+		\begin{center}
+			\includegraphics{rys/F4}
+		\end{center}
+		\caption{Visualisation(for two variables) of De Jong function-F4}
+		\label{fig:F4}
+	\end{figure}
+
+\item De Jong's function-F5(two variables)
+	\begin{equation}
+		F(\underline{x})=\frac{1}{K}+\sum_{j=1}^{26}\frac{1}{j+\sum_{i=1}^2(x_i-a_{ij})^6}; \textnormal{  }
+		\bigvee_i x_i \in [-5.12,5.12]
+		\label{dj5}
+	\end{equation}
+	\begin{small}	
+	\[a_{ij}=\left ( \begin{array}{cccccccccc}
+  -32& -16& 0& 16& 32& -32& \ldots & 0& 16& 32\\
+  -32& -32& -32& -32& -32& -16& \ldots& 32& 32& 32
+		\end{array} \right )\]
+	\end{small}
+	where $\min(F(x_1, x_2))=F(-32,-32)=1$
+	\pagebreak
+	\begin{figure}[!htpb]
+		\begin{center}
+			\includegraphics{rys/F5}
+		\end{center}
+		\caption{Visualisation(for two variables) of De Jong's function-F5}
+		\label{fig:F4}
+	\end{figure}
+
+\item Rastring's function-F6(seven variables)
+	\begin{equation}
+		F(\underline{x})=\sum_{i=1}^nx_i^2+ 10\cdot
+		(n-\sum_{i=1}^{n}\cos(2\cdot\pi\cdot x_i)) \textnormal{
+		} \bigvee_i x_i \in [-20, 20]
+		\label{r5}
+	\end{equation}
+	where $\min(F(x_1, x_2, \ldots, x_7))=F(0,0,\ldots, 0)=0$
+	\nopagebreak
+	\begin{figure}[!htpb]
+		\begin{center}
+			\includegraphics{rys/F6}
+		\end{center}
+		\caption{Visualisation(for two variables) of Rastrings's function-F6}
+		\label{fig:F5}
+	\end{figure}
+\end{enumerate}
+\subsection{Efficiency indicators}
+\label{cha:indicators}
+To evaluate effectiveness of algorithm it has to be consistent approach used in
+all experiments and additionally the a~priori global minimum value has to be taken
+into account. Below, there will be listed methods of algorithm fitness scoring
+\begin{itemize}
+	\item An absolute error which is the distance between the solution found by
+		algorithm and known a~priori global minimum. There are distinguished
+		three variants of this indicator
+		\begin{itemize}
+			\item The best value from $n$ probes 
+				\begin{equation}
+					B=MIN\left | f^{*}(\underline{x})-f(\underline{x}) \right |
+					\label{min1}
+				\end{equation}
+			\item The worst value from $n$ probes 
+				\begin{equation}
+					W=MAX\left | f^{*}(\underline{x})-f(\underline{x}) \right |
+					\label{min3}
+				\end{equation}
+			\item The average value from $n$ probes
+				\begin{equation}
+					A=\frac{1}{n}\sum_{n=1}^n\left | f^{*}(\underline{x})-f(\underline{x}) \right |
+					\label{min2}
+				\end{equation}
+		\end{itemize}
+		where $f^{*}(\underline{x})$ is the value found by algorithm and
+		$f(\underline{x})$ is a~priori global minimum.
+	\item Error variance from $n$ simulations 
+		\begin{equation}
+			\sigma^2=\frac{1}{n-1}\sum_{i=1}^n\left[A-B\right]^2
+			\label{min4}
+		\end{equation}
+	\item Average time from $n$ simulation, where $T_i$ is $i-th$ simulation
+		time
+		\begin{equation}
+			T=\frac{1}{n}\sum_{i=1}^nT_i
+			\label{min4}
+		\end{equation}
+\end{itemize}
+\subsection{Program description}
+%-----------------------------------------------------------------------------------------
+To perform all simulations in this project a program was written in
+$\mathcal{C++}$(more information can be found in \ref{Appendix}). It allows running simple sequential and parallel genetic
+algorithm. Libraries used in it are as follows:
+\begin{itemize}
+	\item $\mathcal{GALIB}$- library released by the Massachusetts Institute
+		of Technology which is very useful in implementing $\mathcal{GA}$. In
+		this library all standard operations such as replacement, crossover,
+		mutation, encoding are implemented and easy to customize.
+		$\mathcal{C++}$ is an objected programming language in which inheritance
+		plays very important role. In program for this project basic
+		functionality was taken from $\mathcal{GALIB}$ and customized so that to
+		use it for simulations.
+	\item pvm framework- library used to manage communication between slaves \cite{bib3}, \cite{bib13}.
+		In $\mathcal{PGA}$ there was a problem of how to send individuals between
+		slaves units and how to pack message buffer. In pvm communication is
+		done very simply. When creating slaves by the master each of them
+		receives $id$ by which is later recognized in the system. So sending 
+		a~message requires giving an $id$ and a handle to the message buffer. 
+	\item lpthread- library used for slave synchronization and communication.
+		Mutex and mechanism called waiting on condition was implemented to
+		ensure that each slave takes part in the migration process. Each slave has
+		its own thread used for reading messages and after receiving
+		individuals from migration it signalizes slave's process to stop and
+		replace genomes. 
+\end{itemize}
+Program was tested on Linux system and to start it command line is required.  To
+compile the project g++ compiler was used and all rules needed in compilation
+and linking process were placed in \textsc{Makefile}. It is very useful solution
+because instead of writing many command only one is sufficient. To be able to
+run program one has to install pvm server which is responsible for starting
+master program and spawning slaves. Because implemented $\mathcal{GA}$ algorithm
+has many setting parameter, they were written to the file so that easily
+change their value in testing procedure. Output results(efficiency indicators) were written to
+\textsc{csv}. The
+general project structure is presented in Fig. \ref{fig:setting}. 
+\pagebreak
+\begin{figure}[!htpb]
+	\begin{center}
+		\includegraphics{rys/box}
+	\end{center}
+	\caption{Schematic project structure}
+	\label{fig:setting}
+\end{figure}
+%-----------------------------------------------------------------------------------------
+
+
+\section{Investigations}
+\label{cha:investigation}
+\subsection{Design of experiments}
+This section presents results collected from conducted simulations. In
+table \ref{configuration} there are presented configuration parameters for each kind
+of genetic algorithm, while the basic notation used in this paper is as follows:
+\begin{itemize}
+	\item SGA - simple sequential genetic algorithm
+	\item PGA\_f- parallel genetic algorithm with forward migration process
+	\item PGA\_b- parallel genetic algorithm where genomes are passed to
+			both neighbours
+	\item $\mathcal{N}$- number of slaves 
+	\item fp- floating point representation
+	\item F- function type 
+	\item G- number of generations each algorithm was run
+	\item $\mathcal{N}$- number of slaves units
+	\item $\mathcal{M}$- number of genomes sent in the migration process
+	\item $\mathcal{I}$- interval of migration
+\end{itemize}
+\pagebreak
+\begin{table}[!htpb]
+	\label{configuration}
+	%\rowcolors{3}{tableShade}{white}
+	\caption{Algorithms configuration parameters}
+	\centering
+	\begin{tabular}{l||c|c|c}
+        \textsc{Parameter} & \multicolumn{3}{c}{Type of algorithm} \\ \hline 
+		 & \textbf{SGA} & \textbf{PGA\_f} & \textbf{PGA\_b} \\ \hline
+		\textsc{Generations} 	&400	&400    &400    \\ \hline
+		\textsc{N} 	&-	&5    &5    \\ \hline
+		\textsc{Population} 	&300	&300/$\mathcal{N}$   &  300/$\mathcal{N}$  \\ \hline
+		\textsc{Replacement}    &0.25   &0.25& 0.25 \\ \hline
+		\textsc{Mutation}       &0.2    &0.2 &0.2   \\ \hline
+		\textsc{Crossover}      &0.7    &0.7 &0.7   \\ \hline 
+		\textsc{Convergence}    &0.995  &0.995& 0.995 \\ \hline
+		\textsc{Migration step- $\mathcal{I}$}      &-& 20 &20 \\ \hline
+		\textsc{nMigration- $\mathcal{M}$}     &-& 10 &10 \\ \hline
+		\textsc{Direction}      &-& Forward & Both \\ \hline
+		\textsc{Representation} &fp&fp&fp \\ \hline
+		\textsc{Repetition} &200&200&200 \\ \hline
+	\end{tabular}\newline
+\end{table}
+Before presenting the final results, few words of comments should be made about
+parameters from table \ref{configuration} and why those values were chosen in
+simulations. In the literature there are many examples of parallel genetic
+algorithm implementations \cite{bib22}, \cite{bib27}. In those articles applications
+are fully described with detailed description of input parameters. This was the
+main source of information how to set up parameters for simulations in this
+project. This project is the first work in this area and because $\mathcal{GA}$ algorithm 
+has many parameters settings which the influence on the algorithm result is is
+non-linear, it was advisable to use tested configuration and well known in the
+literature. Few additional constraints had to be taken into account. According
+to \cite{bib19}, population has to be big enough to ensure diversity and
+number of generation has to be chosen at reasonably rate to try to search the
+greatest part of the solution space. In all experiments size of the population
+was equal to $300/\mathcal{N}$, so even for great $\mathcal{N}$ algorithm
+preserved individuals diversity.  
+\subsection{Algorithm duration- comparison of $\mathcal{SGA}$ with
+$\mathcal{PGA}$}
+In this experiment three algorithms were run with the same input data and
+each algorithm had configuration corresponding to \ref{configuration}. The main
+purpose of this experiment was to check two indicators: time of
+algorithm evaluation and accuracy of solution obtained from $\mathcal{SGA}$ and
+from both types of $\mathcal{PGA}$. Results are collected in tables \ref{sga},
+\ref{pga1conv}, \ref{pga2conv}. Each algorithm has stopped after gaining
+convergence at $0.995\%$. 
+\begin{table}[!htpb]
+	\label{sga}
+	%\rowcolors{3}{tableShade}{white}
+	\caption{Results of $\mathcal{SGA}$ in case of algorithm duration}
+	\centering
+	\begin{tabular}{l||r|r|r|r|r|r|}
+        \textsc{F} & \multicolumn{6}{c|}{SGA} \\ \hline
+		          &T[ms]&G& B&W&A&$\sigma^2$ \\ \hline
+		\textsc{F1}&32420&237&0.00160298&0.0528165&0.0121706&0.000132399\\ \hline
+		\textsc{F2}&20365&148&4.96253e-06&0.00913949&0.00162763&4.45288e-06\\ \hline
+		\textsc{F3}&8470&173&0&1&0.06&0.057551\\ \hline
+		\textsc{F4}&14192&103&0.0759622&6.30168&1.92343&2.12657\\ \hline
+		\textsc{F5}&71115&118&3.8147e-06&4.41074e-06&3.86715e-06&1.11135e-14\\ \hline
+		\textsc{F6}&39785&266&5.29394&24.0324&15.4658&14.1652\\ \hline
+	\end{tabular}\newline
+\end{table}
+\pagebreak
+\begin{table}[!htpb]
+	\label{pga1conv}
+	%\rowcolors{3}{tableShade}{white}
+	\caption{Results of $\mathcal{PGA}$ with forward migration in case of
+	algorithm duration}
+	\centering
+	\begin{tabular}{l||r|r|r|r|r|r|}
+        \textsc{F} & \multicolumn{6}{c|}{PGA\_f} \\ \hline
+		          &T[ms]&G& B&W&A&$\sigma^2$ \\ \hline
+		\textsc{F1}&12392&209&0.000545337&0.0180944&0.00416617&1.06863e-05\\ \hline
+		\textsc{F2}&8703&165&1.27917e-06&0.0196572&0.00180196&1.86041e-05\\ \hline
+		\textsc{F3}&7959&171&0&1&0.02&0.02\\ \hline
+		\textsc{F4}&7469&114&0.0217737&6.14396&1.57031&2.0549\\ \hline
+		\textsc{F5}&46832&134&3.8147e-06&0.204763&0.00409903&0.000838523\\ \hline
+		\textsc{F6}&15710&230&4.35369&27.7749&16.2711&16.6755\\ \hline
+	\end{tabular}\newline
+\end{table}
+\nopagebreak
+\begin{table}[!htpb]
+	\label{pga2conv}
+	%\rowcolors{3}{tableShade}{white}
+	\caption{Results of $\mathcal{PGA}$ with both neighbour migration in case of
+	algorithm duration}
+	\centering
+	\begin{tabular}{l||r|r|r|r|r|r|}
+        \textsc{F} & \multicolumn{6}{c|}{PGA\_b} \\ \hline
+		          &T[ms]&G& B&W&A&$\sigma^2$ \\ \hline
+			\textsc{F1}&12605&217&0.000170366&0.0116758&0.00184919&3.20086e-06\\ \hline
+			\textsc{F2}&8237&156&7.60546e-07&0.0801857&0.00566568&0.000261041\\ \hline
+			\textsc{F3}&8288&166&0&0&0&0\\ \hline
+			\textsc{F4}&7321&111&0.0310541&6.14396&1.62028&2.02956\\ \hline
+			\textsc{F5}&44475&129&3.8147e-06&0.204314&0.00409005&0.000834852\\ \hline
+			\textsc{F6}&19512&273&7.50491&22.7055&13.9941&13.3396\\ \hline
+	\end{tabular}
+\end{table}
+Looking at the result collected in tables, it can be seen that
+for every function type parallel genetic algorithm finished much faster than
+sequential genetic counterpart. In case of parallel genetic algorithm each slaves
+has its own population with the size equal to $300/\mathcal{N}=60$ while sequential
+genetic algorithm has the population of $300$ genomes so for $\mathcal{SGA}$ it takes longer to search
+entire solution space. In case of $\mathcal{PGA}$ there is always a danger of
+having small diversity in chromosomes where size of population is too small, but
+in this case it was not a problem because $60$ individuals is relatively
+sufficient number.
+
+For $\mathcal{SGA}$ algorithm each operation (selection, migration, crossover)
+is made sequentially on the entire population while for $\mathcal{PGA}$ it is
+easier to obtain convergence in shorter time.
+
+To conclude this experiment, there are collected summary results as bar
+plots(figure \ref{fig:bar}). For each indicator(fully described in section
+\ref{cha:indicators}) obtained results from three algorithms(
+$\mathcal{SGA}$, $\mathcal{PGA}_f$,$\mathcal{PGA}_b$)were compared
+and algorithm with the best result was awarded with $1$ while others with zero.
+\nopagebreak
+\begin{figure}[!htpb]
+	\begin{center}
+		\includegraphics[width=\textwidth]{rys/summary}
+	\end{center}
+	\caption{Final summary between $\mathcal{SGA}$ and $\mathcal{PGA}$(the
+	higher the rate, the better algorithm performance) }
+	\label{fig:bar}
+	\newline
+	\begin{itemize}
+		\item 1- $\mathcal{SGA}$
+		\item 2- $\mathcal{PGA}$ with forward migration
+		\item 3- $\mathcal{PGA}$ with both direction of migration
+	\end{itemize}
+\end{figure}
+Analyzing summary results from \ref{fig:bar}, it can be seen that for every
+type of efficiency indicator $\mathcal{PGA}$ was better than $\mathcal{SGA}$. It is
+especially very important for algorithm duration time(for every objective
+function $\mathcal{PGA}$ has worked shorter than $\mathcal{SGA}$), $B$
+value(always $\mathcal{PGA}$ better) and variance. Of
+course it is not always true that parallel genetic algorithm has better
+performance than the sequential one, its efficiency strongly depends on configurations
+parameters. This is very important condition which must be remembered. How wrong
+parameters setting can spoil the result, one can look at other experiments, for example in section
+\ref{cha:cpu}; it can be seen that the unsuitable number of slaves($\mathcal{N}=30$) results in weak
+performance of algorithm in case of algorithm duration and solution accuracy(even worse than $\mathcal{SGA}$).
+
+In this section implemented algorithms have been tested with six test functions to
+show general relationship between $\mathcal{SGA}$ and $\mathcal{PGA}$. In the
+next sections only one function will be taken into account in simulations. It
+will be Rastring's function(F6) because of its complexity(it has seven variables) and 
+difficulty in finding good solution(it has many local minimum, but only one global
+minimum).  
+
+
+\subsection{Impact of slaves units number on $\mathcal{PGA}$ performance}
+\label{cha:cpu}
+This experiment checks how the number of slave units affects algorithm
+efficiency in case of its duration and solution accuracy. There were two $\mathcal{PGA}$
+algorithm types compared, one with forward and the second with both direction of
+migration. Every time size of the
+population was equal to 300/$\mathcal{N}$ where $\mathcal{N} \in <2, 3, 5, 7, 10,
+30>$. Figure \ref{fig:cpu} and tables \ref{pga1cpu}, \ref{pga2cpu} present
+collected results. Figure \ref{fig:cpu} has two plots, the first is the number of slaves in the reference of algorithm
+duration and the second indicates the best absolute error value. 
+\nopagebreak
+\begin{table}[!htpb]
+	\label{pga1cpu}
+	%\rowcolors{3}{tableShade}{white}
+	\caption{Results of $\mathcal{PGA}$ with forward migration with the changing
+	size of population}
+	\centering
+	\begin{tabular}{l||r|r|r|r|r|r|}
+        $\mathcal{N}$ & \multicolumn{6}{c|}{PGA\_f} \\ \hline
+		          &T[ms]&G& B&W&A&$\sigma^2$ \\ \hline
+		2&26603&400&4.53&17.35&10.75&6.64\\ \hline
+		3&25837&400&6.67&16.79&10.89&5.99\\ \hline
+		5&22734&400&4.62&18.90&10.44&10.75\\ \hline
+		7&24346&400&4.01&17.81&11.40&7.08\\ \hline
+		15&28842&400&3.27&18.88&11.20&11.83\\ \hline
+		30&102417&400&11.71&41.82&22.55&30.74\\ \hline
+	\end{tabular}
+\end{table}
+%\nopagebreak
+\begin{table}[!htpb]
+	\label{pga2cpu}
+	%\rowcolors{3}{tableShade}{white}
+	\caption{Results of $\mathcal{PGA}$ with both neighbour migration with the changing
+	size of population}
+	\centering
+	\begin{tabular}{l||r|r|r|r|r|r|}
+        $\mathcal{N}$ & \multicolumn{6}{c|}{PGA\_b} \\ \hline
+		          &T[ms]&G& B&W&A&$\sigma^2$ \\ \hline
+	2&29109&400&5.56&15.20&10.15&6.54\\ \hline
+	3&27758&400&4.58&15.97&10.09&7.45\\ \hline
+	5&25096&400&4.74&16.99&9.94&6.84\\ \hline
+	7&33073&400&4.21&19.21&11.57&10.96\\ \hline
+	15&43300&400&5.32&17.33&11.55&8.07\\ \hline
+	30&104601&400&8.46&20.36&14.69&8.56\\ \hline
+	\end{tabular}
+\end{table}
+%\nopagebreak
+\begin{figure}[!htpb]
+	\begin{center}
+		\includegraphics[width=\textwidth]{rys/cpu_solution}
+	\end{center}
+	\caption{Number of slaves in the reference of algorithm duration(on the left) and solution
+	accuracy}
+	\label{fig:cpu}
+\end{figure}
+Analyzing the results it is obvious that for the specific configuration
+parameters there is optimal number of slaves in case of algorithm duration. From
+the certain value of $\mathcal{N}$ the expenses of communication are much greater 
+than the quality of solution obtained by algorithm. In this experiment the optimal 
+number of slaves is about $5$ or $7$. In case of $\mathcal{PGA}_b$ it gets the
+best results for $5$~slaves not only for time indicator, but also for $B$, $A$
+and it gets the most stable solution indicated by the smallest variance. For
+$\mathcal{PGA}_f$ the best results were obtained for $\mathcal{N}=7$.
+One of possible reason why $\mathcal{PGA}_b$ and $\mathcal{PGA}_f$ have
+different optimal $\mathcal{N}$ is the type of migration. In case of $\mathcal{PGA}_f$ 
+it occurs only to forward neighbour so it obtains smaller diversity as it was for
+$\mathcal{PGA}_b$.
+
+
+Additional conclusion can be drawn from figure \ref{fig:cpu}. Normally, everyone
+would think that having the greater number of slaves can lead to the better
+solution, but it is otherwise. Greater $\mathcal{N}$ implies more communication
+between slaves which has a negative effect on algorithm duration(compare plot on the left 
+for $\mathcal{N}=5$ and $\mathcal{N}=30$). Another aspect connected
+with $\mathcal{N}$ is the size of population. As it was said before, this
+relationship is as follows $300/\mathcal{N}$, so for greater $\mathcal{N}$
+algorithm starts with worse diversity of chromosomes(for $\mathcal{N}=30$
+algorithm obtains much worse results than for 5 or 10). 
+
+At the end of this paragraph it has to be mentioned that algorithm performance
+scoring cannot be judged only on the basis of $\mathcal{N}$ parameter but another 
+settings have to be taken into account. Time of algorithm duration and solution accuracy is not only
+affected by number of slaves, but additionally by number of genomes sent in the process of
+migration and its interval. This will be the issue to reconsider in the next sections.
+
+\subsection{Impact of migration interval on $\mathcal{PGA}$ performance}
+The main goal of experiments presented in this section was to check how the
+interval of migration affects the time of algorithm duration and other
+indicators. The basic assumption here is that in every migration process
+$\mathcal{M}$ the best individuals from one 
+generation is send to another and replaced with $\mathcal{M}$ the worst ones. 
+There arise the question, what is the best interval of migration, if it should
+be very often to spread the best
+genomes in the entire population, or rather rarely. On the other hand, there is always a danger
+of deteriorating individuals fitness in slaves because for one slave its best
+genomes could be treated as the worst for another. 
+
+In this research migration process was evoked every $\mathcal{I}$-th algorithm
+iteration, where $\mathcal{I} \in <1, 10 , 50 , 100, 200, 0>$(0 means that
+there is no migration between slaves) and the rest parameters were the same as shown in
+\ref{configuration}. 
+\begin{table}[!htpb]
+	\label{pga1step}
+	%\rowcolors{3}{tableShade}{white}
+	\caption{Results of $\mathcal{PGA}$ with the changing
+	step of migration with one direction}
+	\centering
+	\begin{tabular}{l||r|r|r|r|r|r|}
+        $\mathcal{I}$ & \multicolumn{6}{c|}{PGA\_f} \\ \hline
+		          &T[ms]&G& B&W&A&$\sigma^2$ \\ \hline
+		1&196691&400&4.99&26.95&10.40&11.73\\ \hline
+		10&26673&400&5.66&18.99&10.82&8.82\\ \hline
+		50&21408&400&7.13&21.96&12.80&9.53\\ \hline
+		100&20625&400&5.95&21.25&14.82&9.57\\ \hline
+		200&20142&400&5.84&24.01&15.93&13.27\\ \hline
+		0&19803&400&7.30&23.67&17.66&13.18\\ \hline
+	\end{tabular}
+\end{table}
+
+\begin{table}[!htpb]
+	\label{pga2step}
+	%\rowcolors{3}{tableShade}{white}
+	\caption{Results of $\mathcal{PGA}$ with the changing
+	step of migration in both directions}
+	\centering
+	\begin{tabular}{l||r|r|r|r|r|r|}
+        $\mathcal{I}$ & \multicolumn{6}{c|}{PGA\_b} \\ \hline
+		          &T[ms]&G& B&W&A&$\sigma^2$ \\ \hline
+	1&346678&400&4.11&17.79&9.99&7.82\\ \hline
+	10&70948&400&4.48&15.56&9.67&6.04\\ \hline
+	50&40758&400&6.35&14.90&10.05&4.26\\ \hline
+	100&21228&400&6.45&20.98&11.94&7.62\\ \hline
+	200&20862&400&5.13&22.18&12.77&11.54\\ \hline
+	0&19982&400&9.31&28.62&18.79&15.87\\ \hline
+	\end{tabular}
+\end{table}
+
+\begin{figure}[!htpb]
+	\begin{center}
+		\includegraphics[width=\textwidth]{rys/mig_step}
+	\end{center}
+	\caption{Comparison of $\mathcal{PGA}$ with forward migration(green plot)
+	and $\mathcal{PGA}$ with both direction of migration}
+	\label{fig:step1}
+\end{figure}
+Analyzing figure \ref{fig:step1} it can be seen that for both algorithm types
+there exists optimal interval of migration. For $\mathcal{PGA}_f$ the interval
+is $\mathcal{I}=10$ iterations, while for $\mathcal{PGA}_b$ $\mathcal{I}=50$.
+In that configuration, algorithms obtain the most stable solution(for
+$\mathcal{I}=10$ and $\mathcal{I}=50$ it is the smallest variance for both
+algorithms).
+
+At the end of this section few comments should be made about other parameters
+collected in tables \ref{pga1step}, \ref{pga2step}. The first conclusion is
+the relationship between interval of migration and algorithm duration.
+Intense migration process implies longer algorithm execution. It is true that the
+best solution was obtained for $\mathcal{I}=1$ in both cases, but in time that
+is not acceptable comparing to the other instances and additionally the variance is
+quite big in this case. $\mathcal{I}=1$ is the upper bounding case, while $\mathcal{I}=0$ is
+the lower bounding case which requires few words of comments because for both algorithm
+this instance has attained the worst results. To sum up, migration
+interval has to be set carefully because wrong value can result in longer
+execution time or in bad solution.
+
+
+\subsection{Impact of individuals number in each migration on $\mathcal{PGA}$ performance}
+\label{cha:both}
+In this paragraph the main concern is about how the number of individuals sent in
+every migration process affects the algorithm performance. To have the wide
+range of results simulations were run three times for $\mathcal{I}$ equal
+to $20, 50, 100$ and each time the number of individuals to migrate was treated as an
+input parameter and $\mathcal{M} \in <1, 5, 10, 15, 25>$. The rest parameters
+were the same as presented in table \ref{configuration}. In this section,
+contrary to others tables have more results than previously, this is because
+three different simulation where carried out.
+\begin{table}[!htpb]
+	\label{migNum1}
+	%\rowcolors{3}{tableShade}{white}
+	\caption{Results of $\mathcal{PGA}_f$ with the changing
+	number of individuals in migration process}
+	\centering
+	\begin{tabular}{l||r|r|r|r|r|r|}
+        $\mathcal{I}$ & \multicolumn{6}{c|}{PGA\_f} \\ \hline
+		          &T[ms]&G& B&W&A&$\sigma^2$ \\ \hline
+				  \multicolumn{7}{c|}{$\mathcal{I}=20$}\\ \hline
+1&20107&400&3.9363&20.1299&12.2451&10.2341\\ \hline
+5&20728&400&6.3276&16.6479&11.1533&6.6175\\ \hline
+10&21739&400&4.7348&17.9733&11.0168&8.5943\\ \hline
+15&23628&400&5.6176&15.6848&10.8350&6.2420\\ \hline
+25&31687&400&4.4627&16.8783&11.0743&8.1431\\ \hline
+				  \multicolumn{7}{c|}{$\mathcal{I}=50$}\\ \hline
+1&19886&400&8.6998&20.7665&14.3700&8.1094\\ \hline
+5&20708&400&4.8755&19.7379&12.3117&10.9059\\ \hline
+10&21155&400&6.4674&18.9385&12.9195&8.9881\\ \hline
+15&21579&400&7.7083&16.4572&12.4001&5.2021\\ \hline
+25&22375&400&6.9216&17.7349&12.5028&7.8840\\ \hline
+				  \multicolumn{7}{c|}{$\mathcal{I}=100$}\\ \hline
+1&20258&400&9.4922&21.7061&15.2001&10.1677\\ \hline
+5&20295&400&7.4287&22.1223&14.5987&10.7785\\ \hline
+10&21054.2&400&8.8246&19.8454&14.6087&8.324\\ \hline
+15&21332.4&400&4.3733&22.1153&14.7554&14.0906\\ \hline
+25&21746.2&400&6.9681&23.7160&14.6379&16.1504\\ \hline
+	\end{tabular}
+\end{table}
+
+\begin{table}[!htpb]
+	\label{migNum2}
+	%\rowcolors{3}{tableShade}{white}
+	\caption{Results of $\mathcal{PGA}_b$ with the changing
+	number of individuals in migration process}
+	\centering
+	\begin{tabular}{l||r|r|r|r|r|r|}
+        $\mathcal{M}$ & \multicolumn{6}{c|}{PGA\_b} \\ \hline
+		          &T[ms]&G& B&W&A&$\sigma^2$ \\ \hline
+				  \multicolumn{7}{c|}{$\mathcal{I}=20$}\\ \hline
+1&20566&400&4.6682&15.7376&11.2527&5.86126\\ \hline
+5&21513&400&4.9886&15.4205&10.2699&5.98213\\ \hline
+10&25747&400&3.9695&15.4837&10.7887&6.40051\\ \hline
+15&33768&400&4.1004&16.3904&10.6218&6.31401\\ \hline
+25&54522&400&3.8709&16.3141&10.4947&8.30674\\ \hline
+				  \multicolumn{7}{c|}{$\mathcal{I}=50$}\\ \hline
+1&20103&400&6.7254&19.4871&12.7793&7.15293\\ \hline
+5&20708&400&7.0307&19.0561&12.362&8.9504\\ \hline
+10&21240&400&4.7053&18.5784&11.463&10.4293\\ \hline
+15&22192&400&4.7659&17.0534&11.6604&9.2567\\ \hline
+25&27629&400&4.8539&18.346&11.9805&9.87593\\ \hline 
+				  \multicolumn{7}{c|}{$\mathcal{I}=100$}\\ \hline
+1&20022&400&6.7356&21.7445&13.4915&11.6823\\ \hline
+5&20787&400&7.4264&20.6643&12.8513&8.4853\\ \hline
+10&21162&400&6.8761&17.7979&12.0835&7.7054\\ \hline
+15&21346&400&7.5026&21.1619&12.6859&7.5685\\ \hline
+25&22556&400&6.9883&18.7461&12.4302&6.7882\\ \hline 
+	\end{tabular}
+\end{table}
+
+Results are shown in \ref{migNum1}, \ref{migNum2} and in figures
+\ref{fig:migNum1}, \ref{fig:migNum2}(plots on the left presents number of individuals 
+to migrate in the reference of algorithm duration, while on the right the solution accuracy
+is depicted) 
+	\begin{figure}[!htpb]
+		\begin{center}
+			\includegraphics[width=\textwidth]{rys/migStep_1}
+		\end{center}
+	\caption{Number of individuals to migrate in the reference of algorithm
+	duration(left) and solution
+	accuracy for $\mathcal{PGA}$ with forward migration}
+		\label{fig:migNum1}
+	\end{figure}
+
+	\begin{figure}[!htpb]
+		\begin{center}
+			\includegraphics[width=\textwidth]{rys/migStep_2}
+		\end{center}
+	\caption{Number of individuals to migrate in the reference of algorithm
+	duration(left) and solution
+	accuracy for $\mathcal{PGA}$ with both direction of migration migration}
+		\label{fig:migNum2}
+	\end{figure}
+
+In case of $\mathcal{PGA}_b$ the best solutions
+are obtained where interval migration is equal to 20(red color), but to
+decide which parameter configuration is the most valuable one additional constraint
+has to be taken into account which is the algorithm duration. It can be seen that
+for number of individuals to migrate above 10 there is no improvement in
+solution domain while the time of algorithm execution increases. So for
+algorithm with both direction of migration optimal number of individuals would
+be from $5$~to~$10$ when migration process is triggered after every $20$ iterations.
+Another relatively good solution can be gathered for $\mathcal{M}=10$ and
+$\mathcal{I}=50$. In case of $\mathcal{PGA}_f$ the best solutions(with
+relatively short time of execution) were obtained when migration was invoked after $100$ iterations with
+$15$ individuals(blue plot) and in simulation with migration process after $20$
+iterations with $1$ genome to send.
+
+
+Analyzing figure \ref{fig:migNum2} it can be seen that sending more
+individuals to the neighbour does not come in pair with better solution, but for
+sure implies longer time of algorithm execution. For the certain slave its best individuals
+can be treated as the worst in another slave's solution space. The final
+conclusion drawn from analyzing tables in this section is that for the
+population size equal to 60 the optimal number of individuals to send is about
+10~to~15. For this values algorithm duration is relatively small comparing with
+other instances and what is more important obtained solution has the smallest
+variance which indicates stability of algorithm.

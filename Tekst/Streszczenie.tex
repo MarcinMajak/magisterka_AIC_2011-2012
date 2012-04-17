@@ -1,0 +1,42 @@
+\thispagestyle{empty}
+\begin{center}
+	Abstract
+\end{center}
+
+This paper concerns the problem of parallel genetics
+algorithms and evolutionary programs realization. In the last few decades multiprocessor
+computers have spawned development of dispere computation processes, to name
+only the few it is cloud computing or mesh grid computers. Design of parallel
+algorithms can be carried out in two steps. The first is algorithm's structure
+analysis and distinction of processes which can be realised in parallel, with
+additional consideration of parallelisation profitability. The second step involves algorithm's
+implementation and testing environment setup.
+
+Simulations are focused on efficieny analysis between
+parallel genetic algorithm and its sequential counterpart, especially in case
+of algorithm's duration and solution accuracy. Genetic algorithm was used
+because of its structure and its simplicity to realised some methods in parallel
+such as: mutation, reproduction, etc. To manage all the simulations program was
+written in C++ simulating sequential and parallel genetic algorithms. For
+testing, well known in the literature test functions were used mainly De Jong's
+functions and in order to fairly evaluate results efficiency indicators were
+proposed in this paper. 
+
+All test were performed on Linux platform with the help of pvm(Parallel Virtual
+Machine) framework, which allows virtualization of few processors on one machine
+called master. Taking into account the stochastic nature of genetic algorithm
+each simulation was repeated $200$ times and the final results represent the
+average value. 
+
+This paper is divided into two parts. Sections 2~and~3 are the introduction into
+parallel genetic algorithm subject matter. There are listed types of parallel algorithm
+and method of parallelisation with mathematical justification. Testing
+environment setup and program used in simulations are described in section~4,
+while the results of experiments with comments are placed in section~5. 
+There were used two types of algorithms: the first is simple sequential while 
+the second is parallel genetic algorithm with few subpopulations. The main 
+goal of simulations was to find the relationship between number of slave units, 
+the interval of migration and number of individuals and their impact on algorithm
+efficiency. Proposal of future work as the continuation of this topic and the
+final summary can be found in sections 6~and~7.
+
