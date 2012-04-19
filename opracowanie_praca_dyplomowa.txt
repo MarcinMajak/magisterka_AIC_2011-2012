@@ -300,7 +300,133 @@ in real-world applications. We show that fuzzy rough sets are very sensitive to 
 robust model of fuzzy rough sets in this work, called soft fuzzy rough sets and discuss the connections between the
 soft fuzzy rough set model and other models. In addition, we design a soft fuzzy rough classifier based on the model.
 
+Odnosnie Fuzzy-Sets:
+An important idea is inspired by neuro biology re-
+sults. They postulate that human learning e.g. speech
+acquisition is also a process of reducing a rich parameter
+set. Therefore, the structure of the fuzzy rule base sys-
+tem is enlarged at the beginning and reduced during the
+learning process.
+The process of fuzzy logic is explained in Algorithm 1: Firstly, a crisp set
+of input data are gathered and converted to a fuzzy set using fuzzy linguistic
+variables, fuzzy linguistic terms and membership functions. This step is known
+as fuzzification. Afterwards, an inference is made based on a set of rules. Lastly,
+the resulting fuzzy output is mapped to a crisp output using the membership
+functions, in the defuzzification step.
+Define the linguistic variables and terms (initialization)
+Construct the membership functions (initialization)
+Construct the rule base (initialization)
+Convert crisp input data to fuzzy values
+using the membership functions (fuzzification)
+5. Evaluate the rules in the rule base (inference)
+6. Combine the results of each rule (inference)
+7. Convert the output data to non-fuzzy values (defuzzification)
 
+The use of fuzzy systems for automation tasks is
+highly increasing within the past decade. Fuzzy
+logic controller or fuzzy rule-based systems
+(FRBS) provide a formal method for the repre-
+sentation and approximation of imprecisely
+known relationships by encoding them in the an-
+tecedent and consequent parts of rules. The FRBS
+models the human decision making process by
+means of the collection of rules.
+
+GAs have been proved to be a
+new powerful optimization method able to over-
+come the local minimum problem. In 1989, Karr et
+al. [13] introduced the use of GAs for fuzzy sys-
+tems optimization. Since then, some genetic-based
+approaches for structural and parametrical tuning
+have been proposed with the aim to design and
+optimize fuzzy system e.g., [14±16] or to minimize
+the number of MFs per variable by e.g., [17±19]. A
+comparative study where genetic parameters eect
+the learning of FRBS presented in [20]. Glorennec
+[14] suggests a GA based method for fuzzy systems
+structural and parametrical tuning. The method
+produce fuzzy systems with minimal number of
+rules, but it does not focus on the reduction of
+membership functions per variable. Wong and
+Ling [17] try to eliminate MF's whose middle value
+exceeds the corresponding variable domain during
+genetic process. A GA based on virus theory of
+evolution is used in [21]. The rule structure is en-
+coded in chromosomes, while validity bits are used
+to cancel the less signi®cant parts of the rule base.
+After the optimization, the MFs are labeled with
+linguistic terms according to the order of the
+middle points e.g., small, normal, big for three
+MFs so that the linguistic rules are achieved. This
+rules can be regarded, understand, reused and
+maintained by users.
+
+Fuzzy systems are based on Fuzzy Set Theory
+[24]. A number of rules is used to model the way
+that a system behaves. Fuzzy rules are constructed
+in the well-known IF±THEN form. When crisp
+values are given as input for an FRBS, they are
+converted to degrees of membership in the various
+linguistic values used by the system. This normal-
+ization process of dierent universe of discourses
+to 0; 1 allows to compare dierent input values
+and to use linguistic concepts like ``small'', ``near''
+or ``approximately''.
+
+Knowledge representation in terms of understandable 
+linguistic rules
+diers signi®cantly from the black-box approach
+used by other methods (e.g., neural networks).
+Each set of crisp input values activates a num-
+ber of rules to some degree. The degree to which
+rules are activated is calculated by combining the
+degrees of membership (subpremises) with the
+fuzzy AND operator. This leads to the total acti-
+vation of the rule. Supposing that the kth rule of
+the system is
+
+
+Traditional optimization methods are based on
+the fact that certain functions are dierentiable.
+Unfortunately, in many real world problems such
+functions cannot be de®ned. But even if they can,
+gradient search methods may not ®nd global op-
+timal solutions. A possible way to overcome such
+problems is to use GAs. Generally, a GA consists
+of a problem, a number of encoded solutions for
+that problem, some genetic operators which pro-
+duce new solutions and a ®tness function which
+says how good a particular solution for the prob-
+lem is seen in Fig. 2.
+Usually the ®tness function describes the ag-
+gregation of some desired properties for the solu-
+tions and is not necessarily dierentiable. Each
+solution is encoded as a chromosome by binary or
+real values. A population consists of a number of
+individuals represented by chromosomes. A pop-
+ulation at a certain time step is a generation. Ge-
+netic operators are applied to each generation to
+produce the next generation. Common genetic
+operators are selection, crossover and mutation.
+During selection, individuals with high ®tness
+values within the current population are selected
+to build the basis for the new generation. Cross-
+over is a way of creating new solutions by ran-
+domly selecting two chromosomes of previous
+solutions from the gene pool and exchanging
+portions of their strings. Mutation is performed
+upon a selected chromosome by randomly
+changing a part of its coded value. Mutation is
+needed to ensure diversity in the population.
+
+Up to now a lot of work has been done in
+combining fuzzy systems and genetic algorithms
+[6]. Fuzzy±genetic combinations can be classi®ed
+in two categories. On one hand fuzzy techniques
+are used to improve GA behavior [18] and to
+model GA components [31]. On the other GAs are
+used to optimize the structure of the fuzzy system
+and the I/O behavior
 
 
 
