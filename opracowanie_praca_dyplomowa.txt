@@ -427,6 +427,44 @@ are used to improve GA behavior [18] and to
 model GA components [31]. On the other GAs are
 used to optimize the structure of the fuzzy system
 and the I/O behavior
+In the above-mentioned studies, fuzzy-rule-based systems were mainly applied to control problems. Since
+control problems and classification problems are different from each other, we cannot apply fuzzy control
+methods to fuzzy-rule-based classification systems. For example, in fuzzy control the inference step consists
+of composing the outputs of all rules then applying a defuzzification procedure while in fuzzy-rule-based
+classification the outcome of each rule is independent and a method is provided for determining which rule
+outcome to accept.
 
+Fuzzy rule-based systems have been successfully applied to various application areas such as control
+and classification [20,21]. While the main objective in the design of fuzzy rule-based systems has been
+the performance maximization, their comprehensibility has also been taken into account in some recent
+studies [3,4,19,24,25,27,28]. The comprehensibility of fuzzy rule-based systems is related to various
+factors:
+(i) Comprehensibility of fuzzy partitions (e.g., linguistic interpretability of each fuzzy set, separation
+of neighboring fuzzy sets, the number of fuzzy sets for each variable).
+(ii) Simplicity of fuzzy rule-based systems (e.g., the number of input variables, the number of fuzzy
+if-then rules).
+(iii) Simplicity of fuzzy if-then rules (e.g., type of fuzzy if-then rules, the number of antecedent
+conditions in each fuzzy if-then rule).
+(iv) Simplicity of fuzzy reasoning (e.g., selection of a single winner rule, voting by multiple rules).
+.1 Fuzzy If-Then Rules for Pattern Classification Problems
+In our approach, first fuzzy if-then rules are generated from numerical data. Then the generated rules
+are used as candidate rules from which a small number of fuzzy if-then rules are selected by multi-
+objective genetic algorithms. Let us assume that we have m labeled patterns x p = ( x p 1 , ..., x pn ) ,
+p = 1, 2..., m from M classes in an n-dimensional continuous pattern space. We also assume that the
+domain interval of each attribute x i is discretized into K i linguistic values (i.e., K i fuzzy sets with
+linguistic labels). Some typical examples of fuzzy discretization are shown in Fig. 1.
+For a given x ൌ ሺxଵ , xଶ , ... , x୬ ሻ in an n-dimensional pattern space, the ith fuzzy rule (R୧ ሻ
+type can be:
+Ishibuchi rule type with a class label (C୧ ) in the consequent part [3]:
+ܴ‫ܴ	݈݁ݑ‬௜ : ‫ݔ	݂ܫ‬ଵ 	݅‫ܣ	ݏ‬௜ଵ 	ܽ݊݀	 ... ܽ݊݀	‫ݔ‬௡ 	݅‫ܣ	ݏ‬௜௡ 	‫ܥ	ݏݏ݈ܽܥ	݄݊݁ݐ‬௜ 	
+where A୧ଵ , ... , A୧୬ are antecedent fuzzy sets associated to linguistic terms. There is also
+another extension of this rule type which assigns each rule a weight (W୧ ) or a soundness
+degree [2] which shows the degree of certainty of the rule:
+ܴ‫ܴ	݈݁ݑ‬௜ ∶ ‫ݔ	݂ܫ‬ଵ 	݅‫ܣ	ݏ‬௜ଵ	ܽ݊݀	 ... ܽ݊݀	‫ݔ‬௡ 	݅‫ܣ	ݏ‬௜௡ 	‫ܹ	݄ݐ݅ݓ	݅ܥ	ݏݏ݈ܽܥ		݄݊݁ݐ‬௜ 	
+The Ishibuchi rule type is more applicable for pattern classification problems and has
+higher interpretability than the other types of rules such as Mamdani and TKS[2] and is
+the focus of this paper. We have extended the Ishibuchi classification rule type for rule-
+based pattern classification. The proposed rule structure in this paper for uncertain rule-
+based pattern classification, for a given pattern X ൌ(xଵ , ... , x୬ ሻ	is as follow
 
 
