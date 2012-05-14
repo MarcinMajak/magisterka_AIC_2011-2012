@@ -1,0 +1,16 @@
+NOTES: GALE Python Implementation
+Author: Ryan Urbanowicz (ryanurbanowicz@gmail.com)
+Posted: 6/9/10
+Summary: This python GALE implementation was written for the analysis published in the following paper:
+
+R. Urbanowicz, J. Moore. The Application of Pittsburgh-Style Learning Classifier Systems to Address Genetic Heterogeneity and Epistasis in Association Studies.  PPSN 2010
+
+This implementation was written with a SNP (single nucleotide polymorphism)/ (gene association study)-style environment in mind, and is presently set up to specifically
+accommodate only that particular type of environment, where attribute values are discrete (0, 1, 2), and class status is known as either (0-control, 1-case).  A new
+environment class may be written to adapt this python implementation to other data environments and rule representations.
+
+Included with this implementation are two data files; a training file, and a testing file, which may be used to run this implementation locally using the GALE_Test.py file.
+Alternatively GALE may be run from command line, passing all required arguments, using the file GALE_Main.py.
+
+This script outputs the following: (1) a single text file tracking the performance of the algorithm at specified intervals over the entire run time. (2) a text file printing
+ and summarizing the rule population (including testing and training evaluations) for each of the specified evaluation points (specified by the parameter learning iterations).

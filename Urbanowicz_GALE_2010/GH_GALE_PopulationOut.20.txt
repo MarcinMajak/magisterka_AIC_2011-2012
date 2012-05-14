@@ -1,0 +1,15 @@
+Training:
+Iteration	NumAgents	BestAccuracy	BestComplexity	BestNoMatch	BestGenerality	AveAccuracy	AveComplexity	AveNoMatch	AveGenerality	RunTime(min)
+20	100	0.529861111111	4	0.0	0.892857142857	0.529617553419	3.63	0.0	0.85619047619	0.63014014562
+Testing Accuracy: 	 TestNoMatch: 
+0.5375	0.0
+Population Characterization:
+WildSum
+X0	X1	X2	X3	X4	X5	X6	X7	X8	X9	X10	X11	X12	X13	X14	X15	X16	X17	X18	X19
+4	4	4	4	3	3	4	4	4	4	4	4	4	4	1	4	4	4	4	4
+Ruleset Population: 
+Condition	Action	Prune	Match	Accuracy	Generality	TestPrune	TestMatch
+####0#########2#####	0	0	466	0.0	0.9	0	45
+#####0########2#####	0	0	52	0.0	0.9	0	5
+##############0#####	0	0	1	0.0	0.95	0	0
+####################	1	0	921	0.0	1.0	0	110
