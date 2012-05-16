@@ -4,6 +4,7 @@
 import random
 import numpy
 # import pylab
+import copy
 import sys
 
 class FuzzyLogicClassifier(object):
@@ -107,20 +108,20 @@ class FuzzyLogicClassifier(object):
             self.MF.append([])
             for i in range(2, divisions+2):
                 div = float((self.max[a_n] - self.min[a_n])*1.0/(i-1))
-                
+
                 mi = self.min[a_n]
                 self.MF[a_n].append([self.USED, mi, div])
-                
+
                 for j in range(1, i-1):
                     mi = float(self.min[a_n] + j*1.0*div)
                     self.MF[a_n].append([self.USED, mi, div])
-                                    
+
                 mi = self.max[a_n]
                 self.MF[a_n].append([self.USED, mi, div])
-                
+
             # this denotes don't care function
             self.MF[a_n].append([self.NOT_USED, 0, 0])
-            
+
             assert(len(self.MF[a_n]) == self.functions_per_attribute)
 
     def initialize_genetic(self, population_size, generations, mutation, crossover, mitchigan):
@@ -262,7 +263,17 @@ class FuzzyLogicClassifier(object):
             self.__create_next_generation(self.generations) 
             self.generations -= 1
         self.__print_summary()
+        print "Klasyfikacja zbioru uczacego"
+        print "Klasyfikacja za pomoca najlepszego"
+        self.__evaluate_population_for_mitchigan(self.training_data, self.training_label, self.the_classification)
+        print "Klasyfikacja za pomoca najlepszych regul"
         self.__evaluate_population_for_mitchigan(self.training_data, self.training_label, self.the_best_population)
+
+        print "\nKlasyfikacja zbioru testujacego"
+        print "Klasyfikacja za pomoca najlepszego"
+        self.__evaluate_population_for_mitchigan(self.testing_data, self.testing_label, self.the_classification)
+        print "Klasyfikacja za pomoca najlepszych regul"
+        self.__evaluate_population_for_mitchigan(self.testing_data, self.testing_label, self.the_best_population)
 
     def get_number_of_attributes(self):
         """
@@ -423,13 +434,44 @@ class FuzzyLogicClassifier(object):
                 if not rule_hash in self.population_dict.keys():
                     self.population_dict[rule_hash] = 1
                     self.population.append(individual)
+                    
+    def __diversify(self):
+        attr_length = self.get_number_of_attributes()
+        for individual in self.population:
+            if random.random() >= 0.5:
+                print individual
+                new_individual = []
+                for a_n in range(attr_length):
+                    unique_ids = set(range(0, self.functions_per_attribute-1)) - set([individual[a_n]])
+                    new_individual.append(random.sample(unique_ids, 1)[0])
+                new_individual.append([0, 0, 0])
+                new_individual = self.__train_individual(new_individual, self.training_data, self.training_label)
+                if new_individual[-1][0] == self.USED:
+                    new_rule_hash = ''.join('.'+str(x) for x in new_individual[0:-1])
+                    rule_hash = ''.join('.'+str(x) for x in individual[0:-1])
+                    del self.population_dict[rule_hash]
+                    self.population_dict[new_rule_hash] = 1
+                    for j in range(attr_length):
+                        individual[j] = new_individual[j]
+                    individual[-1][0] = new_individual[-1][0]
+                    individual[-1][1] = new_individual[-1][1]
+                    individual[-1][2] = new_individual[-1][2]
+                print individual
 
     def __create_next_generation(self, generation):
         """
         """
-        #if (generation+1)%40 == 0:
-        #    self.__create_random_population()
-        
+        if generation in [800, 600, 450, 250, 150, 50]:
+            attr_length = self.get_number_of_attributes()
+            for rule in self.population:
+                print "[",
+                for i in range(attr_length):
+                    print "%d " % rule[i],
+                print "(%.2f %d, %.2f)" % (rule[-1][0], rule[-1][1], rule[-1][2]),
+                print "]"
+            self.__diversify()
+            #self.__create_random_population()
+
         if(len(self.population)<self.population_size):
             self.create_population_for_mitchigan(number_of_rules=1)
 
@@ -445,6 +487,7 @@ class FuzzyLogicClassifier(object):
             self.__apply_crossover_for_mitchigan(self.population, 0)
             self.__apply_mutation_for_mitchigan(self.population)
 
+        self.extra_rules = sorted(self.extra_rules, key=lambda x: x[-1][0], reverse=True)[0:self.population_size]
         self.__evaluate_population_for_mitchigan(self.training_data, self.training_label, self.extra_rules)
 
         new_population = []
@@ -468,23 +511,29 @@ class FuzzyLogicClassifier(object):
         if len(self.the_best_population):
             the_best_population.extend(self.the_best_population)
 
-        population = []
+        the_best_population = []
+        the_best_population.extend(self.population)
+        if len(self.the_best_population):
+            the_best_population.extend(self.the_best_population)
+
+        population = {}
         population_dict = {}
         for individual in the_best_population:
             rule_hash = ''.join('.'+str(x) for x in individual[0:-1])
             if not rule_hash in population_dict.keys():
                 population_dict[rule_hash] = 1
-                population.append(individual)
+                if not individual[-1][1] in population.keys():
+                    population[individual[-1][1]] = []
+                population[individual[-1][1]].append(individual)
 
-        # how many individual we need.
-        _sum = reduce(lambda x, y: x+y[-1][0], population, 0.0)
-        div = len(population)
-        if div == 0:
-            div = 1
-        _avg = _sum*1.0/div
-        self.the_best_population = None
-        self.the_best_population = filter(lambda x: x[-1][0]>_avg, population)
-
+        self.the_best_population = []
+        for key in population.keys():
+            _sum = reduce(lambda x, y: x+y[-1][0], population[key], 0.0)
+            div = len(population[key])
+            _avg = _sum/div
+            population[key] = filter(lambda x: x[-1][0]>=_avg, population[key])
+            if len(population[key]):
+                self.the_best_population.extend(copy.deepcopy(population[key]))
 
     def __evaluate_population_for_mitchigan(self, patterns, labels, rule_set):
         """
@@ -493,9 +542,9 @@ class FuzzyLogicClassifier(object):
         attr_length = self.get_number_of_attributes()
         final_classification = numpy.zeros((len(rule_set), 3))
         activated = numpy.zeros(len(rule_set))
-        rule_value = numpy.zeros((len(rule_set), 3))
-
+        
         for p in range(len(patterns)):
+            rule_value = numpy.zeros((len(rule_set), 3))
             for r in range(len(rule_set)):
                 antecedent_value = []
                 rule = rule_set[r]
@@ -509,8 +558,12 @@ class FuzzyLogicClassifier(object):
                             break
 
                 if len(antecedent_value):
-                    activated[r] += 1
-                    rule_value[r] = [reduce(lambda x,y: x*y, antecedent_value, 1.0)*rule[attr_length][2], rule[attr_length][1], r] 
+                    if int(rule[-1][1]) == int(labels[p]):
+                        activated[r] += rule[-1][2] 
+                    else:
+                        activated[r] -= rule[-1][2]
+                    rule_value[r] = [reduce(lambda x,y: x*y, antecedent_value, 1.0)*rule[-1][2], rule[-1][1], r]
+
             for i in range(len(final_classification)):
                 if not rule_value[i][0] == 0.0:
                     if int(rule_value[i][1]) == labels[p]:
@@ -518,13 +571,13 @@ class FuzzyLogicClassifier(object):
                         final_classification[i][2] += 2*rule_value[i][0]
                     else:
                         final_classification[i][2] -= 5*rule_value[i][0]
-            
+
             max_alpha = rule_value.max(axis=0)
             numbers = filter(lambda x: x[0]>=max_alpha[0], rule_value)
             if len(numbers) and len(filter(lambda x: not x[1]==numbers[0][1], numbers))==0 and not numbers[0][0] == 0:
                 numbers = numbers[0]
                 q = int(numbers[2])
-                if int(numbers[1]) == labels[p]:
+                if int(numbers[1]) == int(labels[p]):
                     final_classification[q][0] += 1
                 else:
                     final_classification[q][1] += 1
@@ -537,36 +590,38 @@ class FuzzyLogicClassifier(object):
         for i in range(len(rule_set)):
             number_of_attributes = len(filter(lambda x: not x==(self.functions_per_attribute - 1), rule_set[i][0:-1]))
             assert(not number_of_attributes == 0)
-            #if final_classification[i][0] == 0 and final_classification[i][1] == 0:
-            #    strength = -1000
-            #else:
-            strength = 5*final_classification[i][0] - 10*final_classification[i][1]
-            rule_set[i][attr_length][0] = strength + final_classification[i][2]+ 10*activated[i] + 4*(1.0/number_of_attributes) + 10*rule_set[i][attr_length][2]
+            strength = 2*final_classification[i][0] - 5*final_classification[i][1] + final_classification[i][2]
+            rule_set[i][attr_length][0] = strength +  4*(1.0/number_of_attributes) + 20.0*rule_set[i][-1][2]
         res = final_classification.sum(axis=0)
         if self.the_best < res[0]:
             self.the_best = res[0]
-            self.the_classification = rule_set
+            self.the_classification = copy.deepcopy(rule_set)
+    
         print "Liczba obiektow do rozpoznania %d" % len(labels)
         print "Rozpoznane %d, Nierozpoznane %d " % (res[0], res[1])
 
     def __print_summary(self):
         print "Liczba obiektow do rozpoznania to %d " % len(self.training_label)
         print "Najlepsze rozpoznanie to %d " % self.the_best
-        print "Dla najlepszego rozpoznania funkcje wygladaly tak"
+        print "Dla go rozpoznania funkcje wygladaly tak"
         attr_length = self.get_number_of_attributes()
+        print "[",
         for rule in self.the_classification:
             print "[",
             for i in range(attr_length):
-                print "%d " % rule[i],
-            print "(%.2f %d, %.2f)" % (rule[-1][0], rule[-1][1], rule[-1][2]),
+                print "%d, " % rule[i],
+            print "[%.2f, %d, %.2f]" % (rule[-1][0], rule[-1][1], rule[-1][2]),
             print "]"
+        print "]"
         print "Ogolnie najlepsze rozwiazanie wygladalo tak:"
+        print "[",
         for rule in self.the_best_population:
             print "[",
             for i in range(attr_length):
-                print "%d " % rule[i],
-            print "(%.2f %d, %.2f)" % (rule[-1][0], rule[-1][1], rule[-1][2]),
+                print "%d, " % rule[i],
+            print "[%.2f, %d, %.2f]" % (rule[-1][0], rule[-1][1], rule[-1][2]),
             print "]"
+        print
             
 
     def __train_individual(self, individual, patterns, labels):
@@ -631,20 +686,26 @@ class FuzzyLogicClassifier(object):
         individual[-1][2] = 0
         return individual  
 
+    def classify(self, rule_set):
+        print "Uczacy"
+        self.__evaluate_population_for_mitchigan(self.training_data, self.training_label, rule_set)
+        print "Testujacy"
+        self.__evaluate_population_for_mitchigan(self.testing_data, self.testing_label, rule_set)
+
 if __name__ == '__main__':
     # fuzzy = FuzzyLogicClassifier('/home/mejcu/Pulpit/wine.data_new.csv')
     # fuzzy = FuzzyLogicClassifier('/home/mejcu/Pulpit/wine.data.txt')
     
     fuzzy = FuzzyLogicClassifier()
-    #filename = 'wine.data.txt'
-    filename = 'datasets/iris.data.txt'
+    filename = 'datasets/wine.data.txt'
+    #filename = 'iris.data.txt'
     fuzzy = FuzzyLogicClassifier(False)
-    if fuzzy.read_data(filepath=filename, label_location=False) == False:
+    if fuzzy.read_data(filepath=filename, label_location=True) == False:
         print "Error with opening the file. Probably you have given wrong path"
         sys.exit(1)
     fuzzy.prepare_data(k_fold_number=2)
-    fuzzy.k_fold_cross_validation(k=1)
-    fuzzy.generate_membership_functions(divisions=4)
+    fuzzy.k_fold_cross_validation(k=0)
+    fuzzy.generate_membership_functions(divisions=2)
     fuzzy.initialize_genetic(population_size=10, generations=500, mutation=0.3, crossover=0.9, mitchigan=0.5)
     fuzzy.create_population_for_mitchigan(number_of_rules=1)
     fuzzy.run()
