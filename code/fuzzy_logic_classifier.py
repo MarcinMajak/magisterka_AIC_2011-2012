@@ -591,7 +591,8 @@ class FuzzyLogicClassifier(object):
             number_of_attributes = len(filter(lambda x: not x==(self.functions_per_attribute - 1), rule_set[i][0:-1]))
             assert(not number_of_attributes == 0)
             strength = 2*final_classification[i][0] - 5*final_classification[i][1] + final_classification[i][2]
-            rule_set[i][attr_length][0] = strength +  4*(1.0/number_of_attributes) + 20.0*rule_set[i][-1][2]
+            #rule_set[i][attr_length][0] = strength +  4*(1.0/number_of_attributes) + 20.0*rule_set[i][-1][2]
+            rule_set[i][attr_length][0] = strength +  final_classification[i][0]*(1.0/number_of_attributes) + 20.0*rule_set[i][-1][2]
         res = final_classification.sum(axis=0)
         if self.the_best < res[0]:
             self.the_best = res[0]
@@ -697,10 +698,10 @@ if __name__ == '__main__':
     # fuzzy = FuzzyLogicClassifier('/home/mejcu/Pulpit/wine.data.txt')
     
     fuzzy = FuzzyLogicClassifier()
-    filename = 'datasets/wine.data.txt'
-    #filename = 'iris.data.txt'
+    #filename = 'datasets/wine.data.txt'
+    filename = 'datasets/iris.data.txt'
     fuzzy = FuzzyLogicClassifier(False)
-    if fuzzy.read_data(filepath=filename, label_location=True) == False:
+    if fuzzy.read_data(filepath=filename, label_location=False) == False:
         print "Error with opening the file. Probably you have given wrong path"
         sys.exit(1)
     fuzzy.prepare_data(k_fold_number=2)

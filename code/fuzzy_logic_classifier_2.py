@@ -100,7 +100,7 @@ class FuzzyLogicClassifier(object):
         self.population = []
         attr_length = self.get_number_of_attributes()
         population_counter = 0
-        while population_counter < self.population:
+        while population_counter < self.population_size:
             individual = []
             for _ in range(attr_length):
                 tab = [1 if random.random() >=0.5 else 0 for _ in range(3)]
@@ -139,22 +139,23 @@ class FuzzyLogicClassifier(object):
         for pattern in self.data_to_train:
             rule_number+=1
             rules.append([0 for _ in range(2*attr_length+2)])
-            division = random.randint(1, self.functions_per_attribute-1)
             for a_n in range(attr_length):
-                result = numpy.zeros((self.functions_per_attribute, 3))
+                division = random.randint(1, self.possible_divisions-1)
+                result = []
                 for mf_n in range(self.functions_per_attribute):
-                    tab = [0 for _ in range(self.functions_per_attribute)]
-                    tab[a_n] = 1
-                    val = ''.join(tab)
+                    result.append([0]*self.functions_per_attribute)
+                    tab = [0]*self.functions_per_attribute
+                    tab[mf_n] = 1
+                    val = ''.join(str(x) for x in tab)
                     result[mf_n][0] = self.__decode(pattern[a_n], val, division, a_n)
                     result[mf_n][1] = division
                     result[mf_n][2] = val
 
-                den = sum(result)[0]
+                den = reduce(lambda x, y: x+y[0], result, 0.0)
                 if den == 0.0:
                     den = 1.0
                 B_k = filter(lambda x: x[0]>0, result)
-                B_k = map(lambda (x,y): [x/den,y], B_k)
+                B_k = map(lambda (x, y, z): [x/den,y, z], B_k)
                 B_k = sorted(B_k, key=lambda x:x[0], reverse=True)
 
                 index = -1
@@ -167,26 +168,25 @@ class FuzzyLogicClassifier(object):
                         index = num[2]
                         break
 
-                assert(not index == -1)
-                # append antecedent
-                rules[rule_number][a_n] = index
-                rules[rule_number][a_n + attr_length] = div  
+                if not index == -1:
+                    rules[rule_number][a_n] = index
+                    rules[rule_number][a_n + attr_length] = div
+                else:
+                    rules[rule_number][a_n] = '1'*self.functions_per_attribute
+                    rules[rule_number][a_n + attr_length] = random.randint(1, self.possible_divisions - 1)  
             
             # for each attribute rule decide if it is used or not.
-            if random.random() > self.do_not_use_prop:
+            if random.random() > 0.5:
                 numbers = random.sample(range(attr_length), int(random.uniform(0.1, 0.4)*attr_length))
                 for number in numbers:
                     # the last index in the MF functions indicates don't care
                     rules[rule_number][number] = ''.join(['1' for _ in range(self.functions_per_attribute)])
 
         # train each rule to obtain reliable results
-        new_rules = []
         for individual in rules:
-            rule = self.__train_individual(individual)
-            if not rule[self.LABEL_POSITION] == 0:
-                new_rules.append(rule)
-        if len(new_rules):
-            self.extra_rules.extend(new_rules)
+            self.__train_individual(individual)
+            if not individual[self.LABEL_POSITION] == 0:
+                self.extra_rules.append(individual)
 
         self.data_to_train = []
         self.label_to_train = []
@@ -196,18 +196,14 @@ class FuzzyLogicClassifier(object):
             print "Generation %d" % self.generations
             self.__create_next_generation(self.generations) 
             self.generations -= 1
-        self.__print_summary()
-        print "Klasyfikacja zbioru uczacego"
+        #self.__print_summary()
+        print "\n\nKlasyfikacja zbioru uczacego"
         print "Klasyfikacja za pomoca najlepszego"
-        self.__evaluate_population_for_mitchigan(self.training_data, self.training_label, self.the_classification)
-        print "Klasyfikacja za pomoca najlepszych regul"
-        self.__evaluate_population_for_mitchigan(self.training_data, self.training_label, self.the_best_population)
+        self.__evaluate_population(self.training_data, self.training_label, self.the_classification)
 
         print "\nKlasyfikacja zbioru testujacego"
         print "Klasyfikacja za pomoca najlepszego"
-        self.__evaluate_population_for_mitchigan(self.testing_data, self.testing_label, self.the_classification)
-        print "Klasyfikacja za pomoca najlepszych regul"
-        self.__evaluate_population_for_mitchigan(self.testing_data, self.testing_label, self.the_best_population)
+        self.__evaluate_population(self.testing_data, self.testing_label, self.the_classification)
 
     def get_number_of_attributes(self):
         """
@@ -260,15 +256,17 @@ class FuzzyLogicClassifier(object):
         
         if re.match("[1]{3}", function_code):
             return 1
-        val = 0
+        val = []
         div = (self.max[a_n] - self.min[a_n])*1.0/self.possible_divisions
         for i in range(self.functions_per_attribute):
             a = [self.min[a_n], self.min[a_n] + division*div, self.max[a_n]]
             b_left = [1, a[1]-self.min[a_n], self.max[a_n] - a[1]]
             b_right = [a[1] - self.min[1], a[1] - self.min[a_n], division*div] 
             if function_code[i] == '1':
-                val += self.__get_MF_value(value, a[i], b_left[i], b_right[i], a_n)
-        return val    
+                val.append(self.__get_MF_value(value, a[i], b_left[i], b_right[i], a_n))
+        if len(val):
+            return max(val)
+        return 0
 
     def __prepare_validation(self):
         my_dict = {}
@@ -351,9 +349,9 @@ class FuzzyLogicClassifier(object):
         children = [child_1, child_2]
         
         for child in children:
-            new_child = self.__train_individual(child)
-            if not new_child[self.LABEL_POSITION] == 0:
-                    self.extra_rules.append(new_child)
+            self.__train_individual(child)
+            if not child[self.LABEL_POSITION] == 0:
+                self.extra_rules.append(child)
 
     def __mutation(self):
         """
@@ -369,41 +367,37 @@ class FuzzyLogicClassifier(object):
             new_rule.append(0)
             # fitness
             new_rule.append(0.0)
-
-            a_indexes = random.sample(range(2*self.get_number_of_attributes()), 2)
+            attr_length = self.get_number_of_attributes()
+            a_indexes = random.sample(range(2*attr_length), attr_length/2)
             # remove this attribute from composing a rule
             for index in a_indexes:
-                if index > self.get_number_of_attributes():
+                if index >= self.get_number_of_attributes():
                     new_rule[index] = random.randint(1, self.possible_divisions - 1)
                 else:
-                    pos = random.randint(0, self.functions_per_attribute)
+                    pos = random.randint(1, self.functions_per_attribute) - 1
                     tab = list(new_rule[index])
-                    tab[pos] = (tab[pos] + 1)%2
-                    new_rule[index] = ''.join(tab)
+                    tab[pos] = (int(tab[pos]) + 1)%2
+                    new_rule[index] = ''.join(str(x) for x in tab)
                     
-            individual = self.__train_individual(new_rule)
-            if not individual[self.LABEL_POSITION] == 0:
-                self.extra_rules.append(individual)
+            self.__train_individual(new_rule)
+            if not new_rule[self.LABEL_POSITION] == 0:
+                self.extra_rules.append(new_rule)
 
     def __diversify(self):
-        
+        attr_length = self.get_number_of_attributes()
+        for individual in self.population:
+            if random.random() >= 0.5:
+                for a_n in range(attr_length):
+                    individual[a_n] = ''.join(str((int(x) + 1)%2) for x in list(individual[a_n]))
     
     def __create_next_generation(self, generation):
         """
         """
         if generation in [800, 600, 450, 250, 150, 50]:
-            attr_length = self.get_number_of_attributes()
-            for rule in self.population:
-                print "[",
-                for i in range(attr_length):
-                    print "%d " % rule[i],
-                print "(%.2f %d, %.2f)" % (rule[-1][0], rule[-1][1], rule[-1][2]),
-                print "]"
             self.__diversify()
-            #self.__create_random_population()
 
         if(len(self.population)<self.population_size):
-            self.create_population_for_mitchigan(number_of_rules=1)
+            self.generate_population(self.population_size, self.functions_per_attribute, self.possible_divisions)
 
         assert(len(self.population)>1)
 
@@ -412,16 +406,26 @@ class FuzzyLogicClassifier(object):
         self.label_to_train = []
         self.__evaluate_population(self.training_data, self.training_label, self.population)
         self.__create_additional_rules()
-
-        for _ in range(5):
-            self.__crossover()
-            self.__mutation()
-
+        
+        _sum = reduce(lambda x, y: x+y[-1], self.population, 0.0)
+        _avg = _sum / (len(self.population)*1.0)
+        population = filter(lambda x: x[-1] >= _avg, self.population)
+        
+        if self.population_size - len(population) - len(self.extra_rules) > 0:
+            val = self.population_size - len(population) - len(self.extra_rules)
+            for _ in range(val):
+                self.__crossover()
+                self.__mutation()
+        else:
+            for _ in range(3):
+                self.__crossover()
+                self.__mutation()
+            
         self.extra_rules = sorted(self.extra_rules, key=lambda x: x[-1], reverse=True)[0:self.population_size]
         self.__evaluate_population(self.training_data, self.training_label, self.extra_rules)
 
         new_population = []
-        new_population.extend(self.population)
+        new_population.extend(population)
         if len(self.extra_rules):
             new_population.extend(self.extra_rules)
 
@@ -432,13 +436,13 @@ class FuzzyLogicClassifier(object):
     def __evaluate_population(self, patterns, labels, rule_set):
         """
         """
-
+        population_size = len(rule_set)
         attr_length = self.get_number_of_attributes()
-        final_classification = numpy.zeros((self.population_size, 3))
+        final_classification = numpy.zeros((population_size, 3))
 
         for p in range(len(patterns)):
-            rule_value = numpy.zeros((self.population_size, 3))
-            for r in range(self.population_size):
+            rule_value = numpy.zeros((population_size, 3))
+            for r in range(population_size):
                 antecedent_value = []
                 rule = rule_set[r]
                 for a_n in range(attr_length):
@@ -463,13 +467,14 @@ class FuzzyLogicClassifier(object):
             else:
                 self.data_to_train.append(patterns[p])
                 self.label_to_train.append(labels[p])
-
-        for i in range(self.population_size):
-            rule_set[-1] = 2*final_classification[i][0] - 5*final_classification[i][1]
+                
+        for i in range(population_size):
+            val = len(filter(lambda x: re.match("[1]{3}", x), rule_set[i][0:attr_length]))
+            rule_set[i][-1] = 2*final_classification[i][0] - 5*final_classification[i][1] + final_classification[i][0]*val
         res = final_classification.sum(axis=0)
         if self.the_best < res[0]:
             self.the_best = res[0]
-            self.the_classification = copy.deepcopy(self.population)
+            self.the_classification = copy.deepcopy(rule_set)
     
         print "Liczba obiektow do rozpoznania %d" % len(labels)
         print "Rozpoznane %d, Nierozpoznane %d " % (res[0], res[1])
@@ -506,14 +511,14 @@ class FuzzyLogicClassifier(object):
 if __name__ == '__main__':
     fuzzy = FuzzyLogicClassifier()
     filename = 'datasets/wine.data.txt'
-    #filename = 'iris.data.txt'
+    #filename = 'datasets/iris.data.txt'
     fuzzy = FuzzyLogicClassifier(False)
-    if fuzzy.read_data(filepath=filename, label_location=True) == False:
+    if fuzzy.read_data(filepath=filename, label_location=False) == False:
         print "Error with opening the file. Probably you have given wrong path"
         sys.exit(1)
     fuzzy.prepare_data(k_fold_number=2)
     fuzzy.k_fold_cross_validation(k=0)
-    fuzzy.generate_population(population_size=20, functions=3, possible_divisions=5)
-    fuzzy.initialize_genetic(population_size=10, generations=500, mutation=0.3, crossover=0.9, mitchigan=0.5)
+    fuzzy.generate_population(population_size=10, functions=3, possible_divisions=4)
+    fuzzy.initialize_genetic(generations=200, mutation_prop=0.3, crossover_prop=0.9)
     fuzzy.run()
     sys.exit(0)
