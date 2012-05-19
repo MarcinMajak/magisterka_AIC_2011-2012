@@ -124,23 +124,21 @@ class FuzzyLogicClassifier(object):
 
             assert(len(self.MF[a_n]) == self.functions_per_attribute)
 
-    def initialize_genetic(self, population_size, generations, mutation, crossover, mitchigan):
+    def initialize_genetic(self, generations, mutation, crossover):
         """
         Sets population size, number of generations, mutation and crossover 
         probabilities
         """
-        self.population_size = population_size
         self.generations = generations
         self.mutation_prop = mutation
         self.crossover_prop = crossover
-        self.mitchigan_prop = mitchigan
 
-    def create_population_for_mitchigan(self, number_of_rules):
+    def create_population(self, population_size):
         """
         """
         rules_to_generate = len(self.training_label)/2
         self.number_of_classes = numpy.max(self.training_label)
-        self.number_of_rules = number_of_rules
+        self.population_size = population_size
         training_data = self.training_data[0:rules_to_generate]
 
         attr_length = self.get_number_of_attributes()
@@ -265,15 +263,15 @@ class FuzzyLogicClassifier(object):
         self.__print_summary()
         print "Klasyfikacja zbioru uczacego"
         print "Klasyfikacja za pomoca najlepszego"
-        self.__evaluate_population_for_mitchigan(self.training_data, self.training_label, self.the_classification)
+        self.__evaluate_population(self.training_data, self.training_label, self.the_classification)
         print "Klasyfikacja za pomoca najlepszych regul"
-        self.__evaluate_population_for_mitchigan(self.training_data, self.training_label, self.the_best_population)
+        self.__evaluate_population(self.training_data, self.training_label, self.the_best_population)
 
         print "\nKlasyfikacja zbioru testujacego"
         print "Klasyfikacja za pomoca najlepszego"
-        self.__evaluate_population_for_mitchigan(self.testing_data, self.testing_label, self.the_classification)
+        self.__evaluate_population(self.testing_data, self.testing_label, self.the_classification)
         print "Klasyfikacja za pomoca najlepszych regul"
-        self.__evaluate_population_for_mitchigan(self.testing_data, self.testing_label, self.the_best_population)
+        self.__evaluate_population(self.testing_data, self.testing_label, self.the_best_population)
 
     def get_number_of_attributes(self):
         """
@@ -351,7 +349,7 @@ class FuzzyLogicClassifier(object):
             return val
         return 0
 
-    def __apply_crossover_for_mitchigan(self, rule_set, _avg):
+    def __crossover(self, rule_set, _avg):
         """
         """
         size = len(rule_set)
@@ -389,7 +387,7 @@ class FuzzyLogicClassifier(object):
                     self.population_dict[rule_hash] = 1
                     self.extra_rules.append(new_child)
 
-    def __apply_mutation_for_mitchigan(self, rule_set):
+    def __mutation(self, rule_set):
         """
         """
  
@@ -473,22 +471,22 @@ class FuzzyLogicClassifier(object):
             #self.__create_random_population()
 
         if(len(self.population)<self.population_size):
-            self.create_population_for_mitchigan(number_of_rules=1)
+            self.create_population(self.population_size)
 
         assert(len(self.population)>1)
 
         self.extra_rules = []
         self.data_to_train = []
         self.label_to_train = []
-        self.__evaluate_population_for_mitchigan(self.training_data, self.training_label, self.population)
+        self.__evaluate_population(self.training_data, self.training_label, self.population)
         self.__create_additional_rules()
 
         for _ in range(5):
-            self.__apply_crossover_for_mitchigan(self.population, 0)
-            self.__apply_mutation_for_mitchigan(self.population)
+            self.__crossover(self.population, 0)
+            self.__mutation(self.population)
 
         self.extra_rules = sorted(self.extra_rules, key=lambda x: x[-1][0], reverse=True)[0:self.population_size]
-        self.__evaluate_population_for_mitchigan(self.training_data, self.training_label, self.extra_rules)
+        self.__evaluate_population(self.training_data, self.training_label, self.extra_rules)
 
         new_population = []
         new_population.extend(self.population)
@@ -535,7 +533,7 @@ class FuzzyLogicClassifier(object):
             if len(population[key]):
                 self.the_best_population.extend(copy.deepcopy(population[key]))
 
-    def __evaluate_population_for_mitchigan(self, patterns, labels, rule_set):
+    def __evaluate_population(self, patterns, labels, rule_set):
         """
         """
 
@@ -689,9 +687,9 @@ class FuzzyLogicClassifier(object):
 
     def classify(self, rule_set):
         print "Uczacy"
-        self.__evaluate_population_for_mitchigan(self.training_data, self.training_label, rule_set)
+        self.__evaluate_population(self.training_data, self.training_label, rule_set)
         print "Testujacy"
-        self.__evaluate_population_for_mitchigan(self.testing_data, self.testing_label, rule_set)
+        self.__evaluate_population(self.testing_data, self.testing_label, rule_set)
 
 if __name__ == '__main__':
     # fuzzy = FuzzyLogicClassifier('/home/mejcu/Pulpit/wine.data_new.csv')
@@ -707,7 +705,7 @@ if __name__ == '__main__':
     fuzzy.prepare_data(k_fold_number=2)
     fuzzy.k_fold_cross_validation(k=0)
     fuzzy.generate_membership_functions(divisions=2)
-    fuzzy.initialize_genetic(population_size=10, generations=500, mutation=0.3, crossover=0.9, mitchigan=0.5)
-    fuzzy.create_population_for_mitchigan(number_of_rules=1)
+    fuzzy.initialize_genetic(generations=500, mutation=0.3, crossover=0.9)
+    fuzzy.create_population(population_size=10)
     fuzzy.run()
     sys.exit(0)

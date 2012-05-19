@@ -1,0 +1,7 @@
+bupa.data.txt 1
+ionosphere.data.txt 1
+iris.data.txt 1
+pima.data.txt 1
+thyroid.data.txt 0
+wdbc.data.txt 1
+wine.data.txt 0
