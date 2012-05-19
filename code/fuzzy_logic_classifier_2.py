@@ -25,15 +25,15 @@ class FuzzyLogicClassifier(object):
         self.the_best_population = []
         self.the_classification = []
 
-    def read_data(self, filepath, label_location=True):
+    def read_data(self, filepath, label_is_last=True):
         """
-        label_location indicates where label of the class is located.
+        label_is_last indicates where label of the class is located.
         If it is True then it is the last column, otherwise it is the first
         """
         try:
             fd = open(filepath, 'r')
             lines = fd.readlines()
-            if label_location:
+            if label_is_last:
                 self.data = [map(float, x.strip().split(',')[1:]) for x in lines]
                 self.label = [map(float, x.strip().split(',')[0]) for x in lines]
             else:
@@ -513,7 +513,7 @@ if __name__ == '__main__':
     filename = 'datasets/wine.data.txt'
     #filename = 'datasets/iris.data.txt'
     fuzzy = FuzzyLogicClassifier(False)
-    if fuzzy.read_data(filepath=filename, label_location=False) == False:
+    if fuzzy.read_data(filepath=filename, label_is_last=False) == False:
         print "Error with opening the file. Probably you have given wrong path"
         sys.exit(1)
     fuzzy.prepare_data(k_fold_number=2)
