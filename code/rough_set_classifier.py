@@ -3,10 +3,8 @@
 
 import random
 import numpy
-# import pylab
 import copy
 import sys
-import math
 
 class RoughSetClassifier(object):
     
@@ -25,7 +23,7 @@ class RoughSetClassifier(object):
         try:
             fd = open(filepath, 'r')
             lines = fd.readlines()
-            if label_is_last:
+            if not label_is_last:
                 self.data = [map(float, x.strip().split(',')[1:]) for x in lines]
                 self.label = [map(float, x.strip().split(',')[0]) for x in lines]
             else:
@@ -58,12 +56,12 @@ class RoughSetClassifier(object):
         for i in range(self.k_fold_number):
             if i == k:
                 for obj in self.validation_container[k]:
-                    self.training_label.append(obj[0])
-                    self.training_data.append(obj[1])
-            else:
-                for obj in self.validation_container[i]:
                     self.testing_label.append(obj[0])
                     self.testing_data.append(obj[1])
+            else:
+                for obj in self.validation_container[i]:
+                    self.training_label.append(obj[0])
+                    self.training_data.append(obj[1])
         # for secure reason check if testing + learning is equal to data
         assert(len(self.training_data) + len(self.testing_data) == len(self.data))
         return True
@@ -183,6 +181,12 @@ class RoughSetClassifier(object):
             self.__create_next_generation(self.generations) 
             self.generations -= 1
         print "Najlepsze rozwiazanie zaklasyfikowalo %d obiektow z %d" % (self.the_best, len(self.testing_label))
+        print "Najlepsze rozwiazanie wygladalo tak"
+        for value in self.the_classification:
+            if value == self.DO_NOT_USE:
+                print "NOT_USED",
+            else:
+                print value,
 
     def get_number_of_attributes(self):
         """
@@ -386,40 +390,32 @@ class RoughSetClassifier(object):
             strength = 2*final_classification[i][0] - 5*final_classification[i][1]
             self.population[i][-1] = strength +  final_classification[i][0]*(1.0/number_of_attributes)
         
-        res = final_classification.max(axis=0)
+        indexes = final_classification.argmax(axis=0)
+        res = final_classification[indexes[0]]
         if self.the_best < res[0]:
             self.the_best = res[0]
-            self.the_classification = copy.deepcopy(self.population)
+            self.the_classification = copy.deepcopy(self.population[indexes[0]])
+            self.the_mapping = copy.deepcopy(mapping[indexes[0]])
     
         print "Liczba obiektow do rozpoznania %d" % len(self.testing_label)
         print "Rozpoznane %d, Nierozpoznane %d " % (res[0], len(self.testing_label) - res[0])
 
             
-    def classify(self, patterns, labels):
-        print "Testujacy"
-        mapping = self.__train_individual(self.division)
-        counter = 0;
-        for p in range(len(patterns)):
-            result = int(self.__assign_label(patterns[p], self.division, mapping))
-            print "Rozpoznano jako %d " % result
-            if int(labels[p]) == result:
-                counter += 1
-        print "Z %d obiektow zrozpoznano %d" % (len(patterns), counter)
+    def classify(self, pattern):
+        return self.__assign_label(pattern, self.the_classification, self.the_mapping)
 
 if __name__ == '__main__':
-    # fuzzy = FuzzyLogicClassifier('/home/mejcu/Pulpit/wine.data_new.csv')
-    # fuzzy = FuzzyLogicClassifier('/home/mejcu/Pulpit/wine.data.txt')
     
     fuzzy = RoughSetClassifier(False)
-    filename = 'datasets/iris.data.txt'
+    filename = 'datasets/pima.data.txt'
     #filename = 'iris.data.txt'
-    if fuzzy.read_data(filepath=filename, label_is_last=False) == False:
+    if fuzzy.read_data(filepath=filename, label_is_last=True) == False:
         print "Error with opening the file. Probably you have given wrong path"
         sys.exit(1)
-    fuzzy.prepare_data(k_fold_number=2)
-    fuzzy.k_fold_cross_validation(k=0)
+    fuzzy.prepare_data(k_fold_number=4)
+    fuzzy.k_fold_cross_validation(k=1)
     fuzzy.initialize_genetic(generations=500, mutation_prop=0.3, crossover_prop=0.9)
-    fuzzy.create_population(population_size=10, division=6)
+    fuzzy.create_population(population_size=10, division=8)
     #fuzzy.classify(fuzzy.testing_data, fuzzy.testing_label)
     fuzzy.run()
     sys.exit(0)

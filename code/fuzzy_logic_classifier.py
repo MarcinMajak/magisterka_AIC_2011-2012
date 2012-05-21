@@ -31,7 +31,7 @@ class FuzzyLogicClassifier(object):
         try:
             fd = open(filepath, 'r')
             lines = fd.readlines()
-            if label_is_last:
+            if not label_is_last:
                 self.data = [map(float, x.strip().split(',')[1:]) for x in lines]
                 self.label = [map(float, x.strip().split(',')[0]) for x in lines]
             else:
@@ -64,12 +64,12 @@ class FuzzyLogicClassifier(object):
         for i in range(self.k_fold_number):
             if i == k:
                 for obj in self.validation_container[k]:
-                    self.training_label.append(obj[0])
-                    self.training_data.append(obj[1])
-            else:
-                for obj in self.validation_container[i]:
                     self.testing_label.append(obj[0])
                     self.testing_data.append(obj[1])
+            else:
+                for obj in self.validation_container[i]:
+                    self.training_label.append(obj[0])
+                    self.training_data.append(obj[1])
         # for secure reason check if testing + learning is equal to data
         assert(len(self.training_data) + len(self.testing_data) == len(self.data))
         return True
@@ -685,26 +685,45 @@ class FuzzyLogicClassifier(object):
         individual[-1][2] = 0
         return individual  
 
-    def classify(self, rule_set):
-        print "Uczacy"
-        self.__evaluate_population(self.training_data, self.training_label, rule_set)
-        print "Testujacy"
-        self.__evaluate_population(self.testing_data, self.testing_label, rule_set)
+    def classify(self, pattern):
+        attr_length = self.get_number_of_attributes()
+        ruleset_size = len(self.the_best_population)
+        rule_value = numpy.zeros((ruleset_size, 3))
+        for r in range(ruleset_size):
+            antecedent_value = []
+            rule = self.the_best_population[r]
+            for a_n in range(attr_length):
+                vMF = self.MF[a_n][rule[a_n]]
+                if vMF[0] == self.USED:
+                    if self.__is_in_MF_range(pattern[a_n], vMF[1], vMF[2], a_n):
+                        antecedent_value.append(self.__get_MF_value(pattern[a_n], vMF[1], vMF[2], a_n))
+                    else:
+                        antecedent_value = []
+                        break
+
+            if len(antecedent_value):
+                rule_value[r] = [reduce(lambda x,y: x*y, antecedent_value, 1.0)*rule[-1][2], rule[-1][1], r]
+
+        max_alpha = rule_value.max(axis=0)
+        numbers = filter(lambda x: x[0]>=max_alpha[0], rule_value)
+        if len(numbers) and len(filter(lambda x: not x[1]==numbers[0][1], numbers))==0 and not numbers[0][0] == 0:
+            return numbers[0][1]
+        return -1
 
 if __name__ == '__main__':
     # fuzzy = FuzzyLogicClassifier('/home/mejcu/Pulpit/wine.data_new.csv')
     # fuzzy = FuzzyLogicClassifier('/home/mejcu/Pulpit/wine.data.txt')
     
     fuzzy = FuzzyLogicClassifier()
-    #filename = 'datasets/wine.data.txt'
-    filename = 'datasets/iris.data.txt'
+    filename = 'datasets/wdbc.data.txt'
+    #filename = 'datasets/iris.data.txt'
     fuzzy = FuzzyLogicClassifier(False)
     if fuzzy.read_data(filepath=filename, label_is_last=False) == False:
         print "Error with opening the file. Probably you have given wrong path"
         sys.exit(1)
-    fuzzy.prepare_data(k_fold_number=2)
+    fuzzy.prepare_data(k_fold_number=10)
     fuzzy.k_fold_cross_validation(k=0)
-    fuzzy.generate_membership_functions(divisions=2)
+    fuzzy.generate_membership_functions(divisions=4)
     fuzzy.initialize_genetic(generations=500, mutation=0.3, crossover=0.9)
     fuzzy.create_population(population_size=10)
     fuzzy.run()
