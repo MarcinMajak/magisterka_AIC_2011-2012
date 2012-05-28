@@ -1,68 +1,64 @@
 \section{Introduction}
-
 \subsection{Preface}
 \label{cha:Goals}
-Genetic algorithms can be computationally expensive as the result of
-complexity within particular application or due to the sheer numbers needed to
-reach an acceptable solution. In many problems found in the literature the
-expense of a genetic algorithm is due to both these factors \cite{bib5},
-\cite{bib7}, \cite{bib11}. The genetic algorithm is a global searching process
-based on Darwin's principle of natural selection and evolution, so taking into
-account this fact, many scientists have noticed that program simulating genetic
-algorithms can be implemented in various ways, from
-simple sequential program to different method of parallelization. The advent of
-multiprocessors has spawned a number of $\mathcal{GA}$ implementations which take advantage
-of parallelism available in the algorithm(migration process, subpopulations,
-diffusion) \cite{bib8}, \cite{bib9}. In recent years, multi-population genetic algorithms $\mathcal{MGA}$ 
-have been recognized as being more effective both in speed and solution quality 
-than single-population genetic algorithms $\mathcal{SGA}$. Despite of these advantages,
-the behavior and the performance of $\mathcal{MGA}$ is still heavily 
-affected by a~judicious choice of parameters, such as connection topology, 
-migration method, migration interval, migration rate, population number and many
-others. The main problem to reconsider in this topic, is to find the best topology, configuration
-parameters and balance between the potential speedup and number of slaves.
+With the improvement of computers we are able to tackle with high dimensional 
+problems in control or pattern recognition task. At first glance everything
+looks so easy, but when we go deeper into a problem more and more problems 
+become evident and unavoidable. For example pattern can be described by many 
+attributes. Some of them are very meaningful while others brings only noise 
+and distortion. This is the role of the algorithm to pick valuable attributes,
+but finding a minimal attribute reduct is \mathcal{NP}-hard problem. Another
+obstacle is connected with overlaps in the attribute space. When attributes 
+are easily separable even a simple classifier works perfectly, but for more 
+tricky cases very sophisticated approaches has to be applied.
+
+For the past years many scientist in the world tried to invent new algorithms 
+to improve the process of classification or problem of optimal control. Ones 
+of the common solutions found in the literature are neural networks, fuzzy
+logic or evolutionary algorithms such as genetic algorithm. Because simple 
+approaches failed in more complicated problem, scientist tried to applied 
+algorithms for dimensionality reduction and merge abilities of single
+classifier into combined one. This improved the quality of classification 
+significantly, but until then no one has managed to invent such a classifier 
+that will make no mistakes.
+
+This thesis touches the broad topic of pattern recognition task which is 
+very difficult and demanding problem in every aspect of science. Generally, 
+pattern classification is about assigning label to an unknown object based 
+on the available knowledge. It can be compared to the capability of human 
+brain which is able to put certain scenario into context and identify 
+distinguishable object components. The whole process of classification can 
+be broken down into few parts and each phase has a significant impact on the
+final results (more detailed description will be presented in \ref{cha:pattern
+recognition}.
 
 \subsection{Main goals of the thesis}
-This thesis concerns the problem of parallel genetic algorithms and evolution
-programs realisation. The main goal of it is to investigate achievements in this area,
-especially paying great importance to the practical usage of presented methods. To
-speak more clearly there are two approaches. The first is to make theoretical
-analysis of advantages of parallel program realisation and the second is to put
-gained knowledge into practice and conduct some experiments to find out the best
-parallel genetic algorithm configuration.
+This thesis concerns the problem of pattern recognition. As it was previously
+said in the literature one can find many algorithms used for object
+classification, while here the rough sets and fuzzy logic algorithms are used 
+and investigated. General purpose of this thesis is to propose hybrid
+classifier using the power of fuzzy logic and rough sets. First of all the
+mathematical background of these algorithms will be presented and later
+simulation investigation will be carried out to prove the usefulness of
+proposed fusion. It should be noted that for the simulation purposes author
+implemented basic fuzzy logic, rough sets algorithms and created a hybrid
+classifier.
 
-As it was said in the previous section, the efficiency of parallel genetic
-algorithm in great extend depends on the correctly chosen configuration. In the
-literature one can find many examples how only one badly set parameter can
-deteriorate algorithm performance; the main problem is with the size of
-population because too small results in small diversity of individuals while too
-big population wastes computer resources and elongate algorithm execution. Even
-the simplest $\mathcal{SGA}$ algorithm has many parameters settings which the
-influence on the algorithm result is non-linear. Because this project is the
-first step of author's researches in the field of parallel genetic algorithms, it
-is justifiable to perform basic experiments on each parameter separately to find
-their dependency and check how they influence the results. 
-
-At the end of this section the experiment environment should be characterized in
-few words. Given is the problem of optimization; in this thesis it would be used
-De Jong's functions(fully described in section \ref{cha:function}) with the
-whole knowledge of a~priori global minimum. To find is the global minimum of
-each test function with the greatest accuracy to a~priori minimum and in a reasonably
-time of computation. To fairly evaluate tested algorithms efficiency
-indicators were introduced(more information in section \ref{cha:indicators}).
+At the end of this section, the experiment environment should be characterized in
+few words. Given is the problem of pattern recognition: in this thesis it would
+be used datasets from \mathcla{UCI} Repository (described in section
+\ref{cha:experiment}. Those datasets are broadly available and everyone in the
+future would be able to repeat the simulation investigation and compare the
+results. To find is the algorithm classification accuracy on the given dataset
+and comparison with other approaches found in the literature. 
 
 \subsection{Scope of this project}
 This paper comprises of two parts. In the first, the review of
 literature and the basic notation used in the whole paper is presented. Sections
-\ref{cha:Introduction}, \ref{cha:teoria} are the source of the basic
-knowledge about parallel genetic algorithms. There is taxonomy connected with
-genetic algorithm introduced and characteristic differences
-between $\mathcal{SGA}$ and $\mathcal{PGA}$. Additionally, this part presents
-types of parallel genetic algorithm and short overview of parallelization
-methods. Sections \ref{cha:PgamathematicTheory},\ref{cha:CoarsedGa} present mathematical background 
-of parallel genetic algorithm in case of time realisation, size of population
-and number of slave units.
-
+\ref{cha:Introduction} is the source of the basic
+knowledge about pattern recognition. Sections \ref{cha:Rough_set}, \ref{cha:Fuzzy_logic}
+presents the description of algorithms used in this thesis. Additionally, this
+part shows the algorithm construction steps using pseudo-code.
 
 The second part, which is the main point of this thesis, presents experiments analysis.
 Paragraph \ref{cha:ExperimentAnalysis} describes the experiment environment

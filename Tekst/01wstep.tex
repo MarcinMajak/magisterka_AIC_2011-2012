@@ -1,115 +1,179 @@
-\section{Heuristic methods of optimization }
+\section{Pattern recognition algorithms}
 \label{cha:Introduction}
-\subsection{Heuristic algorithms}
-\label{cha:HeurysticAlgorithms}
-In the last decade there has been a great increase of interest in heuristic
-method of optimization to solve hard problems in the case of complexity and time computation.
-To name only the few of well known methods it is $\mathcal{SA}$(Simulated
-Annealing), Ant algorithms or $\mathcal{TS}$ (Tabu Search). Algorithms presented
-above, have many practical adaptations which are broadly described in the literature, 
-but in this paper $\mathcal{GA}$ (Genetic algorithm) is taken into closer look
-in respect of obtained solution accuracy, time of evaluation and possible parallelization advantages.
-
-\subsection{Genetic algorithm}
-\label{cha:GeneticAlgorithm}
-Genetic Algorithm is an element of evolutionary computation, which is a~rapidly 
-growing area of soft computing. $\mathcal{GA}$ is based on the principles of natural selection 
-and genetic modification. As optimization methods, $\mathcal{GA}$ operates on a population of points, 
-designated as individuals. Each individual of the population represents a~possible 
-solution of the optimization problem. Individuals are evaluated depending upon 
-their fitness which indicates how well an individual of the population 
-solves the optimization problem. To sum up, $\mathcal{GA}$ has the following general 
-features:
+\subsection{Introduction}
+Pattern recognition is a wide area of science in which we are interested in
+assigning label from a given set of classes to every unknown pattern. The whole 
+process of classification can be divided into few phases:
 \begin{enumerate}
-\item $\mathcal{GA}$ operates with a population of possible solutions (individuals) 
-instead of a single individual. Thus, the searching process can be carried out in a
-parallel form or sequentially. 
-\item $\mathcal{GA}$ is able to find the optimal or sub-optimal solutions in complex and large search 
-spaces. Moreover, it can be applied to nonlinear optimization problems with 
-constraints defined in discrete or continuous search spaces. 
-\item $\mathcal{GA}$ examines many possible solutions at the same time, so there is a~higher probability
-that the search process can converge to an optimal solution. 
+    \item Data collection
+    \item Feature selection
+    \item Model selection
+    \item Classifier selection
+    \item Training 
+    \item Testing
+\end{enumerate}
+At first in this section few basic information and categories will be given 
+about pattern recognition. Generally, the whole process of classification
+can be broken down into two main categories
+\begin{itemize}
+    \item supervised - incoming to the system objects are not previously
+        labeled and this is the system task to find an appropriate structure of
+        the data, to establish the organization of the classes basing only on
+        the available data, there is no statistical or expert knowledge at a
+        hand.
+    \item unsupervised - in this approach incoming patterns have labels and can
+        be treated as a training set. This allows the classifier can retrieve
+        information from data 
+\end{itemize}
+In this thesis supervised learning is reconsidered because available datasets 
+are labeled with class number. When we take into account applied approach
+pattern recognition, we can distinguish syntactic and statistical 
+pattern recognition. In former each pattern is represented in terms of 
+\mathcal{d} features, measurements and is viewed as a point in
+\mathcal{d}-dimensional feature space, while the latter
+is  based on the characterization of the inherent structure of the 
+qualitative features. For that  reason, the complex patterns can be
+decomposed using a hierarchical structure in simple  sub-patterns.
+The patterns are viewed as sentences belonging to a language, primitives
+represents the alphabet of the language and the sentences are generated
+according to a grammar which is inferred from the available training data.
+EKG waveforms, textured images and shape analysis of contours are the examples
+of syntactic approach.
+
+\subsection{Rough sets}
+\label{cha:Rough_set}
+\subsubsection{Introduction}
+\label{cha:Rough_set_introduction}
+Rough sets theory represents mathematical approach to deal with imperfect knowledge. 
+In the standard approach we need precise information about pattern to recognize, 
+while rough sets can deal with vague or incomplete data. The problem of imperfect 
+information was tackled for a long time and it became a crucial issue for many scientist.
+One of the most prominent approaches in the recent years are fuzzy logic and rough sets.
+In this section the latter approach is presented in greater details. Comparing with 
+other methods rough sets have many advantages, but one of the most important
+one is that it works only on the raw data, no additional information are needed such 
+as density probability in Bayesian algorithm. The main facts about rough sets can be 
+summarized in few point presented below:
+\begin{enumerate}
+    \item provides attribute reduction
+    \item generates set of easy to understand and readable decision
+        \mathcal{IF-THEN} rules
+    \item evaluate significance of data 
 \end{enumerate}
 
-   There are four main parts in each $\mathcal{GA}$ process to reconsider: the problem representation or encoding, 
-fitness or objective function definition, fitness-based selection, and evolutionary reproduction of 
-candidate solutions (individuals or chromosomes). To successfully implement
-genetic algorithm in programming language one has to define an encoding method,
-fitness function, selection method, and reproduction method as well as criteria rules 
-for the $\mathcal{GA}$ formulation. 
+When talking about rough set theory one has to understand the concept of a set 
+and how a rough set is related to the classical set represented in mathematic.
+From the mathematical point of view the crisp (precise) set is a collection of 
+objects of interest and is uniquely determined by its elements. In other words,
+it means that every element must be uniquely classified as belonging to the set 
+or not (true or false). For example, the set of odd numbers is crisp because every
+number is either odd or even and cannot be partially in both. 
 
+The nature of problem we met is much more complicated than simple decision that
+objects belong to the set or not. For some sets we cannot precisely describe element
+membership. Reconsider the group of people and division into set of small and
+high people. The height is not a precise but a vague concept and data vagueness can 
+be met in many problems found in the nature. Here is the spot for rough sets
+theory where vagueness is expressed by a boundary region of a set. 
 
-Genetic algorithms are widely used as a search techniques in the various fields \cite{bib6}, \cite{bib14},
-\cite{bib16}. The success of a~genetic
- algorithm can be quantified by estimating the cost, time required 
- and the quality of final obtained solution. In the literature there can 
- be found many examples of how $\mathcal{GA}$ is useful in solving hard optimizations problems, 
- but beside unquestionable advantages there also exist downsides. A traditional
- $\mathcal{GA}$ without any diversity maintenance mechanism often suffers from
- getting stuck on the suboptimal peaks, because 
- almost the entire $\mathcal{GA}$ population would have converged to a single peak, as a result 
- of the rapid loss of population diversity. To verify $\mathcal{GA}$
- implementations quality, programs are very often tested with functions which
- have many local minimum, but only one global minimum \cite{bib25}.
- 
- Implementation of a successful genetic algorithm requires optimal parameter setting
- which in many situations turns out to be very complicated because of great
- number of parameters and their dependencies. For example, for small population
- the genetic algorithm tends to make large mistakes(it has small diversity of
- individuals so very often it can stuck in one of the local minimum), while for the grater size
- of population it is capable of~discriminating bad solutions, but for the prize
- of algorithm duration and resources usage. There is a great deal of~work showing how to set
- the optimal parameters in an evolutionary algorithm to obtain required speedup
- and solution accuracy \cite{bib1}.
+\subsubsection{Basic notation}
+\label{cha:Rough_set_basic_notation}
+In rough sets theory to represent datasets (information) we introduce a notion 
+called an \textit{information system}. It can be described by 4-tuple
+$$IS = <U, Q, V, f >$$ 
+\begin{itemize}
+    \item $U$ is the universe of discourse  which is a finite set of objects
+    \item $Q$ is a finite set of attribute by  which each patterns manifests itself
+    \item $V = \bigcup V_q$, $V_q$ represents a domain of attribute $q$
+    \item $f:U \times Q \rightarrow V$ is a total information function, such that
+        $\bigvee_{q\in Q, x \in U} f(x,q) \in U$
+\end{itemize} 
+The information system can be represented as a finite table in which 
+columns are labeled by attributes and each rows stands for an object from
+$IS$. Over the information table we can define decision table
+$T$ where the set of attributes $Q$ is disjoined into two
+subset $C$ and $D$. The set $C$ is a subset of 
+condition attributes, and the set $D$ contains decision attributes 
+by which we can partition set $U$ into decision classes.
 
-\subsection{Parallel Genetic algorithms}
-\label{cha:ParallelGeneticAlgorithm}
-Multi-agent systems have attracted a considerable amount of interest in recent
-years \cite{bib17}, \cite{bib21}, \cite{bib22}. For many real world problems, 
-these applications showed appealing properties such as robustness, 
-increasing capabilities and failure tolerance. Additional reason which spawned
-multi-agent systems development is that very large amount of data or data arising at 
-different geographical locations are difficult to be handled by traditional, 
-sequential and centralized systems. Parallel and distributed architectures have
-become inevitable for the reason of computation abilities. Some 
-studies have been done on parallel and distributed learning before, but nowadays
-when more advanced computer are created, distributed computing has become very
-popular. Now, many paradigms like fuzzy logic, neurocomputing, 
-genetic algorithm, as elements of soft computing, can augment stochastic
-learning procedures to create autonomous control system \cite{bib2}, \cite{bib4}
+From the granular nature of rough sets it may happen that some objects 
+in the $U$ are indistinguishable due to the limited information. Now, let
+define an indiscernibility relation $R \rightarrow U \times U$, representing the 
+lack of knowledge about patterns in the set $U$. The indiscernibility relation on
+$U$ can be extended and associated with every non-empty subset of attributes $P \subseteq Q$
+and is defined as follows 
+$$I_p = \{ (x, y) \in U \times U: f(x, q) = f(y,q), \bigvee_{q \in P}\}$$ 
+Now having $I_p$ we can say that objects $x$ and
+$y$ are $P$-indiscernible by a set of attributes $P$ is $y \, I_p \, x$. Relation
+$I_p$ divides the set $U$ into blocks (concepts) of $P$-indiscernible objects.
+The $P$-elementary set containing objects $P$-indiscernible with $x \in U$ is
+referred as $I_p(x)$ and defined as follows:
+$$I_p = \left\{ y \in U: y \, I_p \, x \right\}$$
 
-In case of $\mathcal{GA}$, parallelization can be achieved by creating number of 
-separate populations which exchange genetic information during migration
-process. This $\mathcal{PGA}$(Parallel Genetic Algorithm) variant is known as migration 
-model. The alternative master-slave model uses only one population on master processor
-which assigns some computations (usually the evaluation of individual) to
-slaves, so parallelization affects only evaluation of the population. Each slave processor
-receives an individual to evaluate while master is responsible for other parts of $\mathcal{GA}$ process
-such as: mutation, crossover, replacement and exchanging information between slaves
-which involves collecting results and sending additional individuals to slaves. This method is useful 
-especially for large-scale problems and for computationally demanding evaluation operators. 
-Its main drawback is the idleness of slave processors during other phases of
-genetic algorithm and high communication ratio between master and slave units. 
+By representing a target concept $X$ as a subset of $U$ we would like to
+describe it with respect to $R$. Additionally let introduce $P$ as non-empty
+subset of attributes from $Q$. In rough sets reasoning object membership to a
+set can be represented in two ways:
+\begin{enumerate}
+    \item An object $x \in U$ certainly belongs to $X$ if
+        all objects from the $P$-elementary set defined by $I_p(x)$ also belong to $X$.
+        A set of all objects certainly belonging to $X$ creates the $P$-lower
+        approximation of $X$ and can be represented as follows:
+            $$\underline{I_p} = \{ x \in U: I_p(x) \subseteq X\}$$
+    \item An object $x \in U$ can possibly belong to $X$ if at least one object
+        from $P$-elementary set $I_p(x)$ can possibly belong to $X$. All the
+        objects that could possibly belong to $X$ are denoted as $P$-upper
+        approximation of $X$, defined as:
+        $$\overline{I_p} = \{x\in U: I_p(x) \, \cap \, X \neq \emptyset \}$$
+        Therefore the set $U - \overline{I_p}$ represents the negative region,
+        containing the set of objects that can be definitely ruled out as
+        members of the target set.
+\end{enumerate}
+The tuple $<\underline{I_p}, \overline{I_p}>$ representing a lower boundary of
+the target $X$ and the upper boundary of the target $X$ creates a rough set.
+Using above notions we can define $P$-boundary region which is a difference
+between upper and lower approximation. 
+$$BN_p(X) = \overline{I_p} - \underline{I_p}$$
+The $BN_p(X)$ is a set of elements which cannot be certainly classified neither
+as $X$ nor as not-$X$ with respect to the set of attributes $P$. If the
+boundary region of $X$ is empty then it is crisp, otherwise we deal with
+inexact set which is called rough set. Until that moment we can see that 
+rough sets concept can be defined quite generally by means of topological
+operations: interior and closure, called approximations. They express the
+knowledge about pattern in terms of granules, not by a precise measure.
 
-The second solution of $\mathcal{PGA}$ which is called ``island model'' can be
-described as each processor maintains its own
-population of individuals and evaluates it using the same genetic
-operators used in simple sequential genetic algorithm. Occasionally migration occurs - every processor 
-sends a part of its population (”best” individuals) to all 
-other units and receives their representatives as well. On 
-every island ”worst” individuals are replaced by newcomers.
-The presented approach is also called ”pure” migration 
-model and its type is strongly determined by how the migration process is taking
-place. It is possible to choose different migration schemes 
-i.e. sending of individuals only to neighbouring islands, 
-migrating random groups of representatives or replacing random individuals. The
-main advantage of this solution is the low communication ratio between master and
-slaves because each processor evolves its own population and does not waste time on
-waiting for master command as it was described in model of master-slave with one
-population.
+\subsubsection{Properties of rough sets}
+The same as classical sets or fuzzy logic rough sets can be described by the
+following properties:
+\begin{enumerate}
+    \item $\overline{I_p} \subseteq \, X \, \subseteq \, \underline{I_p}$
+    \item $\overline{I_p}(\emptyset) = \underline{I_p}(\emptyset) = \emptyset;
+        \;
+        \overline{I_p}(U) = \underline{I_p}(U) = U $
+    \item $\overline{I_p}(X \cup Y) = \overline{I_p}(X) \cup \overline{I_p}(Y)$
+    \item $\underline{I_p}(X \cap Y) = \underline{I_p}(X) \cap \underline{I_p}(Y)$
+\end{enumerate}
+% TODO Dokonczyc to
 
-The main goal of this paragraph was to present the
-basic types of parallel genetic algorithms, but this short description is
-not enough so in section \ref{cha:PgaTypes} this
-topic will be tackled in greater details, paying attention to parallel genetic time
-realisation and possible speedup. 
+\subsubsection{Rough sets reasoning from data}
+The category description can be done in two ways:
+\begin{enumerate}
+    \item extensional
+    \item intentional
+\end{enumerate}
+To represent a concept we have to be able to identify 
+all objects belonging to this category. 
+With the former approach we have no insight 
+into decision engine so we do not know how 
+to assign new objects to the category. In 
+the latter approach we represent the category 
+based on the set of rules. The same approach 
+is done in rough sets algorithm where an elementary 
+granules (concepts) of knowledge build blocks consisting 
+of indiscernible pattern from the universe of discourse. 
+We will associate decision rules with decision table $T$.
+
+\subsection{Fuzzy logic}
+\label{cha:Fuzzy_logic}
+\subsubsection{Introduction}
+\subsubsection{Fuzzy reasoning from data}

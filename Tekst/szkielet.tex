@@ -1,7 +1,7 @@
 \documentclass[12pt,a4paper]{article}
 \addtolength{\textwidth}{1.5cm} 
 \addtolength{\textheight}{1cm} 
-\usepackage[T1,plmath]{english}
+\usepackage[T1,math]{english}
 \usepackage{palatino}				% czcionka palatino
 \usepackage[utf8]{inputenc}
 \usepackage[pdftex]{graphicx}
@@ -14,9 +14,9 @@
 \usepackage[splitrule]{footmisc}	% ustawienia stopki
 \usepackage{rotating}				% do obracania obiektów
 \usepackage{indentfirst}	% na nazwie sekcji pierwszy akapit ze wcieciem
+\usepackage{float}
 %\usepackage{polski}
 \usepackage[T1]{fontenc} %dziwna szerokosc czcionki
-% \usepackage{a4wide} % marginesy mniejsze
 \usepackage[english]{babel}
 \usepackage[polish]{babel}
 
@@ -117,8 +117,8 @@ evolutionary programs}
 \def\tematen{Badanie efektywności równoległej realizacji algorytmów genetycznych
 i programów ewolucyjnych}
 \def\autor{Marcin Majak}
-\def\prowadzacy{Leszek Koszałka, PhD, W4/K2}
-\def\opiekun{dr inż. Leszek Koszałka, W4/K2}
+\def\prowadzacy{Andrzej Żołnierek, PhD, W4/K2}
+\def\opiekun{dr inż. Andrzej Żołnierek, W4/K2}
 \def\rok{2010}
 
 \newcommand{\mojaSugestia}[1]{\textcolor{blue}{#1}}
@@ -154,19 +154,7 @@ i programów ewolucyjnych}
 \newpage
 \input{00celPracy.tex}
 
-%\input{001problem.tex}
-
 \input{01wstep.tex}
-
-\input{02teoria.tex}
-
-\newpage
-\input{03analiza.tex}
-
-\newpage
-\input{04przyszlosc.tex}
-
-\input{05wnioski.tex}
 
 \newpage \clearpage
 \input{referencje.tex}
