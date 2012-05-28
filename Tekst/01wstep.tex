@@ -29,8 +29,8 @@ In this thesis supervised learning is reconsidered because available datasets
 are labeled with class number. When we take into account applied approach
 pattern recognition, we can distinguish syntactic and statistical 
 pattern recognition. In former each pattern is represented in terms of 
-\mathcal{d} features, measurements and is viewed as a point in
-\mathcal{d}-dimensional feature space, while the latter
+$d$ features, measurements and is viewed as a point in
+$d$-dimensional feature space, while the latter
 is  based on the characterization of the inherent structure of the 
 qualitative features. For that  reason, the complex patterns can be
 decomposed using a hierarchical structure in simple  sub-patterns.
@@ -39,6 +39,30 @@ represents the alphabet of the language and the sentences are generated
 according to a grammar which is inferred from the available training data.
 EKG waveforms, textured images and shape analysis of contours are the examples
 of syntactic approach.
+
+\subsection{Problem statement}
+\label{cha:Problem_statement}
+In this section the problem statement will be presented in case of pattern
+recognition. For the purpose of this thesis we assume supervised learning and
+denote each pattern by the label $j \in M$, where $M$ is an $m$-element set of
+possible states numbered with the successive natural numbers. The state $j$ is
+unknown and does not undergo the direct investigation. What can only be
+measured are attributes or features by which a state manifests itself. Each
+object will be described by a $d$-dimensional measured feature vector $x \in
+X$. In order to classify unknown pattern we use knowledge stored in training
+set consisting of $N$ training patterns
+$$S = (x_1, j_1), (x_2, j_2), \ldots, (x_N, j_N)$$
+In practice the decision with learning should use knowledge included in the
+training set $S$ and as the consequence the algorithm with learning is of the
+following form:
+$$i=\Psi(S, x), \, i \in M$$
+In decision theory, to ensure that $\Psi$ approximate the problem as closely
+as possible an additional loss function is introduced that assigns a specific
+value to loss resulting from producing an incorrect label. The particular loss
+function depends on the type of label being predicted. In case of
+classification problem it is zero-one loss function. This corresponds simply to
+assigning a loss of 1 to any incorrect labeling and is equivalent to computing
+the accuracy of classification procedure over the set of training data.
 
 \subsection{Rough sets}
 \label{cha:Rough_set}
@@ -57,7 +81,7 @@ summarized in few point presented below:
 \begin{enumerate}
     \item provides attribute reduction
     \item generates set of easy to understand and readable decision
-        \mathcal{IF-THEN} rules
+        \textit{IF-THEN} rules
     \item evaluate significance of data 
 \end{enumerate}
 
@@ -155,6 +179,12 @@ following properties:
 \end{enumerate}
 % TODO Dokonczyc to
 
+\subsubsection{Attribute reduction and dependency}
+\label{cha:Rough_set_attribute_reduction}
+% TODO Dokonczyc to
+
+
+
 \subsubsection{Rough sets reasoning from data}
 The category description can be done in two ways:
 \begin{enumerate}
@@ -172,6 +202,61 @@ is done in rough sets algorithm where an elementary
 granules (concepts) of knowledge build blocks consisting 
 of indiscernible pattern from the universe of discourse. 
 We will associate decision rules with decision table $T$.
+
+In this section a practical example will be presented to clear all the things
+out. As an example let reconsider well-known example of patients suffering from
+flu. 
+\begin{table}[H]
+    \centering
+    \caption{Example dataset showing healthy patients and suffering from flu}
+    \begin{tabular}{|c|c|c|c|c|c|}
+        \hline 
+    Patient & Headache & Muscle pain & Temperature & Flu \\ \hline \hline
+    p1 & no & yes & high & yes \\ \hline
+    p2 & yes & no & high & yes \\ \hline
+    p3 & yes & yes & very high & yes \\ \hline
+    p4 & no & yes & normal & no \\ \hline
+    p5 & yes & no & high & no \\ \hline
+    p6 & no & yes & very high & yes \\ \hline    
+    \end{tabular}
+    \label{tab:example_rough_set}
+\end{table}
+Table \ref{tab:example_rough_set} represents an information system about
+healthy patient and those suffering from flu. Attributes: Headache,
+Muscle-pain, Temperature are called condition attributes, while the attribute
+``Flu'' (last column in table \ref{tab:example_rough_set}) is considered as
+decision attribute. Each row of a decision table determines a decision rule,
+for example
+
+IF HEADACHE IS 'NO' AND MUSCLE\_PAIN IS 'YES' AND TEMPERATURE IS 'HIGH' THEN FLU IS 'YES'
+
+Here we can generate few indiscernible relations based on 
+the chosen attributes. In case of Headache attribute patients p2, p3, p5 are indiscernible; patients p2, p5 are
+indiscernible with respect to attributes Headache, Muscle-pain and Temperature. 
+Using Headache and Muscle-Pain we can divide the set into three sets:
+\{p1, p4, p6\}, \{p2, p5\}, \{p3\}.
+
+Now it is time for defining key features of rough sets. Over the table
+\ref{tab:example_rough_set} we can define two concepts: ``Flu'' and
+``Not Flu''. For the first concept the lower approximation
+set of patient certainly having flu is \{p1, p3, p6\}, while the upper
+approximation of patients possibly suffering from flu is \{p1, p2, p3, p5,
+p6\}. The boundary region for concept ``flu'' is a set of \{p2, p5\} patients. 
+For the concept ``Not Flu'' the lower approximation is the set \{p4\}, whereas
+the upper approximation is the set \{p2, p4, p5\}. Again the boundary region is
+the set \{p2, p5\}.
+
+Additionally, we can measure the accuracy of approximation $\alpha_B(x)$ for each concept.
+This can tell us if the set of attributes to describe the concept is correctly
+chosen. For the ``Flu'' concept where $X$=\{p1, p2, p3, p6\} is described by
+set of attributes $B$=\{Headache, Muscle-pain, Temperature\} the accuracy of
+approximation is $\alpha_B(Flu) = \frac{3}{5}$. On the other hand when we take
+only one attribute $B$=\{Temperature\}, then we get lower approximation of \{p3,
+p6\} and upper approximation of \{p1, p2, p3, p5, p6 \} resulting in
+$\alpha_B(Flu) = \frac{2}{5}$. To sum up, $\alpha_B(x)$ is a very important indicator in
+rough sets theory and tells which attributes better characterize target
+concept. 
+
 
 \subsection{Fuzzy logic}
 \label{cha:Fuzzy_logic}
