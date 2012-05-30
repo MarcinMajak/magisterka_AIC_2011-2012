@@ -166,6 +166,23 @@ rough sets concept can be defined quite generally by means of topological
 operations: interior and closure, called approximations. They express the
 knowledge about pattern in terms of granules, not by a precise measure.
 
+\subsubsection{Rough sets indicators}
+\label{cha:Rough_sets_indicators}
+In rough sets theory we can define few indicators. First of all with every 
+subset of $X \subseteq U$ described by $P$ subset of attributes we can 
+associate an indicator called an accuracy of approximation defined as:
+$$\alpha_p(X)=\frac{\underline{I_p}(X)}{\overline{I_p}(X)}$$
+
+The quality of approximation of $X \subseteq U$ by attributes from subset $P$
+represents the percentage of correctly classified objects using attributes $P$
+from subset $X$
+$$\gamma_P(X) = \frac{\overline{I_p}(X)}{|X|}$$
+Assuming that we can partition $U$ into $n$ decision classes using $P$
+non-empty subset of attributes from $C$, the quality of classification can be
+defined as the ration of all correctly classified objects into classes
+$$\gamma_P(CLASS) = \frac{\sum_{i=1}^{n}\overline{I_p}(CL_i)}{|U|}$$
+These indicators can be used in determining the quality of rough set algorithm
+or for finding the optimal reduct.
 \subsubsection{Properties of rough sets}
 The same as classical sets or fuzzy logic rough sets can be described by the
 following properties:
@@ -179,11 +196,23 @@ following properties:
 \end{enumerate}
 % TODO Dokonczyc to
 
-\subsubsection{Attribute reduction and dependency}
+\subsubsection{Attribute reduction}
 \label{cha:Rough_set_attribute_reduction}
-% TODO Dokonczyc to
+Many problem are complex and multidimensional. For example Sonar dataset from
+\textit{UCI} Repository has 60 attributes describing a single pattern. 
+Usually we hope to recognize pattern in a relatively
+lower dimensional to reduce cost in measuring and processing information and
+enhance the interpretability of learned models. Feature selection or reduction 
+is done for classifiers to remove the noise and superfluous data. Generally,
+this is not an easy task and requires a lot of computation. 
 
 
+A reduct is a set of attributes that ensures the same classification of
+elements from $U$ as the rudimentary set of attributes. More than one reduct
+can exist for one information system. The core of attributes is the set of
+attributes from $Q$ that all the attributes are indispensable. An attribute is
+dispensable if the following criterion is fulfilled:
+$$I(P) &=& I(P-{a}), \, \textrm{for} \, \{a\} \in P \subseteq  Q $$
 
 \subsubsection{Rough sets reasoning from data}
 The category description can be done in two ways:
@@ -191,14 +220,11 @@ The category description can be done in two ways:
     \item extensional
     \item intentional
 \end{enumerate}
-To represent a concept we have to be able to identify 
-all objects belonging to this category. 
-With the former approach we have no insight 
-into decision engine so we do not know how 
-to assign new objects to the category. In 
-the latter approach we represent the category 
-based on the set of rules. The same approach 
-is done in rough sets algorithm where an elementary 
+To represent a concept we have to be able to identify all objects belonging 
+to this category. With the former approach we have no insight 
+into decision engine so we do not know how to assign new objects to the category.
+In the latter approach we represent the category based on the set of rules. The same 
+approach is done in rough sets algorithm where an elementary 
 granules (concepts) of knowledge build blocks consisting 
 of indiscernible pattern from the universe of discourse. 
 We will associate decision rules with decision table $T$.
@@ -246,14 +272,14 @@ For the concept ``Not Flu'' the lower approximation is the set \{p4\}, whereas
 the upper approximation is the set \{p2, p4, p5\}. Again the boundary region is
 the set \{p2, p5\}.
 
-Additionally, we can measure the accuracy of approximation $\alpha_B(x)$ for each concept.
+Additionally, we can measure the accuracy of approximation $\alpha_P(x)$ for each concept.
 This can tell us if the set of attributes to describe the concept is correctly
 chosen. For the ``Flu'' concept where $X$=\{p1, p2, p3, p6\} is described by
-set of attributes $B$=\{Headache, Muscle-pain, Temperature\} the accuracy of
-approximation is $\alpha_B(Flu) = \frac{3}{5}$. On the other hand when we take
-only one attribute $B$=\{Temperature\}, then we get lower approximation of \{p3,
+set of attributes $P$=\{Headache, Muscle-pain, Temperature\} the accuracy of
+approximation is $\alpha_P(Flu) = \frac{3}{5}$. On the other hand when we take
+only one attribute $P$=\{Temperature\}, then we get lower approximation of \{p3,
 p6\} and upper approximation of \{p1, p2, p3, p5, p6 \} resulting in
-$\alpha_B(Flu) = \frac{2}{5}$. To sum up, $\alpha_B(x)$ is a very important indicator in
+$\alpha_P(Flu) = \frac{2}{5}$. To sum up, $\alpha_P(x)$ is a very important indicator in
 rough sets theory and tells which attributes better characterize target
 concept. 
 
@@ -261,4 +287,103 @@ concept.
 \subsection{Fuzzy logic}
 \label{cha:Fuzzy_logic}
 \subsubsection{Introduction}
+In fuzzy logic an element membership to a set is described by membership function 
+which assigns value from interval $<0, 1>$. It is a superset of Boolean logic that 
+has been extended to handle the concept of partial truth - values between ``completely 
+true'' and ``completely false''. It was introduced by Dr. Lotfi Zadeh in the
+1960's as a tool to model the uncertainty of natural language. As in the
+section \ref{cha:Rough_set_introduction}, let introduce the problem of defining 
+if person is small or high. 
+
+First of all, we have to define a fuzzy set \textit{TALL} which will answer the question 
+"to what degree is person x tall?". Zadeh describes \textit{TALL} as a LINGUISTIC VARIABLE, 
+which represents our cognitive category of "tallness". To each person in the universe of discourse, 
+we have to assign a degree of membership in the fuzzy subset \textit{TALL}. The easiest way to do this
+is with a membership function based on the person's height. Given this definition, here are some example values
+\begin{table}[H]
+    \centering
+    \caption{Table describing how person is tall by the fuzzy logic linguistic
+    variable}
+    \begin{tabular}{|c|c|c|}
+        \hline
+        Person & Height [m] & degree of tallness \\ \hline \hline
+        p1 & 1.5& 0.0 \\ \hline
+        p2 & 1.6& 0.2 \\ \hline
+        p3 & 1.7& 0.4 \\ \hline
+        p4 & 1.8& 0.5 \\ \hline
+        p5 & 1.9& 0.6 \\ \hline
+        p6 & 2.0 & 1.0 \\ \hline
+    \end{tabular}
+    \label{tab:fuzzy_logic_example}
+\end{table}
+
+Fuzzy numbers are fuzzy subsets generated over the attribute domain. 
+They have a peak or plateau with membership grade 1, over which the 
+members of the universe are completely in the set.  The membership 
+function is increasing towards the peak and decreasing away from it. 
+There are different types of membership functions and their usage 
+strongly depends on the type of reconsidered problem. One of the most 
+common met in the literature are: triangular, trapezoidal, Gaussian shapes
+(see example on ).
+
 \subsubsection{Fuzzy reasoning from data}
+Reasoning in fuzzy logic is based on decision rules the same as in rough sets approach. 
+Rules are expressed in the form of IF \textit{COND} THEN \textit{DECISION} 
+which can be divided into antecedent set and one consequent. 
+The \textit{AND}, \textit{OR}, and \textit{NOT} operators of 
+Boolean logic exist in fuzzy logic, usually defined as the minimum, maximum,
+and complement. When they are defined this way, they are called the Zadeh operators.
+Fuzzy logic classification is based  on three steps:
+\begin{enumerate}
+    \item Fuzzyfication – in the fuzzyfication process we 
+        convert continuous quantity into fuzzy number. It requires defining
+        membership grade of crisp input $x$ in the fuzzy set.
+    \item Rule induction
+    \item Deffuzification- the process of producing a quantifiable result in fuzzy logic,
+        given fuzzy sets and corresponding membership degrees. These will have a number of
+        rules that transform a number of variables into a fuzzy result, that is, the result 
+        is described in terms of membership in fuzzy sets. 
+\end{enumerate}
+\subsection{Genetic algorithm}
+\input{01wstep.tex}
+Genetic Algorithm is an element of evolutionary computation, which is a 
+rapidly growing area of soft computing. GA is based on the principles of
+natural selection and genetic modification. As optimization methods, GA 
+operates on a population of points, designated as individuals. Each 
+individual of the population represents a possible solution of the 
+optimization problem. Individuals are evaluated depending upon their 
+fitness which indicates how well an individual of the population solves 
+the optimization problem. To sum up, GA has the following general features:
+\begin{enumerate}
+    \item GA operates with a population of possible solutions (individuals) 
+        instead of a single individual. Thus, the searching process can be 
+        carried out in a parallel form or sequentially.
+    \item GA is able to find the optimal or sub-optimal solutions in complex
+        and large search spaces. Moreover, it can be applied to nonlinear 
+        optimization problems with constraints defined in discrete or continuous 
+        search spaces.
+    \item GA examines many possible solutions at the same time, so there is a 
+        higher probability that the search process can converge to an optimal solution.
+\end{enumerate}
+There are four main parts in each GA process to reconsider:
+\begin{enumerate}
+    \item the problem representation or encoding
+    \item fitness or objective function definition
+    \item fitness-based selection
+    \item evolutionary reproduction of candidate solutions (individuals or chromosomes). 
+\end{enumerate}
+Genetic algorithms are widely used as a search techniques in the various fields. 
+In this thesis it will be used for finding optimal cuts in the attribute space and to 
+apply attribute reduction. The success of a genetic algorithm can be quantified by estimating 
+the cost, time required and the quality of final obtained solution. 
+In the literature there can be found many examples of how GA is useful in solving hard 
+optimizations problems, but beside unquestionable advantages there also exist downsides. 
+A traditional GA without any diversity maintenance mechanism often suffers from getting 
+stuck on the suboptimal peaks, because almost the entire GA population would have converged 
+to a single peak, as a result of the rapid loss of population diversity. 
+There is a great deal of work showing how to set the optimal parameters in an evolutionary 
+algorithm to obtain required speedup and solution accuracy, but this is not the main issue 
+in this thesis. For more exact information see .
+When designing genetic algorithm one of the most important things to ensure proper crossover 
+and mutation operations. More precise information about these operation will be
+presented in section \ref{cha:Algorithm_construction_genetic}
