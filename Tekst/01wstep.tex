@@ -335,14 +335,75 @@ Boolean logic exist in fuzzy logic, usually defined as the minimum, maximum,
 and complement. When they are defined this way, they are called the Zadeh operators.
 Fuzzy logic classification is based  on three steps:
 \begin{enumerate}
-    \item Fuzzyfication – in the fuzzyfication process we 
+    \item Fuzzyfication- in the fuzzyfication process we 
         convert continuous quantity into fuzzy number. It requires defining
         membership grade of crisp input $x$ in the fuzzy set.
-    \item Rule induction
+    \item Rule induction- there are different types of fuzzy inference systems. 
     \item Deffuzification- the process of producing a quantifiable result in fuzzy logic,
         given fuzzy sets and corresponding membership degrees. These will have a number of
         rules that transform a number of variables into a fuzzy result, that is, the result 
         is described in terms of membership in fuzzy sets. 
+\end{enumerate}
+\subsubsection{Genetic-based machine learning approaches}
+In the literature one can find many examples of fuzzy logic applications.
+Generally, there are two main approaches:
+\begin{enumerate}
+    \item some expert knowledge is available and fuzzy rules are created
+        beforehand.
+    \item no knowledge about data set is available so some techniques of data
+        mining must be applied to extract rules from training set.
+\end{enumerate}
+At this point it must be strongly emphasize that the main focus is based on
+fuzzy algorithm for pattern recognition task where there is no prior knowledge 
+about fuzzy system. There are different approached from optimization techniques
+such as gradient descent to heuristic. In this thesis the genetic algorithm
+will be used. 
+
+If until this point something is unclear reconsider the following example. What
+we have is the problem dimensionality and the set of training patterns. Now the
+questions arise such as: how to divide feature space into fuzzy set, how
+generate rule. For example, we create 10 triangular membership functions for each
+attribute, but is this number optimal. Secondly, when we have $d$-dimensional
+feature space and $k$ fuzzy membership function per each attribute
+the number of possible combination for generating one rule is equal to $k^d$.
+For greater $d$ (for example Sonar dataset from \textit{UCI} repository has 60
+attributes) it is impossible to find the proper combination in a reasonable
+time.
+
+There are two main methods of genetic-based machine learning approaches:
+\begin{enumerate}
+    \item Michigan template- it is a population of fuzzy rules and a single
+        fuzzy rule is handled as an individual. The evaluation of each fuzzy
+        rule is performed by classifying all the given training patterns by the
+        available rule set $N_{rule}$. At the end of each iteration new
+        individuals are created through genetic operators and merged to the
+        current population. For the next generation $N_{rule}$ best individuals
+        are taken. The whole procedure can be summarized as follows:
+        \begin{enumerate}
+            \item Generate $N_{rule}$ fuzzy rules
+            \item Evaluate the fitness of each fuzzy rule in the current
+                population
+            \item Generate $N_{replace}$ fuzzy rules using genetic operators
+            \item Merge $N_{replace}$ fuzzy rules with current population and
+                choose the best $N_{rule}$ individuals for the next generation
+            \item Return to point $(b)$ is stopping condition is not fulfilled
+        \end{enumerate}
+    \item Pittsburgh template- in this approach a set of fuzzy rules is handled
+        as an individual. In this case the length of a single individual is
+        equal to $n\cdot N_{rule}$, where $n$ is the length of a fuzzy rule.
+        Algorithm starts with $N_{pop}$ randomly generated rule sets. The
+        fitness value of a single individual is the number of correctly
+        classified patterns in the training set by a given rule set.
+        The procedure for algorithm is as follows:
+        \begin{enumerate}
+            \item Generate $N_{pop}$ individuals consisting of $N_{rule}$ fuzzy
+                rules each
+            \item Calculate the fitness value of each rule set (individual)
+            \item Generate $N_{replace}$ new rule set using genetic operators.  
+            \item Merge $N_{replace}$ fuzzy rule sets  with current population and
+                choose the best $N_{pop}$ individuals for the next generation
+            \item Return to point $(b)$ is stopping condition is not fulfilled
+        \end{enumerate}
 \end{enumerate}
 \subsection{Genetic algorithm}
 \label{cha:Genetic_algorithm}
@@ -387,3 +448,8 @@ in this thesis. For more exact information see .
 When designing genetic algorithm one of the most important things to ensure proper crossover 
 and mutation operations. More precise information about these operation will be
 presented in section \ref{cha:Algorithm_construction_genetic}
+
+\subsection{Hybrid classifiers}
+\label{cha:Hybrid_classifiers}
+Tutaj opisac ogolnie idee zwiazane z klasyfikacja hybrudowa, 
+majority voting. 
