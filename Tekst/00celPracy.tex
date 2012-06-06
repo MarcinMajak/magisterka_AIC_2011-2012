@@ -34,7 +34,7 @@ recognition}.
 
 \subsection{Main goals of the thesis}
 This thesis concerns the problem of pattern recognition. As it was previously
-said in the literature one can find many algorithms used for object
+said, in the literature one can find many algorithms used for object
 classification, while here the rough sets and fuzzy logic algorithms are used 
 and investigated. General purpose of this thesis is to propose hybrid
 classifier using the power of fuzzy logic and rough sets. First of all the
@@ -44,13 +44,31 @@ proposed fusion. It should be noted that for the simulation purposes author
 implemented basic fuzzy logic, rough sets algorithms and created a hybrid
 classifier.
 
+This thesis is a continuation of work in the field of pattern recognition.
+The results of experiments can be found in \cite{bib1}, \cite{bib2}. The aim of
+this paper is to collect all experiments scenarios in one place and draw
+conclusions. It is meant to show the steps of constructing advanced hybrid
+classifier from the basic algorithms. At first, the basic properties of rough
+sets algorithm are checked in simulations, later the algorithm for granulation
+modification is introduced and at the end as the final point hybridization is
+proposed.
+
 At the end of this section, the experiment environment should be characterized in
 few words. Given is the problem of pattern recognition: in this thesis it would
 be used datasets from $UCI$ Repository (described in section
 \ref{cha:experiment}. Those datasets are broadly available and everyone in the
 future would be able to repeat the simulation investigation and compare the
-results. To find is the algorithm classification accuracy on the given dataset
-and comparison with other approaches found in the literature. 
+results. To find is the algorithm classification accuracy on the given dataset.
+Figure \ref{fig:input_output} shows the general schematic of the simulation
+environment.
+\begin{figure}[H]
+    \begin{center}
+        \includegraphics[width=\textwidth, height=0.5\textwidth]{fig/schema.png}
+    \end{center}
+    \caption{General schema of simulation environment. Input/output of the
+    system}
+    \label{fig:input_output}
+\end{figure}
 
 \subsection{Scope of this project}
 This paper comprises of two parts. In the first, the review of

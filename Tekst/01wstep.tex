@@ -166,6 +166,16 @@ rough sets concept can be defined quite generally by means of topological
 operations: interior and closure, called approximations. They express the
 knowledge about pattern in terms of granules, not by a precise measure.
 
+The illustrative example of rough sets reasoning is presented in fig.
+\ref{fig:rough_set_example}
+\begin{figure}[H]
+    \begin{center}
+        \includegraphics{fig/rough_set.png}
+    \end{center}
+    \caption{Rough sets example.}
+    \label{fig:rough_set_example}
+\end{figure}
+
 \subsubsection{Rough sets indicators}
 \label{cha:Rough_sets_indicators}
 In rough sets theory we can define few indicators. First of all with every 
@@ -338,11 +348,82 @@ Fuzzy logic classification is based  on three steps:
     \item Fuzzyfication- in the fuzzyfication process we 
         convert continuous quantity into fuzzy number. It requires defining
         membership grade of crisp input $x$ in the fuzzy set.
-    \item Rule induction- there are different types of fuzzy inference systems. 
+    \item Rule induction- there are different types of fuzzy inference systems,
+        but one of the most commonly used (the same as in this paper) is
+        Mandami inference system.
     \item Deffuzification- the process of producing a quantifiable result in fuzzy logic,
         given fuzzy sets and corresponding membership degrees. These will have a number of
         rules that transform a number of variables into a fuzzy result, that is, the result 
-        is described in terms of membership in fuzzy sets. 
+         is described in terms of membership in fuzzy sets. 
+\end{enumerate}
+Let reconsider a simple example, which should clear all ambiguities (the following 
+example is based on \cite{bib20}). The problem is connected with estimating the
+level of risk involved in software engineering project. There are two input
+to the system (funding, staffing) and one output
+(risk). Membership functions are represented as triangular shapes (fig. \ref{fig:fuzzy_example_1}) 
+\begin{figure}[H]
+    \begin{center}
+        \includegraphics[width=\textwidth]{fig/fuzzy_example_1.png}
+    \end{center}
+    \caption{Input and output fuzzy linguistic variables for the described
+    system.}
+    \label{fig:fuzzy_example_1}
+\end{figure}
+The next important thing in fuzzy logic beside fuzzy values are fuzzy rules. In
+this problem they are provide a priori and are in the following way:
+\begin{table}[H]
+    Rule 1: IF funding IS adequate OR funding IS small THEN risk IS
+    low \\
+    Rule 2: IF funding IS marginal AND staffing IS large THEN risk IS
+    normal \\
+    Rule 3: IF funding IS inadequate THEN risk IS high
+\end{table}
+Let say we want to calculate project risk for inputs funding~$=35$ and
+staffing~$=60$. 
+\begin{enumerate}
+    \item The first step is to convert crisp values into fuzzy representation.
+        $$
+            \begin{array}[H]{l}
+                \hline
+                \mu_{inadequate}(35) = 0.5 \\
+                \mu_{marginal}(35) = 0.2 \\
+                \mu_{adequate}(35) = 0.0 \\ \hline
+                \mu_{small}(60) = 0.1 \\
+                \mu_{large}(60) = 0.7 \\ \hline
+            \end{array}
+        $$
+    \item Now it is time for rule induction where OR is treated as a $max$ operator, AND
+        as $min$ operator. 
+        $$
+            \begin{array}[H]{ll}
+                Rule \,1: & \mu_{low} = 0.0 + 0.1 = 0.1 \\
+                Rule \,2: & \mu_{normal} = 0.2\cdot 0.7 = 0.14 \\
+                Rule \,3: & \mu_{high} = 0.5 \\
+            \end{array}
+        $$
+    \item After performing clipping of consequent membership functions for each
+        rule (example given in fig. \ref{fig:fuzzy_centroid}), the final crisp output can be calculated. It is done by
+        defuzzification method, where one of the most commonly used is a centroid
+        formula given by eq. (\ref{eq:fuzzy_centroid})
+        \begin{equation}
+            CO = \frac{\sum\nolimits_{x=a}^{b}\mu_A(\chi)\cdot
+            x}{\sum\nolimit_{x=a}^{b}\mu_A(\chi)}
+            \label{eq:fuzzy_centroid}
+        \end{equation}
+        \begin{figure}[H]
+            \begin{center}
+                \includegraphics[width=0.8\textwidth, height=0.5\textwidth]{fig/fuzzy_centroid.png}
+            \end{center}
+            \caption{Example of clipping the consequent membership function
+            as the result of rule induction}
+            \label{fig:fuzzy_centroid}
+        \end{figure}
+        Using eq. (\ref{eq:fuzzy_centroid}) the output of the system is as follows:
+        $$
+        CO = \frac{(0+10+20)\cdot 0.1 + (30+40+50+60)\cdot 0.14 + (70 + 80 + 90
+        + 100)\cdot 0.5}{0.1\cdot 3 + 0.14\cdot 4 + 0.5\cdot 4 } = 69.3
+        $$
+
 \end{enumerate}
 \subsubsection{Genetic-based machine learning approaches}
 In the literature one can find many examples of fuzzy logic applications.
@@ -451,5 +532,32 @@ presented in section \ref{cha:Algorithm_construction_genetic}
 
 \subsection{Hybrid classifiers}
 \label{cha:Hybrid_classifiers}
-Tutaj opisac ogolnie idee zwiazane z klasyfikacja hybrudowa, 
-majority voting. 
+In the recent years, there is an increasing interest in methods of combining
+multiple learning systems into hybrid one. The main advantage of such approach
+is its ability to find different explanation for the dataset for each
+classifier. If classifiers make errors on different parts of the feature space
+it is possible that the ensemble of classifiers will complement each other and
+the final classification will be better. 
+
+Generally, there are two types of hybrid classifiers (example presented in fig.
+\ref{fig:hybrid}:
+\begin{enumerate}
+    \item multiexpert systems- classifiers work in parallel, each of them is
+        trained and tested on the same data and independent decisions are
+        combined to compute the final result. The most common example is a
+        majority voting 
+    \item multistage systems- classifiers are connected in a sequence where the
+        next classifier is trained and used for classification only if the
+        previous classifier rejected the pattern. 
+\end{enumerate}
+It is hard to determine which approach is the best. Each system has its pros
+and cons and the choice depends of the type of dataset. In this thesis the second 
+approach is implemented.
+\begin{figure}[H]
+    \begin{center}
+        \includegraphics[width=\textwidth]{fig/hybrid.png}
+    \end{center}
+    \caption{Example of two approaches for constructing hybrid classifiers}
+    \label{fig:hybrid}
+\end{figure}
+
