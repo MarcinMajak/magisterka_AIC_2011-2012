@@ -1,0 +1,148 @@
+\section{Experimentation system}
+\label{cha:ExperimentAnalysis}
+\subsection{Assumptions}
+This section starts the second part of this thesis. In the first, algorithms
+were presented in case of construction and their properties.
+
+For the simulation purposes algorithm were written:
+\begin{enumerate}
+    \item Basic Rough sets algorithm
+    \item Rough sets algorithm with modification of granulation step
+    \item Fuzzy logic algorithm with genetic approach for rule construction
+    \item Hybrid algorithm consisting of:
+        \begin{itemize}
+            \item Rough sets algorithm with genetic approach for finding the
+                optimal partition in feature space
+            \item Fuzzy logic algorithm (the same as in point 3)
+        \end{itemize}
+\end{enumerate}
+
+\subsection{Datasets}
+\label{cha:Datasets}
+To perform all the experiment datasets from \textit{UCI} repository were used.
+This approach is commonly used in the literature because ensures that someone
+in the future would be able to retake the tests and compare the results. The
+main goal in choosing an appropriate datasets was to ensure diversity and test
+algorithms with complicated and complex problems. Below each dataset is
+described in more details:
+\begin{itemize}
+    \item Dataset name: Haberman
+        \begin{itemize} 
+            \item \#attributes: 3
+            \item \#instances: 306
+            \item \#classes: 2
+            \item Desctiption:
+                This dataset contains cases from a study that was conducted
+                between 1958 and 1970 at the University of Chicago's Billings Hospital 
+                on the survival of patients who had undergone surgery for breast cancer.
+        \end{itemize}
+    \item Dataset name: Iris
+        \begin{itemize}
+            \item \#attributes: 4
+            \item \#instances: 150
+            \item \#classes: 3
+            \item Desctiption:
+                This dataset is one the most commonly used in
+                pattern recognition task. Attribute information:
+                \begin{itemize}
+                    \item sepal length in cm 
+                    \item sepal width in cm 
+                    \item petal length in cm 
+                    \item petal width in cm 
+                \end{itemize}
+        \end{itemize} 
+    \item Dataset name: Wine
+        \begin{itemize}
+            \item \#attributes: 13
+            \item \#instances: 178
+            \item \#classes: 3
+            \item Desctiption:
+                These data are the results of a chemical analysis of wines
+                grown in the same region in Italy but derived from three 
+                different cultivars. The analysis determined the quantities 
+                of 13 constituents found in each of the three types of wines. 
+        \end{itemize}
+
+    \item Dataset name: Thyroid
+        \begin{itemize}
+            \item \#attributes: 5
+            \item \#instances: 215
+            \item \#classes: 3
+            \item Desctiption:
+                This dataset was created at the University of
+                California at Irvine by Ross Quinlan during his visit in 1987 for
+                the 1987 Machine Learning Workshop. It contains 5 features
+                describing thyroid symbptoms.
+        \end{itemize}
+
+    \item Dataset name: Bupa
+        \begin{itemize}
+            \item \#attributes: 6
+            \item \#instances: 345
+            \item \#classes: 2
+            \item Desctiption:
+                The first 5 variables are all blood tests which are thought to
+                be sensitive to liver disorders that might arise from excessive 
+                alcohol consumption. Each line in the bupa.data file constitutes
+                the record of a single male individual. 
+        \end{itemize}
+
+    \item Dataset name: Wdbc
+        \begin{itemize}
+            \item \#attributes: 32
+            \item \#instances: 569
+            \item \#classes: 2
+            \item Desctiption:
+                Features are computed from a digitized image of a fine needle aspirate (FNA) of a breast mass.
+                Each real-valued features are computed for each cell nucleus.
+        \end{itemize}
+\end{itemize}
+\subsection{Efficiency indicators}
+\label{cha:indicators}
+To evaluate effectiveness of algorithm it has to be consistent approach used in
+all experiments and additionally the a~priori knowledge about each dataset must
+be know. By a-priori knowledge one should understand the label of class for
+each pattern. Below, there will be listed methods of algorithm fitness scoring
+\begin{itemize}
+	\item An absolute error which is the distance between the solution found by
+		algorithm and known a~priori global minimum. There are distinguished
+		three variants of this indicator
+		\begin{itemize}
+			\item The best value from $n$ probes 
+				\begin{equation}
+					B=MIN\left | f^{*}(\underline{x})-f(\underline{x}) \right |
+					\label{min1}
+				\end{equation}
+			\item The worst value from $n$ probes 
+				\begin{equation}
+					W=MAX\left | f^{*}(\underline{x})-f(\underline{x}) \right |
+					\label{min3}
+				\end{equation}
+			\item The average value from $n$ probes
+				\begin{equation}
+					A=\frac{1}{n}\sum_{n=1}^n\left | f^{*}(\underline{x})-f(\underline{x}) \right |
+					\label{min2}
+				\end{equation}
+		\end{itemize}
+		where $f^{*}(\underline{x})$ is the value found by algorithm and
+		$f(\underline{x})$ is a~priori global minimum.
+	\item Error variance from $n$ simulations 
+		\begin{equation}
+			\sigma^2=\frac{1}{n-1}\sum_{i=1}^n\left[A-B\right]^2
+			\label{min4}
+		\end{equation}
+\end{itemize}
+\subsection{Program description}
+%-----------------------------------------------------------------------------------------
+To perform all simulations in this project a program was written in
+\textit{PYTHON}(more information can be found in \ref{Appendix}). 
+It allows simulating all algorithms with chosen dataset and obtain
+algorithm efficiency indicators. 
+
+Program was tested on Linux platform with Intel Pentium Dual Core 2.4 GHz, 2GB
+memory. To run the program one has to install \textit{PYTHON} environment at
+least in version 2.6. Because implemented algorithms have many setting parameter, 
+they were written to the file so that easily change their value in testing procedure. 
+Output results(efficiency indicators) were written to \textsc{csv} for further
+processing. The most preferable environment for running this project is
+Eclipse, free to download from the Internet.

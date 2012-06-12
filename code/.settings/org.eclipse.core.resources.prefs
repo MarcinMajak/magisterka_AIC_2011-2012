@@ -1,6 +1,9 @@
-#Sun May 20 16:18:29 CEST 2012
+#Mon Jun 11 00:36:59 CEST 2012
 eclipse.preferences.version=1
 encoding/Rough_Fuzzy_Classifier.py=utf-8
-encoding/fuzzy_logic_classifier.py=utf-8
+encoding/Simulator.py=utf-8
+encoding/classifiers.py=utf-8
+encoding/genetic_fuzzy_logic_classifier.py=utf-8
+encoding/genetic_rough_sets_classifier.py=utf-8
 encoding/hybrid_classifier.py=utf-8
-encoding/rough_set_classifier.py=utf-8
+encoding/rough_sets_classifier.py=utf-8

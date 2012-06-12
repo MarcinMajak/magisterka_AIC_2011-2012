@@ -1,0 +1,53 @@
+\BOOKMARK [1][-]{section.1}{Introduction}{}
+\BOOKMARK [2][-]{subsection.1.1}{Preface}{section.1}
+\BOOKMARK [2][-]{subsection.1.2}{Main goals of the thesis}{section.1}
+\BOOKMARK [2][-]{subsection.1.3}{Scope of this project}{section.1}
+\BOOKMARK [1][-]{section.2}{Pattern recognition algorithms}{}
+\BOOKMARK [2][-]{subsection.2.1}{Introduction}{section.2}
+\BOOKMARK [2][-]{subsection.2.2}{Problem statement}{section.2}
+\BOOKMARK [2][-]{subsection.2.3}{Rough sets}{section.2}
+\BOOKMARK [3][-]{subsubsection.2.3.1}{Introduction}{subsection.2.3}
+\BOOKMARK [3][-]{subsubsection.2.3.2}{Basic notation}{subsection.2.3}
+\BOOKMARK [3][-]{subsubsection.2.3.3}{Rough sets indicators}{subsection.2.3}
+\BOOKMARK [3][-]{subsubsection.2.3.4}{Properties of rough sets}{subsection.2.3}
+\BOOKMARK [3][-]{subsubsection.2.3.5}{Attribute reduction }{subsection.2.3}
+\BOOKMARK [3][-]{subsubsection.2.3.6}{Rough sets reasoning from data}{subsection.2.3}
+\BOOKMARK [2][-]{subsection.2.4}{Fuzzy logic}{section.2}
+\BOOKMARK [3][-]{subsubsection.2.4.1}{Introduction}{subsection.2.4}
+\BOOKMARK [3][-]{subsubsection.2.4.2}{Fuzzy reasoning from data}{subsection.2.4}
+\BOOKMARK [3][-]{subsubsection.2.4.3}{Genetic-based machine learning approaches}{subsection.2.4}
+\BOOKMARK [2][-]{subsection.2.5}{Genetic algorithm}{section.2}
+\BOOKMARK [2][-]{subsection.2.6}{Hybrid classifiers}{section.2}
+\BOOKMARK [1][-]{section.3}{Algorithm construction}{}
+\BOOKMARK [2][-]{subsection.3.1}{Rough sets algorithm construction}{section.3}
+\BOOKMARK [2][-]{subsection.3.2}{Rough sets algorithm construction with modification of decision rules}{section.3}
+\BOOKMARK [2][-]{subsection.3.3}{Fuzzy logic algorithm construction}{section.3}
+\BOOKMARK [3][-]{subsubsection.3.3.1}{Problem formulation}{subsection.3.3}
+\BOOKMARK [3][-]{subsubsection.3.3.2}{Rule generation}{subsection.3.3}
+\BOOKMARK [3][-]{subsubsection.3.3.3}{Fuzzy reasoning}{subsection.3.3}
+\BOOKMARK [3][-]{subsubsection.3.3.4}{Genetic algorithm for fuzzy algorithm construction}{subsection.3.3}
+\BOOKMARK [2][-]{subsection.3.4}{Multistage hybrid algorithm construction}{section.3}
+\BOOKMARK [3][-]{subsubsection.3.4.1}{Motivations}{subsection.3.4}
+\BOOKMARK [3][-]{subsubsection.3.4.2}{Rough sets and genetic algorithm}{subsection.3.4}
+\BOOKMARK [2][-]{subsection.3.5}{Hybrid rough sets and fuzzy logic}{section.3}
+\BOOKMARK [1][-]{section.4}{Experimentation system}{}
+\BOOKMARK [2][-]{subsection.4.1}{Assumptions}{section.4}
+\BOOKMARK [2][-]{subsection.4.2}{Datasets}{section.4}
+\BOOKMARK [2][-]{subsection.4.3}{Efficiency indicators}{section.4}
+\BOOKMARK [2][-]{subsection.4.4}{Program description}{section.4}
+\BOOKMARK [1][-]{section.5}{Simulation investigations}{}
+\BOOKMARK [2][-]{subsection.5.1}{Simulation environment}{section.5}
+\BOOKMARK [2][-]{subsection.5.2}{Simulation results}{section.5}
+\BOOKMARK [3][-]{subsubsection.5.2.1}{Impact of granulation step on rough sets efficiency}{subsection.5.2}
+\BOOKMARK [3][-]{subsubsection.5.2.2}{Impact of recursive modification of granulation step on rough sets efficiency}{subsection.5.2}
+\BOOKMARK [3][-]{subsubsection.5.2.3}{Impact of number of membership functions on genetic fuzzy logic algorithm efficiency}{subsection.5.2}
+\BOOKMARK [3][-]{subsubsection.5.2.4}{Impact of granulation step G on genetic rough sets algorithm efficiency}{subsection.5.2}
+\BOOKMARK [3][-]{subsubsection.5.2.5}{Comparison of hybrid classifier with other classifiers}{subsection.5.2}
+\BOOKMARK [1][-]{section.6}{Summary and conclusions}{}
+\BOOKMARK [2][-]{subsection.6.1}{Conclusions from conducted experiments}{section.6}
+\BOOKMARK [2][-]{subsection.6.2}{General conclusions}{section.6}
+\BOOKMARK [1][-]{section.7}{Future work}{}
+\BOOKMARK [1][-]{Item.83}{Literature}{}
+\BOOKMARK [1][-]{Item.83}{List of figures}{}
+\BOOKMARK [1][-]{Item.83}{List of tables}{}
+\BOOKMARK [1][-]{appendix.A}{Program description}{}

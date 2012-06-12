@@ -1,0 +1,48 @@
+\section{Future work}
+\label{cha:FutureWork}
+Noways, when multiprocessor and cluster computers are more easily available it
+is time to think about possibilities of algorithm parallelization. Of course not every
+algorithm is suitable for multiple CPU implementation, but genetic algorithm is
+the best in this case. In the literature there can be found many references
+about genetic algorithms and its practical parallel implementations
+\cite{bib2}, \cite{bib8}, \cite{bib9}, \cite{bib17}. 
+
+It this thesis there were only the basic experiments carried out mainly to
+familiarize with the problem and check the advantages of parallel genetic
+algorithm realization against simple sequential counterpart. In the future it is strongly recommended to
+perform more precise experiment to fully understand behaviour of parallel
+algorithm. The main goal of the future work would be a proposal of universal 
+algorithm settings, depending on available
+resources and problem type. Problems to reconsider:
+\begin{itemize}
+	\item Use $\mathcal{PGA}$ to solve practical problem. Here, there were used
+		test bench functions only to check the accuracy of algorithm solution, but it
+		would be great to use it for such problems as: Salesman travelling problem or job scheduling
+		problem and then measure possible speedup.
+	\item Check the efficiency and accuracy of solution when $\mathcal{PGA}$ is
+		implemented as an island model on many real processor units which would require
+		creation of LAN network between CPUs. Additional experiment would check
+		how the communication between nodes on the LAN affects the final results
+	\item Implement library which could be used to automatically deploy task on
+		available processors. It would be resemble to well-known solutions such
+		as pvm(parallel virtual machine) or mpi(message protocol
+		interface)\cite{bib13},\cite{bib23}, but with the ability to run
+		load balancing. It would be strongly recommended in cluster
+		environment were each node can be occupied by task from different
+		problem. 
+	\item Different configuration parameters of parallel genetic algorithm. In this
+		paper there were only presented results from island type of
+		$\mathcal{PGA}$, but as it was mentioned in paragraph \ref{cha:MultiprocessorTaxonomy}
+		there are many types depending on available resources and problem
+		nature. Future experiments would take into account three configurations
+		\begin{enumerate}
+			\item Master-slave, when each slaves synchronizes with the master and
+				processes evaluation according to master's command
+			\item Master-slave, when slaves are only responsible for function
+				evaluation. Every generation master sends genomes to its slaves
+				and they return fitness evaluation. 
+			\item Island model, with various topology.
+		\end{enumerate}
+	\item Apply some kind of hybridization into implemented program
+\end{itemize}
+

@@ -1,15 +1,15 @@
 #!/usr/bin/python
 # -*- coding: utf-8 -*-
 
-from fuzzy_logic_classifier import FuzzyLogicClassifier
-from rough_set_classifier import RoughSetClassifier
+from genetic_fuzzy_logic_classifier import GeneticFuzzyLogicClassifier
+from genetic_rough_sets_classifier import GeneticRoughSetsClassifier
 import logging
 import numpy
 import sys
 
 if __name__ == '__main__':
-    fuzzy_logic_classifier = FuzzyLogicClassifier()
-    rough_set_classifier = RoughSetClassifier()
+    fuzzy_logic_classifier = GeneticFuzzyLogicClassifier()
+    rough_set_classifier = GeneticRoughSetsClassifier()
     
     CROSS_VALIDATION_TYPE = 2
     POPULATION_SIZE = 10
