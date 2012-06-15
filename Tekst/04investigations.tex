@@ -4,11 +4,11 @@ investigations. It is important to describe simulation setup so that in the
 future someone could repeat test or maybe extend the application.
 \label{cha:Simulation_investugations}
 \subsection{Simulation environment}
-When it comes to classification problems there is always a problem of how to
-divide available dataset into training and testing sets. One of the most common
+When it comes to classification task there is always a problem of how to
+divide available dataset into training and testing sets. One of the most common 
 approach to ensure proper classifier evaluation is cross validation (more
-information about cross validation methods can be found in). There are
-different types:
+information about cross validation methods can be found in \cite{bib41}). 
+There are different types:
 \begin{itemize}
     \item \textbf{holdout cross validation}- data set is separated into two sets, called the 
         training set and the testing set. Classifier is trained using the 
@@ -34,8 +34,11 @@ results are reliable each test was repeated 10 times.
 \subsubsection{Impact of granulation step on rough sets efficiency}
 \label{cha:Simulation_reaearch_1}
 The aim of this test was to find out how the discretization of feature space
-affect the classification accuracy. At first the number of intervals for each
-attribute is the same and denoted as $K_l$, where $l \in (1, \ldots, d)$.
+affect the classification accuracy. The number of intervals for each
+attribute was the same and denoted as $K_l$, where $l \in (1, \ldots, q)$.
+Habernam dataset was taken as the input to the system. Dataset was divided into
+training and testing dataset using $4$-fold cross-validation method. The number
+of objects to recognize was equal to 153.
 Results of the simulation are presented in table
 \ref{tab:simulation_research_1} where the notation is as follows:
 \begin{itemize}
@@ -52,20 +55,23 @@ Results of the simulation are presented in table
         respectively
 \end{itemize}
 In the experiment, for every feature the initial step of granulation was
-changed from 4 to 18 while the factor of its increasing $\gamma$  was equal 
+changed from 4 to 18 while the factor of its increasing $\epsilona$  was equal 
 to one.
 
 Analyzing the results of simulation presented in table \ref{tab:simulation_research_1}
-one can see that the quality of the algorithm depends on the step of
+one can see that the quality of the algorithm depends heavily on the step of
 granulation $G$ and better results are obtained rather for small $G$.
-It can be concluded that decreasing the step of granulation causes that the number of 
-decision formulas with the strength equal to zero is growing. The level of
-discretization is correlated with the number of cells in which decision was 
-certain or possible because of predominance of one class. In a situation with a small 
-number of fields there were areas with the same number of object from both class, but 
-small number of void cells. Decreasing the step of granulation results in more fields 
-where decision was certain for one class, but at the same time it was noticeable that 
-the number of areas without representative is increasing.
+It can be concluded that increasing $G$ results in growing the number of rules
+with the strength equal to zero (parameter $V^*$). In the learning phase
+algorithm is unable to find class representatives so classification is 
+impossible and pattern is rejected. The bigger granulation step $G$ is, more
+\textit{certain} or \textit{possible} rules are obtained, but on the other hand
+the number of cells without any representatives is increasing. Generally, it is
+better to keep $V^*$ parameter rather small and correlate its value with $C$
+and $P$ factors. Let notice that for $G=18$ the classification accuracy is very
+poor. The number of \textit{certain} rules is the biggest comparing with other
+cases. The reason for low classification is connected with $V^*$ where 5794
+rules are dummy.
 
 \begin{table}[H]
     \caption{Result of simulation for finding the dependency between
@@ -74,21 +80,21 @@ the number of areas without representative is increasing.
     \begin{tabular}{|c|c|c|c|c|c|c|c|}
         \hline
         $G$ & $O$ & $C/CD$ & $P/PD$ & $V$ & $C^*$ & $P^*$ & $V^*$ \\ \hline \hline
-        4&114&0/0&125/95&28/19&3&7&54 \\ \hline
-        5&114&0/0&121/97&32/17&2&4&119 \\\hline
-        6&114&3/1&65/51&85/62&5&8&203 \\ \hline
-        7&115&0/0&91/74&62/41&3&6&334 \\ \hline
-        8&113&2/1&24/17&127/95&8&9&495 \\ \hline
-        9&114&4/4&59/48&90/62&6&7&716 \\ \hline
-        10&112&36/25&38/32&79/55&12&13&975 \\ \hline
-        11&112&5/2&30/23&118/87&7&9&1315 \\ \hline
-        12&111&49/41&9/4&95/66&19&12&1697 \\ \hline
-        13&109&0/0&13/9&140/100&17&12&2168 \\ \hline
-        14&112&9/6&28/24&116/82&24&14&2706 \\ \hline
-        15&105&30/25&17/4&106/76&27&13&3335 \\ \hline
-        16&108&2/1&20/17&131/90&22&12&4062 \\ \hline
-        17&100&3/1&38/24&112/75&24&17&4872 \\ \hline
-        18&101&2/1&11/8&140/92&25&13&5794 \\ \hline
+        4&95&0/0&125/95&28&3&7&54 \\ \hline
+        5&97&0/0&121/97&32&2&4&119 \\\hline
+        6&52&3/1&65/51&85&5&8&203 \\ \hline
+        7&74&0/0&91/74&62&3&6&334 \\ \hline
+        8&18&2/1&24/17&127&8&9&495 \\ \hline
+        9&52&4/4&59/48&90&6&7&716 \\ \hline
+        10&57&36/25&38/32&79&12&13&975 \\ \hline
+        11&25&5/2&30/23&118&7&9&1315 \\ \hline
+        12&45&49/41&9/4&95&19&12&1697 \\ \hline
+        13&9&0/0&13/9&140&17&12&2168 \\ \hline
+        14&30&9/6&28/24&116&24&14&2706 \\ \hline
+        15&29&30/25&17/4&106&27&13&3335 \\ \hline
+        16&18&2/1&20/17&131&22&12&4062 \\ \hline
+        17&25&3/1&38/24&112&24&17&4872 \\ \hline
+        18&9&2/1&11/8&140&25&13&5794 \\ \hline
     \end{tabular}
     \label{tab:simulation_research_1}
 \end{table}
@@ -97,16 +103,16 @@ the number of areas without representative is increasing.
 efficiency}
 \label{cha:Simulation_reaearch_2}
 In the previous section (\ref{cha:Simulation_reaearch_2}) it was shown that the
-granulation step strongly affect the classification accuracy.
-Greater $G$ implies that we have more certain or possible rule, but on the
-other hand number of patterns without rule covering is increasing. A lot of
-patterns are rejected because no proper rule is found. To improve that
-situation algorithm for modification of decision rules is proposed. More
-details are presented in section
-\ref{cha:Algorithm_construction_rough_set_modification}, but generally when an
-object is rejected from classification $G$ is decreased by $\epsilon=1$ until 
-proper certain for possible solution is found. The same dataset was used as in
-the previous one with the same algorithm settings. Results of classification
+granulation step strongly affects the classification accuracy.
+Greater $G$ implies that we have more \textit{certain} or \textit{possible}
+rules, but on the other the hand number of patterns without rule covering is 
+increasing. A lot of patterns are rejected because no proper rule is found. To improve that
+situation an algorithm for modification of decision rules is proposed. More
+details are presented in section \ref{cha:Algorithm_construction_rough_set_modification}, but generally when an
+object is rejected from classification, current $G$ is decreased by $\epsilon=1$ until 
+\textit{certain} for \textit{possible} rule is found. The same dataset was used as in
+the previous test with the same algorithm settings to show that this approach
+is more efficient comparing with the previous algorithm. Results of classification
 are presented in fig. \ref{fig:Simulation_research_2} for the basic rough
 sets (blue line-BRS) and algorithm with modification of decision rules (orange
 line-MRS).
@@ -119,46 +125,49 @@ line-MRS).
     \label{fig:Simulation_research_2}
 \end{figure}
 
-Looking at fig. \ref{fig:Simulation_research_2} one can observer that
-modification of granulation step $G$ increases the classification accuracy and
-even if the granulation step is changed classification stays almost at the same
-level while in the basic approach the greater $G$ implies worse results.
-Additionally, it is visible that increasing granulation step is not the right
-solution. Even if the number of certain or possible rules is greater the final
-result is worse. Additionally, computational time is longer for greater $G$. In
-this case the optimal $G$ would be 5, but for each problem $G$ should be chosen
-independently because it must reflect how patterns are located in the feature
-space.
+Looking at fig. \ref{fig:Simulation_research_2} one can observe that
+the modification of granulation step $G$ during algorithm execution increases 
+the classification accuracy and even if algorithm is started with different $G$
+the classification stays almost at the same level while in the basic approach the 
+greater $G$ implies worse results. Additionally, it is visible that increasing granulation 
+step is not the right solution. Even if the number of \textit{certain} or
+\textit{possible} rules is greater, the final result is worse. What is more
+important, computational time is longer for greater $G$. In this case the optimal 
+$G$ would be 5, but for each problem $G$ should be chosen independently because 
+it must reflect how patterns are located in the feature space.
 
-The main two disadvantages of proposed rough sets algorithms are as follows:
+The main two disadvantages of proposed rough sets algorithm are as follows:
 \begin{itemize}
-    \item it uses an arbitrary chosen step of granulation. Modification of
+    \item It uses an arbitrary chosen step of granulation. Modification of
         decision rule improves classifier quality, but for the prize of
         computational time. 
-    \item it uses all attributes for creation of decision rules. When the
-        problem is complex decision rules are long and tangled. Additionally,
-        some features are useless in classification, instead of valuable
-        information bring noise to the system and deteriorate final results.
+    \item It uses all attributes for creation of decision rules. When the
+        problem is complex then the decision rules are long and tangled. 
+        Additionally, some features are useless in classification, instead of valuable
+        information they bring noise to the system and deteriorate final results.
 \end{itemize}
 
 \subsubsection{Impact of number of membership functions on genetic fuzzy logic algorithm efficiency}
 \label{cha:Simulation_reaearch_3}
+\paragraph{Example of rule generation}
+
 In this section the results of fuzzy logic classifier simulation are presented.
 The goal is to show that proposed algorithm construction is correct and gives
 satisfactory results. 
 
 At first, let remind what are the requirements for fuzzy logic classifier in
-this thesis. As the input we have dataset without no expert knowledge of how to
-appropriately divide feature space into fuzzy sets, how many membership
-functions we need. The goal is to minimal rule set with the possible highest
+this thesis. For the input it is provided a dataset without no expert knowledge 
+of how to appropriately divide the feature space into fuzzy sets, and how many membership
+functions are need. The goal is to find minimal rule set with the possible highest
 classification accuracy. 
 
 As the first step let present how fuzzy logic classifier deals with pattern
-recognition and what is the minimal rule set for exemplary dataset which is
-iris dataset with four attributes. At the beginning each feature was divided
-into 14 membership functions in the same way as presented in fig. \ref{fig:fuzzy_example}
-The final rule set which was able to classify 32 out of 34 testing pattern is
-presented in fig. \ref{fig:fuzzy_result}:
+recognition and what is the minimal rule set for exemplary Iris dataset. 
+At the beginning each feature is divided into 14 membership functions in the same way as 
+presented in fig. \ref{fig:fuzzy_example} plus one linguistic variable $DON'T\; USE$. 
+The final rule set which was able to classify 32 out of 34 testing patterns is
+presented in fig. \ref{fig:fuzzy_result}. From 10 test the following
+rule construction occurred 7 out of 10 times.
 \begin{figure}[H]
     \begin{center}
         \includegraphics[width=\textwidth]{fig/fuzzy_result.png}
@@ -171,6 +180,8 @@ omitted from classification, but the results of classification are quite
 satisfactory. Additionally, only five rules were needed for correct pattern
 recognition.
 
+\paragraph{Classification accuracy and the number of membership
+functions}
 The goal of the second part of this test was to check how the number of initial
 membership functions affects the final result of classification. There is a
 question if it is better to use many small membership functions (for example 14
@@ -180,15 +191,18 @@ much greater than in the second approach so many rules must be created to obtain
 reliable results. Additionally, in most recognition problems we do not need so precise
 feature partitions because it can happen that for many created regions we
 cannot find proper representatives in the training set. 
-Parameters for genetic algorithms are the same as presented
-in table \ref{tab:fuzzy_genetic_parameters}. In each simulation the level of
-partitions $k$ was changed from $7$ to $2$. Few words of explanation should be
+
+Parameters for genetic algorithms are the same as presented in table \ref{tab:fuzzy_genetic_parameters}. 
+In each simulation the level of partitions $k$ was changed from $7$ to $2$. Few words of explanation should be
 written about how $k$ determines the number of membership functions $MF$ for each
 attribute. This number is described by eq. (\ref{eq:fuzzy_function_number})
 \begin{equation}
     MF = \sum\limits_1^k (n + 1) + 1
     \label{eq:fuzzy_function_number}
 \end{equation}
+Wine dataset was used as the input to the system. After dividing the set into
+three sets(the first one for genetic algorithm, the second and the third for
+fuzzy logic training and testing) 45 patterns were used for classification. 
 
 \begin{figure}[H]
     \begin{center}
@@ -199,11 +213,11 @@ attribute. This number is described by eq. (\ref{eq:fuzzy_function_number})
     \label{fig:fuzzy_functions}
 \end{figure}
 Looking at the fig. \ref{fig:fuzzy_functions} one can conclude that it is not
-worth increasing the number of membership functions ($MF$) per attribute
-because for greater $MF$ algorithm obtained worse results in case of
-classification accuracy. From conducted simulations it was concluded that the
-optimal $k$ value is 4. If not implicitly stated, $k=4$ will be used in next
-tests.
+worth constantly increasing the number of membership functions ($MF$) per attribute
+because for greater $MF$ algorithm obtains worse results. From conducted simulations 
+it was concluded that the optimal $k$ value is 4 which leads to $14$
+different membership functions per attribute. If not implicitly stated, $k=4$
+will be always used in next tests.
 
 \subsubsection{Impact of granulation step $G$ on genetic rough sets algorithm efficiency}
 \label{cha:Simulation_reaearch_4}

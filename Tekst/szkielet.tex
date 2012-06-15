@@ -100,8 +100,14 @@ urlcolor=black
 \renewcommand{\thefigure}{\arabic{section}.\arabic{figure}}
 \renewcommand{\theequation}{\arabic{section}.\arabic{equation}}
 \let\stdsection\section
-\renewcommand\section{\setcounter{figure}{0}\setcounter{equation}{0}\setcounter{table}{0}\setcounter{lstlisting}{0}\stdsection}
-
+\renewcommand\section{\setcounter{secnumdepth}{5}\setcounter{figure}{0}\setcounter{equation}{0}\setcounter{table}{0}\setcounter{lstlisting}{0}\stdsection}
+\makeatletter
+\renewcommand\paragraph{%
+   \@startsection{paragraph}{4}{0mm}%
+      {-\baselineskip}%
+      {.5\baselineskip}%
+      {\normalfont\normalsize\bfseries}}
+\makeatother
 %numerowanie tabel
 \renewcommand{\thetable}{\arabic{section}.\arabic{table}}
 

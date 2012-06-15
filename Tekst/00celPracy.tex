@@ -20,43 +20,45 @@ Because simple approaches failed in more complicated problem, scientist tried to
 algorithms for dimensionality reduction and merge abilities of single
 classifier into combined one. This improved the quality of classification 
 significantly, but until then no one has managed to invent such a classifier 
-that will make no mistakes.
+that will never make no mistakes.
 
 This thesis touches the broad topic of pattern recognition task which is 
 very difficult and demanding problem in every aspect of science. Generally, 
 pattern classification is about assigning label to an unknown object based 
-on the available knowledge. It can be compared to the capability of human 
-brain which is able to put certain scenario into context and identify 
-distinguishable object components. The whole process of classification can 
-be broken down into few parts and each phase has a significant impact on the
-final results (more detailed description will be presented in \ref{cha:pattern
-recognition}.
+on the available knowledge coming from training dataset or expert experience.
+This process be compared to the capability of human brain which is able to put 
+certain scenario into context and identify distinguishable object components. 
+The whole process of classification can be broken down into few parts and each 
+phase has a significant impact on the final results (more detailed description
+will be presented in section~\ref{cha:Introduction}).
 
 \subsection{Main goals of the  thesis}
 This thesis concerns the problem of pattern recognition. As it was previously
 said, in the literature one can find many algorithms used for object
-classification, while here the rough sets and fuzzy logic algorithms are used 
-and investigated. General purpose of this thesis is to propose hybrid
-classifier using the power of fuzzy logic and rough sets. First of all the
-mathematical background of these algorithms will be presented and later
-simulation investigation will be carried out to prove the usefulness of
-proposed fusion. It should be noted that for the simulation purposes author
+classification, while here the rough sets, fuzzy logic and genetic algorithms are used 
+and investigated. The general purpose of this thesis is to propose a hybrid
+classifier using the power of fuzzy logic and rough sets.
+
+First of all the mathematical background and basic properties of these algorithms 
+will be presented and later simulation investigation will be carried out to prove 
+the usefulness of proposed fusion. It should be noted that for the simulation purposes author
 implemented basic fuzzy logic, rough sets algorithms and created a hybrid
 classifier.
 
 This thesis is a continuation of work in the field of pattern recognition.
-The results of previous experiments can be found in \cite{bib1}, \cite{bib2}. 
+The results of previous experiments can be found in \cite{bib34}, \cite{bib35}. 
 The aim of this paper is to collect all experiments scenarios in one place and draw
-conclusions. It is meant to show the steps of constructing advanced hybrid
+conclusions. It is meant to show the steps of how to construct an advanced hybrid
 classifier from the basic algorithms. At first, the basic properties of rough
-sets algorithm is checked in simulations, later the algorithm for 
+sets algorithm are checked in simulations, later the algorithm for 
 modification decision rules is introduced and at the end as the final point
-hybridization of algorithms is proposed.
+the hybridization of algorithms is proposed using fuzzy logic, rough sets and
+genetic algorithm.
 
 At the end of this section, the experiment environment should be characterized in
 few words. Given is the problem of pattern recognition (classification): in
 this thesis datasets from $UCI$ Repository will be used (described in section
-\ref{cha:experiment}. Those datasets are broadly available and everyone in the
+\ref{cha:ExperimentAnalysis}). Those datasets are broadly available and everyone in the
 future would be able to repeat the simulation investigation and compare the
 results with those presented in this paper. To find is the algorithm classification accuracy on the given dataset.
 Figure \ref{fig:input_output} shows the general schematic of the simulation
@@ -70,7 +72,7 @@ environment.
     \label{fig:input_output}
 \end{figure}
 
-\subsection{Scope of this project}
+\subsection{Scope of this project} 
 This paper comprises of two parts. In the first, the review of
 literature and the basic notation used in the whole paper is presented. Sections
 \ref{cha:Introduction} is the source of the basic
@@ -80,9 +82,9 @@ part shows the algorithm construction steps using pseudo-code.
 
 The second part, which is the main point of this thesis, presents experiments analysis.
 Paragraph \ref{cha:ExperimentAnalysis} describes the experiment environment
-setting and program written in $\mathcal{C++}$ to simulate standard sequential genetic
-algorithm and its parallel counterparts. Results with comments are placed in
-section \ref{cha:investigation}. Plans for the future work and general
-conclusion are placed in sections \ref{cha:FutureWork}, \ref{cha:Summary}
-respectively. 
+setting and program written in \textit{Python} to simulate all implemented
+algorithms.  Results with comments are placed in
+section \ref{cha:Simulation_investugations}. General
+conclusions and plans for the future work are placed in sections
+\ref{cha:Summary}, \ref{cha:FutureWork}, respectively. 
 

@@ -4,27 +4,29 @@
 This section starts the second part of this thesis. In the first, algorithms
 were presented in case of construction and their properties.
 
-For the simulation purposes algorithm were written:
+For the simulation purposes the following algorithms have been implemented:
 \begin{enumerate}
     \item Basic Rough sets algorithm
-    \item Rough sets algorithm with modification of granulation step
+    \item Rough sets algorithm with modification of decision rules basing on
+        the granulation step $G$
     \item Fuzzy logic algorithm with genetic approach for rule construction
     \item Hybrid algorithm consisting of:
         \begin{itemize}
             \item Rough sets algorithm with genetic approach for finding the
-                optimal partition in feature space
-            \item Fuzzy logic algorithm (the same as in point 3)
+                optimal partition in feature space and attribute reduction 
+            \item Fuzzy logic algorithm with genetic approach for constructing
+                decision rules
         \end{itemize}
 \end{enumerate}
 
 \subsection{Datasets}
 \label{cha:Datasets}
-To perform all the experiment datasets from \textit{UCI} repository were used.
+To perform all the experiments, testing datasets from \textit{UCI} repository were used \cite{bib47}.
 This approach is commonly used in the literature because ensures that someone
-in the future would be able to retake the tests and compare the results. The
-main goal in choosing an appropriate datasets was to ensure diversity and test
-algorithms with complicated and complex problems. Below each dataset is
-described in more details:
+in the future would be able to retake the tests and compare the results. 
+The main motivation in choosing those datasets was to ensure diversity and test
+algorithms with complicated and complex problems. Below each dataset is shortly
+described:
 \begin{itemize}
     \item Dataset name: Haberman
         \begin{itemize} 
@@ -100,35 +102,31 @@ described in more details:
 \subsection{Efficiency indicators}
 \label{cha:indicators}
 To evaluate effectiveness of algorithm it has to be consistent approach used in
-all experiments and additionally the a~priori knowledge about each dataset must
+all experiments and additionally a~priori knowledge about each dataset must
 be know. By a-priori knowledge one should understand the label of class for
-each pattern. Below, there will be listed methods of algorithm fitness scoring
+each pattern. Below, there are listed methods of algorithm fitness scoring:
 \begin{itemize}
-	\item An absolute error which is the distance between the solution found by
-		algorithm and known a~priori global minimum. There are distinguished
-		three variants of this indicator
+	\item Classification accuracy $CA$
 		\begin{itemize}
 			\item The best value from $n$ probes 
 				\begin{equation}
-					B=MIN\left | f^{*}(\underline{x})-f(\underline{x}) \right |
+                    B=max\{CA_1, \ldots, CA_n\}
 					\label{min1}
 				\end{equation}
 			\item The worst value from $n$ probes 
 				\begin{equation}
-					W=MAX\left | f^{*}(\underline{x})-f(\underline{x}) \right |
+                    W=min\{CA_1, \ldots, CA_n\}
 					\label{min3}
 				\end{equation}
 			\item The average value from $n$ probes
 				\begin{equation}
-					A=\frac{1}{n}\sum_{n=1}^n\left | f^{*}(\underline{x})-f(\underline{x}) \right |
+                    A=\frac{1}{n}\cdot\sum\limits_{i=1}^{n} (CA_i)
 					\label{min2}
 				\end{equation}
 		\end{itemize}
-		where $f^{*}(\underline{x})$ is the value found by algorithm and
-		$f(\underline{x})$ is a~priori global minimum.
 	\item Error variance from $n$ simulations 
 		\begin{equation}
-			\sigma^2=\frac{1}{n-1}\sum_{i=1}^n\left[A-B\right]^2
+			\sigma^2=\frac{1}{n-1}\sum\limits_{i=1}^n(AC_i-A)^2
 			\label{min4}
 		\end{equation}
 \end{itemize}
@@ -141,8 +139,8 @@ algorithm efficiency indicators.
 
 Program was tested on Linux platform with Intel Pentium Dual Core 2.4 GHz, 2GB
 memory. To run the program one has to install \textit{PYTHON} environment at
-least in version 2.6. Because implemented algorithms have many setting parameter, 
+least in version 2.6. Because implemented algorithms have many setting parameters, 
 they were written to the file so that easily change their value in testing procedure. 
-Output results(efficiency indicators) were written to \textsc{csv} for further
+Output results(efficiency indicators) are written to \textsc{csv} for further
 processing. The most preferable environment for running this project is
 Eclipse, free to download from the Internet.

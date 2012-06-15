@@ -21,7 +21,85 @@ rough sets reasoning were connected. Original algorithm presented in this
 thesis used genetic algorithm for finding the reduct of attributes and the
 optimal granulation step for each attribute. Conducted test confirmed that
 proposed algorithm can compete with other classifiers and obtains reliable
-results. Next paragraph will shortly will shortly summarize each research. 
+results. Next paragraphs will shortly summarize each research. 
 
+The main goal of the first simulation was to check how the granulation step $G$
+affects the classification accuracy. The efficiency of rough sets algorithm is
+determined by the number of certain and possible rules. Ideally, it would be
+great that all rules are certain and we have 100\% coverage in the rule set.
+Conveyed simulations confirmed the thesis that granulation step has the
+greatest impact in the classification results. This parameter must be chosen
+very carefully and few factors must be taken into account:
+\begin{itemize}
+    \item the complexity of the problem, how many attributes are used to
+        describe the pattern
+    \item how the granulation intervals are generated, equally for all
+        attributes or independently
+\end{itemize}
+Another important conclusion from the first test concerns the optimal value for
+$G$. It is not worth increasing $G$, good results of classification are
+obtained rather for small numbers such as five or six. As the evidence analyze
+table \ref{tab:simulation_research_1} where for $G=18$ classification accuracy
+was very poor. Increasing $G$ ensures that the number of certain decision rules
+is greater, but on the other hand there are more dummy rules (rule with
+strength equal to 0). 
 
+Taking into account the fact that the classification accuracy of algorithm
+presented in section \label{cha:Simulation_reaearch_1} were not satisfactory
+recursive rough sets algorithm was proposed to tackle with situation where for
+particular granulation $G$ there is no appropriate rule in the rule sets. From
+simulations it can be concluded that approach improved the classification
+significantly and what is more important, thanks to the modification of
+decision rule algorithm was affected by the granulation step $G$. The stability
+of classifier is the biggest advantage, but on the other hand the main drawback
+is connected with algorithm execution. In situation when pattern is rejected
+from classification algorithm is recursively invoked until a proper rule is
+found. This requires much more time than the basic approach without rule
+modification.  For simple classification tasks this is not a problem, but for
+more complex datasets algorithm computation is much longer.
+
+This thesis concerns the problem of classifying unknown patterns using rough
+sets approach and fuzzy logic reasoning. To successfully accomplish this task
+new algorithm of fuzzy logic had to be implemented. In the literature there are
+many examples of fuzzy logic controllers or classifiers. In this paper genetic
+based fuzzy logic classifier was implemented. The main advantages of proposed
+solution are as follows:
+\begin{itemize}
+    \item it manages to construct decision rules without any expert knowledge.
+        It means that the input to the system constitutes only raw data from
+        dataset without additional information about the number of membership
+        functions or their location in the feature space. As the output we
+        obtain rule set with the highest classification rate. 
+    \item it is able to apply attribute reduction
+\end{itemize}
+In section \label{cha:Simulation_reaearch_3} it was shown that proposed fuzzy
+classifier was able to classify 32 out of 34 testing patterns from iris dataset
+five rules (presented in fig. \ref{fig:fuzzy_result}).
+
+As fuzzy logic was finished and genetic algorithm turned out to be a good
+solution it was decided to connect genetic algorithm and rough sets and check
+how this fusion works. The main goal of the heuristic approach was to find an
+optimal granulation for each feature independently and try to remove those
+attributes that are useless in classification. Conducted tests proved that
+this direction of researches is good and gives promising results. Especially it
+was visible for high dimensional datasets where the classification rate for
+basic rough sets and rough sets with modification of decision rules was very
+low. 
+
+The last part in this master thesis consisted in constructing a multistage 
+hybrid classifier connecting implemented by the author genetic rough sets
+algorithm and genetic based fuzzy logic algorithm. There are many types and
+methods of classifier fusion, but in this paper two-phased sequential
+classification was proposed. Comparison with different well-known classifiers
+gave optimistic results, but of course more profound test are required to fully
+prove its usefulness.
 \subsection{General conclusions}
+To sum up, this paper presents the result of work in the field of pattern
+recognition and classification. It reviewed some of the most representative 
+publications connected with rough sets, fuzzy logic and genetic algorithms.
+Here an original construction of hybrid classifier has been presented. Attached
+results are very promising and encourage for further more complex
+investigations. Generally, pattern recognition is not an easy task and many
+factors and parameters must be taken into account. Until now, no-one has
+managed to invent the classifier with 100\% accuracy. Even if for one dataset
+results are satisfactory, but for others classification will be worse.

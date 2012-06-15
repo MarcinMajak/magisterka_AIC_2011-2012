@@ -1,10 +1,10 @@
 \select@language {english}
 \select@language {polish}
 \select@language {english}
-\contentsline {table}{\numberline {2.1}{\ignorespaces Example dataset showing healthy patients and suffering from flu}}{13}{table.1}
-\contentsline {table}{\numberline {2.2}{\ignorespaces Table describing how person is tall by the fuzzy logic linguistic variable}}{15}{table.2}
-\contentsline {table}{\numberline {3.1}{\ignorespaces Parameter settings for genetic algorithm used in fuzzy logic}}{28}{table.1}
-\contentsline {table}{\numberline {3.2}{\ignorespaces Parameter settings for genetic algorithm used in rough sets}}{30}{table.2}
-\contentsline {table}{\numberline {5.1}{\ignorespaces Result of simulation for finding the dependency between granulation step and classification accuracy}}{37}{table.1}
-\contentsline {table}{\numberline {5.2}{\ignorespaces Accuracy of classification for genetic rough sets and basic rough sets algorithms for different datasets}}{41}{table.2}
-\contentsline {table}{\numberline {5.3}{\ignorespaces Comparison of hybrid rough fuzzy classifier with other common classifiers}}{43}{table.3}
+\contentsline {table}{\numberline {2.1}{\ignorespaces Example dataset showing healthy patients and suffering from flu}}{14}{table.1}
+\contentsline {table}{\numberline {2.2}{\ignorespaces Table describing how person is tall by the fuzzy logic linguistic variable}}{17}{table.2}
+\contentsline {table}{\numberline {3.1}{\ignorespaces Parameter settings for genetic algorithm used in fuzzy logic}}{33}{table.1}
+\contentsline {table}{\numberline {3.2}{\ignorespaces Parameter settings for genetic algorithm used in rough sets}}{35}{table.2}
+\contentsline {table}{\numberline {5.1}{\ignorespaces Result of simulation for finding the dependency between granulation step and classification accuracy}}{42}{table.1}
+\contentsline {table}{\numberline {5.2}{\ignorespaces Accuracy of classification for genetic rough sets and basic rough sets algorithms for different datasets}}{46}{table.2}
+\contentsline {table}{\numberline {5.3}{\ignorespaces Comparison of hybrid rough fuzzy classifier with other common classifiers}}{48}{table.3}

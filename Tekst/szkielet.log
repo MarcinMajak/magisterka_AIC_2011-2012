@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-1.40.10 (TeX Live 2009/Debian) (format=pdflatex 2011.8.3)  12 JUN 2012 01:22
+This is pdfTeX, Version 3.1415926-1.40.10 (TeX Live 2009/Debian) (format=pdflatex 2011.8.3)  15 JUN 2012 08:34
 entering extended mode
  %&-line parsing enabled.
 **szkielet.tex
@@ -778,39 +778,42 @@ l.18 \select@language{polish}
                              
 ? 
 
-LaTeX Warning: Label `cha:Rough_sets_indicators' multiply defined.
+LaTeX Warning: Label `eq:fuzzy_function' multiply defined.
 
 
-LaTeX Warning: Label `cha:Algorithm_construction_rough_set' multiply defined.
+LaTeX Warning: Label `cha:Simulation_reaearch_1' multiply defined.
 
 
-LaTeX Warning: Label `bib6' multiply defined.
+LaTeX Warning: Label `cha:Simulation_reaearch_3' multiply defined.
+
+
+LaTeX Warning: Label `bib27' multiply defined.
 
 )
 \openout1 = `szkielet.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 130.
-LaTeX Font Info:    ... okay on input line 130.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 130.
-LaTeX Font Info:    ... okay on input line 130.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 130.
-LaTeX Font Info:    ... okay on input line 130.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 130.
-LaTeX Font Info:    ... okay on input line 130.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 130.
-LaTeX Font Info:    ... okay on input line 130.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 130.
-LaTeX Font Info:    ... okay on input line 130.
-LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 130.
-LaTeX Font Info:    ... okay on input line 130.
-LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 130.
-LaTeX Font Info:    Try loading font information for TS1+cmr on input line 130.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 136.
+LaTeX Font Info:    ... okay on input line 136.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 136.
+LaTeX Font Info:    ... okay on input line 136.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 136.
+LaTeX Font Info:    ... okay on input line 136.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 136.
+LaTeX Font Info:    ... okay on input line 136.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 136.
+LaTeX Font Info:    ... okay on input line 136.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 136.
+LaTeX Font Info:    ... okay on input line 136.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 136.
+LaTeX Font Info:    ... okay on input line 136.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 136.
+LaTeX Font Info:    Try loading font information for TS1+cmr on input line 136.
 
  (/usr/share/texmf-texlive/tex/latex/base/ts1cmr.fd
 File: ts1cmr.fd 1999/05/25 v2.5h Standard LaTeX font definitions
 )
-LaTeX Font Info:    ... okay on input line 130.
-LaTeX Font Info:    Try loading font information for T1+ppl on input line 130.
+LaTeX Font Info:    ... okay on input line 136.
+LaTeX Font Info:    Try loading font information for T1+ppl on input line 136.
 
 (/usr/share/texmf-texlive/tex/latex/psnfss/t1ppl.fd
 File: t1ppl.fd 2001/06/04 font definitions for T1/ppl.
@@ -835,7 +838,7 @@ File: color.cfg 2007/01/18 v1.5 color configuration of teTeX/TeXLive
 )
 Package color Info: Driver file: pdftex.def on input line 130.
 )
-Package hyperref Info: Link coloring ON on input line 130.
+Package hyperref Info: Link coloring ON on input line 136.
 
 (/usr/share/texmf-texlive/tex/latex/hyperref/nameref.sty
 Package: nameref 2007/05/29 v2.31 Cross-referencing by name of section
@@ -845,8 +848,8 @@ Package: refcount 2008/08/11 v3.1 Data extraction from references (HO)
 )
 \c@section@level=\count134
 )
-LaTeX Info: Redefining \ref on input line 130.
-LaTeX Info: Redefining \pageref on input line 130.
+LaTeX Info: Redefining \ref on input line 136.
+LaTeX Info: Redefining \pageref on input line 136.
  (./szkielet.out)
 (./szkielet.out)
 \@outlinefile=\write3
@@ -901,12 +904,12 @@ l.81 \newpage
 the same identifier (name{page.2}) has been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.146 \newpage
+l.152 \newpage
                [2
 
 ]
 LaTeX Font Info:    Font shape `T1/ppl/bx/n' in size <17.28> not available
-(Font)              Font shape `T1/ppl/b/n' tried instead on input line 147.
+(Font)              Font shape `T1/ppl/b/n' tried instead on input line 153.
  (./szkielet.toc
 
 ! Package babel Error: You haven't loaded the option polish yet.
@@ -927,121 +930,136 @@ LaTeX Font Info:    Font shape `T1/ppl/bx/n' in size <12> not available
  [4] (./00celPracy.tex
 LaTeX Font Info:    Font shape `T1/ppl/bx/n' in size <14.4> not available
 (Font)              Font shape `T1/ppl/b/n' tried instead on input line 2.
-
-
-LaTeX Warning: Reference `cha:pattern recognition' on page 5 undefined on input
- line 33.
-
-[5]
-
-LaTeX Warning: Reference `cha:experiment' on page 6 undefined on input line 59.
-
-
-<fig/schema.png, id=305, 642.4pt x 401.5pt>
+ [5] <fig/schema.png, id=307, 642.4pt x 401.5pt>
 File: fig/schema.png Graphic file (type png)
- <use fig/schema.png> [6 <./fig/schema.png>]
 
-LaTeX Warning: Reference `cha:investigation' on page 7 undefined on input line 
-85.
+<use fig/schema.png> [6 <./fig/schema.png>]) (./01wstep.tex
+LaTeX Font Info:    Try loading font information for TS1+ppl on input line 24.
 
-) (./01wstep.tex
-LaTeX Font Info:    Try loading font information for TS1+ppl on input line 23.
- (/usr/share/texmf-texlive/tex/latex/psnfss/ts1ppl.fd
+(/usr/share/texmf-texlive/tex/latex/psnfss/ts1ppl.fd
 File: ts1ppl.fd 2001/06/04 font definitions for TS1/ppl.
-) [7]
-[8] [9] [10]pdfTeX warning (ext4): destination with the same identifier (name{f
-igure.1}) has been already used, duplicate ignored
+) [7] [8] [9] [10]pdfTeX warning (ext4): destination with the same identifier (
+name{figure.1}) has been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.175 \begin{figure}[H]
-                        <fig/rough_set.png, id=355, 144.54pt x 139.2402pt>
+l.209 \begin{figure}[H]
+                        <fig/rough_set.png, id=375, 144.54pt x 139.2402pt>
 File: fig/rough_set.png Graphic file (type png)
 
 <use fig/rough_set.png> [11 <./fig/rough_set.png>] [12] [13]
-Overfull \hbox (31.59772pt too wide) in paragraph at lines 294--308
+Overfull \hbox (31.59772pt too wide) in paragraph at lines 347--361
 [][] 
  []
 
-[14] [15]
+[14] [15] <fig/seasons.png, id=427, 341.275pt x 200.75pt>
+File: fig/seasons.png Graphic file (type png)
 
-LaTeX Warning: Citation `bib20' on page 16 undefined on input line 405.
+<use fig/seasons.png> <fig/fuzzy_tall.png, id=429, 389.20406pt x 184.43906pt>
+File: fig/fuzzy_tall.png Graphic file (type png)
 
-<fig/fuzzy_example_1.png, id=396, 1831.84375pt x 361.35pt>
+<use fig/fuzzy_tall.png> [16 <./fig/seasons.png>] [17 <./fig/fuzzy_tall.png>]
+<fig/fuzzy_steps.png, id=458, 616.78706pt x 109.65103pt>
+File: fig/fuzzy_steps.png Graphic file (type png)
+
+<use fig/fuzzy_steps.png>
+<fig/fuzzy_example_1.png, id=461, 1831.84375pt x 361.35pt>
 File: fig/fuzzy_example_1.png Graphic file (type png)
 
-<use fig/fuzzy_example_1.png> [16 <./fig/fuzzy_example_1.png>]
+<use fig/fuzzy_example_1.png> [18 <./fig/fuzzy_steps.png>]
 ! Undefined control sequence.
 <argument> \sum \nolimit 
                          _{x=a}^{b}\mu _A(\chi )
-l.455 ...    x}{\sum\nolimit_{x=a}^{b}\mu_A(\chi)}
+l.585 ...    x}{\sum\nolimit_{x=a}^{b}\mu_A(\chi)}
                                                   
 ? 
-<fig/fuzzy_centroid.png, id=407, 572.1375pt x 301.125pt>
+[19 <./fig/fuzzy_example_1.png>]
+<fig/fuzzy_centroid.png, id=489, 572.1375pt x 301.125pt>
 File: fig/fuzzy_centroid.png Graphic file (type png)
 
 <use fig/fuzzy_centroid.png>
-Overfull \hbox (48.47063pt too wide) detected at line 470
+Overfull \hbox (48.47063pt too wide) detected at line 600
 \OML/cmm/m/it/12 CO \OT1/cmr/m/n/12 = [] = 69\OML/cmm/m/it/12 :\OT1/cmr/m/n/12 
 3
  []
 
-[17 <./fig/fuzzy_centroid.png>] [18]
-<fig/genetic.png, id=433, 270.25969pt x 502.87875pt>
+[20 <./fig/fuzzy_centroid.png>]
+<fig/michigan.png, id=510, 296.10625pt x 257.96375pt>
+File: fig/michigan.png Graphic file (type png)
+ <use fig/michigan.png>
+[21] <fig/pittsburgh.png, id=528, 365.365pt x 257.96375pt>
+File: fig/pittsburgh.png Graphic file (type png)
+
+<use fig/pittsburgh.png>
+! Extra }, or forgotten \endgroup.
+\@endfloatbox ...pagefalse \outer@nobreak \egroup 
+                                                  \color@endbox 
+l.689         \end{figure}
+                          
+? 
+[22 <./fig/michigan.png (PNG copy)>] [23 <./fig/pittsburgh.png (PNG copy)>]
+<fig/genetic.png, id=553, 270.25969pt x 502.87875pt>
 File: fig/genetic.png Graphic file (type png)
  <use fig/genetic.png>
-[19] [20 <./fig/genetic.png>]
-<fig/hybrid.png, id=457, 860.21375pt x 319.1925pt>
+[24 <./fig/genetic.png>] <fig/hybrid.png, id=573, 860.21375pt x 319.1925pt>
 File: fig/hybrid.png Graphic file (type png)
- <use fig/hybrid.png>)
-(./02algorytmy.tex [21 <./fig/hybrid.png (PNG copy)>] [22] [23]pdfTeX warning (
-ext4): destination with the same identifier (name{figure.1}) has been already u
-sed, duplicate ignored
+
+<use fig/hybrid.png> [25]) (./02algorytmy.tex [26 <./fig/hybrid.png (PNG copy)>
+] [27]pdfTeX warning (ext4): destination with the same identifier (name{figure.
+1}) has been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.92 \begin{figure}[H]
-                       <fig/fuzzy_example.png, id=488, 1003.75pt x 542.025pt>
+l.108 \begin{figure}[H]
+                        <fig/fuzzy_example.png, id=615, 1003.75pt x 542.025pt>
 File: fig/fuzzy_example.png Graphic file (type png)
 
-<use fig/fuzzy_example.png> [24 <./fig/fuzzy_example.png>]
+<use fig/fuzzy_example.png> [28] [29 <./fig/fuzzy_example.png>]
 ! Limit controls must follow a math operator.
-l.144     R_q: C_q = max\limits
-                               _{h=\{1, \ldots, m\}}\{Pr(class\,h|A_q)\}
+l.150     R_r: C_r = max\limits
+                               _{j=\{1, \ldots, m\}}\{Pr(class\,j|A_r)\}
 ? 
-[25]pdfTeX warning (ext4): destination with the same identifier (name{figure.2}
+[30]pdfTeX warning (ext4): destination with the same identifier (name{figure.2}
 ) has been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.218                 \begin{figure}[H]
+l.229                 \begin{figure}[H]
                                        
-<fig/fuzzy_rule.png, id=515, 2007.5pt x 105.39375pt>
+<fig/fuzzy_rule.png, id=657, 2007.5pt x 105.39375pt>
 File: fig/fuzzy_rule.png Graphic file (type png)
  <use fig/fuzzy_rule.png>
-[26]
-Underfull \hbox (badness 1028) in paragraph at lines 256--261
+[31 <./fig/fuzzy_rule.png>]pdfTeX warning (ext4): destination with the same ide
+ntifier (name{figure.3}) has been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.270                 \begin{figure}[H]
+                                       
+<fig/cross_over.png, id=668, 114.4275pt x 116.1138pt>
+File: fig/cross_over.png Graphic file (type png)
+ <use fig/cross_over.png>
+Underfull \hbox (badness 1028) in paragraph at lines 277--282
 []\T1/ppl/m/n/12 In the par-tic-u-lar gen-er-a-tion one chro-mo-some is cho-sen
  ran-domly
  []
 
 
-Underfull \hbox (badness 1371) in paragraph at lines 256--261
+Underfull \hbox (badness 1371) in paragraph at lines 277--282
 \T1/ppl/m/n/12 and later in each al-lele new mem-ber-ship func-tion is taken fr
 om
  []
 
 
-Underfull \hbox (badness 1107) in paragraph at lines 256--261
+Underfull \hbox (badness 1107) in paragraph at lines 277--282
 \T1/ppl/m/n/12 mem-ber-ship func-tion is cho-sen the set of can-di-dates is giv
 en by
  []
 
-[27 <./fig/fuzzy_rule.png>]
-Underfull \hbox (badness 1082) in paragraph at lines 270--274
+[32 <./fig/cross_over.png>]
+Underfull \hbox (badness 1082) in paragraph at lines 292--296
 \T1/ppl/m/n/12 Of course it can hap-pen that for cross-over and mu-ta-tion op-e
 r-a-tor newly-
  []
 
 
-Underfull \hbox (badness 1163) in paragraph at lines 270--274
+Underfull \hbox (badness 1163) in paragraph at lines 292--296
 \T1/ppl/m/n/12 generated in-di-vid-ual will be in-valid (the whole chro-mo-some
  con-tains only
  []
@@ -1050,121 +1068,149 @@ pdfTeX warning (ext4): destination with the same identifier (name{table.1}) has
  been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.277 \begin{table}[H]
-                       [28]
-Underfull \hbox (badness 1803) in paragraph at lines 341--343
+l.299 \begin{table}[H]
+                       [33]
+Underfull \hbox (badness 1803) in paragraph at lines 363--366
 []\T1/ppl/m/n/12 Generate $\OML/cmm/m/it/12 N[]$ \T1/ppl/m/n/12 in-di-vid-u-als
  by ran-domly as-sign-ing value from the set
  []
 
-pdfTeX warning (ext4): destination with the same identifier (name{table.2}) has
- been already used, duplicate ignored
+[34]pdfTeX warning (ext4): destination with the same identifier (name{table.2})
+ has been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.353 \begin{table}[H]
-                       [29]pdfTeX warning (ext4): destination with the same ide
-ntifier (name{figure.3}) has been already used, duplicate ignored
+l.377 \begin{table}[H]
+                      pdfTeX warning (ext4): destination with the same identifi
+er (name{figure.4}) has been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.398 \begin{figure}[H]
-                        <fig/diagram.png, id=552, 643.40375pt x 203.76125pt>
+l.421 \begin{figure}[H]
+                        <fig/diagram.png, id=712, 643.40375pt x 203.76125pt>
 File: fig/diagram.png Graphic file (type png)
 
-<use fig/diagram.png>) [30] [31 <./fig/diagram.png (PNG copy)>]
-(./03environment.tex [32
+<use fig/diagram.png> [35]) [36 <./fig/diagram.png (PNG copy)>]
+(./03environment.tex [37
 
-] [33]
-Underfull \hbox (badness 3068) in paragraph at lines 137--141
+] [38]
+Underfull \hbox (badness 3068) in paragraph at lines 135--139
 []\T1/ppl/m/n/12 To per-form all sim-u-la-tions in this project a pro-gram was 
 writ-ten in
  []
 
-) (./04investigations.tex [34] [35]
-Underfull \hbox (badness 2478) in paragraph at lines 44--46
+) (./04investigations.tex [39] [40]
+Underfull \hbox (badness 2478) in paragraph at lines 47--49
 []$\OML/cmm/m/it/12 C=CD$\T1/ppl/m/n/12 - num-ber of pat-terns for which a cer-
 tain de-ci-sion rules were
  []
 
+! Undefined control sequence.
+<recently read> \epsilona 
+                          
+l.58 ...le the factor of its increasing $\epsilona
+                                                  $  was equal
+? 
 pdfTeX warning (ext4): destination with the same identifier (name{table.1}) has
  been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.70 \begin{table}[H]
-                      [36]pdfTeX warning (ext4): destination with the same iden
+l.76 \begin{table}[H]
+                      [41]pdfTeX warning (ext4): destination with the same iden
 tifier (name{figure.1}) has been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.113 \begin{figure}[H]
-                        <fig/rough_chart.png, id=602, 853.1875pt x 431.6125pt>
+l.119 \begin{figure}[H]
+                        <fig/rough_chart.png, id=769, 853.1875pt x 431.6125pt>
 File: fig/rough_chart.png Graphic file (type png)
 
-<use fig/rough_chart.png> [37] [38 <./fig/rough_chart.png>]pdfTeX warning (ext4
+<use fig/rough_chart.png> [42] [43 <./fig/rough_chart.png>]pdfTeX warning (ext4
 ): destination with the same identifier (name{figure.2}) has been already used,
  duplicate ignored
 <to be read again> 
                    \relax 
-l.162 \begin{figure}[H]
-                        <fig/fuzzy_result.png, id=615, 1806.75pt x 602.25pt>
+l.171 \begin{figure}[H]
+                        <fig/fuzzy_result.png, id=782, 1806.75pt x 602.25pt>
 File: fig/fuzzy_result.png Graphic file (type png)
 
 <use fig/fuzzy_result.png>
+
+! LaTeX Error: There's no line here to end.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.185 \newline
+               \\
+? 
+
+! LaTeX Error: There's no line here to end.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.186 T
+       he goal of the second part of this test was to check how the number o...
+
+? 
 ! Too many }'s.
-l.177 ...resented in fig. \ref{fig:fuzzy_example}}
+l.189 ...resented in fig. \ref{fig:fuzzy_example}}
                                                   ) or only few
 ? 
-[39 <./fig/fuzzy_result.png>]pdfTeX warning (ext4): destination with the same i
+[44 <./fig/fuzzy_result.png>]pdfTeX warning (ext4): destination with the same i
 dentifier (name{figure.3}) has been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.193 \begin{figure}[H]
+l.208 \begin{figure}[H]
                        
-<fig/fuzzy_functions.png, id=624, 853.1875pt x 421.575pt>
+<fig/fuzzy_functions.png, id=793, 853.1875pt x 421.575pt>
 File: fig/fuzzy_functions.png Graphic file (type png)
 
 <use fig/fuzzy_functions.png>
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `math shift' on input line 208.
+(hyperref)                removing `math shift' on input line 223.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `math shift' on input line 208.
+(hyperref)                removing `math shift' on input line 223.
 
-[40 <./fig/fuzzy_functions.png>]pdfTeX warning (ext4): destination with the sam
+[45 <./fig/fuzzy_functions.png>]pdfTeX warning (ext4): destination with the sam
 e identifier (name{table.2}) has been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.240 \begin{table}[H]
-                       [41]pdfTeX warning (ext4): destination with the same ide
+l.255 \begin{table}[H]
+                       [46]pdfTeX warning (ext4): destination with the same ide
 ntifier (name{figure.4}) has been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.283         \begin{figure}[H]
+l.298         \begin{figure}[H]
                                
-<fig/ldac.png, id=645, 1488.56125pt x 1421.31pt>
+<fig/ldac.png, id=813, 1488.56125pt x 1421.31pt>
 File: fig/ldac.png Graphic file (type png)
- <use fig/ldac.png> [42 <./fig/ldac.png>]pdfTeX warning (ext4): destination wit
+ <use fig/ldac.png> [47 <./fig/ldac.png>]pdfTeX warning (ext4): destination wit
 h the same identifier (name{table.3}) has been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.314 \begin{table}[H]
-                      ) [43] (./05conclusions.tex) [44
+l.329 \begin{table}[H]
+                      ) [48] [49] (./05conclusions.tex [50
 
-] (./06future_work.tex
+] [51]) [52]
+(./06future_work.tex
 
-LaTeX Warning: Citation `bib100' on page 45 undefined on input line 29.
+LaTeX Warning: Citation `bib100' on page 53 undefined on input line 29.
 
-) [45
+) [53
 
-] (./bibliography.tex [46
+] (./bibliography.tex [54
 
-pdfTeX warning (ext4): destination with the same identifier (name{cite.bib6}) h
-as been already used, duplicate ignored
+] [55] [56pdfTeX warning (ext4): destination with the same identifier (name{cit
+e.bib27}) has been already used, duplicate ignored
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
                                                   \fi \fi 
-l.67 
-     ] [47] (./szkielet.lof
+l.159 
+      ] [57] [58] (./szkielet.lof
 
 ! Package babel Error: You haven't loaded the option polish yet.
 
@@ -1190,11 +1236,11 @@ Type  H <return>  for immediate help.
 l.2 \select@language {polish}
                              
 ? 
-)
+[59])
 \tf@lot=\write6
 \openout6 = `szkielet.lot'.
 
-) [48] (./appendixA.tex) [49
+) [60] (./appendixA.tex) [61
 
 ] (./szkielet.aux
 
@@ -1216,13 +1262,13 @@ LaTeX Warning: There were multiply-defined labels.
 
  ) 
 Here is how much of TeX's memory you used:
- 8504 strings out of 495026
- 117422 string characters out of 1181803
+ 8652 strings out of 495026
+ 119247 string characters out of 1181803
  220727 words of memory out of 3000000
- 11223 multiletter control sequences out of 15000+50000
+ 11298 multiletter control sequences out of 15000+50000
  32872 words of font info for 57 fonts, out of 3000000 for 9000
  48 hyphenation exceptions out of 8191
- 38i,12n,43p,313b,463s stack positions out of 5000i,500n,10000p,200000b,50000s
+ 38i,12n,43p,313b,461s stack positions out of 5000i,500n,10000p,200000b,50000s
 {/usr/share/texmf-texlive/fonts/enc/dvips/base/8r.enc}</usr/share/texmf-texli
 ve/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/share/texmf-texlive/fonts/ty
 pe1/public/amsfonts/cm/cmmi12.pfb></usr/share/texmf-texlive/fonts/type1/public/
@@ -1234,9 +1280,9 @@ nts/type1/public/amsfonts/cm/cmsy10.pfb></usr/share/texmf-texlive/fonts/type1/p
 ublic/amsfonts/cm/cmsy8.pfb></usr/share/texmf-texlive/fonts/type1/urw/palatino/
 uplb8a.pfb></usr/share/texmf-texlive/fonts/type1/urw/palatino/uplr8a.pfb></usr/
 share/texmf-texlive/fonts/type1/urw/palatino/uplri8a.pfb>
-Output written on szkielet.pdf (51 pages, 1021564 bytes).
+Output written on szkielet.pdf (63 pages, 1123506 bytes).
 PDF statistics:
- 819 PDF objects out of 1000 (max. 8388607)
- 221 named destinations out of 1000 (max. 500000)
- 490 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 1032 PDF objects out of 1200 (max. 8388607)
+ 288 named destinations out of 1000 (max. 500000)
+ 520 words of extra memory for PDF output out of 10000 (max. 10000000)
 
