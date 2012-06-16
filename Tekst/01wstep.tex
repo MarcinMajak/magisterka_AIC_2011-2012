@@ -281,24 +281,6 @@ we can define four types of data vagueness \cite{bib40}:
         X$ is totally $I_P$-indefinable. It means that we are unable to decide
         for any element from $U$ if it belongs to $X$ or $-X$ using $I_P$
 \end{itemize}
-\subsubsection{Attribute reduction }
-\label{cha:Rough_set_attribute_reduction}
-Many problem are complex and multidimensional. For example Sonar dataset from
-\textit{UCI} Repository has 60 attributes describing a single pattern. 
-Usually we hope to recognize pattern in a relatively
-lower dimensional to reduce cost in measuring and processing information and
-enhance the interpretability of learned models. Feature selection or reduction 
-is done for classifiers to remove the noise and superfluous data. Generally,
-this is not an easy task and requires a lot of computation. 
-
-
-A reduct is a set of attributes that ensures the same classification of
-elements from $U$ as the rudimentary set of attributes. More than one reduct
-can exist for one information system. The core of attributes is the set of
-attributes from $Q$ that all the attributes are indispensable. An attribute is
-dispensable if the following criterion is fulfilled:
-$$I(P) = I(P-{a}), \, \textrm{for} \, \{a\} \in P \subseteq  Q $$
-
 \subsubsection{Rough sets reasoning from data}
 The category description can be done in two ways:
 \begin{enumerate}
@@ -587,7 +569,7 @@ staffing~$=60$.
         \end{equation}
         \begin{figure}[H]
             \begin{center}
-                \includegraphics[width=0.8\textwidth, height=0.5\textwidth]{fig/fuzzy_centroid.png}
+                \includegraphics[width=0.6\textwidth, height=0.4\textwidth]{fig/fuzzy_centroid.png}
             \end{center}
             \caption{Example of clipping the consequent membership function
             as the result of rule induction}
@@ -690,6 +672,41 @@ There are two main methods of genetic-based machine learning approaches
 \end{enumerate}
 In this thesis the first approach will be implemented which means that
 individual is modelled as a single rule. 
+
+\subsection{Attribute reduction}
+\label{cha:Attribute_reduction}
+Many problem are complex and multidimensional. For example Sonar dataset from
+\textit{UCI} Repository has 60 attributes describing a single pattern. 
+Usually we hope to recognize pattern in a relatively
+lower dimensional to reduce cost in measuring and processing information and
+enhance the interpretability of learned models. Feature selection or reduction 
+is done for classifiers to remove the noise and superfluous data. Generally,
+this is not an easy task and requires a lot of computation \cite{bib1}, \cite{bib5}.  
+
+A reduct is a set of attributes that ensures the same classification of
+elements from $U$ as the rudimentary set of attributes. More than one reduct
+can exist for one information system. The core of attributes is the set of
+attributes from $Q$ that all the attributes are indispensable. An attribute is
+dispensable if the following criterion is fulfilled:
+$$I(P) = I(P-{a}), \, \textrm{for} \, \{a\} \in P \subseteq  Q $$
+
+In the literature there are many examples of how to apply attribute reduction
+\begin{itemize}
+    \item information measures
+    \item distance measures
+    \item dependence measures
+    \item consistency measures
+\end{itemize}
+Different approaches provide various results and their application strictly
+depend on the type of data. One of the best known methods are Principal
+Component Analysis, Factor analysis or optimization and heuristic techniques.
+In the recent years heuristic techniques are very often used because of their
+speed and searching abilities. A lot of work has been devoted for feature
+extraction and this is not the intention to explore this area of research.
+Basing on the results conclusions presented in the literature, in this thesis a 
+genetic algorithm is proposed for extracting valuable features from the set of 
+all attributes \cite{bib27}, \cite{bib48}.
+
 \subsection{Genetic algorithm}
 \label{cha:Genetic_algorithm}
 Genetic Algorithm is an element of evolutionary computation, which is a 

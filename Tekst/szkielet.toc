@@ -13,15 +13,15 @@
 \contentsline {subsubsection}{\numberline {2.3.2}Basic notation}{10}{subsubsection.2.3.2}
 \contentsline {subsubsection}{\numberline {2.3.3}Rough sets indicators}{12}{subsubsection.2.3.3}
 \contentsline {subsubsection}{\numberline {2.3.4}Properties of rough sets}{12}{subsubsection.2.3.4}
-\contentsline {subsubsection}{\numberline {2.3.5}Attribute reduction }{13}{subsubsection.2.3.5}
-\contentsline {subsubsection}{\numberline {2.3.6}Rough sets reasoning from data}{13}{subsubsection.2.3.6}
+\contentsline {subsubsection}{\numberline {2.3.5}Rough sets reasoning from data}{13}{subsubsection.2.3.5}
 \contentsline {subsection}{\numberline {2.4}Fuzzy logic}{15}{subsection.2.4}
 \contentsline {subsubsection}{\numberline {2.4.1}Introduction}{15}{subsubsection.2.4.1}
-\contentsline {subsubsection}{\numberline {2.4.2}Fuzzy reasoning from data}{18}{subsubsection.2.4.2}
+\contentsline {subsubsection}{\numberline {2.4.2}Fuzzy reasoning from data}{17}{subsubsection.2.4.2}
 \contentsline {subsubsection}{\numberline {2.4.3}Genetic-based machine learning approaches}{20}{subsubsection.2.4.3}
-\contentsline {subsection}{\numberline {2.5}Genetic algorithm}{23}{subsection.2.5}
-\contentsline {subsection}{\numberline {2.6}Hybrid classifiers}{25}{subsection.2.6}
-\contentsline {section}{\numberline {3}Algorithm construction}{26}{section.3}
+\contentsline {subsection}{\numberline {2.5}Attribute reduction}{22}{subsection.2.5}
+\contentsline {subsection}{\numberline {2.6}Genetic algorithm}{23}{subsection.2.6}
+\contentsline {subsection}{\numberline {2.7}Hybrid classifiers}{25}{subsection.2.7}
+\contentsline {section}{\numberline {3}Algorithm construction}{25}{section.3}
 \contentsline {subsection}{\numberline {3.1}Rough sets algorithm construction}{26}{subsection.3.1}
 \contentsline {subsection}{\numberline {3.2}Rough sets algorithm construction with modification of decision rules}{27}{subsection.3.2}
 \contentsline {subsection}{\numberline {3.3}Fuzzy logic algorithm construction}{28}{subsection.3.3}
@@ -45,14 +45,15 @@
 \contentsline {subsubsection}{\numberline {5.2.2}Impact of recursive modification of granulation step on rough sets efficiency}{42}{subsubsection.5.2.2}
 \contentsline {subsubsection}{\numberline {5.2.3}Impact of number of membership functions on genetic fuzzy logic algorithm efficiency}{44}{subsubsection.5.2.3}
 \contentsline {paragraph}{\numberline {5.2.3.1}Example of rule generation}{44}{paragraph.5.2.3.1}
-\contentsline {paragraph}{\numberline {5.2.3.2}Classification accuracy and the number of membership functions}{44}{paragraph.5.2.3.2}
-\contentsline {subsubsection}{\numberline {5.2.4}Impact of granulation step $G$ on genetic rough sets algorithm efficiency}{46}{subsubsection.5.2.4}
-\contentsline {subsubsection}{\numberline {5.2.5}Comparison of hybrid classifier with other classifiers}{47}{subsubsection.5.2.5}
-\contentsline {section}{\numberline {6}Summary and conclusions}{50}{section.6}
-\contentsline {subsection}{\numberline {6.1}Conclusions from conducted experiments}{50}{subsection.6.1}
-\contentsline {subsection}{\numberline {6.2}General conclusions}{52}{subsection.6.2}
-\contentsline {section}{\numberline {7}Future work}{53}{section.7}
-\contentsline {section}{Literature}{54}{Item.82}
-\contentsline {section}{List of figures}{54}{Item.82}
-\contentsline {section}{List of tables}{54}{Item.82}
-\contentsline {section}{\numberline {A}Program description}{61}{appendix.A}
+\contentsline {paragraph}{\numberline {5.2.3.2}Classification accuracy and the number of membership functions in fuzzy logic}{44}{paragraph.5.2.3.2}
+\contentsline {paragraph}{\numberline {5.2.3.3}Classifiers performance comparison}{46}{paragraph.5.2.3.3}
+\contentsline {subsubsection}{\numberline {5.2.4}Impact of granulation step $G$ on genetic rough sets algorithm efficiency}{47}{subsubsection.5.2.4}
+\contentsline {subsubsection}{\numberline {5.2.5}Comparison of hybrid classifier with other classifiers}{48}{subsubsection.5.2.5}
+\contentsline {section}{\numberline {6}Summary and conclusions}{51}{section.6}
+\contentsline {subsection}{\numberline {6.1}Conclusions from conducted experiments}{51}{subsection.6.1}
+\contentsline {subsection}{\numberline {6.2}General conclusions}{53}{subsection.6.2}
+\contentsline {section}{\numberline {7}Future work}{54}{section.7}
+\contentsline {section}{Literature}{55}{Item.82}
+\contentsline {section}{List of figures}{55}{Item.82}
+\contentsline {section}{List of tables}{55}{Item.82}
+\contentsline {section}{\numberline {A}Program description}{62}{appendix.A}

@@ -14,7 +14,20 @@ The basic rough sets algorithm with constant step of granulation
 can be summarized in six steps \cite{bib34}, \cite{bib35}:
 \begin{enumerate}
     \item If the attributes are the real numbers then the granulation preprocessing 
-        is needed first. After this step, the value of each attribute is represented 
+        is needed first. To calculate the proper interval eq. (\ref{eq:interval})
+        is used:
+        \begin{equation}
+            v_{pi}^{i} = \frac{f_{i}}{G}\cdot(f_{i, max}-f_{i,min})
+            \label{eq:interval}
+        \end{equation}
+        where $v_{pi}^{i}$ is the interval label for $i$-th attribute; $f_i$ is
+        the $i$-th real attribute value for pattern $x$, $f_{i,min}$ and
+        $f_{i,max}$ denote the extend of the $i$-th feature calculated in the
+        training phase. If for any attribute from $x$ in the testing phase 
+        $f_i > f_{i, max}$ then $v_{pi}^{i}=G-1$ or $f_i < f_{i, min}$ then
+        $v_{pi}^{i}=0$, in other cases eq. (\ref{eq:interval}) is applied.
+
+        After this step, the value of each attribute is represented 
         by the number of interval in which this attribute is included. For each
         attribute from $l=(1, \ldots , q)$ we choose the same numbers of
         intervals $K_l$ called step of granulation $G$. For the $l$-th attribute 

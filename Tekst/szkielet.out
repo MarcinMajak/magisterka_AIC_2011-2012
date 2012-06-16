@@ -10,14 +10,14 @@
 \BOOKMARK [3][-]{subsubsection.2.3.2}{Basic notation}{subsection.2.3}
 \BOOKMARK [3][-]{subsubsection.2.3.3}{Rough sets indicators}{subsection.2.3}
 \BOOKMARK [3][-]{subsubsection.2.3.4}{Properties of rough sets}{subsection.2.3}
-\BOOKMARK [3][-]{subsubsection.2.3.5}{Attribute reduction }{subsection.2.3}
-\BOOKMARK [3][-]{subsubsection.2.3.6}{Rough sets reasoning from data}{subsection.2.3}
+\BOOKMARK [3][-]{subsubsection.2.3.5}{Rough sets reasoning from data}{subsection.2.3}
 \BOOKMARK [2][-]{subsection.2.4}{Fuzzy logic}{section.2}
 \BOOKMARK [3][-]{subsubsection.2.4.1}{Introduction}{subsection.2.4}
 \BOOKMARK [3][-]{subsubsection.2.4.2}{Fuzzy reasoning from data}{subsection.2.4}
 \BOOKMARK [3][-]{subsubsection.2.4.3}{Genetic-based machine learning approaches}{subsection.2.4}
-\BOOKMARK [2][-]{subsection.2.5}{Genetic algorithm}{section.2}
-\BOOKMARK [2][-]{subsection.2.6}{Hybrid classifiers}{section.2}
+\BOOKMARK [2][-]{subsection.2.5}{Attribute reduction}{section.2}
+\BOOKMARK [2][-]{subsection.2.6}{Genetic algorithm}{section.2}
+\BOOKMARK [2][-]{subsection.2.7}{Hybrid classifiers}{section.2}
 \BOOKMARK [1][-]{section.3}{Algorithm construction}{}
 \BOOKMARK [2][-]{subsection.3.1}{Rough sets algorithm construction}{section.3}
 \BOOKMARK [2][-]{subsection.3.2}{Rough sets algorithm construction with modification of decision rules}{section.3}

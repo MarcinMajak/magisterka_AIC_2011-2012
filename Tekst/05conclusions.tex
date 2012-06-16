@@ -15,20 +15,21 @@ classifier from simpler ones. Researches started with the basic rough sets
 algorithm. Because the results of classification were not satisfactory new
 algorithm with modification of decision rules was introduced. Significant
 improvement was visible for simple problems, but for multidimensional datasets
-the classification accuracy was still poor. The next proposal consisted in
+the classification accuracy remained poor. The next proposal consisted in
 constructing multistage hybrid classifier where the power of fuzzy logic and
 rough sets reasoning were connected. Original algorithm presented in this
 thesis used genetic algorithm for finding the reduct of attributes and the
-optimal granulation step for each attribute. Conducted test confirmed that
-proposed algorithm can compete with other classifiers and obtains reliable
-results. Next paragraphs will shortly summarize each research. 
+optimal granulation step $G$ for each attribute in case of rough sets and for
+fuzzy logic genetic algorithm determined the best decision rule set. 
+Conducted test confirmed that proposed algorithm can compete with other classifiers 
+and obtains reliable results. Next paragraphs will shortly summarize each research. 
 
 The main goal of the first simulation was to check how the granulation step $G$
 affects the classification accuracy. The efficiency of rough sets algorithm is
-determined by the number of certain and possible rules. Ideally, it would be
-great that all rules are certain and we have 100\% coverage in the rule set.
+determined by the number of \textit{certain} and \textit{possible} rules. Ideally, it would be
+great that all rules are \textit{certain} and we have 100\% coverage in the rule set.
 Conveyed simulations confirmed the thesis that granulation step has the
-greatest impact in the classification results. This parameter must be chosen
+greatest impact on the classification results. This parameter must be chosen
 very carefully and few factors must be taken into account:
 \begin{itemize}
     \item the complexity of the problem, how many attributes are used to
@@ -39,20 +40,20 @@ very carefully and few factors must be taken into account:
 Another important conclusion from the first test concerns the optimal value for
 $G$. It is not worth increasing $G$, good results of classification are
 obtained rather for small numbers such as five or six. As the evidence analyze
-table \ref{tab:simulation_research_1} where for $G=18$ classification accuracy
-was very poor. Increasing $G$ ensures that the number of certain decision rules
+table \ref{tab:simulation_research_1} where for $G=18$ the classification accuracy
+was very poor. Increasing $G$ ensures that the number of \textit{certain} decision rules
 is greater, but on the other hand there are more dummy rules (rule with
 strength equal to 0). 
 
 Taking into account the fact that the classification accuracy of algorithm
-presented in section \label{cha:Simulation_reaearch_1} were not satisfactory
-recursive rough sets algorithm was proposed to tackle with situation where for
-particular granulation $G$ there is no appropriate rule in the rule sets. From
-simulations it can be concluded that approach improved the classification
+presented in section \label{cha:Simulation_reaearch_1} was not satisfactory,
+the recursive rough sets algorithm was proposed to tackle with situation where
+for the particular granulation $G$ there is no appropriate rule in the rule sets. From
+simulations it can be concluded that this approach improved the classification
 significantly and what is more important, thanks to the modification of
-decision rule algorithm was affected by the granulation step $G$. The stability
+decision rules algorithm was not affected by the granulation step $G$. The stability
 of classifier is the biggest advantage, but on the other hand the main drawback
-is connected with algorithm execution. In situation when pattern is rejected
+is connected with algorithm execution. In situation when the pattern is rejected
 from classification algorithm is recursively invoked until a proper rule is
 found. This requires much more time than the basic approach without rule
 modification.  For simple classification tasks this is not a problem, but for
@@ -74,10 +75,10 @@ solution are as follows:
 \end{itemize}
 In section \label{cha:Simulation_reaearch_3} it was shown that proposed fuzzy
 classifier was able to classify 32 out of 34 testing patterns from iris dataset
-five rules (presented in fig. \ref{fig:fuzzy_result}).
+with  five rules (presented in fig. \ref{fig:fuzzy_result}).
 
 As fuzzy logic was finished and genetic algorithm turned out to be a good
-solution it was decided to connect genetic algorithm and rough sets and check
+solution it was decided to connect genetic algorithm with rough sets and check
 how this fusion works. The main goal of the heuristic approach was to find an
 optimal granulation for each feature independently and try to remove those
 attributes that are useless in classification. Conducted tests proved that
@@ -93,7 +94,7 @@ methods of classifier fusion, but in this paper two-phased sequential
 classification was proposed. Comparison with different well-known classifiers
 gave optimistic results, but of course more profound test are required to fully
 prove its usefulness.
-\subsection{General conclusions}
+\subsection{General conclusions} 
 To sum up, this paper presents the result of work in the field of pattern
 recognition and classification. It reviewed some of the most representative 
 publications connected with rough sets, fuzzy logic and genetic algorithms.

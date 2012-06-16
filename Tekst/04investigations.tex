@@ -181,7 +181,7 @@ satisfactory. Additionally, only five rules were needed for correct pattern
 recognition.
 
 \paragraph{Classification accuracy and the number of membership
-functions}
+functions in fuzzy logic}
 The goal of the second part of this test was to check how the number of initial
 membership functions affects the final result of classification. There is a
 question if it is better to use many small membership functions (for example 14
@@ -219,6 +219,52 @@ it was concluded that the optimal $k$ value is 4 which leads to $14$
 different membership functions per attribute. If not implicitly stated, $k=4$
 will be always used in next tests.
 
+\paragraph{Classifiers performance comparison}
+Here the genetic fuzzy logic algorithm is compared with rough sets algorithms.
+Datasets used in this tests are as follows:
+\begin{itemize}
+    \item Haberman
+    \item Iris
+    \item Bupa
+    \item Pima
+    \item Wine
+\end{itemize}
+The main purpose of this simulation was to check the efficiency of proposed
+genetic algorithm, especially how many attributes and how many rules are needed 
+for the proper classification. Table \ref{tab:genetic_fuzzy_results} presents
+the results of simulation. Notation used in the table is as follows:
+\begin{itemize}
+    \item $A$- number of attributes in the dataset
+    \item $O$- number of objects used for classification
+    \item $RSR$- number of objects correctly recognized by basic rough sets algorithm
+    \item $RSMRS$- number of patterns correctly recognized by rough sets algorithm
+        with modification of decision rules
+    \item $GFL$- number of objects correctly recognized by genetic fuzzy logic
+        classifier
+    \item $AU$- an average number of features used by genetic rough fuzzy logic classifier
+        in the best rule set
+\end{itemize}
+\begin{table}[H]
+    \caption{Comparison of accuracy of classification for genetic fuzzy logic classifier with
+    rough sets algorithms for different datasets}
+    \centering
+    \begin{tabular}{|c|c|c|c|c|c|c|}
+        \hline
+        Dataset & $A$ & $O$ & $RSR$ & $RSMR$ & $GFL$ & $AU$\\ 
+        \hline \hline
+        haberman& 3&	76&	49&	58&	58 & 2 \\ \hline
+        iris&	4&	39&	32&	38&	39 & 3\\ \hline
+        bupa&  	6&	86&	28&	53&	56 & 5\\ \hline 
+        pima&   8&	192&	69&	126& 145 & 6 \\ \hline
+        wine& 13&	45&	0&	15&	43 & 11\\ \hline
+    \end{tabular}
+    \label{tab:genetic_fuzzy_results}
+\end{table}
+Results from table \ref{tab:genetic_fuzzy_results} indicate that genetic fuzzy
+logic classifier can compete with other classifier. The main advantage is
+connected with the number of attributes building decision rules. In each case
+some features are removed from the set.
+
 \subsubsection{Impact of granulation step $G$ on genetic rough sets algorithm efficiency}
 \label{cha:Simulation_reaearch_4}
 The goal of this test is to check which approach is better:
@@ -229,9 +275,9 @@ The goal of this test is to check which approach is better:
         remove some features treating them as a noise.
 \end{enumerate}
 The first approach is simulated by algorithm with modification of decision
-rules (see section
-\ref{cha:Algorithm_construction_rough_set_modification}), while the second
-is genetic rough sets algorithm (described in section \ref{cha:Multistage}),
+rules (see section \ref{cha:Algorithm_construction_rough_set_modification}), 
+while the second is genetic rough sets algorithm (described in section
+\ref{cha:Multistage}). Results of simulations are placed in table \ref{tab:genetic_rough_results}.
 where the notation is as follows:
 \begin{itemize}
     \item $A$ number of attributes describing pattern in dataset
@@ -246,12 +292,13 @@ where the notation is as follows:
         classification.
 \end{itemize}
 
-Results of simulation are presented in table \ref{tab:genetic_rough_results}.
 Parameters for genetic rough sets algorithm were the same as presented in table
 \ref{tab:rough_genetic_parameters} and for the first rough sets algorithm
 granulation step $G$ was equal to 5 and for algorithm with modification of
 decision rules starting granulation value was $7$.
 \begin{table}[H]
+    \caption{Accuracy of classification for genetic rough sets and basic rough
+    sets algorithms for different datasets}
     \centering
     \begin{tabular}{|c|c|c|c|c|c|c|}
         \hline
@@ -263,8 +310,6 @@ decision rules starting granulation value was $7$.
         pima&   8&	192&	69&	126& 155 & 5 \\ \hline
         wine& 13&	45&	0&	15&	44 & 2\\ \hline
     \end{tabular}
-    \caption{Accuracy of classification for genetic rough sets and basic rough
-    sets algorithms for different datasets}
     \label{tab:genetic_rough_results}
 \end{table}
 From table \ref{tab:genetic_rough_results} one can conclude that genetic rough
@@ -283,20 +328,20 @@ deal with complex datasets.
 
 \subsubsection{Comparison of hybrid classifier with other classifiers}
 \label{cha:Simulation_reaearch_5}
-In this section results for hybrid classifier are presented. The accuracy of
-classification is compared with other classifiers trained and tested with the
-same datasets. The main goal of this simulation was to check if proposed
-solution can compete with other classifiers. As the source of reference
-different types of classifiers were chosen to ensure the greatest diversity:
+In this section results of simulation for hybrid classifier are presented. 
+The accuracy of classification is compared with other classifiers trained and 
+tested with the same datasets. The main goal of this simulation was to check if proposed
+hybridization (rough set and fuzzy logic) can compete with other classifiers. 
+As the source of reference different types of classifiers were chosen to ensure the greatest diversity:
 \begin{itemize}
-    \item LDAC classifier (Linear Discriminant classifier)- The linear
-        discriminant analysis method consists of searching, some linear
+    \item LDAC classifier (Lin ear Discriminant classifier)- The linear
+        discriminant analysis method consists of searching some linear
         combinations of selected variables, which provide the best separation between the
         considered classes. These different combinations are called
         discriminant functions (see example in fig. \ref{fig:ldac_example})
         \begin{figure}[H]
             \begin{center}
-                \includegraphics[width=0.6\textwidth, height=0.5\textwidth]{fig/ldac.png}
+                \includegraphics[width=0.5\textwidth, height=0.4\textwidth]{fig/ldac.png}
             \end{center}
             \caption{Example of linear discriminant classifier for 2-dimensional problem}
             \label{fig:ldac_example}
@@ -308,7 +353,7 @@ different types of classifiers were chosen to ensure the greatest diversity:
         where the decision is represented in case of decision rules.  Decision
         node specifies a test on a single attribute, leaf node indicates the
         value of the target attribute, arc/edge splits of one attribute and
-        path indicated the disjunction of test to make the final decision. 
+        indicate the disjunction of test to make the final decision. 
         Decision trees classify instances or examples by starting at the root 
         of the tree and moving through it until a leaf node is reached.
     \item Maximum likelihood classifier- this classifier is commonly used in
@@ -322,8 +367,10 @@ different types of classifiers were chosen to ensure the greatest diversity:
 Results of simulation are presented in table \ref{tab:final_comparison}, where
 $O$ determines the number of patterns for classification. Last row in table
 shows results for hybrid classifier described in section
-\ref{cha:Multistage_rough_fuzzy}. Numbers in bold font indicates which
-classifier obtained the best result for a particular dataset.
+\ref{cha:Multistage_rough_fuzzy}. Numbers in bold font indicates this
+classifier which obtained the best result for a particular dataset. In cases
+when the same result was obtained for more classifier then the number of
+attributes is taken into account.
 
 \begin{table}[H]
     \caption{Comparison of hybrid rough fuzzy classifier with other common
@@ -355,4 +402,4 @@ diagnosis. Another thing to reconsider is the stability of proposed classifier.
 It uses genetic algorithm for rule construction, so taking into account its
 random nature hybrid classifier can be unstable, but simulations show that this
 is not a problem. Appropriate number of generations for genetic algorithm
-assures proper convergence and as the consequence hybrid classifier is stable. 
+assures the proper convergence and as the consequence hybrid classifier is stable. 
