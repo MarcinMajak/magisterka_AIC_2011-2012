@@ -1,0 +1,7 @@
+\contentsline {section}{Contents}{1}{section*.2}
+\contentsline {section}{\numberline {1}Module genetic\_fuzzy\_logic\_classifier}{2}{section.1}
+\contentsline {subsection}{\numberline {1.1}Variables}{2}{subsection.1.1}
+\contentsline {subsection}{\numberline {1.2}Class GeneticFuzzyLogicClassifier}{2}{subsection.1.2}
+\contentsline {subsubsection}{\numberline {1.2.1}Methods}{2}{subsubsection.1.2.1}
+\contentsline {subsubsection}{\numberline {1.2.2}Properties}{3}{subsubsection.1.2.2}
+\contentsline {section}{Index}{4}{section*.4}

@@ -1,0 +1,7 @@
+sudo apt-get install python2.6-dev
+go to: http://www.gnu.org/prep/ftp.html
+click on an ftp link close to your location
+find the gsl/ directory and click on it
+find the gsl-VERSION.tar.gz file, where version is 1.14 or greater. Click on that file to download it.
+In a terminal window extract the tar.gz file using tar -xzf gsl-VERSION.tar.gz and then cd to the ./gsl-VERSION directory
+Look at the INSTALL file. It will probably tell you to run ./configure, then make, and then make install

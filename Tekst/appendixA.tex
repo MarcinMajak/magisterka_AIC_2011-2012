@@ -6,3 +6,58 @@
 
 \section{Program description}
 \label{Appendix}
+\subsection{Installation requirements}
+For the test purposes the simulator in \textit{Python} language was written. To
+successfully ran this program few requirements must be met. In this master
+thesis this software was executed on Linux platform and here this approach will
+be described. Of course it is possible to run the program on Windows, but
+proper preparation must be undertaken. Requirement for the software:
+\begin{itemize}
+    \item \textit{Python} in version at least 2.6
+    \item NumPy
+    \item SciPy
+    \item mlpy library with Gsl. Steps for the proper installation:
+        \begin{enumerate}
+            \item sudo apt-get install python2.6-dev
+            \item go to: \textit{http://www.gnu.org/prep/ftp.html}
+            \item click on an ftp link close to your location
+            \item find the gsl/ directory and click on it
+            \item find the gsl-VERSION.tar.gz file, where version is 1.14 or greater. Click on that file to download it.
+            \item In a terminal window extract the tar.gz file using tar -xzf gsl-VERSION.tar.gz and then cd to the ./gsl-VERSION 
+                directory
+            \item Look at the INSTALL file. It will probably tell you to run ./configure, then make, and then make install
+            \item download mlpy from \textit{http://sourceforge.net/projects/mlpy/files/}
+            \item unzip file and inside directory run from command line python setup.py install
+        \end{enumerate}
+\end{itemize}
+
+The whole project is divided into modules and each classifier is implemented as
+python class:
+\begin{itemize}
+    \item BasicClassifiers- this class implements basic classifiers such as:
+        LDAC, 3-KNN, MaximumLikelyHood Classifier, Gini Index Classifier, svm
+        Classifier
+    \item RoughSetsClassifier- this class implements basic rough sets
+        classifier. Depending on the chosen module it is an algorithm with
+        modification of decision rules or not.
+    \item GeneticFuzzyLogicClassifier- this class simulate genetic fuzzy logic
+        classifier. In the beginning genetic algorithm is run to obtain the
+        best decision rule set and later classification is done
+    \item GeneticRoughSetsClassifier- this class implements genetic rough sets
+        classifier. It comprises of two parts:
+        \begin{itemize}
+            \item genetic algorithm for obtaining an optimal partition for each
+                feature
+            \item classification procedure which uses partition from the
+                previous step for pattern recognition
+        \end{itemize}
+    \item HybridClassifier- this class implements hybrid classifier. This is a
+        multistage classifier in which rough sets algorithm is treated as the
+        first classifier and fuzzy logic as the second.
+\end{itemize}
+\subsection{Example usage}
+To run each classifier few basic steps must be done. First of all proper
+parameters with cross-validation and dataset type must be chosen. Below, a
+simple example is presented showing how to run genetic rough sets classifier
+fir iris dataset
+\lstinputlisting[language=Python]{code/example.py}

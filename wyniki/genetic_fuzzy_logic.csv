@@ -1,0 +1,81 @@
+haberman 
+Klasyfikacja zbioru uczacego
+Klasyfikacja za pomoca najlepszego
+Liczba obiektow do rozpoznania 230
+Rozpoznane 172, Nierozpoznane 57 
+Klasyfikacja za pomoca najlepszych regul
+Liczba obiektow do rozpoznania 230
+Rozpoznane 170, Nierozpoznane 60 
+
+Klasyfikacja zbioru testujacego
+Klasyfikacja za pomoca najlepszego
+Liczba obiektow do rozpoznania 76
+Rozpoznane 57, Nierozpoznane 19 
+Klasyfikacja za pomoca najlepszych regul
+Liczba obiektow do rozpoznania 76
+Rozpoznane 56, Nierozpoznane 20 
+Srednia liczba atrybutow dla regul to 2.00 
+
+iris 
+Klasyfikacja zbioru testujacego
+Klasyfikacja za pomoca najlepszego
+Liczba obiektow do rozpoznania 39
+Rozpoznane 37, Nierozpoznane 2 
+Klasyfikacja za pomoca najlepszych regul
+Liczba obiektow do rozpoznania 39
+Rozpoznane 39, Nierozpoznane 0 
+Srednia liczba atrybutow dla regul to 3.00 
+
+Bupa
+Klasyfikacja zbioru uczacego
+Klasyfikacja za pomoca najlepszego
+Liczba obiektow do rozpoznania 259
+Rozpoznane 182, Nierozpoznane 76 
+Klasyfikacja za pomoca najlepszych regul
+Liczba obiektow do rozpoznania 259
+Rozpoznane 168, Nierozpoznane 80 
+
+Klasyfikacja zbioru testujacego
+Klasyfikacja za pomoca najlepszego
+Liczba obiektow do rozpoznania 86
+Rozpoznane 56, Nierozpoznane 25 
+Klasyfikacja za pomoca najlepszych regul
+Liczba obiektow do rozpoznania 86
+Rozpoznane 55, Nierozpoznane 26 
+Srednia liczba atrybutow dla regul to 5.00 
+
+Pima 
+Klasyfikacja zbioru uczacego
+Klasyfikacja za pomoca najlepszego
+Liczba obiektow do rozpoznania 576
+Rozpoznane 428, Nierozpoznane 136 
+Klasyfikacja za pomoca najlepszych regul
+Liczba obiektow do rozpoznania 576
+Rozpoznane 413, Nierozpoznane 159 
+
+Klasyfikacja zbioru testujacego
+Klasyfikacja za pomoca najlepszego
+Liczba obiektow do rozpoznania 192
+Rozpoznane 145, Nierozpoznane 44 
+Klasyfikacja za pomoca najlepszych regul
+Liczba obiektow do rozpoznania 192
+Rozpoznane 140, Nierozpoznane 51 
+Srednia liczba atrybutow dla regul to 6.00 
+
+wine
+Klasyfikacja zbioru uczacego
+Klasyfikacja za pomoca najlepszego
+Liczba obiektow do rozpoznania 133
+Rozpoznane 127, Nierozpoznane 3 
+Klasyfikacja za pomoca najlepszych regul
+Liczba obiektow do rozpoznania 133
+Rozpoznane 125, Nierozpoznane 6 
+
+Klasyfikacja zbioru testujacego
+Klasyfikacja za pomoca najlepszego
+Liczba obiektow do rozpoznania 45
+Rozpoznane 43, Nierozpoznane 1 
+Klasyfikacja za pomoca najlepszych regul
+Liczba obiektow do rozpoznania 45
+Rozpoznane 43, Nierozpoznane 2 
+Srednia liczba atrybutow dla regul to 11.00 

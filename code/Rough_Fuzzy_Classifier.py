@@ -5,6 +5,7 @@ import random
 import numpy
 import copy
 import mlpy
+from consts import *
 
 class RoughFuzzyClassifier(object):
     def __init__(self, debug=False):
@@ -212,6 +213,9 @@ class RoughFuzzyClassifier(object):
                         index_pattern = individual[a_n] - 1
                     else:
                         index_pattern = int(individual[a_n]*(pattern[a_n] - self.min[a_n])/(self.max[a_n]-self.min[a_n]))
+                        
+                    # hack here
+                    index_pattern = 0
                     # wyliczamy wartosc membeship_function dla danej klasy
                     if index_pattern in self.MF[a_n].keys():
                         for label in self.MF[a_n][index_pattern]:
@@ -226,13 +230,16 @@ class RoughFuzzyClassifier(object):
                     else:
                         current_attribute_label.append([0, -1])
                     
-                    # szukamy najwiekszej wartosci wsrod wspolczynnikow
-                    max_label = max(current_attribute_label)
-                    l = filter(lambda x: x[0] >= max_label[0], current_attribute_label)
-                    if not l[0][1] in membership_values.keys():
-                        membership_values[l[0][1]] = 0
+                    for tab in current_attribute_label:
+                        if not tab[1] in membership_values.keys():
+                            membership_values[tab[1]] = 0
+                        membership_values[tab[1]] += tab[0]
+                    # max_label = max(current_attribute_label)
+                    # l = filter(lambda x: x[0] >= max_label[0], current_attribute_label)
+                    # if not l[0][1] in membership_values.keys():
+                    #    membership_values[l[0][1]] = 0
                     
-                    membership_values[l[0][1]] += l[0][0]
+                    # membership_values[l[0][1]] += l[0][0]
             if len(membership_values.keys()):
                 max_label_value = max(membership_values.values())
                 val = filter(lambda x: membership_values[x] >= max_label_value, membership_values)
@@ -263,6 +270,8 @@ class RoughFuzzyClassifier(object):
                     index_pattern = individual[a_n] - 1
                 else:
                     index_pattern = int(individual[a_n]*(pattern[a_n] - self.min[a_n])/(self.max[a_n]-self.min[a_n]))
+                # hack here
+                index_pattern = 0
                 # wyliczamy wartosc membeship_function dla danej klasy
                 if index_pattern in self.MF[a_n].keys():
                     for label in self.MF[a_n][index_pattern]:
@@ -277,33 +286,43 @@ class RoughFuzzyClassifier(object):
                 else:
                     current_attribute_label.append([0, -1])
                 
-                # szukamy najwiekszej wartosci wsrod wspolczynnikow
-                max_label = max(current_attribute_label)
-                l = filter(lambda x: x[0] >= max_label[0], current_attribute_label)
-                if not l[0][1] in membership_values.keys():
-                    membership_values[l[0][1]] = 0
+                for tab in current_attribute_label:
+                    if not tab[1] in membership_values.keys():
+                        membership_values[tab[1]] = 0
+                    membership_values[tab[1]] += tab[0]
+                # max_label = max(current_attribute_label)
+                # l = filter(lambda x: x[0] >= max_label[0], current_attribute_label)
+                # if not l[0][1] in membership_values.keys():
+                #    membership_values[l[0][1]] = 0
                 
-                membership_values[l[0][1]] += l[0][0]
+                # membership_values[l[0][1]] += l[0][0]
+                                    
+                # szukamy najwiekszej wartosci wsrod wspolczynnikow
+                # max_label = max(current_attribute_label)
+                # l = filter(lambda x: x[0] >= max_label[0], current_attribute_label)
+                # if not l[0][1] in membership_values.keys():
+                #    membership_values[l[0][1]] = 0
+                
+                # membership_values[l[0][1]] += l[0][0]
         if len(membership_values.keys()):
             max_label_value = max(membership_values.values())
             val = filter(lambda x: membership_values[x] >= max_label_value, membership_values)
             if len(val) == 1:
                 return val[0]
-        
         return -1
 
     def run_for_rough_set(self):
         while self.generations:
-            print "Generation %d" % self.generations
+            #print "Generation %d" % self.generations
             self.__create_next_generation_for_rough_set(self.generations) 
             self.generations -= 1
-        print "Najlepsze rozwiazanie zaklasyfikowalo %d obiektow z %d" % (self.the_best, len(self.testing_label))
-        print "Najlepsze rozwiazanie wygladalo tak"
-        for value in self.the_classification:
-            if value == self.DO_NOT_USE:
-                print "NOT_USED",
-            else:
-                print value,
+        #print "Najlepsze rozwiazanie zaklasyfikowalo %d obiektow z %d" % (self.the_best, len(self.testing_label))
+        #print "Najlepsze rozwiazanie wygladalo tak"
+        #for value in self.the_classification:
+        #    if value == self.DO_NOT_USE:
+        #        print "NOT_USED",
+        #    else:
+        #        print value,
 
     def get_number_of_attributes(self):
         """
@@ -400,7 +419,7 @@ class RoughFuzzyClassifier(object):
     def __diversify_for_rough_set(self):
         attr_length = self.get_number_of_attributes()
         for individual in self.population:
-            if random.random() >= 0.5:
+            if random.random() >= 0.3:
                 for a_n in range(attr_length):
                     unique_ids = set(range(1, self.division)) - set([individual[a_n]])
                     individual[a_n] = random.sample(unique_ids, 1)[0]
@@ -434,7 +453,7 @@ class RoughFuzzyClassifier(object):
                 self.__crossover_for_rough_set()
                 self.__mutation_for_rough_set()
         else:
-            for _ in range(3):
+            for _ in range(5):
                 self.__crossover_for_rough_set()
                 self.__mutation_for_rough_set()
 
@@ -482,8 +501,8 @@ class RoughFuzzyClassifier(object):
             self.the_classification = copy.deepcopy(self.population[indexes[0]])
             self.the_mapping = copy.deepcopy(mapping[indexes[0]])
     
-        print "Liczba obiektow do rozpoznania %d" % len(self.testing_label)
-        print "Rozpoznane %d, Nierozpoznane %d " % (res[0], len(self.testing_label) - res[0])
+        #print "Liczba obiektow do rozpoznania %d" % len(self.testing_label)
+        #print "Rozpoznane %d, Nierozpoznane %d " % (res[0], len(self.testing_label) - res[0])
         
 
     def calculate_histogram(self):
@@ -500,7 +519,7 @@ class RoughFuzzyClassifier(object):
                 # for this attribute we want to calculate histogram using training data
                 for p in range(len(self.training_data)):
                     # find out about index of this attribute
-                    index = int(rule[i]*(self.training_data[p][i] - self.min[i])/(self.max[i] - self.min[i]))
+                    index = 0#int(rule[i]*(self.training_data[p][i] - self.min[i])/(self.max[i] - self.min[i]))
                     if not index in histogram_per_attribute[i].keys():
                         histogram_per_attribute[i][index] = {}
                     if not self.training_label[p] in histogram_per_attribute[i][index].keys():
@@ -519,10 +538,37 @@ class RoughFuzzyClassifier(object):
                         data = division_histogram[div][label]
                         hist, bin_edges = numpy.histogram(data, bins=10)
                         d = bin_edges[1] - bin_edges[0]
-                        a = reduce(lambda x, y: x+y, [(bin_edges[j]+d/2)*d*hist[j] for j in range(len(hist))], 0.0)  /(d*hist.sum())
+                        # a = reduce(lambda x, y: x+y, [(bin_edges[j]+d/2)*d*hist[j] for j in range(len(hist))], 0.0)  /(d*hist.sum())
+                        # hack here
+                        a = bin_edges[hist.argmax()]
                         b_left = bin_edges[0]
                         b_right = bin_edges[len(bin_edges) - 1]
                         mf[i][div][label] = [a, abs(a - b_left), abs(a - b_right)]
+                        
+        for i in range(self.get_number_of_attributes()):
+            if not rule[i] == self.DO_NOT_USE:
+                if len(mf[i].keys()):
+                    for g_key in mf[i].keys():
+                        div = (self.max[i] - self.min[i])/rule[i]
+                        _min = self.min[i] + g_key*div
+                        _max = _min + div
+                        # hack here
+                        _min = self.min[i]
+                        _max = self.max[i]
+                        
+                        _mf = mf[i][g_key].values()
+                        _mf = sorted(_mf, key=lambda x: x[0])
+                        for m in range(len(_mf)):
+                            if m == 0:
+                                _mf[0][1] = abs(_min - _mf[0][0]) 
+                            else:
+                                if (_mf[m][0] - _mf[m][1]) > _mf[m-1][0]:
+                                    _mf[m][1] = _mf[m][0] - _mf[m-1][0]
+                            if m == (len(_mf) - 1):
+                                _mf[m][2] = abs(_max - _mf[m][0])
+                            else:
+                                if _mf[m][0] + _mf[m][2] < _mf[m+1][0]:
+                                    _mf[m][2] = _mf[m+1][0] - _mf[m][0]
         self.MF = mf
 
     def __is_in_MF_range(self, value, a, b_left, b_right, which):
@@ -566,27 +612,45 @@ class RoughFuzzyClassifier(object):
 # ------------------------------------------------------------------------------
 
 if __name__ == '__main__':
-    hybrid = RoughFuzzyClassifier()
-    filename = 'datasets/pima.data.txt'
-    if hybrid.read_data(filepath=filename, label_is_last=True) == False:
-        print "Error with opening the file. Probably you have given wrong path"
-        sys.exit(1)
-    hybrid.prepare_data(k_fold_number=4)
-    hybrid.k_fold_cross_validation(k=1)
-    hybrid.initialize_genetic(generations=80, mutation_prop=0.3, crossover_prop=0.9)
-    hybrid.create_population_for_rough_set(population_size=10, division=5)
-
     
-    hybrid.run_for_rough_set()
-    hybrid.calculate_histogram()
+    DEBUG = False
+    result_file = 'results/rough_fuzzy_classifier.csv'
+    try:
+        fd = open(result_file, 'w')
+    except IOError:
+        print "Wrong path for results file"
+        sys.exit(1)    
     
-
-    size = len(hybrid.testing_label)
-    classification = numpy.zeros(size)
-    for i in range(size):
-        if hybrid.testing_label[i] == hybrid.classify(hybrid.testing_data[i]):
-            classification[i] = 1
-    res = classification.sum()
-    print "Fuzzy rough %d out of %d" % (res, size)    
-    sys.exit(0)
-    
+    for d in range(len(datasets)):
+        for k in range(K_FOLD_NUMBER):
+            for r in range(3):    
+                print "STARTED iteration %d with %d-fold for %s dataset" % (r, k, datasets[d][0])
+                hybrid = RoughFuzzyClassifier()
+                filename = 'datasets/%s' % datasets[d][0]
+                if hybrid.read_data(filepath=filename, label_is_last=(bool)(datasets[d][1])) == False:
+                    print "Error with opening the file. Probably you have given wrong path"
+                    sys.exit(1)
+                hybrid.prepare_data(k_fold_number=K_FOLD_NUMBER)
+                hybrid.k_fold_cross_validation(k=k)
+                hybrid.initialize_genetic(generations=300, mutation_prop=MUTATION_PROP, crossover_prop=CROSS_OVER_PROP)
+                hybrid.create_population_for_rough_set(population_size=POPULATION_SIZE, division=MAX_GRANULATION)
+            
+                hybrid.run_for_rough_set()
+                hybrid.calculate_histogram()
+                
+                size = len(hybrid.testing_label)
+                classified = 0
+                for i in range(size):
+                    if hybrid.testing_label[i] == hybrid.classify(hybrid.testing_data[i]):
+                        classified += 1
+                        
+                # calculate how many attributes are used in the best classification
+                active_attributes = 0
+                for a in range(hybrid.get_number_of_attributes()):
+                    if not hybrid.the_classification[a] == hybrid.DO_NOT_USE:
+                        active_attributes += 1
+                print "FINISHED iteration %d with %d-fold for %s dataset" % (r, k, datasets[d][0]) 
+                print "It managed to classify %d out of %d" % (classified, size)
+                fd.write("%s,%d,%d,%d,%d,%d,%d\n" % (datasets[d][0], r, k, size, classified, hybrid.get_number_of_attributes(), active_attributes))
+                fd.flush()
+    fd.close()                                                                  

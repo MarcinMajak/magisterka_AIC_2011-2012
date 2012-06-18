@@ -57,3 +57,5 @@
 \contentsline {section}{List of figures}{55}{Item.82}
 \contentsline {section}{List of tables}{55}{Item.82}
 \contentsline {section}{\numberline {A}Program description}{62}{appendix.A}
+\contentsline {subsection}{\numberline {A.1}Installation requirements}{62}{subsection.A.1}
+\contentsline {subsection}{\numberline {A.2}Example usage}{63}{subsection.A.2}

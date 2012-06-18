@@ -1,0 +1,146 @@
+    def __get_characteristic_points(self, mean, sigma, which, check_boundaries=True):
+        points = [-3.0 , -2.0, -1.0 , -0.5 ,0, 0.5, 1.0, 2.0, 3.0]
+        x = [_x*sigma+mean for _x in points]
+        y = [numpy.exp((-(_x-mean)*(_x-mean)/(2*sigma*sigma))) for _x in x ]
+    
+        #print "Zakres: [%.2f, %.2f], wyszlo: [%.2f, %.2f] dla [%.2f, %.2f]" % \
+        #            (self.min[which], self.max[which],
+        #             x[0], x[8],
+        #            mean, sigma),
+    
+        """
+        Here we check where function is placed.
+        """
+        if check_boundaries and x[0] <= self.min[which]:
+            # print " FUNKCJA JEST POZA LEWYM ZAKRESEM\n"
+            x[0] = -9999.0
+            y[0] = 1.0
+            
+        if check_boundaries and x[8] >= self.max[which]:
+            # print " FUNKCJA JEST POZA PRAWYM ZAKRESEM\n"
+            x[8] = 9999.0
+            y[8] = 1.0
+      
+        return (x, y)
+
+    def __get_function_value(self, val, mean=0, sigma=1, which=0, check_boundaries=True):
+        """
+        """
+        if check_boundaries and val <= self.min[which]:
+            return 1.0
+            
+        if check_boundaries and val >= self.max[which]:
+            return 1.0
+        
+        if sigma == 0:
+            return 1
+        return numpy.exp(-(val-mean)**2/(2*sigma**2))
+        
+        
+    def match(self, pattern, rule):
+        """
+        responsible for checking IF-THEN condition in the given rule using 
+        pattern.
+        """
+
+        attr_length = self.get_number_of_attributes()
+        rule_value = []
+        for a_n in range(attr_length):
+            vMF = self.MF[a_n][rule[a_n]]
+            if vMF[0] == self.USED:
+                if self.__is_in_MF_range(pattern[a_n], vMF[1], vMF[2], a_n):
+                    rule_value.append(self.__get_MF_value(pattern[a_n], vMF[1], vMF[2], a_n))
+                else:
+                    rule_value = []
+                    break
+
+        if len(rule_value):
+            return [numpy.min(rule_value)*rule[attr_length][2], rule[attr_length][1]] 
+        return [0, 0]
+    
+    def classify_pattern(self, pattern, label, rule_set):
+        number_of_rules = len(rule_set)
+        values = numpy.zeros((number_of_rules, 2))
+        for rule_number in range(number_of_rules):
+            rule = rule_set[rule_number]
+            values[rule_number] = self.match(pattern, rule)
+
+        max_alpha = values.max(axis=0) 
+        numbers = filter(lambda x: x[0]>=max_alpha[0], values)
+        if len(numbers) and len(filter(lambda x: not x[1]==numbers[0][1], numbers))==0 and not numbers[0][0] == 0:
+            numbers = numbers[0]
+            #print "Klasyfikuje obiekt %d jako %d" % (numbers[1], label)
+            if int(numbers[1]) == label:
+                # pattern correctly classified
+                return 1
+        # misclassification
+        return 0
+    
+    def classify_by_pittsburgh(self, patterns, labels):
+        classified = numpy.zeros(len(self.population))
+        self.data_to_train = []
+        self.label_to_train = []
+
+        for i in range(len(self.population)):
+            for j in range(len(patterns)):
+                if self.classify_pattern(patterns[j], labels[j], self.population[i]):
+                    classified[i] += 1
+                else:
+                    self.data_to_train(patterns[j])
+                    self.label_to_train(labels[j])
+                
+            if self.the_best < classified[i]:
+                self.the_best = classified[i]
+                self.the_best_rule_set = self.population[i]
+
+        print "Number of objects to classify %d " % len(labels)
+        print "Recognized objects per fuzzy-set"
+        counter = 0
+        for number in classified:
+            print "Fuzzy set %d %d" % (counter, number)
+            counter += 1
+
+        print "The best found value is %d" % self.the_best
+
+    def classify_by_mitchigan(self, patterns, labels):
+        classified = 0
+        self.data_to_train = []
+        self.label_to_train = []
+        
+        for j in range(len(patterns)):
+            if self.classify_pattern(patterns[j], labels[j], self.population):
+                classified += 1
+            else:
+                self.data_to_train(patterns[j])
+                self.label_to_train(labels[j])
+
+        if self.the_best < classified:
+            self.the_best = classified
+
+        print "Number of objects to classify %d " % len(labels)
+        print "Recognized objects per fuzzy-set %d" % classified
+        
+            def __apply_crossover_for_pittsburgh(self):
+        """
+        """
+        # select mother individual from population
+        size = len(self.population)
+        tab = random.sample(range(size), 3)
+        mother_index = tab[0]
+        father_index = tab[1]
+        child_index = tab[2]
+        
+        # now apply crossover
+        mother = self.population[mother_index]
+        father = self.population[father_index]
+        child = self.population[child_index]
+            
+        # select point of crossover
+        point = random.randint(0, self.functions_per_attribute-1)
+        
+        if random.randint(0, 1) == 0:
+            child[0:point] = mother[0:point]
+            child[point:] = father[point:]
+        else:
+            child[0:point] = father[0:point]
+            child[point:] = mother[point:]

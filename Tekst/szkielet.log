@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-1.40.10 (TeX Live 2009/Debian) (format=pdflatex 2011.8.3)  15 JUN 2012 16:30
+This is pdfTeX, Version 3.1415926-1.40.10 (TeX Live 2009/Debian) (format=pdflatex 2011.8.3)  17 JUN 2012 00:10
 entering extended mode
  %&-line parsing enabled.
 **szkielet.tex
@@ -930,7 +930,7 @@ LaTeX Font Info:    Font shape `T1/ppl/bx/n' in size <12> not available
  [4] (./00celPracy.tex
 LaTeX Font Info:    Font shape `T1/ppl/bx/n' in size <14.4> not available
 (Font)              Font shape `T1/ppl/b/n' tried instead on input line 2.
- [5] <fig/schema.png, id=307, 642.4pt x 401.5pt>
+ [5] <fig/schema.png, id=317, 642.4pt x 401.5pt>
 File: fig/schema.png Graphic file (type png)
 
 <use fig/schema.png> [6 <./fig/schema.png>]) (./01wstep.tex
@@ -943,7 +943,7 @@ name{figure.1}) has been already used, duplicate ignored
 <to be read again> 
                    \relax 
 l.209 \begin{figure}[H]
-                        <fig/rough_set.png, id=375, 144.54pt x 139.2402pt>
+                        <fig/rough_set.png, id=385, 144.54pt x 139.2402pt>
 File: fig/rough_set.png Graphic file (type png)
 
 <use fig/rough_set.png> [11 <./fig/rough_set.png>] [12] [13]
@@ -951,18 +951,18 @@ Overfull \hbox (31.59772pt too wide) in paragraph at lines 329--343
 [][] 
  []
 
-[14] <fig/seasons.png, id=422, 341.275pt x 200.75pt>
+[14] <fig/seasons.png, id=432, 341.275pt x 200.75pt>
 File: fig/seasons.png Graphic file (type png)
  <use fig/seasons.png>
-[15] <fig/fuzzy_tall.png, id=432, 389.20406pt x 184.43906pt>
+[15] <fig/fuzzy_tall.png, id=442, 389.20406pt x 184.43906pt>
 File: fig/fuzzy_tall.png Graphic file (type png)
 
 <use fig/fuzzy_tall.png> [16 <./fig/seasons.png> <./fig/fuzzy_tall.png>]
-[17] <fig/fuzzy_steps.png, id=462, 616.78706pt x 109.65103pt>
+[17] <fig/fuzzy_steps.png, id=472, 616.78706pt x 109.65103pt>
 File: fig/fuzzy_steps.png Graphic file (type png)
 
 <use fig/fuzzy_steps.png>
-<fig/fuzzy_example_1.png, id=465, 1831.84375pt x 361.35pt>
+<fig/fuzzy_example_1.png, id=475, 1831.84375pt x 361.35pt>
 File: fig/fuzzy_example_1.png Graphic file (type png)
 
 <use fig/fuzzy_example_1.png> [18 <./fig/fuzzy_steps.png> <./fig/fuzzy_example_
@@ -973,7 +973,7 @@ File: fig/fuzzy_example_1.png Graphic file (type png)
 l.567 ...    x}{\sum\nolimit_{x=a}^{b}\mu_A(\chi)}
                                                   
 ? 
-<fig/fuzzy_centroid.png, id=481, 572.1375pt x 301.125pt>
+<fig/fuzzy_centroid.png, id=491, 572.1375pt x 301.125pt>
 File: fig/fuzzy_centroid.png Graphic file (type png)
 
 <use fig/fuzzy_centroid.png>
@@ -983,11 +983,11 @@ Overfull \hbox (48.47063pt too wide) detected at line 582
  []
 
 [19 <./fig/fuzzy_centroid.png>] [20]
-<fig/michigan.png, id=517, 296.10625pt x 257.96375pt>
+<fig/michigan.png, id=527, 296.10625pt x 257.96375pt>
 File: fig/michigan.png Graphic file (type png)
  <use fig/michigan.png>
 [21 <./fig/michigan.png (PNG copy)>]
-<fig/pittsburgh.png, id=533, 365.365pt x 257.96375pt>
+<fig/pittsburgh.png, id=543, 365.365pt x 257.96375pt>
 File: fig/pittsburgh.png Graphic file (type png)
  <use fig/pittsburgh.png>
 ! Extra }, or forgotten \endgroup.
@@ -997,10 +997,10 @@ l.671         \end{figure}
                           
 ? 
 [22 <./fig/pittsburgh.png (PNG copy)>] [23]
-<fig/genetic.png, id=563, 270.25969pt x 502.87875pt>
+<fig/genetic.png, id=573, 270.25969pt x 502.87875pt>
 File: fig/genetic.png Graphic file (type png)
  <use fig/genetic.png>
-[24 <./fig/genetic.png>] <fig/hybrid.png, id=580, 860.21375pt x 319.1925pt>
+[24 <./fig/genetic.png>] <fig/hybrid.png, id=590, 860.21375pt x 319.1925pt>
 File: fig/hybrid.png Graphic file (type png)
 
 <use fig/hybrid.png>) (./02algorytmy.tex [25 <./fig/hybrid.png (PNG copy)>]
@@ -1009,7 +1009,7 @@ re.1}) has been already used, duplicate ignored
 <to be read again> 
                    \relax 
 l.121 \begin{figure}[H]
-                        <fig/fuzzy_example.png, id=625, 1003.75pt x 542.025pt>
+                        <fig/fuzzy_example.png, id=635, 1003.75pt x 542.025pt>
 File: fig/fuzzy_example.png Graphic file (type png)
 
 <use fig/fuzzy_example.png> [28] [29 <./fig/fuzzy_example.png>]
@@ -1023,7 +1023,7 @@ l.163     R_r: C_r = max\limits
                    \relax 
 l.242                 \begin{figure}[H]
                                        
-<fig/fuzzy_rule.png, id=665, 2007.5pt x 105.39375pt>
+<fig/fuzzy_rule.png, id=675, 2007.5pt x 105.39375pt>
 File: fig/fuzzy_rule.png Graphic file (type png)
  <use fig/fuzzy_rule.png>
 [31 <./fig/fuzzy_rule.png>]pdfTeX warning (ext4): destination with the same ide
@@ -1032,7 +1032,7 @@ ntifier (name{figure.3}) has been already used, duplicate ignored
                    \relax 
 l.283                 \begin{figure}[H]
                                        
-<fig/cross_over.png, id=676, 114.4275pt x 116.1138pt>
+<fig/cross_over.png, id=686, 114.4275pt x 116.1138pt>
 File: fig/cross_over.png Graphic file (type png)
  <use fig/cross_over.png>
 Underfull \hbox (badness 1028) in paragraph at lines 290--295
@@ -1085,7 +1085,7 @@ er (name{figure.4}) has been already used, duplicate ignored
 <to be read again> 
                    \relax 
 l.434 \begin{figure}[H]
-                        <fig/diagram.png, id=720, 643.40375pt x 203.76125pt>
+                        <fig/diagram.png, id=730, 643.40375pt x 203.76125pt>
 File: fig/diagram.png Graphic file (type png)
 
 <use fig/diagram.png> [35]) [36 <./fig/diagram.png (PNG copy)>]
@@ -1119,7 +1119,7 @@ tifier (name{figure.1}) has been already used, duplicate ignored
 <to be read again> 
                    \relax 
 l.119 \begin{figure}[H]
-                        <fig/rough_chart.png, id=777, 853.1875pt x 431.6125pt>
+                        <fig/rough_chart.png, id=787, 853.1875pt x 431.6125pt>
 File: fig/rough_chart.png Graphic file (type png)
 
 <use fig/rough_chart.png> [42] [43 <./fig/rough_chart.png>]pdfTeX warning (ext4
@@ -1128,7 +1128,7 @@ File: fig/rough_chart.png Graphic file (type png)
 <to be read again> 
                    \relax 
 l.171 \begin{figure}[H]
-                        <fig/fuzzy_result.png, id=790, 1806.75pt x 602.25pt>
+                        <fig/fuzzy_result.png, id=800, 1806.75pt x 602.25pt>
 File: fig/fuzzy_result.png Graphic file (type png)
 
 <use fig/fuzzy_result.png>
@@ -1142,7 +1142,7 @@ dentifier (name{figure.3}) has been already used, duplicate ignored
                    \relax 
 l.207 \begin{figure}[H]
                        
-<fig/fuzzy_functions.png, id=801, 853.1875pt x 421.575pt>
+<fig/fuzzy_functions.png, id=811, 853.1875pt x 421.575pt>
 File: fig/fuzzy_functions.png Graphic file (type png)
 
 <use fig/fuzzy_functions.png> [45 <./fig/fuzzy_functions.png>]pdfTeX warning (e
@@ -1171,7 +1171,7 @@ ntifier (name{figure.4}) has been already used, duplicate ignored
                    \relax 
 l.342         \begin{figure}[H]
                                
-<fig/ldac.png, id=829, 1488.56125pt x 1421.31pt>
+<fig/ldac.png, id=839, 1488.56125pt x 1421.31pt>
 File: fig/ldac.png Graphic file (type png)
  <use fig/ldac.png> [48 <./fig/ldac.png>]) [49] [50] (./05conclusions.tex [51
 
@@ -1215,9 +1215,26 @@ l.2 \select@language {polish}
 \tf@lot=\write6
 \openout6 = `szkielet.lot'.
 
-) [61] (./appendixA.tex) [62
+) [61] (./appendixA.tex
+Underfull \hbox (badness 2269) in paragraph at lines 26--28
+[]\T1/ppl/m/n/12 In a ter-mi-nal win-dow ex-tract the tar.gz file us-ing tar -x
+zf gsl-
+ []
 
-] (./szkielet.aux
+[62
+
+] (/usr/share/texmf-texlive/tex/latex/listings/lstlang1.sty
+File: lstlang1.sty 2004/09/05 1.3 listings language file
+)
+Package hyperref Info: bookmark level for unknown lstlisting defaults to 0 on i
+nput line 63.
+
+(./code/example.py
+LaTeX Font Info:    Try loading font information for T1+pcr on input line 4.
+ (/usr/share/texmf-texlive/tex/latex/psnfss/t1pcr.fd
+File: t1pcr.fd 2001/06/04 font definitions for T1/pcr.
+)))
+[63] (./szkielet.aux
 
 ! Package babel Error: You haven't loaded the option polish yet.
 
@@ -1234,13 +1251,13 @@ LaTeX Warning: There were multiply-defined labels.
 
  ) 
 Here is how much of TeX's memory you used:
- 8659 strings out of 495026
- 119319 string characters out of 1181803
- 220727 words of memory out of 3000000
- 11300 multiletter control sequences out of 15000+50000
- 32872 words of font info for 57 fonts, out of 3000000 for 9000
+ 9078 strings out of 495026
+ 123365 string characters out of 1181803
+ 332265 words of memory out of 3000000
+ 11665 multiletter control sequences out of 15000+50000
+ 35624 words of font info for 64 fonts, out of 3000000 for 9000
  48 hyphenation exceptions out of 8191
- 38i,12n,43p,313b,474s stack positions out of 5000i,500n,10000p,200000b,50000s
+ 38i,12n,43p,313b,1345s stack positions out of 5000i,500n,10000p,200000b,50000s
 {/usr/share/texmf-texlive/fonts/enc/dvips/base/8r.enc}</usr/share/texmf-texli
 ve/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/share/texmf-texlive/fonts/ty
 pe1/public/amsfonts/cm/cmmi12.pfb></usr/share/texmf-texlive/fonts/type1/public/
@@ -1249,12 +1266,13 @@ cmmi8.pfb></usr/share/texmf-texlive/fonts/type1/public/amsfonts/cm/cmr12.pfb></
 usr/share/texmf-texlive/fonts/type1/public/amsfonts/cm/cmr6.pfb></usr/share/tex
 mf-texlive/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/share/texmf-texlive/fo
 nts/type1/public/amsfonts/cm/cmsy10.pfb></usr/share/texmf-texlive/fonts/type1/p
-ublic/amsfonts/cm/cmsy8.pfb></usr/share/texmf-texlive/fonts/type1/urw/palatino/
-uplb8a.pfb></usr/share/texmf-texlive/fonts/type1/urw/palatino/uplr8a.pfb></usr/
-share/texmf-texlive/fonts/type1/urw/palatino/uplri8a.pfb>
-Output written on szkielet.pdf (64 pages, 1129456 bytes).
+ublic/amsfonts/cm/cmsy8.pfb></usr/share/texmf-texlive/fonts/type1/urw/courier/u
+crr8a.pfb></usr/share/texmf-texlive/fonts/type1/urw/palatino/uplb8a.pfb></usr/s
+hare/texmf-texlive/fonts/type1/urw/palatino/uplr8a.pfb></usr/share/texmf-texliv
+e/fonts/type1/urw/palatino/uplri8a.pfb>
+Output written on szkielet.pdf (65 pages, 1154962 bytes).
 PDF statistics:
- 1053 PDF objects out of 1200 (max. 8388607)
- 293 named destinations out of 1000 (max. 500000)
- 520 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 1115 PDF objects out of 1200 (max. 8388607)
+ 332 named destinations out of 1000 (max. 500000)
+ 536 words of extra memory for PDF output out of 10000 (max. 10000000)
 

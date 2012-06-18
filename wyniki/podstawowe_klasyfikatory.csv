@@ -1,0 +1,8 @@
+"Algorithm","iris","bupa","pima","haberman","wine"
+,39,86,192,76,45
+"LDAC",38,62,146,58,44
+"KNN",38,56,131,56,32
+"Gini Index",38,56,123,58,41
+"Max likelyhood",38,51,145,58,45
+"Svm",26,63,141,56,43
+"Hybrid",39,59,155,61,45

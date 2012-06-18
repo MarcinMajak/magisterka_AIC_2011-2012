@@ -1,0 +1,18 @@
+datasets/wdbc.data.txt
+LDAC,138, 142
+KNN,133,142
+Gini Index,131,142
+Max likelyhood,135,142
+Svm,133,142
+
+Najlepsze rozwiazanie zaklasyfikowalo 133 obiektow z 142 5 atrybutow
+
+datasets/thyroid.data.txt
+LDAC,51, 55
+KNN,52,55
+Gini Index,53,55
+Max likelyhood,55,55
+Svm,53,55
+Najlepsze rozwiazanie zaklasyfikowalo 54 obiektow z 55
+
+
