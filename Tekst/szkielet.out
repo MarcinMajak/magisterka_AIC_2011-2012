@@ -29,7 +29,7 @@
 \BOOKMARK [2][-]{subsection.3.4}{Multistage hybrid algorithm construction}{section.3}
 \BOOKMARK [3][-]{subsubsection.3.4.1}{Motivations}{subsection.3.4}
 \BOOKMARK [3][-]{subsubsection.3.4.2}{Rough sets and genetic algorithm}{subsection.3.4}
-\BOOKMARK [2][-]{subsection.3.5}{Hybrid rough sets and fuzzy logic}{section.3}
+\BOOKMARK [2][-]{subsection.3.5}{Hybrid rough sets and fuzzy logic algorithm}{section.3}
 \BOOKMARK [1][-]{section.4}{Experimentation system}{}
 \BOOKMARK [2][-]{subsection.4.1}{Assumptions}{section.4}
 \BOOKMARK [2][-]{subsection.4.2}{Datasets}{section.4}
@@ -39,7 +39,7 @@
 \BOOKMARK [2][-]{subsection.5.1}{Simulation environment}{section.5}
 \BOOKMARK [2][-]{subsection.5.2}{Simulation results}{section.5}
 \BOOKMARK [3][-]{subsubsection.5.2.1}{Impact of granulation step on rough sets efficiency}{subsection.5.2}
-\BOOKMARK [3][-]{subsubsection.5.2.2}{Impact of recursive modification of granulation step on rough sets efficiency}{subsection.5.2}
+\BOOKMARK [3][-]{subsubsection.5.2.2}{Impact of recursive modification of granulation step on rough sets algorithm efficiency}{subsection.5.2}
 \BOOKMARK [3][-]{subsubsection.5.2.3}{Impact of number of membership functions on genetic fuzzy logic algorithm efficiency}{subsection.5.2}
 \BOOKMARK [3][-]{subsubsection.5.2.4}{Impact of granulation step G on genetic rough sets algorithm efficiency}{subsection.5.2}
 \BOOKMARK [3][-]{subsubsection.5.2.5}{Comparison of hybrid classifier with other classifiers}{subsection.5.2}
@@ -53,3 +53,4 @@
 \BOOKMARK [1][-]{appendix.A}{Program description}{}
 \BOOKMARK [2][-]{subsection.A.1}{Installation requirements}{appendix.A}
 \BOOKMARK [2][-]{subsection.A.2}{Example usage}{appendix.A}
+\BOOKMARK [2][-]{subsection.A.3}{Results}{appendix.A}

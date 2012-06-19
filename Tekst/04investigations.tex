@@ -26,8 +26,18 @@ There are different types:
         is used as the test set and the other $k-1$ subsets are merged together to form 
         a training set.
 \end{itemize}
-In this thesis $4$-fold cross validation was used. To ensure that presented
-results are reliable each test was repeated 10 times.
+In this thesis $4$-fold cross validation was used (see fig.
+\ref{fig:cross_validation}). To ensure that presented
+results are reliable each test was repeated 10 times. Additionally, if some
+patterns had missing attributes in the dataset, they were removed from
+classification. 
+\begin{figure}[H]
+    \begin{center}
+        \includegraphics[width=0.6\textwidth]{fig/cross_validation.jpg}
+    \end{center}
+    \caption{Example of 4-fold cross validation.}
+    \label{fig:cross_validation}
+\end{figure}
 \label{cha:Simulation_environment}
 \subsection{Simulation results}
 \label{cha:Simulation_results}
@@ -49,10 +59,10 @@ Results of the simulation are presented in table
     \item $P/PD$- number of patterns for which a possible decision rules were
         activated/number of correctly classified objects using these rules
     \item $V$ number of patterns rejected from classification. There was no
-        suitable rule or more rules have the same strength but different class
+        suitable rule or more rules than one have the same strength but different class
         label.
-    \item $C^*, P^*, V^*$ - total number of certain, possible, void decision rules 
-        respectively
+    \item $C^*, P^*, V^*$ - total number of \textit{certain}, \textit{possible}
+        or \textit{dummy} (strenght is equal to zero) decision rules, respectively
 \end{itemize}
 In the experiment, for every feature the initial step of granulation was
 changed from 4 to 18 while the factor of its increasing $\epsilona$  was equal 
@@ -71,7 +81,7 @@ better to keep $V^*$ parameter rather small and correlate its value with $C$
 and $P$ factors. Let notice that for $G=18$ the classification accuracy is very
 poor. The number of \textit{certain} rules is the biggest comparing with other
 cases. The reason for low classification is connected with $V^*$ where 5794
-rules are dummy.
+rules are \textit{dummy}.
 
 \begin{table}[H]
     \caption{Result of simulation for finding the dependency between
@@ -99,8 +109,8 @@ rules are dummy.
     \label{tab:simulation_research_1}
 \end{table}
 
-\subsubsection{Impact of recursive modification of granulation step on rough sets
-efficiency}
+\subsubsection{Impact of recursive modification of granulation step on rough
+sets algorithm efficiency}
 \label{cha:Simulation_reaearch_2}
 In the previous section (\ref{cha:Simulation_reaearch_2}) it was shown that the
 granulation step strongly affects the classification accuracy.
@@ -150,7 +160,6 @@ The main two disadvantages of proposed rough sets algorithm are as follows:
 \subsubsection{Impact of number of membership functions on genetic fuzzy logic algorithm efficiency}
 \label{cha:Simulation_reaearch_3}
 \paragraph{Example of rule generation}
-
 In this section the results of fuzzy logic classifier simulation are presented.
 The goal is to show that proposed algorithm construction is correct and gives
 satisfactory results. 
@@ -167,8 +176,9 @@ At the beginning each feature is divided into 14 membership functions in the sam
 presented in fig. \ref{fig:fuzzy_example} plus one linguistic variable $DON'T\; USE$. 
 The final rule set which was able to classify 32 out of 34 testing patterns is
 presented in fig. \ref{fig:fuzzy_result}. From 10 test the following
-rule construction occurred 7 out of 10 times.
-\begin{figure}[H]
+rule construction occurred 7 out of 10 times. In this example each attribute
+was normalized and after this process feature values were from $<0, 1>$ range. 
+\begin{figure}[H] 
     \begin{center}
         \includegraphics[width=\textwidth]{fig/fuzzy_result.png}
     \end{center}
@@ -181,7 +191,7 @@ satisfactory. Additionally, only five rules were needed for correct pattern
 recognition.
 
 \paragraph{Classification accuracy and the number of membership
-functions in fuzzy logic}
+functions in genetic fuzzy logic algorithm}
 The goal of the second part of this test was to check how the number of initial
 membership functions affects the final result of classification. There is a
 question if it is better to use many small membership functions (for example 14
@@ -221,42 +231,63 @@ will be always used in next tests.
 
 \paragraph{Classifiers performance comparison}
 Here the genetic fuzzy logic algorithm is compared with rough sets algorithms.
-Datasets used in this tests are as follows:
-\begin{itemize}
-    \item Haberman
-    \item Iris
-    \item Bupa
-    \item Pima
-    \item Wine
-\end{itemize}
+For basic rough sets algorithm granulation step $G$ was set to 4 while for
+rough sets algorithm with modification of decision rules this factor was equal
+to 7. Parameters for genetic fuzzy logic classifier were the same as presented
+in table \ref{tab:fuzzy_genetic_parameters}, parameter $k$ was set to 4. Basic
+rough sets algorithm and algorithm with modification of decision rules used all
+available features for classification. In case of genetic fuzzy logic
+classifier the average number of attributes used in 10 rules was calculated.
+
 The main purpose of this simulation was to check the efficiency of proposed
 genetic algorithm, especially how many attributes and how many rules are needed 
 for the proper classification. Table \ref{tab:genetic_fuzzy_results} presents
 the results of simulation. Notation used in the table is as follows:
 \begin{itemize}
-    \item $A$- number of attributes in the dataset
+    \item $F$- number of attributes in the dataset
     \item $O$- number of objects used for classification
+    \item $W$, $B$, $A$, $\sigma$-performance indicators described in section \ref{cha:indicators}
     \item $RSR$- number of objects correctly recognized by basic rough sets algorithm
     \item $RSMRS$- number of patterns correctly recognized by rough sets algorithm
         with modification of decision rules
     \item $GFL$- number of objects correctly recognized by genetic fuzzy logic
         classifier
-    \item $AU$- an average number of features used by genetic rough fuzzy logic classifier
+    \item $FU$- an average number of features used by genetic rough fuzzy logic classifier
         in the best rule set
 \end{itemize}
 \begin{table}[H]
     \caption{Comparison of accuracy of classification for genetic fuzzy logic classifier with
     rough sets algorithms for different datasets}
     \centering
-    \begin{tabular}{|c|c|c|c|c|c|c|}
+    \begin{tabular}{|c|c|c|c|c|c|c|c|}
         \hline
-        Dataset & $A$ & $O$ & $RSR$ & $RSMR$ & $GFL$ & $AU$\\ 
-        \hline \hline
-        haberman& 3&	76&	49&	58&	58 & 2 \\ \hline
-        iris&	4&	39&	32&	38&	39 & 3\\ \hline
-        bupa&  	6&	86&	28&	53&	56 & 5\\ \hline 
-        pima&   8&	192&	69&	126& 145 & 6 \\ \hline
-        wine& 13&	45&	0&	15&	43 & 11\\ \hline
+        Dataset&$F$&$O$&$W$&$B$&$A$&$\sigma$&$FU$\\ \hline \hline
+        \multicolumn{8}{|c|}{RSR}\\ \hline
+        haberman&3&77,0&50,0&55,0&53,0&1,9&3,0\\ \hline
+        iris&4&39,0&27,0&31,0&29,3&1,5&4,0\\ \hline
+        thyroid&5&56,0&41,0&46,0&44,0&1,9&5,0\\ \hline
+        bupa&6&87,0&25,0&37,0&30,3&4,3&6,0\\ \hline
+        pima&8&192,0&85,0&98,0&91,5&4,9&8,0\\ \hline
+        wine&13&45,0&0,0&2,0&0,8&0,8&13,0\\ \hline
+        wdbc&30&142,0&10,0&15,0&11,8&2,0&30,0\\ \hline \hline
+
+        \multicolumn{8}{|c|}{RSMR}\\ \hline
+        haberman&3&77,0&53,0&58,0&55,5&2,1&3,0\\ \hline
+        iris&4&39,0&32,0&38,0&34,8&2,4&4,0\\ \hline
+        thyroid&5&56,0&48,0&50,0&49,3&0,8&5,0\\ \hline
+        bupa&6&87,0&23,0&35,0&28,8&4,3&6,0\\ \hline
+        pima&8&192,0&62,0&69,0&65,5&2,5&8,0\\ \hline
+        wine&13&44,5&15,0&23,0&19,3&3,0&13,0\\ \hline
+        wdbc&30&142,3&10,0&15,0&11,8&2,0&30,0\\ \hline \hline
+
+        \multicolumn{8}{|c|}{GFL}\\ \hline
+        haberman&3&77,0&54,0&58,0&55,9&1,2&8,5\\ \hline
+        iris&4&39,0&29,0&39,0&34,3&3,1&8,2\\ \hline
+        thyroid&5&56,0&41,0&45,0&43,4&1,2&8,4\\ \hline
+        bupa&6&87,0&49,0&58,0&53,4&2,7&8,3\\ \hline
+        pima&8&192,0&124,0&140,0&134,1&4,8&7,7\\ \hline
+        wine&13&45,0&35,0&42,0&38,0&1,9&8,3\\ \hline
+        wdbc&30&142,0&107,0&127,0&119,2&5,6&7,9\\ \hline
     \end{tabular}
     \label{tab:genetic_fuzzy_results}
 \end{table}
@@ -280,53 +311,76 @@ while the second is genetic rough sets algorithm (described in section
 \ref{cha:Multistage}). Results of simulations are placed in table \ref{tab:genetic_rough_results}.
 where the notation is as follows:
 \begin{itemize}
-    \item $A$ number of attributes describing pattern in dataset
-    \item $O$ number of patterns for classification
+    \item $F$- number of attributes in the dataset
+    \item $O$- number of objects used for classification
+    \item $W$, $B$, $A$, $\sigma$-performance indicators described in section \ref{cha:indicators}
     \item $RSR$ number of objects correctly recognized by basic rough sets
         algorithm
     \item $RSMR$ number of patterns correctly recognized by rough sets
         algorithm with modification of decision rules
     \item $GRR$ number of objects correctly recognized by genetic rough sets
         algorithm
-    \item $AU$ number of features used by genetic rough sets algorithm for
+    \item $FU$ number of features used by genetic rough sets algorithm for
         classification.
 \end{itemize}
 
 Parameters for genetic rough sets algorithm were the same as presented in table
 \ref{tab:rough_genetic_parameters} and for the first rough sets algorithm
-granulation step $G$ was equal to 5 and for algorithm with modification of
-decision rules starting granulation value was $7$.
+granulation step $G$ was equal to $4$ and for algorithm with modification of
+decision rules starting granulation value was $7$. These parameters were
+selected from the previous simulations because in such configuration the best
+results were obtained.
 \begin{table}[H]
     \caption{Accuracy of classification for genetic rough sets and basic rough
     sets algorithms for different datasets}
     \centering
-    \begin{tabular}{|c|c|c|c|c|c|c|}
+    \begin{tabular}{|c|c|c|c|c|c|c|c|}
         \hline
-        Dataset & $A$ & $O$ & $RSR$ & $RSMR$ & $GRR$ & $AU$\\ 
-        \hline \hline
-        haberman& 3&	76&	49&	58&	61 & 2 \\ \hline
-        iris&	4&	39&	32&	38&	39 & 2\\ \hline
-        bupa&  	6&	86&	28&	53&	57 & 3\\ \hline 
-        pima&   8&	192&	69&	126& 155 & 5 \\ \hline
-        wine& 13&	45&	0&	15&	44 & 2\\ \hline
+        Dataset&$F$&$O$&$W$&$B$&$A$&$\sigma$&$FU$\\ \hline \hline
+        \multicolumn{8}{|c|}{RSR}\\ \hline
+        haberman&3&77,0&50,0&55,0&53,0&1,9&3,0\\ \hline
+        iris&4&39,0&27,0&31,0&29,3&1,5&4,0\\ \hline
+        thyroid&5&56,0&41,0&46,0&44,0&1,9&5,0\\ \hline
+        bupa&6&87,0&25,0&37,0&30,3&4,3&6,0\\ \hline
+        pima&8&192,0&85,0&98,0&91,5&4,9&8,0\\ \hline
+        wine&13&45,0&0,0&2,0&0,8&0,8&13,0\\ \hline
+        wdbc&30&142,0&10,0&15,0&11,8&2,0&30,0\\ \hline \hline
+
+        \multicolumn{8}{|c|}{RSMR}\\ \hline
+        haberman&3&77,0&53,0&58,0&55,5&2,1&3,0\\ \hline
+        iris&4&39,0&32,0&38,0&34,8&2,4&4,0\\ \hline
+        thyroid&5&56,0&48,0&50,0&49,3&0,8&5,0\\ \hline
+        bupa&6&87,0&23,0&35,0&28,8&4,3&6,0\\ \hline
+        pima&8&192,0&62,0&69,0&65,5&2,5&8,0\\ \hline
+        wine&13&44,5&15,0&23,0&19,3&3,0&13,0\\ \hline
+        wdbc&30&142,3&10,0&15,0&11,8&2,0&30,0\\ \hline \hline
+
+        \multicolumn{8}{|c|}{GRR}\\ \hline
+        haberman&3&77,0&58,00&61,00&59,50&1,50&2,00\\ \hline
+        iris&4&39,0&35,00&39,00&37,00&1,58&2,42\\ \hline
+        thyroid&5&56,0&49,00&54,00&51,17&1,91&2,58\\ \hline
+        bupa&6&87,0&55,00&61,00&57,67&2,06&2,67\\ \hline
+        pima&8&192,0&145,00&155,00&149,42&3,15&3,00\\ \hline
+        wine&13&45,0&40,00&44,00&42,67&1,43&2,92\\ \hline
+        wdbc&30&142,0&128,00&135,00&132,67&1,65&5,08\\ \hline
     \end{tabular}
     \label{tab:genetic_rough_results}
 \end{table}
 From table \ref{tab:genetic_rough_results} one can conclude that genetic rough
 sets algorithm obtains better results than other algorithms, especially it is
 visible for more complex problems such as wine or pima datasets. Additionally,
-let analyze the last column $AU$. It determines how many attributes are used in
+let analyze the last column $FU$. It determines how many attributes are used in
 genetic rough sets algorithm for classification. It is noticeable that some
 features are useless and genetic rough sets algorithm is able to find
 valuable attributes. Another thing to reconsider is how the complexity of the
 problem affects algorithm classification accuracy. Basic rough sets algorithm
 tackles quite well with simple problems, for example iris or haberman datasets,
-but when the number of attributes is greater than $4$ algorithm efficiency
+but when the number of attributes is greater than $4$ then the algorithm efficiency
 decreases, while genetic rough sets is not affected by this problem and can
 deal with complex datasets.
 
 
-\subsubsection{Comparison of hybrid classifier with other classifiers}
+\subsubsection{Comparison of hybrid multistage classifier with other classifiers}
 \label{cha:Simulation_reaearch_5}
 In this section results of simulation for hybrid classifier are presented. 
 The accuracy of classification is compared with other classifiers trained and 
@@ -365,35 +419,102 @@ As the source of reference different types of classifiers were chosen to ensure 
         deals with finding an optimal linear hyperplanes for class separation.
 \end{itemize}
 Results of simulation are presented in table \ref{tab:final_comparison}, where
-$O$ determines the number of patterns for classification. Last row in table
-shows results for hybrid classifier described in section
-\ref{cha:Multistage_rough_fuzzy}. Numbers in bold font indicates this
+notation is as follows:
+\begin{itemize}
+    \item $O$- number of patterns to be recognized
+    \item $W$, $B$, $A$, $\sigma$-performance indicators described in section \ref{cha:indicators}
+    \item MACL- Maximum Likelihood Classifier
+    \item Hybrid- multistage hybrid rough sets fuzzy logic classifier described
+        in section \ref{cha:Multistage_rough_fuzzy}
+\end{itemize}
+Numbers in bold font indicates this
 classifier which obtained the best result for a particular dataset. In cases
 when the same result was obtained for more classifier then the number of
 attributes is taken into account.
 
-\begin{table}[H]
-    \caption{Comparison of hybrid rough fuzzy classifier with other common
-    classifiers}
-    \centering
-    \begin{tabular}{|c|c|c|c|c|c|c|c|}
-        \hline
-        Algorithm&iris&bupa&pima&haberman&wine&wdbc&thyroid \\ \hline \hline
-        $O$&39&86&192&76&45 & 142 & 55\\ \hline
-        LDAC&38&62&146&58&44& \textbf{138} &51 \\ \hline
-        3-KNN&38&56&131&56&32 & 133 &52 \\ \hline
-        Gini Index&38&56&123&58&41& 131 &53 \\ \hline
-        Max likelyhood&38&51&145&58&45 & 135 &55\\ \hline 
-        Svm&26&\textbf{63}&141&56&43& 133 & 53\\ \hline \hline
-        \textbf{Hybrid}&\textbf{39}&59&\textbf{155}&\textbf{61}&\textbf{45}&
-        135 & \textbf{55}\\ \hline
-    \end{tabular}
+\begin{longtable}{|c|c|c|c|c|c|}
+    \caption{Comparison of hybrid rough fuzzy classifier with other common classifiers}
     \label{tab:final_comparison}
-\end{table}
+
+    \hline
+    \multicolumn{1}{|c|}{Classifier} & \multicolumn{1}{|c|}{$O$} &
+    \multicolumn{1}{|c|}{$W$} & \multicolumn{1}{|c|}{$B$} &
+    \multicolumn{1}{|c|}{$A$} & \multicolumn{1}{|c|}{$\sigma$} \\ \hline \hline
+    \endfirsthead
+
+    \multicolumn{6}{c}%
+    {{\bfseries \tablename\ \thetable{} -- continued from previous page}} \\
+    \hline 
+    \multicolumn{1}{|c|}{Classifier} & \multicolumn{1}{|c|}{$O$} &
+    \multicolumn{1}{|c|}{$W$} & \multicolumn{1}{|c|}{$B$} &
+    \multicolumn{1}{|c|}{$A$} & \multicolumn{1}{|c|}{$\sigma$}
+    \\ \hline
+    \endhead
+
+    \hline \hline \multicolumn{6}{|r|}{{Continued on next page}} \\ \hline
+    \endfoot
+
+    \endlastfoot
+        \multicolumn{6}{|c|}{iris} \\ \hline
+        LDAC&39,0&36,0&38,0&36,8&0,8\\ \hline
+        KNN&39,0&34,0&38,0&36,2&1,8\\ \hline
+        GINI&39,0&31,0&38,0&35,5&2,9\\ \hline
+        MACL&39,0&34,0&38,0&36,3&1,5\\ \hline
+        SVM&39,0&24,0&26,0&25,0&1,0\\ \hline
+        Hybrid&39,0&35,0&39,0&\textbf{37,0}&1,6\\ \hline \hline
+
+        \multicolumn{6}{|c|}{Bupa} \\ \hline
+        LDAC&87,0&56,0&62,0&59,3&2,8\\ \hline
+        KNN&87,0&55,0&65,0&59,3&4,0\\ \hline
+        GINI&87,0&54,0&56,0&55,0&0,7\\ \hline
+        MACL&87,0&48,0&56,0&52,5&3,2\\ \hline
+        SVM&87,0&53,0&63,0&\textbf{59,5}&3,8\\ \hline
+        Hybrid&87,0&55,0&62,0&58,8&2,6\\ \hline \hline
+
+        \multicolumn{6}{|c|}{Pima} \\ \hline
+        LDAC&192,0&146,0&149,0&147,5&1,5\\ \hline
+        KNN&192,0&131,0&136,0&132,3&2,2\\ \hline
+        GINI&192,0&123,0&136,0&130,5&5,3\\ \hline
+        MACL&192,0&142,0&145,0&143,3&1,1\\ \hline
+        SVM&192,0&128,0&141,0&134,8&4,7\\ \hline
+        Hybrid&192,0&146,0&152,0&\textbf{149,0}&2,1\\ \hline \hline
+
+        \multicolumn{6}{|c|}{haberman} \\ \hline
+        LDAC&77,0&57,0&58,0&57,5&0,5\\ \hline
+        KNN&77,0&54,0&57,0&55,8&1,1\\ \hline
+        GINI&77,0&45,0&58,0&52,3&4,7\\ \hline
+        MACL&77,0&57,0&58,0&57,8&0,4\\ \hline
+        SVM&77,0&55,0&58,0&56,5&1,1\\ \hline
+        Hybrid&77,0&58,0&63,0&\textbf{60,0}&2,1\\ \hline \hline
+
+        \multicolumn{6}{|c|}{wdbc} \\ \hline
+        LDAC&142,0&133,0&138,0&135,5&1,8\\ \hline
+        KNN&142,0&127,0&134,0&131,3&2,7\\ \hline
+        GINI&142,0&128,0&131,0&128,8&1,3\\ \hline
+        MACL&142,0&133,0&139,0&\textbf{135,8}&2,2\\ \hline
+        SVM&142,0&127,0&135,0&131,8&2,9\\ \hline
+        Hybrid&142,0&127,0&138,0&134,3&4,3\\ \hline \hline
+
+        \multicolumn{6}{|c|}{thyroid} \\ \hline
+        LDAC&56,0&47,0&51,0&49,3&1,8\\ \hline
+        KNN&56,0&48,0&52,0&50,8&1,6\\ \hline
+        GINI&56,0&48,0&53,0&50,5&1,8\\ \hline
+        MACL&56,0&50,0&54,0&51,0&2,1\\ \hline
+        SVM&56,0&50,0&53,0&51,0&1,2\\ \hline
+        Hybrid&56,0&50,0&55,0&\textbf{52,0}&2,1\\ \hline \hline
+
+        \multicolumn{6}{|c|}{wine} \\ \hline
+        LDAC&45,0&41,0&43,0&43,0&0,7\\ \hline
+        KNN&45,0&27,0&35,0&39,9&3,0\\ \hline
+        GINI&45,0&37,0&41,0&39,0&2,0\\ \hline
+        MACL&45,0&43,0&45,0&\textbf{44,3}&0,8\\ \hline
+        SVM&45,0&38,0&44,0&41,3&2,4\\ \hline
+        Hybrid&45,0&41,0&43,0&43,0&0,7\\ \hline
+\end{longtable}
 
 From table \ref{tab:final_comparison} one can conclude that hybrid classifier
 obtains quite good results comparing with other classifiers. From seven
-datasets five times it was the best. In other cases results are comparable.
+datasets four times it was the best. In other cases results are comparable.
 What is more important hybrid classifier is able to classify pattern with
 reduced number of attributes. In this case created decision rules are simpler
 and more readable for user. This is especially important in medicine where

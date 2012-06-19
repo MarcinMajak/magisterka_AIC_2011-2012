@@ -16,7 +16,8 @@
 \contentsline {figure}{\numberline {3.2}{\ignorespaces Example rule decoded from the individual chromosome (attribute $x_3$ was omitted in this rule)}}{31}{figure.2}
 \contentsline {figure}{\numberline {3.3}{\ignorespaces Cross-over operation used in genetic algorithm}}{32}{figure.3}
 \contentsline {figure}{\numberline {3.4}{\ignorespaces Schematic diagram how hybrid classifier works}}{36}{figure.4}
-\contentsline {figure}{\numberline {5.1}{\ignorespaces Comparison of Basic Rough sets algorithm with algorithm where modification of decision rules is introduced.}}{43}{figure.1}
-\contentsline {figure}{\numberline {5.2}{\ignorespaces Example of rule set generated for Iris dataset}}{44}{figure.2}
-\contentsline {figure}{\numberline {5.3}{\ignorespaces Impact of initial number of membership functions $MF$ per attribute on the final fuzzy classification rate}}{45}{figure.3}
-\contentsline {figure}{\numberline {5.4}{\ignorespaces Example of linear discriminant classifier for 2-dimensional problem}}{48}{figure.4}
+\contentsline {figure}{\numberline {5.1}{\ignorespaces Example of 4-fold cross validation.}}{41}{figure.1}
+\contentsline {figure}{\numberline {5.2}{\ignorespaces Comparison of Basic Rough sets algorithm with algorithm where modification of decision rules is introduced.}}{44}{figure.2}
+\contentsline {figure}{\numberline {5.3}{\ignorespaces Example of rule set generated for Iris dataset}}{45}{figure.3}
+\contentsline {figure}{\numberline {5.4}{\ignorespaces Impact of initial number of membership functions $MF$ per attribute on the final fuzzy classification rate}}{46}{figure.4}
+\contentsline {figure}{\numberline {5.5}{\ignorespaces Example of linear discriminant classifier for 2-dimensional problem}}{51}{figure.5}

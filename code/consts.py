@@ -13,7 +13,7 @@ datasets = [
     ]
 
 """
-Deteminies the type of cross-validation type.
+Determinies the type of cross-validation type.
 In this project 4-cross-validation is used which 
 means that in each run dataset is divided into 4 
 even sets and one set is treated as testing and

@@ -20,7 +20,11 @@ if __name__ == '__main__':
     grs.create_population(population_size=POPULATION, division=G)
     # run genetic algorithm
     grs.run()
-    # genetic algorithm found decision rule set
-    # classify patterns
-    for pattern in patterns:
-        grs.classify(pattern)
+    # genetic algorithm found granulation
+    # now classify patterns
+    classified = 0
+    for i in range(len(patterns)):
+        if labels[i] == grs.classify(patterns[i]):
+            classified += 1
+    grs.print_summary()
+

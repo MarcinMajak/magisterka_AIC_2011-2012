@@ -364,25 +364,25 @@ where $w_1$, $w_2$ are weights for a reward and punishment to
 the individual on the classification result ($w1=5$, $w_2=10$); $NC$ and $NNC$ are
 the numbers of correctly recognized and misclassified patterns; $NOF$ is the number of
 attributes used by the rule (in the example above $NOF=3$);
-$NOCR$ is the number of certain rule which are derived from
-partition given by the individual; $w_3$ is the weight (in the simulations
+$NOCR$ is the number of \textit{certain} rules which are derived from
+partition given by the particular individual; $w_3$ is the weight (in the simulations
 $w_3=10$).
 
 
 The whole procedure of constructing genetic rough sets algorithm can be summarized in few steps:
 \begin{enumerate}
     \item Determine the maximum partition value for each attribute $K_{max}$. In
-        this thesis $K_{max}$ is the same for all features
+        this thesis $K_{max}$ is the same for all features.
     \item Generate $N_{pop}$ individuals by randomly assigning value from the
         set $\{1, 2, \ldots, K_{max}, \, DON'T\; USE\}$ to each allele in the
-        chromosome
+        chromosome.
     \item Treat each individual as a rough set partition and calculate lower,
         upper approximations and the boundary region. Evaluate individual using
-        fitness function $F_{rg}$
+        fitness function $F_{rg}$.
     \item Generate $N_{replace}$ individuals using genetic operators and merge
-        with the current population
+        with the current population.
     \item Choose $N_{pop}$ individual for the next generation
-    \item If stopping criteria is not fulfilled go to $2$
+    \item If stopping criteria is not fulfilled go to $2$.
 \end{enumerate}
 Cross-over and mutation operations are done in the same way as presented in
 section \ref{cha:Fuzzy_logic_genetic_algorithm}. Parameters for genetic algorithm 
@@ -403,7 +403,7 @@ used in this section are presented in table \ref{tab:rough_genetic_parameters}:
 \end{table}
 In case of genetic algorithm for rough set $100$ generations were sufficient to
 obtain reliable results.
-\subsection{Hybrid rough sets and fuzzy logic}
+\subsection{Hybrid rough sets and fuzzy logic algorithm}
 \label{cha:Multistage_rough_fuzzy}
 Multistage classifier created in this thesis can be divided into three phases:
 \begin{enumerate}
@@ -426,7 +426,7 @@ important. The whole hybrid algorithm can be summarized in the following steps:
             \item If pattern is classified by a \textit{certain} or
                 \textit{possible} rule then it is a final label
             \item If no proper rule is found or more than one rule have the same
-                strength, but different label then pattern is rejected and
+                strength but different label then pattern is rejected and
                 processed by fuzzy logic classifier.
         \end{itemize}
 \end{enumerate}

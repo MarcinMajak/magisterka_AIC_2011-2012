@@ -32,30 +32,31 @@
 \contentsline {subsection}{\numberline {3.4}Multistage hybrid algorithm construction}{33}{subsection.3.4}
 \contentsline {subsubsection}{\numberline {3.4.1}Motivations}{33}{subsubsection.3.4.1}
 \contentsline {subsubsection}{\numberline {3.4.2}Rough sets and genetic algorithm}{33}{subsubsection.3.4.2}
-\contentsline {subsection}{\numberline {3.5}Hybrid rough sets and fuzzy logic}{35}{subsection.3.5}
+\contentsline {subsection}{\numberline {3.5}Hybrid rough sets and fuzzy logic algorithm}{35}{subsection.3.5}
 \contentsline {section}{\numberline {4}Experimentation system}{37}{section.4}
 \contentsline {subsection}{\numberline {4.1}Assumptions}{37}{subsection.4.1}
 \contentsline {subsection}{\numberline {4.2}Datasets}{37}{subsection.4.2}
 \contentsline {subsection}{\numberline {4.3}Efficiency indicators}{39}{subsection.4.3}
-\contentsline {subsection}{\numberline {4.4}Program description}{39}{subsection.4.4}
+\contentsline {subsection}{\numberline {4.4}Program description}{40}{subsection.4.4}
 \contentsline {section}{\numberline {5}Simulation investigations}{40}{section.5}
 \contentsline {subsection}{\numberline {5.1}Simulation environment}{40}{subsection.5.1}
 \contentsline {subsection}{\numberline {5.2}Simulation results}{41}{subsection.5.2}
 \contentsline {subsubsection}{\numberline {5.2.1}Impact of granulation step on rough sets efficiency}{41}{subsubsection.5.2.1}
-\contentsline {subsubsection}{\numberline {5.2.2}Impact of recursive modification of granulation step on rough sets efficiency}{42}{subsubsection.5.2.2}
-\contentsline {subsubsection}{\numberline {5.2.3}Impact of number of membership functions on genetic fuzzy logic algorithm efficiency}{44}{subsubsection.5.2.3}
-\contentsline {paragraph}{\numberline {5.2.3.1}Example of rule generation}{44}{paragraph.5.2.3.1}
-\contentsline {paragraph}{\numberline {5.2.3.2}Classification accuracy and the number of membership functions in fuzzy logic}{44}{paragraph.5.2.3.2}
-\contentsline {paragraph}{\numberline {5.2.3.3}Classifiers performance comparison}{46}{paragraph.5.2.3.3}
-\contentsline {subsubsection}{\numberline {5.2.4}Impact of granulation step $G$ on genetic rough sets algorithm efficiency}{47}{subsubsection.5.2.4}
-\contentsline {subsubsection}{\numberline {5.2.5}Comparison of hybrid classifier with other classifiers}{48}{subsubsection.5.2.5}
-\contentsline {section}{\numberline {6}Summary and conclusions}{51}{section.6}
-\contentsline {subsection}{\numberline {6.1}Conclusions from conducted experiments}{51}{subsection.6.1}
-\contentsline {subsection}{\numberline {6.2}General conclusions}{53}{subsection.6.2}
-\contentsline {section}{\numberline {7}Future work}{54}{section.7}
-\contentsline {section}{Literature}{55}{Item.82}
-\contentsline {section}{List of figures}{55}{Item.82}
-\contentsline {section}{List of tables}{55}{Item.82}
-\contentsline {section}{\numberline {A}Program description}{62}{appendix.A}
-\contentsline {subsection}{\numberline {A.1}Installation requirements}{62}{subsection.A.1}
-\contentsline {subsection}{\numberline {A.2}Example usage}{63}{subsection.A.2}
+\contentsline {subsubsection}{\numberline {5.2.2}Impact of recursive modification of granulation step on rough sets algorithm efficiency}{43}{subsubsection.5.2.2}
+\contentsline {subsubsection}{\numberline {5.2.3}Impact of number of membership functions on genetic fuzzy logic algorithm efficiency}{45}{subsubsection.5.2.3}
+\contentsline {paragraph}{\numberline {5.2.3.1}Example of rule generation}{45}{paragraph.5.2.3.1}
+\contentsline {paragraph}{\numberline {5.2.3.2}Classification accuracy and the number of membership functions in genetic fuzzy logic algorithm}{46}{paragraph.5.2.3.2}
+\contentsline {paragraph}{\numberline {5.2.3.3}Classifiers performance comparison}{47}{paragraph.5.2.3.3}
+\contentsline {subsubsection}{\numberline {5.2.4}Impact of granulation step $G$ on genetic rough sets algorithm efficiency}{48}{subsubsection.5.2.4}
+\contentsline {subsubsection}{\numberline {5.2.5}Comparison of hybrid classifier with other classifiers}{51}{subsubsection.5.2.5}
+\contentsline {section}{\numberline {6}Summary and conclusions}{55}{section.6}
+\contentsline {subsection}{\numberline {6.1}Conclusions from conducted experiments}{55}{subsection.6.1}
+\contentsline {subsection}{\numberline {6.2}General conclusions}{57}{subsection.6.2}
+\contentsline {section}{\numberline {7}Future work}{58}{section.7}
+\contentsline {section}{Literature}{59}{Item.82}
+\contentsline {section}{List of figures}{59}{Item.82}
+\contentsline {section}{List of tables}{59}{Item.82}
+\contentsline {section}{\numberline {A}Program description}{66}{appendix.A}
+\contentsline {subsection}{\numberline {A.1}Installation requirements}{66}{subsection.A.1}
+\contentsline {subsection}{\numberline {A.2}Example usage}{67}{subsection.A.2}
+\contentsline {subsection}{\numberline {A.3}Results}{68}{subsection.A.3}

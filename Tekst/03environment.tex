@@ -2,9 +2,8 @@
 \label{cha:ExperimentAnalysis}
 \subsection{Assumptions}
 This section starts the second part of this thesis. In the first, algorithms
-were presented in case of construction and their properties.
-
-For the simulation purposes the following algorithms have been implemented:
+were presented in case of construction and their properties. For the simulation 
+purposes the following algorithms have been implemented:
 \begin{enumerate}
     \item Basic Rough sets algorithm
     \item Rough sets algorithm with modification of decision rules basing on
@@ -89,6 +88,18 @@ described:
                 the record of a single male individual. 
         \end{itemize}
 
+    \item Dataset name: Pima
+        \begin{itemize}
+            \item \#attributes: 8
+            \item \#instances: 768
+            \item \#classes: 2
+            \item Desctiption:
+                This dataset comes from National Institute of Diabetes and Digestive and
+                Kidney Diseases. The binary-valued decision indicates whether the
+                patient shows signs of diabetes according to World Health Organization
+                criteria. All patients are females at least 21 years old of Pima Indian heritage.
+        \end{itemize}
+
     \item Dataset name: Wdbc
         \begin{itemize}
             \item \#attributes: 32
@@ -106,7 +117,8 @@ all experiments and additionally a~priori knowledge about each dataset must
 be know. By a-priori knowledge one should understand the label of class for
 each pattern. Below, there are listed methods of algorithm fitness scoring:
 \begin{itemize}
-	\item Classification accuracy $CA$
+	\item Classification accuracy $CA$- the number of correctly classified
+        patterns out of $O$ objects.
 		\begin{itemize}
 			\item The best value from $n$ probes 
 				\begin{equation}
@@ -126,7 +138,7 @@ each pattern. Below, there are listed methods of algorithm fitness scoring:
 		\end{itemize}
 	\item Error variance from $n$ simulations 
 		\begin{equation}
-			\sigma^2=\frac{1}{n-1}\sum\limits_{i=1}^n(AC_i-A)^2
+            \sigma=\sqrt{\frac{1}{n-1}\sum\limits_{i=1}^n(AC_i-A)^2}
 			\label{min4}
 		\end{equation}
 \end{itemize}
@@ -138,9 +150,11 @@ It allows simulating all algorithms with chosen dataset and obtain
 algorithm efficiency indicators. 
 
 Program was tested on Linux platform with Intel Pentium Dual Core 2.4 GHz, 2GB
-memory. To run the program one has to install \textit{PYTHON} environment at
+memory. To run the program one has to install \textit{Python} environment at
 least in version 2.6. Because implemented algorithms have many setting parameters, 
 they were written to the file so that easily change their value in testing procedure. 
 Output results(efficiency indicators) are written to \textsc{csv} for further
 processing. The most preferable environment for running this project is
-Eclipse, free to download from the Internet.
+Eclipse, free to download from the Internet. Each classifier is written in the
+form of \textit{Python} class so that further extension would be very easy. An
+example of classifiers usage is presented in appendix \ref{Appendix}.

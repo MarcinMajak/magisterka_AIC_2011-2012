@@ -61,3 +61,16 @@ parameters with cross-validation and dataset type must be chosen. Below, a
 simple example is presented showing how to run genetic rough sets classifier
 fir iris dataset
 \lstinputlisting[language=Python]{code/example.py}
+\subsection{Results}
+In each simulation results of classification for each classifier are saved in
+csv file. Names of the files are as follows:
+\begin{itemize}
+    \item \textit{results/rough\_sets\_classifier.csv} for RoughSetsClassifier
+    \item \textit{results/genetic\_fuzzy\_logic\_classifier.csv} for GeneticFuzzyLogicClassifier
+    \item \textit{results/genetic\_rough\_sets\_classifier.csv} for GeneticRoughSetsClassifier
+    \item \textit{results/hybrid\_classifier.csv} for hybrid classifier
+\end{itemize}
+After execution of the program each file is created from scratch so be sure
+that the previous version of results is save in another location or another
+name.
+
