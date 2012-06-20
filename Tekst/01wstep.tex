@@ -17,51 +17,53 @@ significant impact on the final classification accuracy:
     \item training,
     \item testing,
 \end{enumerate}
-At first in this section few basic information and categories will be given 
+At first, few basic information and categories will be given 
 about pattern classification task. Generally, the whole process
 can be divided into two main categories:
 \begin{itemize}
-    \item unsupervised - objects (patterns) incoming to the system are not previously
+    \item unsupervised- objects (patterns) incoming to the system are not previously
         labeled and this is the system task to find an appropriate structure of
         the data, to establish the organization of the classes basing only on
         the available data; there is no statistical or expert knowledge at a
         hand,
-    \item supervised - in this approach incoming patterns have labels and can
+    \item supervised- in this approach incoming patterns have labels and can
         be treated as a training set. A supervised learning algorithm analyzes the 
         training data and produces an inferred function, which is called a \textit{classifier},
 \end{itemize}
 In this thesis supervised learning is reconsidered because available datasets 
-are labeled with class number. Further division is connected with syntactic and statistical 
-approach. In former, each pattern is represented in terms of 
-$d$ features (measurements) and is viewed as a point in
-$d$-dimensional feature space, while the latter
-is based on the characterization of the inherent structure of the 
-qualitative features. For that  reason, the complex patterns can be
-decomposed using a hierarchical structure in simple  sub-patterns.
-The patterns are viewed as sentences belonging to a language, primitives
-represents the alphabet of the language and the sentences are generated
-according to a grammar which is inferred from the available training data.
-EKG waveforms, textured images and shape analysis of contours are the examples
-of syntactic approach.
+are labeled with class number. Another division is connected with the type and
+structure of data:
+\begin{itemize}
+    \item statistical classification- attempts to classify patterns
+        based on a set of extracted features and an underlying 
+        statistical model for the generation of these patterns. 
+        Each pattern is represented in terms of $d$ features (measurements) 
+        and is viewed as a point in $d$-dimensional feature space,
+    \item synctatic or structural pattern recognition- assumes that pattern
+        structure is quantiﬁable and extractable so that structural
+        similarity of patterns can be assessed. It formulates hierarchical
+        descriptions of complex patterns built up from simpler
+        primitive elements. EKG waveforms, textured images and shape analysis 
+        of contours are the examples of syntactic approach.
+\end{itemize}
 
 \subsection{Problem statement for pattern recognition task}
 \label{cha:Problem_statement}
-In this section the problem statement will be presented in case of pattern
-recognition algorithm. For the purpose of this thesis we assume a supervised learning and
-denote each pattern by the label $j \in M$, where $M$ is an $m$-element set of
+In this section the problem statement will be presented for the pattern
+recognition algorithm. A supervised learning is assumed in which
+each pattern is denoted by the label $j \in M$, where $M$ is an $m$-element set of
 possible states numbered with the successive natural numbers. The state $j$ is
 unknown and does not undergo the direct investigation. What can only be
 measured are attributes or features by which a state manifests itself. For this
-reason each object(pattern) will be described by a $d$-dimensional measured feature vector $x \in
-X$. In order to classify unknown pattern algorthm uses knowledge stored in the training
+reason each object (pattern) is described by a $d$-dimensional measured feature vector $x \in
+X$. In order to classify an unknown pattern classification algorithm uses knowledge stored in the training
 set consisting of $N$ training patterns:
 \begin{equation}
     S = (x_1, j_1), (x_2, j_2), \ldots, (x_N, j_N)
     \label{eq:training_pattern}
 \end{equation}
-In practice the decision algorithm  with learning phase should use knowledge included in the
-training set $S$ and as the consequence the algorithm with learning is of the
-following form:
+In practice the decision algorithm with the learning phase should use knowledge included in the
+training set $S$ and as the consequence the classifier has the following form:
 \begin{equation}
     i=\Psi(S, x), \, i \in M
     \label{eq:decision_algorithm}
@@ -79,8 +81,8 @@ the accuracy of classification procedure over the set of training data.
 \subsubsection{Introduction}
 \label{cha:Rough_set_introduction}
 Rough sets theory represents the mathematical approach to deal with imperfect knowledge. 
-In the standard standard pattern recognition task we need precise information about pattern to recognize, 
-while rough sets can deal with vague or incomplete data. The problem of imperfect 
+In the standard pattern recognition task we need precise information about
+pattern to recognize it, while rough sets can deal with vague or incomplete data. The problem of imperfect 
 information has been tackled for a long time and it has become a crucial issue for many scientist.
 One of the most prominent approaches in the recent years are fuzzy logic and rough sets.
 In this section the latter approach is presented in greater details. 
@@ -90,11 +92,11 @@ one is its ability to works only on the raw data, with no additional information
 as density probability in Bayesian algorithm \cite{bib38}, \cite{bib14}. The main facts about rough sets
 algorithm can be summarized in few point presented below:
 \begin{enumerate}
-    \item simplifies data by the granulation pre-processing
-    \item is able to reduce attributes
+    \item simplifies data by the granulation pre-processing,
+    \item is able to reduce attributes,
     \item generates set of easy to understand and readable decision
-        \textit{IF-THEN} rules
-    \item evaluates significance of data 
+        \textit{IF-THEN} rules,
+    \item evaluates significance of data,
 \end{enumerate}
 
 When talking about rough set theory one has to understand the concept of a set 
@@ -103,18 +105,21 @@ From the mathematical point of view the crisp (precise) set is a collection of
 objects of interest and is uniquely determined by its elements. In other words,
 it means that every element must be uniquely classified as belonging to the set 
 or not (true or false). For example, the set of odd numbers is crisp because every
-number is either odd or even and cannot be partially in both. 
+number is either odd or even and can not be partially in both. 
 
-Generally, we come across problem form the nature that are much more
-complicated than simple decision whether an objects belong to the set or not. 
-For some sets we cannot precisely describe element
-membership. Reconsider the group of people and division into set of small and
+This is the pure theory, but generally problems form the nature are much more
+complicated and require more complex decisions than whether an objects belong to
+the set or not, because for some phenomenon we can not precisely describe element
+membership. Reconsider the group of people and division into the set of small and
 high people. The height is not a precise but a vague concept and data vagueness can 
-be met in many problems found in the nature. Here is the spot for rough sets
-theory where vagueness is expressed by a boundary region of a set. 
+be met in many problems from the nature. Here is the spot for rough sets
+theory where the vagueness is expressed by a boundary region of a set. 
 
 \subsubsection{Basic notation}
 \label{cha:Rough_set_basic_notation}
+Rough sets theory can be described in many ways and notations. In this paper
+approach presented in \cite{bib49} is applied. 
+
 In rough sets theory to represent datasets (information) we introduce a notion 
 called an \textit{information system} \cite{bib37}, \cite{bib39}. 
 It can be described by 4-tuple
@@ -125,12 +130,12 @@ It can be described by 4-tuple
 where the notation used in eq. (\ref{eq:information_system}) is as follows:
 \begin{itemize}
     \item $U$ is the universe of discourse  which is a finite set of objects
-        (patterns)
+        (patterns),
     \item $Q$ is a finite set of attribute by  which each patterns manifests
-        itself (is described)
-    \item $V = \bigcup V_q$, $V_q$ represents a domain of attribute $q$
+        itself (is described),
+    \item $V = \bigcup V_q$, $V_q$ represents a domain of attribute $q$,
     \item $f:U \times Q \rightarrow V$ is a total information function, such that
-        $\bigvee_{q\in Q, x \in U} f(x,q) \in U$
+        $\bigvee_{q\in Q, x \in U} f(x,q) \in U$,
 \end{itemize} 
 The information system can be represented as a finite table in which 
 columns are labeled by attributes and each rows stands for an object from
@@ -147,7 +152,7 @@ relation $R \rightarrow U \times U$, representing the
 lack of knowledge about patterns in the set $U$. The indiscernibility relation on
 $U$ can be extended and associated with every non-empty subset of attributes $P \subseteq Q$
 and is defined by eq. (\ref{eq:indiscernibility})
-\begin{equation}
+\begin{equation} 
     I_P = \{ (x, y) \in U \times U: f(x, q) = f(y,q), \bigvee_{q \in P}\}
     \label{eq:indiscernibility}
 \end{equation}
@@ -156,7 +161,7 @@ $y$ are $P$-indiscernible by a set of attributes $P$ if $y \, I_P \, x$. Relatio
 $I_P$ divides the set $U$ into blocks (concepts) of $P$-indiscernible objects.
 The $P$-elementary set containing objects $P$-indiscernible with $x \in U$ is
 referred as $I_P(x)$ and defined as follows:
-\begin{equation}
+\begin{equation} 
     I_P = \left\{ y \in U: y \, I_P \, x \right\}
     \label{eq:p_indiscernible}
 \end{equation}
@@ -166,7 +171,7 @@ describe it with respect to $R$. Additionally let assume $P$ as non-empty
 subset of attributes from $Q$. In rough sets reasoning an object membership to a
 set can be represented in two ways:
 \begin{enumerate}
-    \item An object $x \in U$ certainly belongs to $X$ if
+    \item an object $ x \in U$ certainly belongs to $X$ if
         all objects from the $P$-elementary set defined by $I_P(x)$ also belong to $X$.
         A set of all objects certainly belonging to $X$ creates the $P$-lower
         approximation of $X$ and can be represented as follows:
@@ -174,7 +179,7 @@ set can be represented in two ways:
             \underline{I_P} = \{ x \in U: I_P(x) \subseteq X\}
             \label{eq:lower_approximation}
         \end{equation}
-    \item An object $x \in U$ can possibly belong to $X$ if at least one object
+    \item an object $x \in U$ can possibly belong to $X$ if at least one object
         from $P$-elementary set $I_P(x)$ can possibly belong to $X$. All the
         objects that could possibly belong to $X$ are denoted as $P$-upper
         approximation of $X$, defined as:
@@ -195,7 +200,7 @@ between upper and lower approximation \cite{bib14}.
     BN_P(X) = \overline{I_P} - \underline{I_P}
     \label{eq:boundary_region}
 \end{equation}
-The $BN_P(X)$ is a set of elements which cannot be certainly classified neither
+The $BN_P(X)$ is a set of elements which can not be certainly classified neither
 as $X$ nor as not-$X$ with respect to the set of attributes $P$. If the
 boundary region of $X$ is empty then the set represented by tuple
 $<\underline{I_P}, \overline{I_P}>$ 
@@ -216,7 +221,8 @@ The illustrative example of rough sets reasoning is presented in fig. \ref{fig:r
 
 \subsubsection{Rough sets indicators}
 \label{cha:Rough_sets_indicators}
-In rough sets theory we can define few indicators. First of all with every 
+In rough sets theory we can define few indicators to measure the quality of
+approximation. First of all with every 
 subset of $X \subseteq U$ described by $P$ subset of attributes we can 
 associate an indicator called an accuracy of approximation defined as:
 \begin{equation}
@@ -284,14 +290,15 @@ we can define four types of data vagueness \cite{bib40}:
 \subsubsection{Rough sets reasoning from data}
 The category description can be done in two ways:
 \begin{enumerate}
-    \item extensional
-    \item intentional
+    \item extensional,
+    \item intentional,
 \end{enumerate}
-Each of these approaches differs in the way how pattern from dataset is
-represented. To represent a concept we have to be able to identify all objects belonging 
+Each of these approaches define how pattern from dataset is
+described. To properly represent a target concept (class) from dataset an
+algorithm should be able to identify all objects belonging 
 to this category. With the former approach we have no insight 
 into decision engine so we do not know how to assign new objects to the category.
-In the latter approach we represent the category based on the set of rules. The same 
+In the latter method the particular category is described the set of rules. The same 
 approach is done in rough sets algorithm where an elementary 
 granules (concepts) of knowledge build blocks consisting 
 of indiscernible pattern from the universe of discourse $U$. 
@@ -343,7 +350,7 @@ Each row of a decision table determines a decision rule.
 
 
 After analyzing table \ref{tab:example_rough_set} it is noticeable that some
-patients cannot be distinguished between each other, for example $p2$ and $p5$.
+patients can not be distinguished between each other, for example $p2$ and $p5$.
 It is possible to generate different indiscernible relations based on 
 the chosen attributes. In case of \textit{Headache} attribute patients: $p2$,
 $p3$, $p5$ are indiscernible; patients $p2$, $p5$ are
@@ -375,7 +382,7 @@ $$\alpha_P(Flu) = \frac{2}{5}$$
 To sum up, $\alpha_P(x)$ is a very important indicator in
 rough sets theory and tells which attributes better characterize target
 concept. This example has shown that because of the granule representation of
-knowledge in rough sets approach some object cannot be discerned. It is very
+knowledge in rough sets approach some object can not be discerned. It is very
 important to choose proper condition attributes because this determines how
 upper and lower approximations are represented by objects from $U$. 
 
@@ -405,14 +412,14 @@ true'' and ``completely false'' \cite{bib6}, \cite{bib12}. This theory was intro
 Dr. Lotfi Zadeh in the 1960's as a tool for modelling the uncertainty of natural language. 
 This approach can be applied to many problems, analyze only few examples:
 \begin{itemize}
-    \item Days of a week- there is a question which day is mostly associated
+    \item days of a week- there is a question which day is mostly associated
         with a weekend. Generally, we would assume that the membership value
         $g$ associated with each day will be as follows:
         \{Monday=0, Tuesday=0.2, Wednesday=0.4, Thursday=0.5, Friday=0.7,
-        Saturday=1.0, Sunday=0.9\}
-    \item The seasons- there is not evident boundary when one season stops and
+        Saturday=1.0, Sunday=0.9\},
+    \item the seasons- there is not evident boundary when one season stops and
         another starts. This example can be illustrated quite precisely by fig.
-        \ref{fig:seasons}.
+        \ref{fig:seasons},
         \begin{figure}[H]
             \begin{center}
                 \includegraphics{fig/seasons.png}
@@ -421,11 +428,11 @@ This approach can be applied to many problems, analyze only few examples:
             season of the year}
             \label{fig:seasons}
         \end{figure}
-    \item The height: small and tall definitions- from the group of people it
+    \item the height: small and tall definitions- from the group of people it
         is hard to define who is tall and who is small interchangeably. To
         solve this problem we can define the concept \textit{Tall} and assign
         value to each person describing its value. This process is presented in
-        fig. \ref{fig:fuzzy_tall}
+        fig. \ref{fig:fuzzy_tall},
         \begin{figure}[H]
             \begin{center}
                 \includegraphics{fig/fuzzy_tall.png}
@@ -474,8 +481,9 @@ commonly used in the literature are: triangular, trapezoidal, Gaussian shapes
 \subsubsection{Fuzzy reasoning from data}
 Reasoning in fuzzy logic is based on decision rules the same as in rough sets
 approach \cite{bib11}. 
-Rules are expressed in the form of IF \textit{COND} THEN \textit{DECISION} 
-which can be divided into antecedent set ($A_{ri}, \, i \in (1, \ldots, q)$) and one consequent determining the
+Rules are expressed in the form of IF \textit{CONDITIONS} THEN \textit{DECISION}
+where \textit{CONDITIONS} can be divided into antecedent set ($A_{ri}, \, i \in
+(1, \ldots, q)$) and \textit{DECISION} is the consequent determining the
 output of the rule. In the pattern recognition task when we deal with patterns
 described by $d$ features rules have the form presented by eq. (\ref{eq:rule_example})
 \begin{equation}
@@ -491,15 +499,15 @@ operators \cite{bib2}.
 
 Fuzzy logic classification is based on three main steps:
 \begin{enumerate}
-    \item Fuzzyfication- in the fuzzyfication process we 
+    \item fuzzyfication- in the fuzzyfication process we 
         convert continuous quantity into fuzzy number based on the appropriate
         membership function value. It requires defining
-        membership grade of crisp input $x$ in the fuzzy set.
-    \item Rule induction- there are different types of fuzzy inference systems,
+        membership grade of crisp input $x$ in the fuzzy set,
+    \item rule induction- there are different types of fuzzy inference systems,
         but one of the most commonly used (the same as in this paper) is
-        Mamdani inference system \cite{bib46}.
-    \item Deffuzification- the process of producing a quantifiable result in
-        fuzzy logic from given fuzzy sets and corresponding membership degrees. 
+        Mamdani inference system \cite{bib46},
+    \item deffuzification- the process of producing a quantifiable result in
+        fuzzy logic from given fuzzy sets and corresponding membership degrees,
 \end{enumerate}
 The whole process of fuzzy reasoning is presented in fig.
 \ref{fig:fuzzy_reasoning}
@@ -589,9 +597,9 @@ In the literature one can find many examples of fuzzy logic applications
 Generally, there are two main approaches:
 \begin{enumerate}
     \item some expert knowledge is available and fuzzy rules are created
-        beforehand.
+        beforehand,
     \item no knowledge about data set is present so some techniques of data
-        mining must be applied to extract rules from the training set.
+        mining must be applied to extract rules from the training set,
 \end{enumerate}
 At this point it must be strongly emphasized that in this thesis the main focus is based on
 fuzzy algorithm for pattern recognition task where there is no prior knowledge 
@@ -609,7 +617,7 @@ decision rules when there is no expert knowledge. The simplest and
 straightforward solution is to create let say 10 triangular membership functions for each
 attribute, and check each possible combination. Is this approach optimal? The
 efficiency of this solution strongly depends on the complexity of the problem.
-For $d$-dimensional feature space and $k$ fuzzy membership function per each attribute
+For $d$-dimensional feature space and $k$ fuzzy membership functions per each attribute
 the number of possible combination for generating one rule is equal to $k^d$.
 For greater $d$ (for example wine dataset from \textit{UCI} repository has 13
 attributes) it is impossible to find the proper combination in a reasonable
@@ -619,7 +627,7 @@ abilities.
 There are two main methods of genetic-based machine learning approaches
 \cite{bib30}, \cite{bib31}:
 \begin{enumerate}
-    \item Michigan template- it is a population of fuzzy rules and a single
+    \item michigan template- it is a population of fuzzy rules and a single
         fuzzy rule is handled as an individual (see fig. \ref{fig:michigan}). 
         The evaluation of each fuzzy rule is performed by classifying all the 
         given training patterns by the available rule set $N_{rule}$. At the 
@@ -628,12 +636,12 @@ There are two main methods of genetic-based machine learning approaches
         best individuals are taken. The whole procedure can be summarized as follows:
         \begin{enumerate}
             \item Generate $N_{rule}$ fuzzy rules
-            \item Evaluate the fitness of each fuzzy rule in the current
+            \item Evaluate the fi tness of each fuzzy rule in the current
                 population
             \item Generate $N_{replace}$ fuzzy rules using genetic operators
-            \item Merge $N_{replace}$ fuzzy rules with current population and
+            \item Merge $N_{replac e}$ fuzzy rules with current population and
                 choose the best $N_{rule}$ individuals for the next generation
-            \item Return to point $(b)$ is stopping condition is not fulfilled
+            \item Return to point  $(b)$ is stopping condition is not fulfilled
                 (number of generations)
         \end{enumerate}
         \begin{figure}[H]
@@ -644,7 +652,7 @@ There are two main methods of genetic-based machine learning approaches
             Fuzzy logic algorithm}
             \label{fig:michigan}
         \end{figure}
-    \item Pittsburgh template- in this approach a set of fuzzy rules is handled
+    \item pittsburgh t emplate- in this approach a set of fuzzy rules is handled
         as an individual (see fig. \ref{fig:p}). In this case the length of a single individual is
         equal to $n\cdot N_{rule}$, where $n$ is the length of single fuzzy rule.
         Algorithm starts with $N_{pop}$ randomly generated rule sets. The
@@ -692,10 +700,10 @@ $$I(P) = I(P-{a}), \, \textrm{for} \, \{a\} \in P \subseteq  Q $$
 
 In the literature there are many examples of how to apply attribute reduction
 \begin{itemize}
-    \item information measures
-    \item distance measures
-    \item dependence measures
-    \item consistency measures
+    \item information measures,
+    \item distance measures,
+    \item dependence measures,
+    \item consistency measures,
 \end{itemize}
 Different approaches provide various results and their application strictly
 depend on the type of data. One of the best known methods are Principal
@@ -720,23 +728,25 @@ the optimization problem. To sum up, GA has the following general features:
 \begin{enumerate}
     \item GA operates with a population of possible solutions (individuals) 
         instead of a single individual. Thus, the searching process can be 
-        carried out in a parallel form or sequentially.
+        carried out in a parallel form or sequentially,
     \item GA is able to find the optimal or sub-optimal solutions in complex
         and large search spaces. Moreover, it can be applied to nonlinear 
         optimization problems with constraints defined in discrete or continuous 
-        search spaces.
+        search spaces,
     \item GA examines many possible solutions at the same time, so there is a 
-        higher probability that the search process can converge to an optimal solution.
+        higher probability that the search process can converge to an optimal
+        solution,
 \end{enumerate}
 There are four main parts in each GA process to reconsider (graphically
 presented as a flow chart \ref{fig:genetic_scheme}):
 \begin{enumerate}
-    \item the problem representation or encoding
-    \item fitness or objective function definition
-    \item fitness-based selection
-    \item evolutionary reproduction of candidate solutions (individuals or chromosomes). 
+    \item the problem representation or encoding,
+    \item fitness or objective function definition,
+    \item fitness-based selection,
+    \item evolutionary reproduction of candidate solutions (individuals or
+        chromosomes),
 \end{enumerate}
-\begin{figure}[H]
+\begin{figure}[H] 
     \begin{center}
         \includegraphics[height=0.5\textwidth]{fig/genetic.png}
     \end{center}
@@ -778,10 +788,10 @@ Generally, there are two types of hybrid classifiers (example presented in fig.
     \item multiexpert systems- classifiers work in parallel, each of them is
         trained and tested on the same data and independent decisions are
         combined to compute the final result. The most common example is a
-        majority voting.
+        majority voting,
     \item multistage systems- classifiers are connected in a sequence where the
         next classifier is trained and used for classification only if the
-        previous classifier rejected the pattern. 
+        previous classifier rejected the pattern,
 \end{enumerate}
 It is hard to determine which approach is the best. Each system has its pros
 and cons and the choice depends of the type of dataset and available

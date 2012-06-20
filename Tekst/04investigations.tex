@@ -1,9 +1,9 @@
 \section{Simulation investigations}
+\label{cha:Simulation_investugations}
 This section presents environment setup and later the results of simulation
 investigations. It is important to describe simulation setup so that in the
 future someone could repeat test or maybe extend the application.
-\label{cha:Simulation_investugations}
-\subsection{Simulation environment}
+\subsection{Testing environment}
 When it comes to classification task there is always a problem of how to
 divide available dataset into training and testing sets. One of the most common 
 approach to ensure proper classifier evaluation is cross validation (more
@@ -17,14 +17,14 @@ There are different types:
         that it is usually preferable to the residual method and takes no longer 
         to compute. However, its evaluation can have a high variance, because
         it depends heavily on which data points end up in the training set and 
-        which end up in the test set
+        which end up in the test set,
     \item \textbf{Leave-one-out cross validation}- the classifier is trained on all the
         available data except for one point and a prediction is made for that
-        point and stored to compute the average error from all points. 
+        point and stored to compute the average error from all points,
     \item \textbf{K-fold cross validation}- the data set is divided into $k$ subsets, 
         and the holdout method is repeated $k$ times. Each time, one of the $k$ subsets 
         is used as the test set and the other $k-1$ subsets are merged together to form 
-        a training set.
+        a training set,
 \end{itemize}
 In this thesis $4$-fold cross validation was used (see fig.
 \ref{fig:cross_validation}). To ensure that presented
@@ -39,7 +39,7 @@ classification.
     \label{fig:cross_validation}
 \end{figure}
 \label{cha:Simulation_environment}
-\subsection{Simulation results}
+\subsection{Testing results}
 \label{cha:Simulation_results}
 \subsubsection{Impact of granulation step on rough sets efficiency}
 \label{cha:Simulation_reaearch_1}
@@ -148,13 +148,14 @@ it must reflect how patterns are located in the feature space.
 
 The main two disadvantages of proposed rough sets algorithm are as follows:
 \begin{itemize}
-    \item It uses an arbitrary chosen step of granulation. Modification of
+    \item it uses an arbitrary chosen step of granulation. Modification of
         decision rule improves classifier quality, but for the prize of
-        computational time. 
-    \item It uses all attributes for creation of decision rules. When the
+        computational time,
+    \item it uses all attributes for creation of decision rules. When the
         problem is complex then the decision rules are long and tangled. 
         Additionally, some features are useless in classification, instead of valuable
-        information they bring noise to the system and deteriorate final results.
+        information they bring noise to the system and deteriorate final
+        results,
 \end{itemize}
 
 \subsubsection{Impact of number of membership functions on genetic fuzzy logic algorithm efficiency}
@@ -200,7 +201,7 @@ functions with greater area coverage. In the first case the solution space is
 much greater than in the second approach so many rules must be created to obtain 
 reliable results. Additionally, in most recognition problems we do not need so precise
 feature partitions because it can happen that for many created regions we
-cannot find proper representatives in the training set. 
+can not find proper representatives in the training set. 
 
 Parameters for genetic algorithms are the same as presented in table \ref{tab:fuzzy_genetic_parameters}. 
 In each simulation the level of partitions $k$ was changed from $7$ to $2$. Few words of explanation should be
@@ -388,7 +389,7 @@ tested with the same datasets. The main goal of this simulation was to check if 
 hybridization (rough set and fuzzy logic) can compete with other classifiers. 
 As the source of reference different types of classifiers were chosen to ensure the greatest diversity:
 \begin{itemize}
-    \item LDAC classifier (Lin ear Discriminant classifier)- The linear
+    \item LDAC classifier (Linear Discriminant classifier)- The linear
         discriminant analysis method consists of searching some linear
         combinations of selected variables, which provide the best separation between the
         considered classes. These different combinations are called

@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-1.40.10 (TeX Live 2009/Debian) (format=pdflatex 2011.8.3)  20 JUN 2012 07:39
+This is pdfTeX, Version 3.1415926-1.40.10 (TeX Live 2009/Debian) (format=pdflatex 2011.8.3)  20 JUN 2012 23:53
 entering extended mode
  %&-line parsing enabled.
 **szkielet.tex
@@ -880,7 +880,7 @@ See the babel package documentation for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.1 \selectlanguage{polish}
+l.2 \selectlanguage{polish}
                            
 ? 
 ) [2
@@ -900,14 +900,14 @@ been already used, duplicate ignored
 <to be read again> 
                    \relax 
 l.81 \newpage
-              [1]) (./Abstract.tex)pdfTeX warning (ext4): destination with the 
-same identifier (name{page.2}) has been already used, duplicate ignored
+              [1]) (./Abstract.texpdfTeX warning (ext4): destination with the s
+ame identifier (name{page.2}) has been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.152 \newpage
-               [2
+l.54 
+      [2
 
-]
+]) [3]
 LaTeX Font Info:    Font shape `T1/ppl/bx/n' in size <17.28> not available
 (Font)              Font shape `T1/ppl/b/n' tried instead on input line 153.
  (./szkielet.toc
@@ -923,146 +923,156 @@ l.2 \select@language {polish}
 ? 
 LaTeX Font Info:    Font shape `T1/ppl/bx/n' in size <12> not available
 (Font)              Font shape `T1/ppl/b/n' tried instead on input line 4.
-[3])
+[4])
 \tf@toc=\write4
 \openout4 = `szkielet.toc'.
 
- [4] (./00celPracy.tex
+ [5] (./00celPracy.tex
 LaTeX Font Info:    Font shape `T1/ppl/bx/n' in size <14.4> not available
 (Font)              Font shape `T1/ppl/b/n' tried instead on input line 2.
- [5]
+ [6]
 LaTeX Font Info:    Try loading font information for TS1+ppl on input line 64.
 
 (/usr/share/texmf-texlive/tex/latex/psnfss/ts1ppl.fd
 File: ts1ppl.fd 2001/06/04 font definitions for TS1/ppl.
 )
-<fig/schema.png, id=331, 314.17375pt x 133.49875pt>
+<fig/schema.png, id=335, 314.17375pt x 133.49875pt>
 File: fig/schema.png Graphic file (type png)
  <use fig/schema.png>
-[6]) (./01wstep.tex [7 <./fig/schema.png (PNG copy)>] [8] [9] [10]pdfTeX warnin
-g (ext4): destination with the same identifier (name{figure.1}) has been alread
-y used, duplicate ignored
+[7]) (./01wstep.tex [8 <./fig/schema.png (PNG copy)>]
+
+! Package inputenc Error: Unicode char \u8:ﬁ not set up for use with LaTeX.
+
+See the inputenc package documentation for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.43         structure is quantiﬁ
+                                   able and extractable so that structural
+? 
+[9] [10] [11]pdfTeX warning (ext4): destination with the same identifier (name{
+figure.1}) has been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.209 \begin{figure}[H]
-                        <fig/rough_set.png, id=394, 144.54pt x 139.2402pt>
+l.214 \begin{figure}[H]
+                        <fig/rough_set.png, id=401, 144.54pt x 139.2402pt>
 File: fig/rough_set.png Graphic file (type png)
 
-<use fig/rough_set.png> [11] [12 <./fig/rough_set.png>] [13]
-Overfull \hbox (31.59772pt too wide) in paragraph at lines 329--343
+<use fig/rough_set.png> [12] [13 <./fig/rough_set.png>] [14]
+Overfull \hbox (31.59772pt too wide) in paragraph at lines 334--348
 [][] 
  []
 
-[14] [15] <fig/seasons.png, id=448, 341.275pt x 200.75pt>
+[15] [16] <fig/seasons.png, id=454, 341.275pt x 200.75pt>
 File: fig/seasons.png Graphic file (type png)
 
-<use fig/seasons.png> <fig/fuzzy_tall.png, id=451, 389.20406pt x 184.43906pt>
+<use fig/seasons.png> <fig/fuzzy_tall.png, id=457, 389.20406pt x 184.43906pt>
 File: fig/fuzzy_tall.png Graphic file (type png)
 
-<use fig/fuzzy_tall.png> [16 <./fig/seasons.png>] [17 <./fig/fuzzy_tall.png>]
-<fig/fuzzy_steps.png, id=480, 616.78706pt x 109.65103pt>
+<use fig/fuzzy_tall.png> [17 <./fig/seasons.png>] [18 <./fig/fuzzy_tall.png>]
+<fig/fuzzy_steps.png, id=485, 616.78706pt x 109.65103pt>
 File: fig/fuzzy_steps.png Graphic file (type png)
 
 <use fig/fuzzy_steps.png>
-<fig/fuzzy_example_1.png, id=483, 1831.84375pt x 361.35pt>
+<fig/fuzzy_example_1.png, id=488, 1831.84375pt x 361.35pt>
 File: fig/fuzzy_example_1.png Graphic file (type png)
 
-<use fig/fuzzy_example_1.png> [18 <./fig/fuzzy_steps.png>]
+<use fig/fuzzy_example_1.png> [19 <./fig/fuzzy_steps.png>] [20 <./fig/fuzzy_exa
+mple_1.png>]
 ! Undefined control sequence.
 <argument> \sum \nolimit 
                          _{x=a}^{b}\mu _A(\chi )
-l.567 ...    x}{\sum\nolimit_{x=a}^{b}\mu_A(\chi)}
+l.573 ...    x}{\sum\nolimit_{x=a}^{b}\mu_A(\chi)}
                                                   
 ? 
-[19 <./fig/fuzzy_example_1.png>]
-<fig/fuzzy_centroid.png, id=511, 572.1375pt x 301.125pt>
+<fig/fuzzy_centroid.png, id=515, 572.1375pt x 301.125pt>
 File: fig/fuzzy_centroid.png Graphic file (type png)
 
 <use fig/fuzzy_centroid.png>
-Overfull \hbox (48.47063pt too wide) detected at line 582
+Overfull \hbox (48.47063pt too wide) detected at line 588
 \OML/cmm/m/it/12 CO \OT1/cmr/m/n/12 = [] = 69\OML/cmm/m/it/12 :\OT1/cmr/m/n/12 
 3
  []
 
-[20 <./fig/fuzzy_centroid.png>]
-<fig/michigan.png, id=532, 296.10625pt x 257.96375pt>
+[21 <./fig/fuzzy_centroid.png>]
+<fig/michigan.png, id=538, 296.10625pt x 257.96375pt>
 File: fig/michigan.png Graphic file (type png)
  <use fig/michigan.png>
-[21] <fig/pittsburgh.png, id=550, 365.365pt x 257.96375pt>
+[22] <fig/pittsburgh.png, id=556, 365.365pt x 257.96375pt>
 File: fig/pittsburgh.png Graphic file (type png)
 
 <use fig/pittsburgh.png>
 ! Extra }, or forgotten \endgroup.
 \@endfloatbox ...pagefalse \outer@nobreak \egroup 
                                                   \color@endbox 
-l.671         \end{figure}
+l.677         \end{figure}
                           
 ? 
-[22 <./fig/michigan.png (PNG copy)>] [23 <./fig/pittsburgh.png (PNG copy)>]
-<fig/genetic.png, id=575, 270.25969pt x 502.87875pt>
+[23 <./fig/michigan.png (PNG copy)>] [24 <./fig/pittsburgh.png (PNG copy)>]
+<fig/genetic.png, id=581, 270.25969pt x 502.87875pt>
 File: fig/genetic.png Graphic file (type png)
  <use fig/genetic.png>
-[24] [25 <./fig/genetic.png>]
-<fig/hybrid.png, id=606, 860.21375pt x 319.1925pt>
+[25] [26 <./fig/genetic.png>]
+<fig/hybrid.png, id=612, 860.21375pt x 319.1925pt>
 File: fig/hybrid.png Graphic file (type png)
  <use fig/hybrid.png>)
-(./02algorytmy.tex [26 <./fig/hybrid.png (PNG copy)>] [27] [28]pdfTeX warning (
+(./02algorytmy.tex [27 <./fig/hybrid.png (PNG copy)>] [28] [29]pdfTeX warning (
 ext4): destination with the same identifier (name{figure.1}) has been already u
 sed, duplicate ignored
 <to be read again> 
                    \relax 
 l.121 \begin{figure}[H]
-                        <fig/fuzzy_example.png, id=651, 1003.75pt x 542.025pt>
+                        <fig/fuzzy_example.png, id=658, 1003.75pt x 542.025pt>
 File: fig/fuzzy_example.png Graphic file (type png)
 
-<use fig/fuzzy_example.png> [29] [30 <./fig/fuzzy_example.png>]
+<use fig/fuzzy_example.png> [30] [31 <./fig/fuzzy_example.png>]
 ! Limit controls must follow a math operator.
 l.163     R_r: C_r = max\limits
                                _{j=\{1, \ldots, m\}}\{Pr(class\,j|A_r)\}
 ? 
-[31]pdfTeX warning (ext4): destination with the same identifier (name{figure.2}
+[32]pdfTeX warning (ext4): destination with the same identifier (name{figure.2}
 ) has been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.242                 \begin{figure}[H]
+l.244                 \begin{figure}[H]
                                        
-<fig/fuzzy_rule.png, id=691, 2007.5pt x 105.39375pt>
+<fig/fuzzy_rule.png, id=697, 2007.5pt x 105.39375pt>
 File: fig/fuzzy_rule.png Graphic file (type png)
  <use fig/fuzzy_rule.png>
-[32 <./fig/fuzzy_rule.png>]pdfTeX warning (ext4): destination with the same ide
+[33 <./fig/fuzzy_rule.png>]pdfTeX warning (ext4): destination with the same ide
 ntifier (name{figure.3}) has been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.283                 \begin{figure}[H]
+l.287                 \begin{figure}[H]
                                        
-<fig/cross_over.png, id=702, 114.4275pt x 116.1138pt>
+<fig/cross_over.png, id=708, 114.4275pt x 116.1138pt>
 File: fig/cross_over.png Graphic file (type png)
  <use fig/cross_over.png>
-Underfull \hbox (badness 1028) in paragraph at lines 290--295
-[]\T1/ppl/m/n/12 In the par-tic-u-lar gen-er-a-tion one chro-mo-some is cho-sen
+Underfull \hbox (badness 1087) in paragraph at lines 294--300
+[]\T1/ppl/m/n/12 in the par-tic-u-lar gen-er-a-tion one chro-mo-some is cho-sen
  ran-domly
  []
 
 
-Underfull \hbox (badness 1371) in paragraph at lines 290--295
+Underfull \hbox (badness 1371) in paragraph at lines 294--300
 \T1/ppl/m/n/12 and later in each al-lele new mem-ber-ship func-tion is taken fr
 om
  []
 
 
-Underfull \hbox (badness 1107) in paragraph at lines 290--295
+Underfull \hbox (badness 1107) in paragraph at lines 294--300
 \T1/ppl/m/n/12 mem-ber-ship func-tion is cho-sen the set of can-di-dates is giv
 en by
  []
 
-[33 <./fig/cross_over.png>]
-Underfull \hbox (badness 1082) in paragraph at lines 305--309
+[34 <./fig/cross_over.png>]
+Underfull \hbox (badness 1082) in paragraph at lines 310--314
 \T1/ppl/m/n/12 Of course it can hap-pen that for cross-over and mu-ta-tion op-e
 r-a-tor newly-
  []
 
 
-Underfull \hbox (badness 1163) in paragraph at lines 305--309
+Underfull \hbox (badness 1163) in paragraph at lines 310--314
 \T1/ppl/m/n/12 generated in-di-vid-ual will be in-valid (the whole chro-mo-some
  con-tains only
  []
@@ -1071,42 +1081,42 @@ pdfTeX warning (ext4): destination with the same identifier (name{table.1}) has
  been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.312 \begin{table}[H]
-                       [34]
-Underfull \hbox (badness 1803) in paragraph at lines 376--379
+l.317 \begin{table}[H]
+                       [35]
+Underfull \hbox (badness 1803) in paragraph at lines 381--384
 []\T1/ppl/m/n/12 Generate $\OML/cmm/m/it/12 N[]$ \T1/ppl/m/n/12 in-di-vid-u-als
  by ran-domly as-sign-ing value from the set
  []
 
-[35]pdfTeX warning (ext4): destination with the same identifier (name{table.2})
+[36]pdfTeX warning (ext4): destination with the same identifier (name{table.2})
  has been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.390 \begin{table}[H]
+l.395 \begin{table}[H]
                       pdfTeX warning (ext4): destination with the same identifi
 er (name{figure.4}) has been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.434 \begin{figure}[H]
-                        <fig/diagram.png, id=747, 643.40375pt x 203.76125pt>
+l.439 \begin{figure}[H]
+                        <fig/diagram.png, id=753, 643.40375pt x 203.76125pt>
 File: fig/diagram.png Graphic file (type png)
 
-<use fig/diagram.png> [36]) [37 <./fig/diagram.png (PNG copy)>]
-(./03environment.tex [38
+<use fig/diagram.png> [37]) [38 <./fig/diagram.png (PNG copy)>]
+(./03environment.tex [39
 
-] [39] [40]
+] [40] [41]
 Underfull \hbox (badness 3068) in paragraph at lines 147--151
 []\T1/ppl/m/n/12 To per-form all sim-u-la-tions in this project a pro-gram was 
 writ-ten in
  []
 
-) (./04investigations.tex [41]pdfTeX warning (ext4): destination with the same 
+) (./04investigations.tex [42]pdfTeX warning (ext4): destination with the same 
 identifier (name{figure.1}) has been already used, duplicate ignored
 <to be read again> 
                    \relax 
 l.34 \begin{figure}[H]
                       
-<fig/cross_validation.jpg, id=796, 313.9228pt x 130.98938pt>
+<fig/cross_validation.jpg, id=802, 313.9228pt x 130.98938pt>
 File: fig/cross_validation.jpg Graphic file (type jpg)
 
 <use fig/cross_validation.jpg>
@@ -1115,7 +1125,7 @@ Underfull \hbox (badness 2478) in paragraph at lines 57--59
 tain de-ci-sion rules were
  []
 
-[42 <./fig/cross_validation.jpg>]
+[43 <./fig/cross_validation.jpg>]
 ! Undefined control sequence.
 <recently read> \epsilona 
                           
@@ -1127,98 +1137,98 @@ pdfTeX warning (ext4): destination with the same identifier (name{table.1}) has
 <to be read again> 
                    \relax 
 l.86 \begin{table}[H]
-                      [43]pdfTeX warning (ext4): destination with the same iden
+                      [44]pdfTeX warning (ext4): destination with the same iden
 tifier (name{figure.2}) has been already used, duplicate ignored
 <to be read again> 
                    \relax 
 l.129 \begin{figure}[H]
-                        <fig/rough_chart.png, id=810, 853.1875pt x 431.6125pt>
+                        <fig/rough_chart.png, id=816, 853.1875pt x 431.6125pt>
 File: fig/rough_chart.png Graphic file (type png)
 
-<use fig/rough_chart.png> [44] [45 <./fig/rough_chart.png>]pdfTeX warning (ext4
+<use fig/rough_chart.png> [45] [46 <./fig/rough_chart.png>]pdfTeX warning (ext4
 ): destination with the same identifier (name{figure.3}) has been already used,
  duplicate ignored
 <to be read again> 
                    \relax 
-l.181 \begin{figure}[H]
-                        <fig/fuzzy_result.png, id=823, 1806.75pt x 602.25pt>
+l.182 \begin{figure}[H]
+                        <fig/fuzzy_result.png, id=829, 1806.75pt x 602.25pt>
 File: fig/fuzzy_result.png Graphic file (type png)
 
 <use fig/fuzzy_result.png>
 ! Too many }'s.
-l.198 ...resented in fig. \ref{fig:fuzzy_example}}
+l.199 ...resented in fig. \ref{fig:fuzzy_example}}
                                                   ) or only few
 ? 
-[46 <./fig/fuzzy_result.png>]pdfTeX warning (ext4): destination with the same i
+[47 <./fig/fuzzy_result.png>]pdfTeX warning (ext4): destination with the same i
 dentifier (name{figure.4}) has been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.217 \begin{figure}[H]
+l.218 \begin{figure}[H]
                        
-<fig/fuzzy_functions.png, id=833, 853.1875pt x 421.575pt>
+<fig/fuzzy_functions.png, id=840, 853.1875pt x 421.575pt>
 File: fig/fuzzy_functions.png Graphic file (type png)
 
-<use fig/fuzzy_functions.png> [47 <./fig/fuzzy_functions.png>]pdfTeX warning (e
+<use fig/fuzzy_functions.png> [48 <./fig/fuzzy_functions.png>]pdfTeX warning (e
 xt4): destination with the same identifier (name{table.2}) has been already use
 d, duplicate ignored
 <to be read again> 
                    \relax 
-l.258 \begin{table}[H]
-                       [48]
+l.259 \begin{table}[H]
+                       [49]
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `math shift' on input line 299.
+(hyperref)                removing `math shift' on input line 300.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `math shift' on input line 299.
+(hyperref)                removing `math shift' on input line 300.
 
-[49]pdfTeX warning (ext4): destination with the same identifier (name{table.3})
+[50]pdfTeX warning (ext4): destination with the same identifier (name{table.3})
  has been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.333 \begin{table}[H]
-                       [50] [51]pdfTeX warning (ext4): destination with the sam
+l.334 \begin{table}[H]
+                       [51] [52]pdfTeX warning (ext4): destination with the sam
 e identifier (name{figure.5}) has been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.396         \begin{figure}[H]
+l.397         \begin{figure}[H]
                                
-<fig/ldac.png, id=873, 1488.56125pt x 1421.31pt>
+<fig/ldac.png, id=879, 1488.56125pt x 1421.31pt>
 File: fig/ldac.png Graphic file (type png)
- <use fig/ldac.png> [52 <./fig/ldac.png>]
+ <use fig/ldac.png> [53 <./fig/ldac.png>]
 ! Misplaced \noalign.
 \hline ->\noalign 
                   {\ifnum 0=`}\fi \penalty \@M \futurelet \@let@token \LT@@h...
-l.439     \hline
+l.440     \hline
                 
 ? 
 ! Misplaced \omit.
 \multispan ->\omit 
                    \@multispan 
-l.440     \multicolumn
+l.441     \multicolumn
                       {1}{|c|}{Classifier} & \multicolumn{1}{|c|}{$O$} &
 ? 
 ! Extra alignment tab has been changed to \cr.
 <template> \endtemplate 
                         
-l.440     \multicolumn
+l.441     \multicolumn
                       {1}{|c|}{Classifier} & \multicolumn{1}{|c|}{$O$} &
 ? 
-[53]) [54] [55] (./05conclusions.tex [56
+[54]) [55] [56] (./05conclusions.tex [57
 
-] [57]) [58] (./06future_work.tex)
-[59
+] [58]) [59] (./06future_work.tex)
+[60
 
-] (./bibliography.tex [60
+] (./bibliography.tex [61
 
-] [61] [62pdfTeX warning (ext4): destination with the same identifier (name{cit
+] [62] [63pdfTeX warning (ext4): destination with the same identifier (name{cit
 e.bib27}) has been already used, duplicate ignored
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
                                                   \fi \fi 
 l.159 
-      ] [63] [64] (./szkielet.lof
+      ] [64] [65] (./szkielet.lof
 
 ! Package babel Error: You haven't loaded the option polish yet.
 
@@ -1244,17 +1254,17 @@ Type  H <return>  for immediate help.
 l.2 \select@language {polish}
                              
 ? 
-[65])
+[66])
 \tf@lot=\write6
 \openout6 = `szkielet.lot'.
 
-) [66] (./appendixA.tex
+) [67] (./appendixA.tex
 Underfull \hbox (badness 2269) in paragraph at lines 26--28
 []\T1/ppl/m/n/12 In a ter-mi-nal win-dow ex-tract the tar.gz file us-ing tar -x
 zf gsl-
  []
 
-[67
+[68
 
 ] (/usr/share/texmf-texlive/tex/latex/listings/lstlang1.sty
 File: lstlang1.sty 2004/09/05 1.3 listings language file
@@ -1267,7 +1277,7 @@ LaTeX Font Info:    Try loading font information for T1+pcr on input line 4.
  (/usr/share/texmf-texlive/tex/latex/psnfss/t1pcr.fd
 File: t1pcr.fd 2001/06/04 font definitions for T1/pcr.
 ))
-[68]) [69] (./szkielet.aux
+[69]) [70] (./szkielet.aux
 
 ! Package babel Error: You haven't loaded the option polish yet.
 
@@ -1284,10 +1294,10 @@ LaTeX Warning: There were multiply-defined labels.
 
  ) 
 Here is how much of TeX's memory you used:
- 9102 strings out of 495026
- 123694 string characters out of 1181803
- 350888 words of memory out of 3000000
- 11677 multiletter control sequences out of 15000+50000
+ 9106 strings out of 495026
+ 123724 string characters out of 1181803
+ 350915 words of memory out of 3000000
+ 11679 multiletter control sequences out of 15000+50000
  35624 words of font info for 64 fonts, out of 3000000 for 9000
  48 hyphenation exceptions out of 8191
  38i,12n,43p,313b,1345s stack positions out of 5000i,500n,10000p,200000b,50000s
@@ -1303,9 +1313,9 @@ ublic/amsfonts/cm/cmsy8.pfb></usr/share/texmf-texlive/fonts/type1/urw/courier/u
 crr8a.pfb></usr/share/texmf-texlive/fonts/type1/urw/palatino/uplb8a.pfb></usr/s
 hare/texmf-texlive/fonts/type1/urw/palatino/uplr8a.pfb></usr/share/texmf-texliv
 e/fonts/type1/urw/palatino/uplri8a.pfb>
-Output written on szkielet.pdf (71 pages, 1147025 bytes).
+Output written on szkielet.pdf (72 pages, 1149138 bytes).
 PDF statistics:
- 1164 PDF objects out of 1200 (max. 8388607)
- 342 named destinations out of 1000 (max. 500000)
+ 1171 PDF objects out of 1200 (max. 8388607)
+ 344 named destinations out of 1000 (max. 500000)
  549 words of extra memory for PDF output out of 10000 (max. 10000000)
 

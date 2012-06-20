@@ -2,14 +2,15 @@
 \begin{center}
 	Abstract
 \end{center}
-This paper concerns the problem of pattern recognition. Advancement in
-computers has spawned the development of artificial intelligence science. In the
-recent years many scientists have proposed many algorithms for solving complex
-and high dimensional problems. Some solutions give good results, but very
+This paper concerns the problem of pattern recognition. Advancements in
+computers technology has spawned the development of artificial intelligence science and
+many robust algorithms have been invented. In the
+recent years many scientists have proposed many solutions for solving complex
+and high dimensional problems. Some algorithms give good results, but very
 often they are devoted to specific problems. Until now no one has managed to
 invent classifier with 100\% classification accuracy. Properties of single
-classifiers have been deeply exploited and it is hard to do something more.
-Nowadays, it is common to take advantage the diversity of classifiers and build 
+classifiers have been deeply exploited and it is hard to do something more in
+this field. Nowadays, it is common to take advantage of the diversity of simple classifiers and build 
 hybrid classifier from the basic ones.
 
 This master thesis focuses on two algorithms for pattern recognition: rough
@@ -18,20 +19,20 @@ later tests on real datasest are performed to check the classification accuracy
 of each classifier. The final result is the recommendation of multistage hybrid
 classifier.
 
-All tests were performed on Linux platform and the simulator was written in
+All tests were performed on Linux platform using the simulator written in
 \textit{Python} language. As the input to the system real datasets from
-\textit{UCI} repository were taken. To ensure diversity in simulations datasets
+\textit{UCI} repository were taken. To ensure diversity in simulations, datasets
 with different number of attributes were chosen. To divide dataset into
 training and testing patterns 4-fold cross validation was used, which means
 that in each run data were splitted into 4 even parts and one subset was
 treated as a testing and the remaining ones as training and it was done four
-times. To ensure more reliable results each algorithm configuration repeated
+times. To ensure more reliable results each algorithm configuration was repeated
 ten times.
 
 This paper is divided into two parts.  In the first, the review of
 literature and the basic notation used in the whole thesis is presented. Section
 \ref{cha:Introduction} is the source of the basic
-knowledge about pattern recognition. Sections \ref{cha:Rough_set}, \ref{cha:Fuzzy_logic}
+knowledge about pattern recognition and algorithms. Sections \ref{cha:Rough_set}, \ref{cha:Fuzzy_logic}
 present the description of algorithms used in this thesis. The second part,
 which is the main point of this thesis, presents experiments analysis. Testing
 environment setup and program used in simulations are described in section
@@ -40,6 +41,18 @@ section \ref{cha:Simulation_investugations}. Proposal of future work as the
 continuation of this topic and the final summary can be found in
 sections \ref{cha:Summary}, \ref{cha:FutureWork}.
 
-Powiedziec jeszcze tutaj o wynikach.
+The first tests have shown that the basic rough sets classifier, even with the
+modification of decision rules can deal with simple datasets, but when the
+dimensionality of the problem increases then the classification accuracy is
+significantly deteriorated. An arbitraty chosen step of granulation strongly
+affects algorithm performance. For this reason, multistage hybrid classifier
+is proposed which uses rough sets and fuzzy logic. Classifier were connected in
+a sequence when the input to the system was directed to rough sets classifier. Where no
+proper rule was found either \textit{certain} or \textit{possible} at the first
+stage then the pattern was rejected and directed to fuzzy logic classifier,
+otherwise class label was assigned by the first classifier as the final result.
 
-
+Hybrid classifier was compared with other classifiers commonly used in the literature:
+3-KNN, SVM, Linear Discriminant classifier, Decision Tree. It turned out that
+proposed solution can compete with other algorithms and in four out of seven
+tests this classifier was the best, in other cases results were comparable.

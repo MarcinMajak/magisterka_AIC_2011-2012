@@ -36,8 +36,8 @@
 \BOOKMARK [2][-]{subsection.4.3}{Efficiency indicators}{section.4}
 \BOOKMARK [2][-]{subsection.4.4}{Program description}{section.4}
 \BOOKMARK [1][-]{section.5}{Simulation investigations}{}
-\BOOKMARK [2][-]{subsection.5.1}{Simulation environment}{section.5}
-\BOOKMARK [2][-]{subsection.5.2}{Simulation results}{section.5}
+\BOOKMARK [2][-]{subsection.5.1}{Testing environment}{section.5}
+\BOOKMARK [2][-]{subsection.5.2}{Testing results}{section.5}
 \BOOKMARK [3][-]{subsubsection.5.2.1}{Impact of granulation step on rough sets efficiency}{subsection.5.2}
 \BOOKMARK [3][-]{subsubsection.5.2.2}{Impact of recursive modification of granulation step on rough sets algorithm efficiency}{subsection.5.2}
 \BOOKMARK [3][-]{subsubsection.5.2.3}{Impact of number of membership functions on genetic fuzzy logic algorithm efficiency}{subsection.5.2}

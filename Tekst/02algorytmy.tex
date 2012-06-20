@@ -100,9 +100,9 @@ and effective approach is genetic algorithm \cite{bib4}, \cite{bib13}, \cite{bib
 
 For the algorithm construction we have to make few assumptions:
 \begin{itemize}
-    \item For the learning procedure $N$ training patterns are available
-    \item A set $F$ of linguistic values and their membership functions is given
-        for describing each attribute. 
+    \item for the learning procedure $N$ training patterns are available,
+    \item a set $F$ of linguistic values and their membership functions is given
+        for describing each attribute,
 \end{itemize}
 The second point is the most important and the choice of the proper membership
 functions affects the classification accuracy \cite{bib17}, \cite{bib6}. It requires in-depth explanation
@@ -197,11 +197,13 @@ algorithm was used to generate initial number $N_{rule}$ of fuzzy rules for
 classification. 
 Basic assumptions:
 \begin{itemize}
-    \item Fuzzy rule encoding is the same as presented in section \ref{cha:Fuzzy_logic_basic_problem_formulation}
-    \item Training data set is given with $N$ patterns
-    \item Triangular membership functions are used and described by 2-tuple
+    \item fuzzy rule encoding is the same as presented in section
+        \ref{cha:Fuzzy_logic_basic_problem_formulation},
+    \item training data set is given with $N$ patterns,
+    \item triangular membership functions are used and described by 2-tuple
         $(a, b)$, where $a$ is the center value (where $\mu(x)=1$), and
-        $b$ determines left and right extend of membership function, respectively.
+        $b$ determines left and right extend of membership function,
+        respectively,
         \begin{equation}
             \mu(x) = 
             \begin{cases}
@@ -213,20 +215,20 @@ Basic assumptions:
             \end{cases}
             \label{eq:fuzzy_function}
         \end{equation}
-    \item Possible partitions of the feature space are determined in the same
-        way as in the example presented in fig. \ref{fig:fuzzy_example}
-    \item Genetic algorithm uses standard operations such as cross-over,
-        mutation, population generation, fitness evaluation.
-    \item As the template for genetic fuzzy algorithm Michigan approach is
+    \item possible partitions of the feature space are determined in the same
+        way as in the example presented in fig. \ref{fig:fuzzy_example},
+    \item genetic algorithm uses standard operations such as cross-over,
+        mutation, population generation, fitness evaluation,
+    \item as the template for genetic fuzzy algorithm Michigan approach is
         used which means that we have $N_{rule}$ number of individuals in the
-        population
+        population,
 \end{itemize}
 Next few step will present the whole structure of genetic algorithm used in
 this section:
 \begin{itemize}
-    \item Chromosome representation and encoding: 
+    \item chromosome represen tation and encoding: 
         \begin{itemize}
-            \item Each individual represents a single fuzzy rule $R_r$ from the
+            \item each individual represents a single fuzzy rule $R_r$ from the
                 set of containing $N_{rule}$ rules.
                 The length of the chromosome is the same as the number of 
                 attributes describing the pattern $x$. Each allele has value
@@ -248,9 +250,9 @@ this section:
                     \label{fig:fuzzy_rule}
                 \end{figure}  
         \end{itemize}
-    \item Individual evaluation
+    \item individual evaluation
         \begin{itemize}
-            \item To ensure proper genetic algorithm process an appropriate
+            \item to ensure proper genetic algorithm process an appropriate
                 fitness function must be defined \cite{bib10}, \cite{bib21}. 
                 Firstly the nature of pattern recognition task must be taken 
                 into account and secondly the structure of the fuzzy algorithm. 
@@ -271,15 +273,17 @@ this section:
                 attributes used by the rule (in the above example $NOF=3$);
                 $CF$ is the strength factor of the rule and $w_3$ is the
                 weight (in the simulations $w_3=10$).
-                The best individuals are those which maximize function $F_{fg}$
+                The best individuals are those which maximize function
+                $F_{fg}$,
         \end{itemize}
-    \item Cross-over, mutation and population generation
+    \item cross-over, mutation and population generation
         \begin{itemize}
-            \item From the whole population two individuals are chosen
+            \item from the whole population two individuals are chosen
                 randomly to constitute father and mother parents. With a
                 probability of $0.5$ each allele is picked either from mother
                 or father chromosome. In this way two new
-                individuals are generated (see example in fig. \ref{fig:cross_over})
+                individuals are generated (see example in fig.
+                \ref{fig:cross_over}),
                 \begin{figure}[H]
                     \begin{center}
                         \includegraphics[width=0.6\textwidth, height=0.5\textwidth]{fig/cross_over.png}
@@ -287,19 +291,20 @@ this section:
                     \caption{Cross-over operation used in genetic algorithm}
                     \label{fig:cross_over}
                 \end{figure}
-            \item In the particular generation one chromosome is chosen
+            \item in the particular generation one chromosome is chosen
                 randomly and later in each allele new membership function is
                 taken from other possible functions. For example if in the first
                 allele the first membership function is chosen the set of
-                candidates is given by $\{2, \ldots, 9, a, \ldots, e, DON'T\, USE\}$
-            \item In genetic algorithm one of the most important issue is how
+                candidates is given by $\{2, \ldots, 9, a, \ldots, e, DON'T\,
+                USE\}$,
+            \item in genetic algorithm one of the most important issue is how
                 to generate next population \cite{bib22}. Here, after the end of one
                 generation individuals from the population are merged with
                 those created through cross-over and mutation operations.
                 Later, the average fitness value $F_{avg}$ is calculated in the whole
                 set. To the next generation those individuals are passed which
                 their fitness indicator $F_{fg}$ is greater than the average
-                $F_{fg} \ge F_{avg}$
+                $F_{fg} \ge F_{avg}$,
         \end{itemize}
 \end{itemize}
 Of course it can happen that for cross-over and mutation operator
@@ -407,11 +412,11 @@ obtain reliable results.
 \label{cha:Multistage_rough_fuzzy}
 Multistage classifier created in this thesis can be divided into three phases:
 \begin{enumerate}
-    \item Rough sets classifier construction using genetic algorithm presented
-        in section \ref{cha:Multistage_rough_genetic}
-    \item Fuzzy logic classifier construction with rule generation by heuristic
-        approach described in \ref{cha:Fuzzy_logic_genetic_algorithm}
-    \item Pattern recognition using sequential hybrid classifier 
+    \item rough sets classifier construction using genetic algorithm presented
+        in section \ref{cha:Multistage_rough_genetic},
+    \item fuzzy logic classifier construction with rule generation by heuristic
+        approach described in \ref{cha:Fuzzy_logic_genetic_algorithm},
+    \item pattern recognition using sequential hybrid classifier,
 \end{enumerate}
 Each step plays an important role in the whole process and affects the final
 classification accuracy \cite{bib12}, \cite{bib27}, \cite{bib32}. Proper parameters of genetic algorithm are especially

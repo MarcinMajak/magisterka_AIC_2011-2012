@@ -1,23 +1,23 @@
 \select@language {english}
 \select@language {polish}
 \select@language {english}
-\contentsline {figure}{\numberline {1.1}{\ignorespaces General schema of simulation environment. Input/output of the system}}{7}{figure.1}
-\contentsline {figure}{\numberline {2.1}{\ignorespaces Rough sets example presenting lower and upper approximations}}{12}{figure.1}
-\contentsline {figure}{\numberline {2.2}{\ignorespaces Example of how fuzzy logic can be used to describe the season of the year}}{16}{figure.2}
-\contentsline {figure}{\numberline {2.3}{\ignorespaces Fuzzy approach for defining person height}}{17}{figure.3}
-\contentsline {figure}{\numberline {2.4}{\ignorespaces Steps applied in fuzzy reasoning.}}{18}{figure.4}
-\contentsline {figure}{\numberline {2.5}{\ignorespaces Input and output fuzzy linguistic variables for the described system.}}{19}{figure.5}
-\contentsline {figure}{\numberline {2.6}{\ignorespaces Example of clipping the consequent membership function as the result of rule induction}}{20}{figure.6}
-\contentsline {figure}{\numberline {2.7}{\ignorespaces Example of Michigan approach for constructing Genetic Fuzzy logic algorithm}}{22}{figure.7}
-\contentsline {figure}{\numberline {2.8}{\ignorespaces Example of Pittsburgh approach for constructing Genetic Fuzzy logic algorithm}}{23}{figure.8}
-\contentsline {figure}{\numberline {2.9}{\ignorespaces Diagram representing phases in genetic algorithm evaluation}}{25}{figure.9}
-\contentsline {figure}{\numberline {2.10}{\ignorespaces Example of two approaches for constructing hybrid classifiers}}{26}{figure.10}
-\contentsline {figure}{\numberline {3.1}{\ignorespaces Example fuzzy partition set for an attribute}}{30}{figure.1}
-\contentsline {figure}{\numberline {3.2}{\ignorespaces Example rule decoded from the individual chromosome (attribute $x_3$ was omitted in this rule)}}{32}{figure.2}
-\contentsline {figure}{\numberline {3.3}{\ignorespaces Cross-over operation used in genetic algorithm}}{33}{figure.3}
-\contentsline {figure}{\numberline {3.4}{\ignorespaces Schematic diagram how hybrid classifier works}}{37}{figure.4}
-\contentsline {figure}{\numberline {5.1}{\ignorespaces Example of 4-fold cross validation.}}{42}{figure.1}
-\contentsline {figure}{\numberline {5.2}{\ignorespaces Comparison of Basic Rough sets algorithm with algorithm where modification of decision rules is introduced.}}{45}{figure.2}
-\contentsline {figure}{\numberline {5.3}{\ignorespaces Example of rule set generated for Iris dataset}}{46}{figure.3}
-\contentsline {figure}{\numberline {5.4}{\ignorespaces Impact of initial number of membership functions $MF$ per attribute on the final fuzzy classification rate}}{47}{figure.4}
-\contentsline {figure}{\numberline {5.5}{\ignorespaces Example of linear discriminant classifier for 2-dimensional problem}}{52}{figure.5}
+\contentsline {figure}{\numberline {1.1}{\ignorespaces General schema of simulation environment. Input/output of the system}}{8}{figure.1}
+\contentsline {figure}{\numberline {2.1}{\ignorespaces Rough sets example presenting lower and upper approximations}}{13}{figure.1}
+\contentsline {figure}{\numberline {2.2}{\ignorespaces Example of how fuzzy logic can be used to describe the season of the year}}{17}{figure.2}
+\contentsline {figure}{\numberline {2.3}{\ignorespaces Fuzzy approach for defining person height}}{18}{figure.3}
+\contentsline {figure}{\numberline {2.4}{\ignorespaces Steps applied in fuzzy reasoning.}}{19}{figure.4}
+\contentsline {figure}{\numberline {2.5}{\ignorespaces Input and output fuzzy linguistic variables for the described system.}}{20}{figure.5}
+\contentsline {figure}{\numberline {2.6}{\ignorespaces Example of clipping the consequent membership function as the result of rule induction}}{21}{figure.6}
+\contentsline {figure}{\numberline {2.7}{\ignorespaces Example of Michigan approach for constructing Genetic Fuzzy logic algorithm}}{23}{figure.7}
+\contentsline {figure}{\numberline {2.8}{\ignorespaces Example of Pittsburgh approach for constructing Genetic Fuzzy logic algorithm}}{24}{figure.8}
+\contentsline {figure}{\numberline {2.9}{\ignorespaces Diagram representing phases in genetic algorithm evaluation}}{26}{figure.9}
+\contentsline {figure}{\numberline {2.10}{\ignorespaces Example of two approaches for constructing hybrid classifiers}}{27}{figure.10}
+\contentsline {figure}{\numberline {3.1}{\ignorespaces Example fuzzy partition set for an attribute}}{31}{figure.1}
+\contentsline {figure}{\numberline {3.2}{\ignorespaces Example rule decoded from the individual chromosome (attribute $x_3$ was omitted in this rule)}}{33}{figure.2}
+\contentsline {figure}{\numberline {3.3}{\ignorespaces Cross-over operation used in genetic algorithm}}{34}{figure.3}
+\contentsline {figure}{\numberline {3.4}{\ignorespaces Schematic diagram how hybrid classifier works}}{38}{figure.4}
+\contentsline {figure}{\numberline {5.1}{\ignorespaces Example of 4-fold cross validation.}}{43}{figure.1}
+\contentsline {figure}{\numberline {5.2}{\ignorespaces Comparison of Basic Rough sets algorithm with algorithm where modification of decision rules is introduced.}}{46}{figure.2}
+\contentsline {figure}{\numberline {5.3}{\ignorespaces Example of rule set generated for Iris dataset}}{47}{figure.3}
+\contentsline {figure}{\numberline {5.4}{\ignorespaces Impact of initial number of membership functions $MF$ per attribute on the final fuzzy classification rate}}{48}{figure.4}
+\contentsline {figure}{\numberline {5.5}{\ignorespaces Example of linear discriminant classifier for 2-dimensional problem}}{53}{figure.5}

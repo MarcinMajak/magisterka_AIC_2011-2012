@@ -3,14 +3,14 @@
 \label{cha:Goals}
 With the improvement of computers we are able to tackle with high dimensional 
 problems in many areas of human life. At first glance everything
-looks so easy, but when we go deeper into a problem more and more problems 
+looks so easy, but when we go deeper into a problem more and more obstacles
 become evident and unavoidable. For example, reconsider pattern recognition
 tasks in which measured objects (patterns) coming from the environment can be 
 described by many attributes. Some of them are very meaningful while others brings only noise 
 and distortion. This is the role of the algorithm to pick valuable attributes,
 but finding a minimal attribute reduct is $\mathcal{NP}$-hard problem. Another
-obstacle is connected with overlaps in the attribute space. When attributes 
-are easily separable even a simple classifier works perfectly, but for more 
+important issue is connected with overlaps in the attribute space. When
+features are easily separable even a simple classifier works perfectly, but for more 
 tricky cases very sophisticated approaches have to be applied.
 
 For the past years, many scientist in the world tried to invent new algorithms
@@ -26,7 +26,7 @@ that will never make no mistakes.
 This thesis touches the broad topic of pattern recognition task which is 
 very difficult and demanding problem in every aspect of science. Generally, 
 pattern classification is about assigning label to an unknown object based 
-on the available knowledge coming from training dataset or expert experience.
+on the available knowledge coming from training dataset or expert knowledge.
 This process be compared to the capability of human brain which is able to put 
 certain scenario into context and identify distinguishable object components. 
 The whole process of classification can be divided into into few parts and each 
@@ -38,7 +38,7 @@ Examples of pattern recognition application can be found in many areas of
 science. As it was previously noticed, in the literature one can find many algorithms 
 used for object classification, while here the rough sets, fuzzy logic and genetic algorithms are used 
 and investigated. The general purpose of this thesis is to propose a hybrid
-classifier using the power of fuzzy logic and rough sets.
+classifier which merges the power of fuzzy logic and rough sets.
 
 First of all the mathematical background and basic properties of these algorithms 
 will be presented and later investigations will be carried out to prove 
@@ -58,20 +58,24 @@ modification decision rules is introduced and at the end as the final point
 the hybridization of algorithms is proposed using fuzzy logic, rough sets and
 genetic algorithm.
 
-At the end of this section, the experiment environment should be characterized in
-few words. 
+At the end of this section the experiment environment should be characterized in
+few words. It is done by defining input/output of the system.
 \begin{itemize}
     \item \textbf{given}:
         \begin{itemize}
             \item dataset divided into training and testing objects. in
-                this thesis datasets from $UCI$ Repository will be used (described in section
+                this thesis datasets from $UCI$ Repository are used (described in section
                 \ref{cha:ExperimentAnalysis}). Those datasets are broadly available and everyone in the
-                future would be able to repeat the simulation investigation and compare the
+                future would be able to repeat tests and compare the
                 results with those presented in this paper,
             \item algorithm for classification: basic rough sets, rough sets
-                with modification of decision rules, hybrid classifier
+                with modification of decision rules, hybrid classifier,
         \end{itemize}
-    \item \textbf{to find}: classification accuracy on the given dataset
+    \item \textbf{to find}: 
+        \begin{itemize}
+            \item classification accuracy on the given dataset by the
+                particular algorithm,
+        \end{itemize}
 \end{itemize}
 Figure \ref{fig:input_output} shows the general schema of the simulation environment.
 \begin{figure}[H]
@@ -93,7 +97,7 @@ part shows algorithm construction steps using pseudo-code.
 
 The second part, which is the main point of this thesis, presents experiments analysis.
 Paragraph \ref{cha:ExperimentAnalysis} describes the experiment environment
-setting and program written in \textit{Python} to simulate all implemented
+settings and program written in \textit{Python} to simulate all implemented
 algorithms.  Results with comments are placed in
 section \ref{cha:Simulation_investugations}. General
 conclusions and plans for the future work are placed in sections
