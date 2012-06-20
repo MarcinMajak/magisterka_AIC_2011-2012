@@ -3,9 +3,9 @@
 \select@language {english}
 \contentsline {table}{\numberline {2.1}{\ignorespaces Example dataset showing healthy patients and suffering from flu}}{14}{table.1}
 \contentsline {table}{\numberline {2.2}{\ignorespaces Table describing how person is tall by the fuzzy logic linguistic variable}}{17}{table.2}
-\contentsline {table}{\numberline {3.1}{\ignorespaces Parameter settings for genetic algorithm used in fuzzy logic}}{33}{table.1}
-\contentsline {table}{\numberline {3.2}{\ignorespaces Parameter settings for genetic algorithm used in rough sets}}{35}{table.2}
-\contentsline {table}{\numberline {5.1}{\ignorespaces Result of simulation for finding the dependency between granulation step and classification accuracy}}{43}{table.1}
-\contentsline {table}{\numberline {5.2}{\ignorespaces Comparison of accuracy of classification for genetic fuzzy logic classifier with rough sets algorithms for different datasets}}{48}{table.2}
-\contentsline {table}{\numberline {5.3}{\ignorespaces Accuracy of classification for genetic rough sets and basic rough sets algorithms for different datasets}}{50}{table.3}
-\contentsline {table}{\numberline {5.4}{Comparison of hybrid rough fuzzy classifier with other common classifiers}}{52}{table.4}
+\contentsline {table}{\numberline {3.1}{\ignorespaces Parameter settings for genetic algorithm used in fuzzy logic}}{34}{table.1}
+\contentsline {table}{\numberline {3.2}{\ignorespaces Parameter settings for genetic algorithm used in rough sets}}{36}{table.2}
+\contentsline {table}{\numberline {5.1}{\ignorespaces Result of simulation for finding the dependency between granulation step and classification accuracy}}{44}{table.1}
+\contentsline {table}{\numberline {5.2}{\ignorespaces Comparison of accuracy of classification for genetic fuzzy logic classifier with rough sets algorithms for different datasets}}{49}{table.2}
+\contentsline {table}{\numberline {5.3}{\ignorespaces Accuracy of classification for genetic rough sets and basic rough sets algorithms for different datasets}}{51}{table.3}
+\contentsline {table}{\numberline {5.4}{Comparison of hybrid rough fuzzy classifier with other common classifiers}}{53}{table.4}
