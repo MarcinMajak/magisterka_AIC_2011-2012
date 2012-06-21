@@ -1,10 +1,8 @@
 \section{Algorithm construction}
 \label{cha:Algorithm_construction}
 In this section basic information about algorithm construction will be
-presented. For the classification task four algorithms were implemented and
-compared.
-
-At the beginning, we start with the basic algorithm of rough sets, later present rough sets
+presented. For the classification task three algorithms were implemented and
+compared. At the beginning, we start with the basic algorithm of rough sets, later present rough sets
 algorithm with modification of decision rules and at last the multistage hybrid 
 algorithm consisting of genetic algorithm, rough sets and fuzzy logic is shown in 
 greater details. 
@@ -13,7 +11,9 @@ greater details.
 The basic rough sets algorithm with constant step of granulation
 can be summarized in six steps \cite{bib34}, \cite{bib35}:
 \begin{enumerate}
-    \item If the attributes are the real numbers then the granulation preprocessing 
+    \item Algorithm starts with an arbitrary chosen step of granulation which
+        requires dividing every domain of feature into $G$ intervals.
+        If the attributes are the real numbers then the granulation preprocessing 
         is needed first. To calculate the proper interval eq. (\ref{eq:interval})
         is used:
         \begin{equation}
@@ -32,8 +32,9 @@ can be summarized in six steps \cite{bib34}, \cite{bib35}:
         attribute from $l=(1, \ldots , q)$ we choose the same numbers of
         intervals $K_l$ called step of granulation $G$. For the $l$-th attribute 
         denoted by $v^l_{p_l}$ it is defined its $p_l$ interval from $p_l=(1, \ldots, K_l)$
-    \item Using training dataset construct the decision table $T$ where each
-        row represents a pattern. Over the table $T$ define the set $FOR(C)$ of decision rules of
+    \item Using training dataset, construct the decision table $T$ where each
+        row represents a pattern with additional class label. 
+        Over the table $T$ define the set $FOR(C)$ of decision rules of
         the following form:
         $$IF \, (x_1 = v_{p_1}^1) \, AND \, (x_2=v_{p_2}^2) \, AND \, \ldots \,
         (x_q=v_{p_q}^q) \, THEN \, \Psi(S, x)=j$$
@@ -42,7 +43,7 @@ can be summarized in six steps \cite{bib34}, \cite{bib35}:
     \item For the created set of formulas $FOR(C)$ for each $j=1, \ldots, m$
         an algorithm calculates lower $\underline{I_P}$, upper $\overline{I_P}$ approximations and the boundary
         region $BN_P$ which are determined by the set of conditional attributes $P
-        \subseteq Q$
+        \subseteq Q$ 
     \item In order to classify new pattern $x$ algorithm looks for matching rules in the
         set $FOR(C)$ (rule is activated if the left condition is fulfilled by
         attributes describing $x$).
@@ -61,50 +62,58 @@ can be summarized in six steps \cite{bib34}, \cite{bib35}:
 \end{enumerate}
 \subsection{Rough sets algorithm construction with modification of decision rules}
 \label{cha:Algorithm_construction_rough_set_modification}
-It can happen that for certain number of intervals algorithm cannot find patterns in
-the training set, so as the consequence dummy rule are generated, useless in the
+It can happen that for particular number of intervals basic rough sets algorithm can not find patterns in
+the training set, so as the consequence \textit{dummy} rules are generated, useless in the
 classification process (the strength of the rule is 0). 
 The main drawback of algorithm presented in section \ref{cha:Algorithm_construction_rough_set}
 is the fact that it starts with an arbitrary chosen step of granulation and its accuracy strongly
 depends on it. In this section the recursive modification of the previous algorithm is
-presented allowing for automatically changing the step of granulation is
+presented for automatically changing the step of granulation if
 the pattern $x$ is rejected. The modification is as follows \cite{bib36}:
 \begin{enumerate}
-    \item Algorithm starts with an arbitrary chosen step of granulation $G$, 
+    \item Algorithm starts with an arbitrary chosen step of granulation  $G$, 
         generally it is a high value to ensure that recursion can be invoked
-        by decreasing $G$. Shortly speaking, we divide every domain of feature into $G$
-        intervals. At first algorithm repeats the whole procedure 1-6 described
+        by decreasing $G$. At first algorithm repeats the whole procedure 1-6 described
         in the previous section.
-    \item If for the pattern $x$ algorithm cannot find neither certain nor possible
+    \item If for the pattern $x$ algorithm cannot find neither \textit{certain} nor \textit{possible}
         decision rule, it means that there is no proper representation in the learning set. 
         In such a situation algorithm tries to find matching rule by decreasing recursively
         the current interval $G$ by factor $\epsilon=1$ for every condition attribute $l=1, \ldots, q$
         until the proper rule is found. If \textit{certain} rule or
         \textit{possible} rules with maximum strength are induced then the algorithm
         returns decision attribute $j$, otherwise if for every attribute $G=1$, then the pattern $x$ is rejected.
-\end{enumerate}
+\end{enumerate} 
 The recursion is time consuming so to enhance the process of finding the proper
 decision formulas for different $G$ the decision set $FOR(C)$ are stored in the memory
 for faster retrieval.
 
-\subsection{Fuzzy logic algorithm construction}
+\subsection{Multistage hybrid algorithm construction}
+\label{cha:Multistage}
+\subsubsection{Motivations}
+\label{cha:Mutlistage_motivations}
+When we deal with complex data it can happen that a single classifier is not
+sufficient. There arises a question if connection of different classifier will
+improve the classification? In this thesis the hybridization of rough sets and
+fuzzy logic is proposed and investigated. The next subsections show algorithm construction.
+
+\subsubsection{Fuzzy logic algorithm construction}
 \label{cha:Algorithm_construction_fuzzy_logic}
-\subsubsection{Problem formulation}
+\paragraph{Problem formulation}
 \label{cha:Fuzzy_logic_basic_problem_formulation}
 In the fuzzy logic algorithm one of the most important key is creation of rules
 which will ensure proper classification. When there is no expert knowledge about
 dataset it is not an easy task to generate them from scratch. In the literature
 one can find many practical examples of how to generate \textit{IF-THEN} rules, from
-the statistical tools to heuristic algorithms. In the recent the most appealing
-and effective approach is genetic algorithm \cite{bib4}, \cite{bib13}, \cite{bib23}
-
+the statistical tools to heuristic algorithms. In the recent years the most appealing
+and effective approach is genetic algorithm \cite{bib4}, \cite{bib13}, \cite{bib23}.
 For the algorithm construction we have to make few assumptions:
 \begin{itemize}
     \item for the learning procedure $N$ training patterns are available,
     \item a set $F$ of linguistic values and their membership functions is given
         for describing each attribute,
 \end{itemize}
-The second point is the most important and the choice of the proper membership
+
+From points enumerated above, the second one is the most important and the choice of the proper membership
 functions affects the classification accuracy \cite{bib17}, \cite{bib6}. It requires in-depth explanation
 of how set $F$ is generated in this thesis, how to partition each attribute into 
 linguistic values and how to describe each membership function. Genetic
@@ -115,9 +124,9 @@ possible membership functions. In this example $14$ membership functions are use
 Each function has a subscript defining its linguistic value and a proper
 location in the feature space. To emphasize the complexity of the problem let take 
 into account that each attribute is divided in the same way as depicted in fig. \ref{fig:fuzzy_example}. 
-Having $d$-dimensional feature space, the number of all possible combinations of membership functions for
-rule construction is equal to $14^d$. It is impossible to evaluate each potential solution it is
-in a reasonable time \cite{bib27}, \cite{bib33}. 
+Having $d$-dimensional feature space, we would like to generate decision rules consisting of $d$ antecedents.
+For each position we can choose 1 out of 14 membership functions which gives $14^d$ possibilities. 
+It is impossible to evaluate each potential solution in a reasonable time, especially for greater $d$ \cite{bib27}, \cite{bib33}. 
 \begin{figure}[H]
     \begin{center}
         \includegraphics[width=\textwidth]{fig/fuzzy_example.png}
@@ -135,8 +144,8 @@ example from \ref{fig:fuzzy_example} $A_{ri}$ can have one label from the set
 $\{1, 2, \ldots, 9, a, b, \ldots, e \}$); $C_r$ is a consequent fuzzy set
 determining the class label $\{1, \ldots, m\}$, $CF_r$ is a rule strength; $r$
 denotes the number of the rule from the set of all possible rules $\{1, \ldots, N_{rule}\}$. 
-Generally, $N_{rule}$ is about ten or twenty. 
-\subsubsection{Rule generation}
+In simulations $N_{rule}$ was chosen to ten. 
+\paragraph{Rule generation}
 \label{cha:Fuzzy_logic_rule_generation}
 The process of rule generation for fuzzy logic without the expert knowledge is
 complex and done in couple steps. At first, using available
@@ -151,7 +160,8 @@ $A_{ri}$:
 \end{equation}
 If we know how to calculate the compatibility grade of each training pattern
 now we can determine $C_r$ and $CF_r$ for each rule. The fuzzy probability
-$P(class\, j|A_r)$ of class $j$, $j=(1, \ldots, m)$ is given by eq. (\ref{eq:fuzzy_probability})
+$P(class\, j|A_r)$ of class $j$, $j=(1, \ldots, m)$ indicating how pattern $x$ can be associated with class $j$ 
+is given by eq. (\ref{eq:fuzzy_probability})
 \begin{equation}
     Pr(class \, j|A_r) = \frac{\sum\limits_{x_p \in class\,
     j}\mu_{A_r}(x_p)}{\sum\limits_{p=1}^m\mu_{A_r}(x_p)}
@@ -166,7 +176,7 @@ winning rule, which means that the label with maximal probability is chosen:
 In the learning phase it can happen that rule $R_r$ can be activated by
 patterns coming from different classes. To ensure the proper classification, each
 rule has a strength factor which tells how precisely rule $R_r$ predicts the
-consequent class $h$.
+consequent class $j$.
 \begin{equation}
     R_r: CF_r=Pr(class\, j|A_r) - \sum\limits_{j=1, j\neq C_r}^MPr(class\,j|A_r)
     \label{eq:fuzzy_strength}
@@ -174,7 +184,7 @@ consequent class $h$.
 If $CF_r$ in eq. (\ref{eq:fuzzy_strength}) is negative then rule $R_r$ is
 denoted as \textit{dummy} and is not taken for further reasoning, otherwise it is used in
 defuzzification process to determine the final class label \cite{bib18}, \cite{bib26}.
-\subsubsection{Fuzzy reasoning}
+\paragraph{Fuzzy reasoning}
 \label{cha:Fuzzy_reasoning}
 Let assume that $N_{rule}$ fuzzy rules are generated with indicators $C_r$,
 $CF_r$ determined by eq. (\ref{eq:fuzzy_max}), (\ref{eq:fuzzy_strength}). 
@@ -190,7 +200,8 @@ that has the maximum compatibility grade and the rule strength $CF_r$.
 If multiple fuzzy rules have the same maximum product $\mu_{A_r}$ but different
 consequent classes then the classification is rejected. The same action is
 taken if no fuzzy rule is compatible with the incoming pattern $x_p$.
-\subsubsection{Genetic algorithm for  fuzzy algorithm construction}
+
+\paragraph{Genetic algorithm for  fuzzy algorithm construction}
 \label{cha:Fuzzy_logic_genetic_algorithm}
 In this section genetic algorithm will be described in greater details. This
 algorithm was used to generate initial number $N_{rule}$ of fuzzy rules for
@@ -200,7 +211,7 @@ Basic assumptions:
     \item fuzzy rule encoding is the same as presented in section
         \ref{cha:Fuzzy_logic_basic_problem_formulation},
     \item training data set is given with $N$ patterns,
-    \item triangular membership functions are used and described by 2-tuple
+    \item triangular membership functions are used and are described by 2-tuple
         $(a, b)$, where $a$ is the center value (where $\mu(x)=1$), and
         $b$ determines left and right extend of membership function,
         respectively,
@@ -224,9 +235,9 @@ Basic assumptions:
         population,
 \end{itemize}
 Next few step will present the whole structure of genetic algorithm used in
-this section:
+fuzzy logic:
 \begin{itemize}
-    \item chromosome represen tation and encoding: 
+    \item chromosome representation and encoding: 
         \begin{itemize}
             \item each individual represents a single fuzzy rule $R_r$ from the
                 set of containing $N_{rule}$ rules.
@@ -249,6 +260,7 @@ this section:
                     chromosome (attribute $x_3$ was omitted in this rule)}
                     \label{fig:fuzzy_rule}
                 \end{figure}  
+                This rule assigns patterns to class $j=1$ with the strength equal to 0.85.
         \end{itemize}
     \item individual evaluation
         \begin{itemize}
@@ -276,7 +288,7 @@ this section:
                 The best individuals are those which maximize function
                 $F_{fg}$,
         \end{itemize}
-    \item cross-over, mutation and population generation
+    \item cross-over
         \begin{itemize}
             \item from the whole population two individuals are chosen
                 randomly to constitute father and mother parents. With a
@@ -291,12 +303,18 @@ this section:
                     \caption{Cross-over operation used in genetic algorithm}
                     \label{fig:cross_over}
                 \end{figure}
+        \end{itemize}
+    \item mutation
+        \begin{itemize}
             \item in the particular generation one chromosome is chosen
                 randomly and later in each allele new membership function is
                 taken from other possible functions. For example if in the first
                 allele the first membership function is chosen the set of
                 candidates is given by $\{2, \ldots, 9, a, \ldots, e, DON'T\,
                 USE\}$,
+        \end{itemize}
+    \item selection
+        \begin{itemize}
             \item in genetic algorithm one of the most important issue is how
                 to generate next population \cite{bib22}. Here, after the end of one
                 generation individuals from the population are merged with
@@ -328,19 +346,12 @@ Optimal values were determined during simulations by trial and error method.
     \end{tabular}
     \label{tab:fuzzy_genetic_parameters}
 \end{table}
-\subsection{Multistage hybrid algorithm construction}
-\label{cha:Multistage}
-\subsubsection{Motivations}
-\label{cha:Mutlistage_motivations}
-When we deal with complex data it can happen that a single classifier is not
-sufficient. There arises a question if connection of different classifier will
-improve the classification? In this thesis the hybridization of rough sets and
-fuzzy logic is proposed and investigated. The next subsections show algorithm construction.
+
 \subsubsection{Rough sets and genetic algorithm}
 \label{cha:Multistage_rough_genetic}
 Rough sets algorithm presented in section \ref{cha:Algorithm_construction_rough_set} uses an 
 arbitrary chosen step of granulation and each attribute has the same
-granulation intervals. In some cases this approach gives good results in more
+granulation intervals. In some cases this approach gives good results, but in more
 complex problems algorithm efficiency is low \cite{bib24}, \cite{bib29}. Additionally, the basic rough set
 algorithm uses all attributes for rule construction.
 
@@ -364,8 +375,7 @@ To evaluate individual the following fitness function given by eq.
     F_{rg} = w_1\cdot NC + w_2\cdot NNC + (\frac{1}{NOF}) +w_3\cdot (\frac{1}{NOCR})^2
     \label{eq:rough_fitness}
 \end{equation}
-
-where $w_1$, $w_2$ are weights for a reward and punishment to
+,where $w_1$, $w_2$ are weights for a reward and punishment to
 the individual on the classification result ($w1=5$, $w_2=10$); $NC$ and $NNC$ are
 the numbers of correctly recognized and misclassified patterns; $NOF$ is the number of
 attributes used by the rule (in the example above $NOF=3$);
@@ -373,21 +383,20 @@ $NOCR$ is the number of \textit{certain} rules which are derived from
 partition given by the particular individual; $w_3$ is the weight (in the simulations
 $w_3=10$).
 
-
 The whole procedure of constructing genetic rough sets algorithm can be summarized in few steps:
 \begin{enumerate}
     \item Determine the maximum partition value for each attribute $K_{max}$. In
-        this thesis $K_{max}$ is the same for all features.
+        this thesis $K_{max}$ is the same for all features and is equal to 7, 
     \item Generate $N_{pop}$ individuals by randomly assigning value from the
         set $\{1, 2, \ldots, K_{max}, \, DON'T\; USE\}$ to each allele in the
-        chromosome.
+        chromosome,
     \item Treat each individual as a rough set partition and calculate lower,
         upper approximations and the boundary region. Evaluate individual using
-        fitness function $F_{rg}$.
+        fitness function $F_{rg}$,
     \item Generate $N_{replace}$ individuals using genetic operators and merge
-        with the current population.
+        with the current population,
     \item Choose $N_{pop}$ individual for the next generation
-    \item If stopping criteria is not fulfilled go to $2$.
+    \item If stopping criteria is not fulfilled go to $2$,
 \end{enumerate}
 Cross-over and mutation operations are done in the same way as presented in
 section \ref{cha:Fuzzy_logic_genetic_algorithm}. Parameters for genetic algorithm 
@@ -408,7 +417,7 @@ used in this section are presented in table \ref{tab:rough_genetic_parameters}:
 \end{table}
 In case of genetic algorithm for rough set $100$ generations were sufficient to
 obtain reliable results.
-\subsection{Hybrid rough sets and fuzzy logic algorithm}
+\subsubsection{Hybrid rough sets and fuzzy logic algorithm}
 \label{cha:Multistage_rough_fuzzy}
 Multistage classifier created in this thesis can be divided into three phases:
 \begin{enumerate}
@@ -440,6 +449,16 @@ An illustrative scheme of hybrid classifier is presented in fig. \ref{fig:schema
     \begin{center}
         \includegraphics[width=\textwidth]{fig/diagram.png}
     \end{center}
-    \caption{Schematic diagram how hybrid classifier works}
+    \caption{Diagram presenting how hybrid classifier works}
     \label{fig:schematic}
 \end{figure}
+\subsubsection{Difference between rough sets and fuzzy logic reasoning}
+\label{cha:Difference}
+At the end of this section the difference between rough sets and fuzzy logic should 
+be explained more deeply. In rough sets algorithm we provide discretization for the 
+whole feature and the number of generated decision rules is equal the number of objects 
+in the set. In previous section it was stated that rough sets can be associated with table. 
+Opposite to rough sets algorithm is fuzzy logic in which the number of rules is much smaller 
+and in this thesis it is 10. We do not want to partition the whole feature space into fuzzy 
+sets, instead we pick only those membership functions which ensure the greatest compatibility 
+grade with training patterns.

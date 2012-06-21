@@ -294,25 +294,24 @@ The category description can be done in two ways:
     \item intentional,
 \end{enumerate}
 Each of these approaches define how pattern from dataset is
-described. To properly represent a target concept (class) from dataset an
+described and assigned to the proper class. To properly represent a target concept (class) from dataset an
 algorithm should be able to identify all objects belonging 
 to this category. With the former approach we have no insight 
 into decision engine so we do not know how to assign new objects to the category.
-In the latter method the particular category is described the set of rules. The same 
-approach is done in rough sets algorithm where an elementary 
+In the latter method the particular category is described by the set of rules. The same 
+approach is done in rough sets algorithm where elementary 
 granules (concepts) of knowledge build blocks consisting 
-of indiscernible pattern from the universe of discourse $U$. 
+of indiscernible patterns from the universe of discourse $U$. 
+
 As stated in section \ref{cha:Rough_set_basic_notation} reconsidered dataset or
 problem can be represented as a table. When decision attributes from $D$ are
-added to the table it is transformed into decision table $T$ where each
-row is associated with decision rule.
-
-In this section a practical example will be presented to clear all the things
-out. As an example let reconsider well-known problem of patients suffering from
+added to this table it is transformed into decision table $T$ where each
+row is associated with decision rule. Below, the practical example is presented to 
+clear all the things out. Let reconsider the well-known problem of patients suffering from
 flu \cite{bib39}, \cite{bib40}. The task is to decide if a patient described by 3 attributes is ill or not. Table \ref{tab:example_rough_set} 
 represents an information system $IS$ about healthy patient and those suffering
 from flu. Attributes: \textit{Headache}, \textit{Muscle-pain},
-\textit{Temperature} are called condition attributes and denoted as ($c_i,i \in (1, \ldots, q)$),
+\textit{Temperature} are called condition attributes and are denoted as ($c_i,i \in (1, \ldots, q)$),
 while the attribute \textit{Flu} (last column in table \ref{tab:example_rough_set}) is considered as
 a decision attribute $c_d$.
 \begin{table}[H] 
@@ -330,8 +329,8 @@ a decision attribute $c_d$.
     \end{tabular}
     \label{tab:example_rough_set}
 \end{table}
-Each row of a decision table determines a decision rule. 
 
+Each row of a decision table determines a decision rule. 
 
 \begin{tabular}[H]{l}
     Rule 1:  IF $c_1$ IS 'NO' AND $c_2$ IS 'YES' AND $c_3$ IS 'HIGH' THEN $c_d$
@@ -350,7 +349,7 @@ Each row of a decision table determines a decision rule.
 
 
 After analyzing table \ref{tab:example_rough_set} it is noticeable that some
-patients can not be distinguished between each other, for example $p2$ and $p5$.
+patients can not be distinguished between each other.
 It is possible to generate different indiscernible relations based on 
 the chosen attributes. In case of \textit{Headache} attribute patients: $p2$,
 $p3$, $p5$ are indiscernible; patients $p2$, $p5$ are
@@ -366,8 +365,8 @@ set of patient certainly having flu is \{$p1$, $p3$, $p6$\}, while the upper
 approximation of patients possibly suffering from flu is \{$p1$, $p2$, $p3$,
 $p5$, $p6$\}. The boundary region for concept \textit{Flu} is a set of \{$p2$, $p5$\} 
 patients. For the concept \textit{Not Flu} the lower approximation is the set
-\{$p4$\}, whereas the upper approximation is the set \{$p2$, $p4$, $p5$\}. Again the 
-boundary region is the set \{$p2$, $p5$\}.
+\{$p4$\}, the upper approximation is the set \{$p2$, $p4$, $p5$\}, whereas the 
+boundary region is again the set \{$p2$, $p5$\}.
 
 Additionally, we can measure the accuracy of approximation $\alpha_P(x)$ for each concept.
 This can indicate if the set of attributes used for describing the concept is correctly
@@ -383,7 +382,7 @@ To sum up, $\alpha_P(x)$ is a very important indicator in
 rough sets theory and tells which attributes better characterize target
 concept. This example has shown that because of the granule representation of
 knowledge in rough sets approach some object can not be discerned. It is very
-important to choose proper condition attributes because this determines how
+important to choose proper condition attributes because they determine how
 upper and lower approximations are represented by objects from $U$. 
 
 
@@ -393,7 +392,7 @@ upper and lower approximations are represented by objects from $U$.
 In fuzzy logic an element membership to a set is described by a membership function 
 which assigns value from interval $[0, 1]$:
 \begin{equation}
-    \mu_A:U\rightarrow [0,1], \, A \subseteq U
+    \mu_A(x):U\rightarrow [0,1], \, A \subseteq U, \, x \in A
     \label{eq:fuzzy_function}
 \end{equation}
 The properties of membership function $\mu$ are as follows:
@@ -409,8 +408,8 @@ set $A$.
 Fuzzy logic is a superset of Boolean logic that 
 has been extended to handle the concept of partial truth - values between ``completely 
 true'' and ``completely false'' \cite{bib6}, \cite{bib12}. This theory was introduced by 
-Dr. Lotfi Zadeh in the 1960's as a tool for modelling the uncertainty of natural language. 
-This approach can be applied to many problems, analyze only few examples:
+Dr. Lotfi Zadeh in the 1960's as a tool for modeling the uncertainty of natural language. 
+This approach can be applied to many problems, here analyze only few examples:
 \begin{itemize}
     \item days of a week- there is a question which day is mostly associated
         with a weekend. Generally, we would assume that the membership value
@@ -425,13 +424,13 @@ This approach can be applied to many problems, analyze only few examples:
                 \includegraphics{fig/seasons.png}
             \end{center}
             \caption{Example of how fuzzy logic can be used to describe the
-            season of the year}
+            seasons of the year}
             \label{fig:seasons}
         \end{figure}
-    \item the height: small and tall definitions- from the group of people it
+    \item the height (small and tall definitions)- from the group of people it
         is hard to define who is tall and who is small interchangeably. To
         solve this problem we can define the concept \textit{Tall} and assign
-        value to each person describing its value. This process is presented in
+        value to each person describing its height. This process is presented in
         fig. \ref{fig:fuzzy_tall},
         \begin{figure}[H]
             \begin{center}
@@ -442,16 +441,15 @@ This approach can be applied to many problems, analyze only few examples:
         \end{figure}
 \end{itemize}
 
-As in the section \ref{cha:Rough_set_introduction}, let reconsider the problem of defining 
-if person is small or tall more deeply. First of all, we have to define a fuzzy
+As in the section \ref{cha:Rough_set_introduction}, let reconsider more deeply the problem of defining 
+if person is small or tall in group of people. First of all, we have to define a fuzzy
 set (concept) \textit{Tall} which will answer the question 
-"to what degree is person x tall?". Zadeh describes \textit{Tall} as a
+"to what degree is person $x$ tall?". Zadeh describes \textit{Tall} as a
 linguistic variable, which represents our cognitive category of "tallness"
-\cite{bib25}. To each person in the universe of discourse, 
-we have to assign a degree of membership in the fuzzy subset \textit{Tall}
+\cite{bib25}. To each person in the group assign a degree of membership in the fuzzy subset \textit{Tall}
 based on the membership function (for example the same as presented in fig.
-\ref{fig:fuzzy_tall}). Table \ref{tab:fuzzy_logic_example} shows an example of fuzzy
-reasoning:
+\ref{fig:fuzzy_tall}). Table \ref{tab:fuzzy_logic_example} shows the degree of
+membership how person is tall in the group of six people.
 \begin{table}[H]
     \centering
     \caption{Table describing how person is tall by the fuzzy logic linguistic
@@ -470,7 +468,7 @@ reasoning:
 \end{table}
 
 Fuzzy numbers are fuzzy subsets generated over the attribute domain. 
-They have a peak or plateau with membership grade 1, over which the 
+They have a peak or plateau with membership grade 1 over which the 
 members of the universe are completely in the set.  The membership 
 function is increasing towards the peak and decreasing away from it. 
 There are different types of membership functions and their usage 
@@ -478,14 +476,14 @@ strongly depends on the type of reconsidered problem. One of the most
 commonly used in the literature are: triangular, trapezoidal, Gaussian shapes
 (see example in fig. \ref{fig:fuzzy_example_1}).
 
-\subsubsection{Fuzzy reasoning from data}
-Reasoning in fuzzy logic is based on decision rules the same as in rough sets
+\subsubsection{Fuzzy reasoning from data }
+Reasoning in fuzzy logic is based on decision rules, the same as in rough sets
 approach \cite{bib11}. 
 Rules are expressed in the form of IF \textit{CONDITIONS} THEN \textit{DECISION}
 where \textit{CONDITIONS} can be divided into antecedent set ($A_{ri}, \, i \in
 (1, \ldots, q)$) and \textit{DECISION} is the consequent determining the
 output of the rule. In the pattern recognition task when we deal with patterns
-described by $d$ features rules have the form presented by eq. (\ref{eq:rule_example})
+described by $d$ features then decision rules have the form presented by eq. (\ref{eq:rule_example})
 \begin{equation}
     IF\, x_1=A_{r1}\, AND\, x_2=A_{r2}\, AND\, \ldots\, AND\, x_d=A_{rd}\, THEN\,
 class\, C_r\, with \, CF_r
@@ -493,10 +491,14 @@ class\, C_r\, with \, CF_r
 \end{equation}
 
 The \textit{AND}, \textit{OR}, and \textit{NOT} operators of 
-Boolean logic exist in fuzzy logic and are usually defined as the minimum, maximum,
-and complement. When they are defined this way, they are called the Zadeh
-operators \cite{bib2}.
-
+Boolean logic exist in fuzzy logic and are usually defined it two ways:
+\begin{itemize}
+    \item the minimum, maximum, and complement operator from the set. 
+        When they are defined this way, they are called the Zadeh operators \cite{bib2}.
+    \item multiplication, addition and subtraction from one. In this case
+        normalization procedure is needed because after these operation the
+        final result can be grater than one,
+\end{itemize}
 Fuzzy logic classification is based on three main steps:
 \begin{enumerate}
     \item fuzzyfication- in the fuzzyfication process we 
@@ -505,9 +507,10 @@ Fuzzy logic classification is based on three main steps:
         membership grade of crisp input $x$ in the fuzzy set,
     \item rule induction- there are different types of fuzzy inference systems,
         but one of the most commonly used (the same as in this paper) is
-        Mamdani inference system \cite{bib46},
-    \item deffuzification- the process of producing a quantifiable result in
-        fuzzy logic from given fuzzy sets and corresponding membership degrees,
+        Mamdani inference system \cite{bib46}, another method is Sugeno-Type
+        Fuzzy Inference,
+    \item deffuzification- the process of producing a quantifiable (crisp) result
+        from available fuzzy sets and corresponding membership degrees,
 \end{enumerate}
 The whole process of fuzzy reasoning is presented in fig.
 \ref{fig:fuzzy_reasoning}
@@ -521,7 +524,7 @@ The whole process of fuzzy reasoning is presented in fig.
 
 Let reconsider a simple example, which should clear all ambiguities (the following 
 example is based on \cite{bib0}). The problem is connected with estimating the
-level of risk involved in software engineering project. There are two input
+level of the risk involved in software engineering project. There are two input
 to the system (funding, staffing) and one output
 (risk). Membership functions are represented as triangular shapes (fig. \ref{fig:fuzzy_example_1}) 
 \begin{figure}[H]
@@ -545,7 +548,7 @@ Let say that we want to calculate project risk for inputs: funding~$=35$ and
 staffing~$=60$. 
 \begin{enumerate}
     \item The first step is to convert crisp values into fuzzy representation.
-        Activating each input membership functions fuzzy values are as follows:
+        After activating each input membership functions the fuzzy values are as follows:
         $$
             \begin{array}[H]{l}
                 input \;1 \\ \hline
@@ -557,12 +560,12 @@ staffing~$=60$.
                 \mu_{large}(60) = 0.7 \\ 
             \end{array}
         $$
-    \item Now it is time f or rule induction where OR is treated as a $max$ operator, AND
-        as $min$ operator. 
+    \item Now it is  time for rule induction where OR is treated as a summation, AND
+        as multiplication operator. 
         $$
             \begin{array}[H]{ll}
                 Rule \,1: & \mu_{low} = 0.0 + 0.1 = 0.1 \\
-                Rule \,2: & \mu_{normal} = 0.2\cdot 0.7 = 0.14 \\
+                Rule \,2: & \mu_{normal} = 0.2 \cdot 0.7 = 0.14 \\
                 Rule \,3: & \mu_{high} = 0.5 \\
             \end{array}
         $$
@@ -592,8 +595,8 @@ staffing~$=60$.
     risk is about $69\%$.
 \end{enumerate}
 \subsubsection{Genetic-based machine learning approaches}
-In the literature one can find many examples of fuzzy logic applications
-\cite{bib3}, \cite{bib9}.
+In the literature one can find many examples of fuzzy logic
+applications for pattern recognition task \cite{bib3}, \cite{bib9}.
 Generally, there are two main approaches:
 \begin{enumerate}
     \item some expert knowledge is available and fuzzy rules are created
@@ -610,7 +613,7 @@ such as gradient descent or heuristic algorithms \cite{bib8}, \cite{bib16},
 is proposed for creating an optimal rule set. 
 
 One can wonder what is the purpose of applying genetic algorithm into rule
-generation. For the simplicity let reconsider such a case. $N$ training
+generation. For the simplicity let reconsider such a case where $N$ training
 patterns are available and nothing more. Now the following question arises: 
 how to properly divide the feature space into fuzzy set, and how to generate
 decision rules when there is no expert knowledge. The simplest and
@@ -620,7 +623,7 @@ efficiency of this solution strongly depends on the complexity of the problem.
 For $d$-dimensional feature space and $k$ fuzzy membership functions per each attribute
 the number of possible combination for generating one rule is equal to $k^d$.
 For greater $d$ (for example wine dataset from \textit{UCI} repository has 13
-attributes) it is impossible to find the proper combination in a reasonable
+attributes) it is impossible to find the proper rule combination in a reasonable
 time. Here is an open spot for genetic algorithm to show its searching
 abilities.
 
@@ -636,7 +639,7 @@ There are two main methods of genetic-based machine learning approaches
         best individuals are taken. The whole procedure can be summarized as follows:
         \begin{enumerate}
             \item Generate $N_{rule}$ fuzzy rules
-            \item Evaluate the fi tness of each fuzzy rule in the current
+            \item Evaluate the fitness of each fuzzy rule in the current
                 population
             \item Generate $N_{replace}$ fuzzy rules using genetic operators
             \item Merge $N_{replac e}$ fuzzy rules with current population and
@@ -652,17 +655,18 @@ There are two main methods of genetic-based machine learning approaches
             Fuzzy logic algorithm}
             \label{fig:michigan}
         \end{figure}
-    \item pittsburgh t emplate- in this approach a set of fuzzy rules is handled
+    \item pittsburgh template- in this approach a set of fuzzy rules is handled
         as an individual (see fig. \ref{fig:p}). In this case the length of a single individual is
         equal to $n\cdot N_{rule}$, where $n$ is the length of single fuzzy rule.
         Algorithm starts with $N_{pop}$ randomly generated rule sets. The
         fitness value of a single individual is the number of correctly
         classified patterns in the training set by a given rule set.
-        The procedure for algorithm is as follows:
+        The procedure for this algorithm is as follows:
         \begin{enumerate}
             \item Generate $N_{pop}$ individuals consisting of $N_{rule}$ fuzzy
                 rules each
             \item Calculate the fitness value of each rule set (individual)
+                using training dataset
             \item Generate $N_{replace}$ new rule set using genetic operators.  
             \item Merge $N_{replace}$ fuzzy rule sets  with current population and
                 choose the best $N_{pop}$ individuals for the next generation
@@ -678,15 +682,15 @@ There are two main methods of genetic-based machine learning approaches
             \label{fig:p}
         \end{figure}
 \end{enumerate}
-In this thesis the first approach will be implemented which means that
-individual is modelled as a single rule. 
+In this thesis the first approach is implemented in simulations which means that
+individual is modeled as a single rule. 
 
 \subsection{Attribute reduction}
 \label{cha:Attribute_reduction}
 Many problem are complex and multidimensional. For example Sonar dataset from
 \textit{UCI} Repository has 60 attributes describing a single pattern. 
 Usually we hope to recognize pattern in a relatively
-lower dimensional to reduce cost in measuring and processing information and
+lower dimension to reduce the cost in measuring and processing information and
 enhance the interpretability of learned models. Feature selection or reduction 
 is done for classifiers to remove the noise and superfluous data. Generally,
 this is not an easy task and requires a lot of computation \cite{bib1}, \cite{bib5}.  
@@ -698,7 +702,7 @@ attributes from $Q$ that all the attributes are indispensable. An attribute is
 dispensable if the following criterion is fulfilled:
 $$I(P) = I(P-{a}), \, \textrm{for} \, \{a\} \in P \subseteq  Q $$
 
-In the literature there are many examples of how to apply attribute reduction
+In the literature there are many examples of how to apply attribute reduction:
 \begin{itemize}
     \item information measures,
     \item distance measures,
@@ -706,12 +710,12 @@ In the literature there are many examples of how to apply attribute reduction
     \item consistency measures,
 \end{itemize}
 Different approaches provide various results and their application strictly
-depend on the type of data. One of the best known methods are Principal
+depends on the type of data. One of the best known methods are: Principal
 Component Analysis, Factor analysis or optimization and heuristic techniques.
-In the recent years heuristic techniques are very often used because of their
+In the recent years heuristic methods are very often used because of their
 speed and searching abilities. A lot of work has been devoted for feature
 extraction and this is not the intention to explore this area of research.
-Basing on the results conclusions presented in the literature, in this thesis a 
+Basing on the results and conclusions presented in the literature, in this thesis a 
 genetic algorithm is proposed for extracting valuable features from the set of 
 all attributes \cite{bib27}, \cite{bib48}.
 
@@ -755,9 +759,10 @@ presented as a flow chart \ref{fig:genetic_scheme}):
 \end{figure}
 
 Genetic algorithms are widely used as a search techniques in the various fields. 
-In this thesis it will be used for finding an optimal cuts in the attribute space and to 
-apply attribute reduction. The success of a genetic algorithm can be quantified by estimating 
-the cost, time required and the quality of final obtained solution. 
+In this thesis it will be used for finding an optimal cuts in the attribute
+space for rough sets algorithm and for obtaining optimal decision rule set in
+fuzzy logic algorithm. The success of a genetic algorithm can be quantified by estimating 
+the cost and the quality of final obtained solution. 
 
 In the literature there can be found many examples of how GA is useful in solving hard 
 optimizations problems, but beside unquestionable advantages there also exist downsides. 
@@ -775,11 +780,11 @@ presented in section \ref{cha:Algorithm_construction}.
 
 \subsection{Hybrid classifiers} 
 \label{cha:Hybrid_classifiers}
-In the recent years, there is an increasing interest in methods of combining
+In the recent years there is an increasing interest in methods of combining
 multiple learning systems into hybrid one \cite{bib5}, \cite{bib6}. The main advantage of such approach
 is its ability to find different explanation for the dataset for each
 classifier. If classifiers make errors on different parts of the feature space
-it is possible that the ensemble of classifiers will complement each other and
+or apply different reasoning it is possible that the ensemble of classifiers will complement each other and
 the final classification will be better. 
 
 Generally, there are two types of hybrid classifiers (example presented in fig.

@@ -1,4 +1,4 @@
-\section{Simulation investigations}
+\section{Results of experiments}
 \label{cha:Simulation_investugations}
 This section presents environment setup and later the results of simulation
 investigations. It is important to describe simulation setup so that in the
@@ -28,9 +28,7 @@ There are different types:
 \end{itemize}
 In this thesis $4$-fold cross validation was used (see fig.
 \ref{fig:cross_validation}). To ensure that presented
-results are reliable each test was repeated 10 times. Additionally, if some
-patterns had missing attributes in the dataset, they were removed from
-classification. 
+results are reliable each test was repeated 10 times.
 \begin{figure}[H]
     \begin{center}
         \includegraphics[width=0.6\textwidth]{fig/cross_validation.jpg}
@@ -41,10 +39,23 @@ classification.
 \label{cha:Simulation_environment}
 \subsection{Testing results}
 \label{cha:Simulation_results}
-\subsubsection{Impact of granulation step on rough sets efficiency}
+The main goal of performed tests was to check classification accuracy for
+different algorithms. As stated before three algorithm were used, but in
+simulations were carried out. To sum up, the main motivations are as follows:
+\begin{itemize}
+    \item check the accuracy of classification for basic rough sets algorithm
+        and show that in more complex problem it is useless,
+    \item show how the modification of decision rules improves the efficiency
+        comparing with the basic rough sets algorithm,
+    \item check how genetic algorithm can improve the classification accuracy
+        for both rough sets and fuzzy logic algorithms,
+    \item prove that proposed hybrid classifier can compete with other
+        classifiers,
+\end{itemize}
+\subsubsection{Impact of granulation step $G$ on rough sets algorithm efficiency}
 \label{cha:Simulation_reaearch_1}
 The aim of this test was to find out how the discretization of feature space
-affect the classification accuracy. The number of intervals for each
+affects the classification accuracy. The number of intervals for each
 attribute was the same and denoted as $K_l$, where $l \in (1, \ldots, q)$.
 Habernam dataset was taken as the input to the system. Dataset was divided into
 training and testing dataset using $4$-fold cross-validation method. The number
@@ -54,15 +65,15 @@ Results of the simulation are presented in table
 \begin{itemize}
     \item $G$- granulation step
     \item $O$- total number of correctly recognized objects
-    \item $C/CD$- number of patterns for which a certain decision rules were
-        used/number of correctly recognized patterns using these rules 
-    \item $P/PD$- number of patterns for which a possible decision rules were
-        activated/number of correctly classified objects using these rules
+    \item $C/CD$- number of patterns for which a \textit{certain} decision rules were
+        used/number of correctly recognized patterns using these rules,
+    \item $P/PD$- number of patterns for which a \textit{possible} decision rules were
+        activated/number of correctly classified objects using these rules,
     \item $V$ number of patterns rejected from classification. There was no
         suitable rule or more rules than one have the same strength but different class
-        label.
-    \item $C^*, P^*, V^*$ - total number of \textit{certain}, \textit{possible}
-        or \textit{dummy} (strenght is equal to zero) decision rules, respectively
+        label.,
+    \item $C^*, P^*, V^*$- total number of \textit{certain} , \textit{possible}
+        or \textit{dummy} (strength is equal to zero) decision rules, respectively
 \end{itemize}
 In the experiment, for every feature the initial step of granulation was
 changed from 4 to 18 while the factor of its increasing $\epsilona$  was equal 
@@ -72,14 +83,14 @@ Analyzing the results of simulation presented in table \ref{tab:simulation_resea
 one can see that the quality of the algorithm depends heavily on the step of
 granulation $G$ and better results are obtained rather for small $G$.
 It can be concluded that increasing $G$ results in growing the number of rules
-with the strength equal to zero (parameter $V^*$). In the learning phase
-algorithm is unable to find class representatives so classification is 
+with the strength equal to zero (parameter $V^*$), because in the learning phase
+algorithm is unable to find class representatives. In this case classification is 
 impossible and pattern is rejected. The bigger granulation step $G$ is, more
 \textit{certain} or \textit{possible} rules are obtained, but on the other hand
 the number of cells without any representatives is increasing. Generally, it is
 better to keep $V^*$ parameter rather small and correlate its value with $C$
 and $P$ factors. Let notice that for $G=18$ the classification accuracy is very
-poor. The number of \textit{certain} rules is the biggest comparing with other
+poor even though the number of \textit{certain} rules is the biggest comparing with other
 cases. The reason for low classification is connected with $V^*$ where 5794
 rules are \textit{dummy}.
 
@@ -109,7 +120,7 @@ rules are \textit{dummy}.
     \label{tab:simulation_research_1}
 \end{table}
 
-\subsubsection{Impact of recursive modification of granulation step on rough
+\subsubsection{Impact of recursive modification of granulation step $G$ on rough
 sets algorithm efficiency}
 \label{cha:Simulation_reaearch_2}
 In the previous section (\ref{cha:Simulation_reaearch_2}) it was shown that the
@@ -117,7 +128,7 @@ granulation step strongly affects the classification accuracy.
 Greater $G$ implies that we have more \textit{certain} or \textit{possible}
 rules, but on the other the hand number of patterns without rule covering is 
 increasing. A lot of patterns are rejected because no proper rule is found. To improve that
-situation an algorithm for modification of decision rules is proposed. More
+situation an algorithm with modification of decision rules is proposed. More
 details are presented in section \ref{cha:Algorithm_construction_rough_set_modification}, but generally when an
 object is rejected from classification, current $G$ is decreased by $\epsilon=1$ until 
 \textit{certain} for \textit{possible} rule is found. The same dataset was used as in
@@ -148,10 +159,10 @@ it must reflect how patterns are located in the feature space.
 
 The main two disadvantages of proposed rough sets algorithm are as follows:
 \begin{itemize}
-    \item it uses an arbitrary chosen step of granulation. Modification of
+    \item it uses an arbitrary chosen step of granulation. Modification of 
         decision rule improves classifier quality, but for the prize of
         computational time,
-    \item it uses all attributes for creation of decision rules. When the
+    \item it uses all attributes for creation of decision rules. When the 
         problem is complex then the decision rules are long and tangled. 
         Additionally, some features are useless in classification, instead of valuable
         information they bring noise to the system and deteriorate final
@@ -163,7 +174,9 @@ The main two disadvantages of proposed rough sets algorithm are as follows:
 \paragraph{Example of rule generation}
 In this section the results of fuzzy logic classifier simulation are presented.
 The goal is to show that proposed algorithm construction is correct and gives
-satisfactory results. 
+satisfactory results. Fuzzy logic algorithm is used in hybrid classifier so it
+was required to check its properties and find the best parameter settings,
+especially in case of the number of membership functions.
 
 At first, let remind what are the requirements for fuzzy logic classifier in
 this thesis. For the input it is provided a dataset without no expert knowledge 
@@ -171,13 +184,13 @@ of how to appropriately divide the feature space into fuzzy sets, and how many m
 functions are need. The goal is to find minimal rule set with the possible highest
 classification accuracy. 
 
-As the first step let present how fuzzy logic classifier deals with pattern
+As the first step, let present how fuzzy logic classifier deals with pattern
 recognition and what is the minimal rule set for exemplary Iris dataset. 
 At the beginning each feature is divided into 14 membership functions in the same way as 
 presented in fig. \ref{fig:fuzzy_example} plus one linguistic variable $DON'T\; USE$. 
 The final rule set which was able to classify 32 out of 34 testing patterns is
 presented in fig. \ref{fig:fuzzy_result}. From 10 test the following
-rule construction occurred 7 out of 10 times. In this example each attribute
+rule construction occurred 7 times. In this example each attribute
 was normalized and after this process feature values were from $<0, 1>$ range. 
 \begin{figure}[H] 
     \begin{center}
@@ -226,7 +239,7 @@ fuzzy logic training and testing) 45 patterns were used for classification.
 Looking at the fig. \ref{fig:fuzzy_functions} one can conclude that it is not
 worth constantly increasing the number of membership functions ($MF$) per attribute
 because for greater $MF$ algorithm obtains worse results. From conducted simulations 
-it was concluded that the optimal $k$ value is 4 which leads to $14$
+it was noticed that the optimal $k$ value is 4 which leads to $14$
 different membership functions per attribute. If not implicitly stated, $k=4$
 will be always used in next tests.
 
@@ -295,22 +308,25 @@ the results of simulation. Notation used in the table is as follows:
 Results from table \ref{tab:genetic_fuzzy_results} indicate that genetic fuzzy
 logic classifier can compete with other classifier. The main advantage is
 connected with the number of attributes building decision rules. In each case
-some features are removed from the set.
+some features were removed from the set. Let notice that for more complex
+problems, for $d$ greater than $4$ fuzzy logic algorithm obtained the best
+results, much better than basic rough sets and rough sets with modification of
+decision rules.
 
 \subsubsection{Impact of granulation step $G$ on genetic rough sets algorithm efficiency}
 \label{cha:Simulation_reaearch_4}
 The goal of this test is to check which approach is better:
 \begin{enumerate}
     \item use the same granulation step $G$ for each attribute and additionally
-        take all feature into classification
+        take all feature into classification,
     \item use different partition for each attribute independently and try to
-        remove some features treating them as a noise.
+        remove some features treating them as a noise,
 \end{enumerate}
 The first approach is simulated by algorithm with modification of decision
 rules (see section \ref{cha:Algorithm_construction_rough_set_modification}), 
 while the second is genetic rough sets algorithm (described in section
 \ref{cha:Multistage}). Results of simulations are placed in table \ref{tab:genetic_rough_results}.
-where the notation is as follows:
+,where the notation is as follows:
 \begin{itemize}
     \item $F$- number of attributes in the dataset
     \item $O$- number of objects used for classification
@@ -330,7 +346,7 @@ Parameters for genetic rough sets algorithm were the same as presented in table
 granulation step $G$ was equal to $4$ and for algorithm with modification of
 decision rules starting granulation value was $7$. These parameters were
 selected from the previous simulations because in such configuration the best
-results were obtained.
+results were obtained. For genetic rough sets classifier $K_max$ was set to 7.
 \begin{table}[H]
     \caption{Accuracy of classification for genetic rough sets and basic rough
     sets algorithms for different datasets}
@@ -379,6 +395,12 @@ tackles quite well with simple problems, for example iris or haberman datasets,
 but when the number of attributes is greater than $4$ then the algorithm efficiency
 decreases, while genetic rough sets is not affected by this problem and can
 deal with complex datasets.
+
+When you compare the performance of genetic rough sets and fuzzy logic
+classifier it is visible that genetic rough sets classifier obtains better
+results. Taking this into account, hybrid classifier is constructed in such a
+way that genetic rough sets algorithm is used as the first stage. Only if
+pattern is rejected fuzzy logic classifier is invoked.
 
 
 \subsubsection{Comparison of hybrid multistage classifier with other classifiers}
@@ -525,3 +547,11 @@ It uses genetic algorithm for rule construction, so taking into account its
 random nature hybrid classifier can be unstable, but simulations show that this
 is not a problem. Appropriate number of generations for genetic algorithm
 assures the proper convergence and as the consequence hybrid classifier is stable. 
+
+To prove that proposed hybridization is effective let compare results from
+tables \ref{tab:final_comparison}, \ref{tab:genetic_rough_results}. In every
+case the results of classification were better than for single genetic rough
+sets algorithm. It means that if pattern was rejected from classification in
+the first stage in some cases it was possible to classify pattern by fuzzy
+logic classifier.
+
