@@ -1,0 +1,127 @@
+\thispagestyle{empty}
+\selectlanguage{polish}
+\begin{center}
+	Streszczenie
+\end{center}
+Niniejsza praca porusza problem klasycznego rozpoznawania obiektów (ang.
+pattern recognition). Istnieje wiele metod, a także dziedziń, w których można
+zastosować tę wiedzę: od rozpoznawania obrazów, chorób medycznych, czy też
+obiektów opisanych za pomocą różnych miar. Rozwój komputerów spowodował 
+znaczący rozwój sztucznej inteligencji. Proponowane rozwiązania są bardzo 
+zaawansowane i uwzględniają wiele czynników związanych z
+określonym problemem. Naukowny prześcigają się w swoich osiągnięciach, przez wiele lat 
+dopracowali algorytmy rozpoznawania w najdrobniejszym szczególe jednak jeszcze
+nikt nie zdołał stworzyć algorytmu, który nigdy nie popełnia błędu. W ostatnich
+czasach znacznie większym zainteresowaniem cieszą się hybrydowe rozwiązania, w
+których pojedyncze klasyfikatory zostają połączone w jeden. Głównym założeniem
+jest wykorzystanie różnorodnych klasyfikatorów, które popełniają błędy w
+różnych obszarach przestrzeni cech, lub też stosują różne wnioskowanie na
+podstawie dostępnych danych. W takich sytuacjach istnieje możliwość, że zbiór
+klasyfikatorów będzie w stanie się wzajemnie uzupełniać, dzięki czemu wydajność
+hybrydowego klasyfikatora będzie znacznie lepsza. W literaturze istnieje wiele
+przykładów hybrydowego łączenia klasyfikatorów, natomiast w tej pracy zaproponowano 
+wieloetapowy klasyfikator wykorzysujący zbiory przybliżone (ang. Rough Sets) i zbiory 
+rozmyte (ang. Fuzzy logic).
+ 
+Praca została podzielona na dwie części. W pierszej z nich zaprezentowany
+został przegląd literatury, a także przykłady dostępnych rozwiązań w dziedzinie
+rozpoznawania i klasyfikacji obiektów. Rozdział \ref{cha:Introduction} stanowi wprowadzenie do
+tej tematyki, szczególnej uwadze należy
+poświęcić rozdziały \ref{cha:Rough_set}, \ref{cha:Fuzzy_logic}, w których
+dokładnie opisano algorytmy Rough Sets i Fuzzy Logic, ich główne zalety, wady,
+a także możliwe zastosowania. W rozdziale \ref{cha:Algorithm_construction}
+opisano sposób implementacji algorytmów wykorzystanych w tej pracy
+magisterskiej. W drugiej części przedstawiono wyniki przeprowadzonych badań.
+Rozdział \ref{cha:ExperimentAnalysis} zawiera informacje o danych testowych, a
+także sposobie oceny efektywności algorytmów. Sposób przeprowadzenia badań,
+środowisko symulacyjne, a także wyniki testów wraz z krótkim omówieniem zostały 
+zamieszczone w rozdziale \ref{cha:Simulation_investugations}. Całość pracy
+zakończona jest podsumowaniem, a także propycją przyszłych badań stanowiących
+rozwój tego projektu (rozdziały \ref{cha:Summary}, \ref{cha:FutureWork}).
+
+Rough sets, czyli teoria zbiorów przybliżonych została zaproponowana w 1982~r.
+przez prof. Zdzisława Pawlaka jako rowinięcie klasycznej teorii zbiorów, w
+której element albo należy do określonego zbioru lub nie (jednoznaczna decyzja
+true albo false). Zbiór przybliżony opisywany jest za pomocą dwóch zbiorów:
+\begin{itemize}
+    \item przybliżenie dolne- zbiór obiektów, które na pewno należą do klasy
+        decyzyjnej $X$,
+    \item przybliżenie górne- zbiór obietków, ktore być może należą do klasy
+        decyzyjnej $X$,
+\end{itemize}
+Zbiory przybliżone zostały utworzone w celu aproksymacji pojęć (zbiorów), ze
+względu na niedostateczny stan wiedzy wynikający z braku inforacji o
+obiekcie czy też niewystarczających pomiarów. Do głównych zalet zbiorów
+przybliżonych w systemach decyjnych można zaliczyć:
+\begin{itemize}
+    \item redukcję danych, zdolność do selekcji kluczowych atrybutów w procesie
+        klasyfikacji,
+    \item generowanie reguł decyzyjnych $IF-THEN$,
+    \item odkrywanie wzorców z danych,
+    \item odkrywanie zależności pomiędzy atrybutami opisującymi dany obiekt,
+\end{itemize}
+W teori zbiorów rozmytych przyjęło się, że reguły decyzyjne są przedstawione
+w postaci tabeli decyzyjnej, w której wiersze odpowiadają obiektom, natomiast
+kolumny przedstawiają wartości poszczególnych atrybutów. Spośród wszystkich
+atrybutów można wydzielić atrybuty decyzyjne, które mówią o klasie danego
+obiektów, a także atrybuty warunkowe opisujące cechy obiektu. 
+
+Fuzzy logic, czyli logika rozmyta została zaproponowana przez Lofti Zadeha,
+który zauważył, że pomiędzy stanem 0 (fałsz), a stanem 1 (prawda) istnieje
+szereg wartości pośrednich, które można opisać za pomocą stopnia przynależności
+danego elementu do zbioru. W tym celu została wprowadzona funkcja
+przynależności $\mu$, która przybiera wartości z przedziału $[0,1]$. Istnieje wiele
+typów tych funkcji, jednak najczęściej stosowane to funkcja trapezowa,
+trójkątna i funkcja Gaussa. Zbiory rozmyte zostały stworzone w celu opisania
+zjawisk wieloznacznych i nieprecyzyjnych, używanych w języku naturalnym np.
+średni wzrost. Bardzo ważną rzeczą w przypadku logiki rozmytej są zmienne
+lingwistyczne, które w języku naturalnym określają pewne wielkości wejściowe
+lub wyjściowe. Wnioskowanie odbywa się na podstawie reguł decyzyjnych, które
+składają z kilku warunków, a także jednego wniosku. 
+
+Jednym z najważniejszych elementów tej pracy magisterskiej są rezultaty
+przeprowadzonych za pomocą własnego oprogramowania utworzonego w języku
+\textit{Python}. 
+Aby umożliwić porównanie wyników i powtórzalność środowiska symulacyjnego
+wykorzystane zostały ogólnie dostępne zbiory testowe z repozytorium \textit{UCI}:
+\begin{itemize}
+    \item Haberman,
+    \item Iris,
+    \item Wine, 
+    \item Thyroid,
+    \item Bupa, 
+    \item Pima, 
+    \item Wdbc,
+\end{itemize}
+Zostały wybrane różnorodne zagadnienia, szczególnie pod względem złożoności
+problemu (liczby obiektów opisujących obiekt), a także temtatyki, od
+diagnostyki cukrzycy, raka piersi, wątroby do rozpoznawani typu wina. Każdy z
+testów został powtórzony 10 razy, natomiast aby wydzielić zbiór testujący i
+uczący zastosowano technikę 4-fold cross-validation, która polega na tym, że w
+każdej turze dane wejściowe podzielone są na cztery części. Jedna z nich
+traktowana jest zbiór testujący, natomiast pozostałe jako zbiór uczący. Cały
+proces powtarzany jest cztery razy.
+
+Głównym celem tej pracy magisterskiej była zaproponowanie hybrydowego
+klasyfikatora, wykorzystującego zbiory rozmyte i przybliżone. W tym celu
+został przeprowadzony szereg badań mających początkowo na celu zbadanie
+podstawowych właściwości zaimplementowanych algorytmów, a na końcu zbiorcze
+podsumowanie efektywności hybrydowego rozwiązania. Na potrzeby badań autor
+zaimplementował następujące algorytmy:
+\begin{itemize}
+    \item Podstawowy algorytm Rough Sets z ustalowny krokiem granulacji
+    \item Rekursywny algorytm Rough Sets z modyfikacją reguł decyzyjnych
+        wynikających ze zmiany kroku granulacji
+    \item Hybrydowy klasyfikator wykorzystujący zbiory rozmyte i przybliżone.
+        Był to dwuetapowy klasyfikator, w którym jeżeli w pierwszym kroku nie
+        znaleziono reguły pewnej lub możliwej to uruchamiany był drugi etap, a
+        w nim klasyfikator oparty na fuzzy logic. Całość wymagała
+        zaimplementowania dwóch dodatkowych algorytmów:
+        \begin{itemize}
+            \item Algorytm Rough Sets połączony z algorytmem genetycznym
+                wykorzystanym do znalezienia optymalnego kroku granulacji, a
+                także selekcji atrybutów,
+            \item Algorytm Fuzzy logic połączony z algorytmem genetycznym
+                użytym w celu znalezienia odpowiednich reguł decyzyjnych,
+        \end{itemize}
+\end{itemize}

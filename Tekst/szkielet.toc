@@ -14,50 +14,50 @@
 \contentsline {subsubsection}{\numberline {2.3.3}Rough sets indicators}{13}{subsubsection.2.3.3}
 \contentsline {subsubsection}{\numberline {2.3.4}Properties of rough sets}{14}{subsubsection.2.3.4}
 \contentsline {subsubsection}{\numberline {2.3.5}Rough sets reasoning from data}{15}{subsubsection.2.3.5}
-\contentsline {subsection}{\numberline {2.4}Fuzzy logic}{16}{subsection.2.4}
-\contentsline {subsubsection}{\numberline {2.4.1}Introduction}{16}{subsubsection.2.4.1}
+\contentsline {subsection}{\numberline {2.4}Fuzzy logic}{17}{subsection.2.4}
+\contentsline {subsubsection}{\numberline {2.4.1}Introduction}{17}{subsubsection.2.4.1}
 \contentsline {subsubsection}{\numberline {2.4.2}Fuzzy reasoning from data }{19}{subsubsection.2.4.2}
 \contentsline {subsubsection}{\numberline {2.4.3}Genetic-based machine learning approaches}{22}{subsubsection.2.4.3}
-\contentsline {subsection}{\numberline {2.5}Attribute reduction}{24}{subsection.2.5}
-\contentsline {subsection}{\numberline {2.6}Genetic algorithm}{25}{subsection.2.6}
-\contentsline {subsection}{\numberline {2.7}Hybrid classifiers}{27}{subsection.2.7}
-\contentsline {section}{\numberline {3}Algorithm construction}{27}{section.3}
-\contentsline {subsection}{\numberline {3.1}Rough sets algorithm construction}{28}{subsection.3.1}
-\contentsline {subsection}{\numberline {3.2}Rough sets algorithm construction with modification of decision rules}{29}{subsection.3.2}
-\contentsline {subsection}{\numberline {3.3}Multistage hybrid algorithm construction}{30}{subsection.3.3}
-\contentsline {subsubsection}{\numberline {3.3.1}Motivations}{30}{subsubsection.3.3.1}
-\contentsline {subsubsection}{\numberline {3.3.2}Fuzzy logic algorithm construction}{30}{subsubsection.3.3.2}
-\contentsline {paragraph}{\numberline {3.3.2.1}Problem formulation}{30}{paragraph.3.3.2.1}
-\contentsline {paragraph}{\numberline {3.3.2.2}Rule generation}{31}{paragraph.3.3.2.2}
-\contentsline {paragraph}{\numberline {3.3.2.3}Fuzzy reasoning}{32}{paragraph.3.3.2.3}
-\contentsline {paragraph}{\numberline {3.3.2.4}Genetic algorithm for fuzzy algorithm construction}{32}{paragraph.3.3.2.4}
-\contentsline {subsubsection}{\numberline {3.3.3}Rough sets and genetic algorithm}{35}{subsubsection.3.3.3}
-\contentsline {subsubsection}{\numberline {3.3.4}Hybrid rough sets and fuzzy logic algorithm}{37}{subsubsection.3.3.4}
-\contentsline {subsubsection}{\numberline {3.3.5}Difference between rough sets and fuzzy logic reasoning}{38}{subsubsection.3.3.5}
-\contentsline {section}{\numberline {4}Experimentation system}{39}{section.4}
-\contentsline {subsection}{\numberline {4.1}Assumptions}{39}{subsection.4.1}
-\contentsline {subsection}{\numberline {4.2}Datasets}{39}{subsection.4.2}
-\contentsline {subsection}{\numberline {4.3}Efficiency indicators}{41}{subsection.4.3}
-\contentsline {subsection}{\numberline {4.4}Program description}{42}{subsection.4.4}
-\contentsline {section}{\numberline {5}Results of experiments}{42}{section.5}
-\contentsline {subsection}{\numberline {5.1}Testing environment}{42}{subsection.5.1}
-\contentsline {subsection}{\numberline {5.2}Testing results}{43}{subsection.5.2}
-\contentsline {subsubsection}{\numberline {5.2.1}Impact of granulation step $G$ on rough sets algorithm efficiency}{44}{subsubsection.5.2.1}
-\contentsline {subsubsection}{\numberline {5.2.2}Impact of recursive modification of granulation step $G$ on rough sets algorithm efficiency}{45}{subsubsection.5.2.2}
-\contentsline {subsubsection}{\numberline {5.2.3}Impact of number of membership functions on genetic fuzzy logic algorithm efficiency}{47}{subsubsection.5.2.3}
-\contentsline {paragraph}{\numberline {5.2.3.1}Example of rule generation}{47}{paragraph.5.2.3.1}
-\contentsline {paragraph}{\numberline {5.2.3.2}Classification accuracy and the number of membership functions in genetic fuzzy logic algorithm}{48}{paragraph.5.2.3.2}
-\contentsline {paragraph}{\numberline {5.2.3.3}Classifiers performance comparison}{49}{paragraph.5.2.3.3}
-\contentsline {subsubsection}{\numberline {5.2.4}Impact of granulation step $G$ on genetic rough sets algorithm efficiency}{50}{subsubsection.5.2.4}
-\contentsline {subsubsection}{\numberline {5.2.5}Comparison of hybrid multistage classifier with other classifiers}{53}{subsubsection.5.2.5}
-\contentsline {section}{\numberline {6}Summary and conclusions}{57}{section.6}
-\contentsline {subsection}{\numberline {6.1}Conclusions from conducted experiments}{57}{subsection.6.1}
-\contentsline {subsection}{\numberline {6.2}General conclusions}{59}{subsection.6.2}
-\contentsline {section}{\numberline {7}Future work}{60}{section.7}
-\contentsline {section}{Literature}{61}{Item.81}
-\contentsline {section}{List of figures}{61}{Item.81}
-\contentsline {section}{List of tables}{61}{Item.81}
-\contentsline {section}{\numberline {A}Program description}{68}{appendix.A}
-\contentsline {subsection}{\numberline {A.1}Installation requirements}{68}{subsection.A.1}
-\contentsline {subsection}{\numberline {A.2}Example usage}{69}{subsection.A.2}
-\contentsline {subsection}{\numberline {A.3}Results}{70}{subsection.A.3}
+\contentsline {subsection}{\numberline {2.5}Attribute selection}{25}{subsection.2.5}
+\contentsline {subsection}{\numberline {2.6}Genetic algorithm}{26}{subsection.2.6}
+\contentsline {subsection}{\numberline {2.7}Hybrid classifiers}{28}{subsection.2.7}
+\contentsline {section}{\numberline {3}Algorithm construction}{28}{section.3}
+\contentsline {subsection}{\numberline {3.1}Rough sets algorithm construction}{29}{subsection.3.1}
+\contentsline {subsection}{\numberline {3.2}Rough sets algorithm construction with modification of decision rules}{30}{subsection.3.2}
+\contentsline {subsection}{\numberline {3.3}Multistage hybrid algorithm construction}{31}{subsection.3.3}
+\contentsline {subsubsection}{\numberline {3.3.1}Motivations}{31}{subsubsection.3.3.1}
+\contentsline {subsubsection}{\numberline {3.3.2}Fuzzy logic algorithm construction}{31}{subsubsection.3.3.2}
+\contentsline {paragraph}{\numberline {3.3.2.1}Problem formulation}{31}{paragraph.3.3.2.1}
+\contentsline {paragraph}{\numberline {3.3.2.2}Rule generation}{32}{paragraph.3.3.2.2}
+\contentsline {paragraph}{\numberline {3.3.2.3}Fuzzy reasoning}{33}{paragraph.3.3.2.3}
+\contentsline {paragraph}{\numberline {3.3.2.4}Genetic algorithm for fuzzy algorithm construction}{34}{paragraph.3.3.2.4}
+\contentsline {subsubsection}{\numberline {3.3.3}Rough sets and genetic algorithm}{37}{subsubsection.3.3.3}
+\contentsline {subsubsection}{\numberline {3.3.4}Hybrid rough sets and fuzzy logic algorithm}{38}{subsubsection.3.3.4}
+\contentsline {subsubsection}{\numberline {3.3.5}Difference between rough sets and fuzzy logic reasoning}{39}{subsubsection.3.3.5}
+\contentsline {section}{\numberline {4}Experimentation system}{40}{section.4}
+\contentsline {subsection}{\numberline {4.1}Assumptions}{40}{subsection.4.1}
+\contentsline {subsection}{\numberline {4.2}Datasets}{40}{subsection.4.2}
+\contentsline {subsection}{\numberline {4.3}Efficiency indicators}{42}{subsection.4.3}
+\contentsline {subsection}{\numberline {4.4}Program description}{43}{subsection.4.4}
+\contentsline {section}{\numberline {5}Results of experiments}{43}{section.5}
+\contentsline {subsection}{\numberline {5.1}Testing environment}{43}{subsection.5.1}
+\contentsline {subsection}{\numberline {5.2}Testing results}{44}{subsection.5.2}
+\contentsline {subsubsection}{\numberline {5.2.1}Impact of granulation step $G$ on rough sets algorithm efficiency}{45}{subsubsection.5.2.1}
+\contentsline {subsubsection}{\numberline {5.2.2}Impact of recursive modification of granulation step $G$ on rough sets algorithm efficiency}{46}{subsubsection.5.2.2}
+\contentsline {subsubsection}{\numberline {5.2.3}Impact of number of membership functions on genetic fuzzy logic algorithm efficiency}{48}{subsubsection.5.2.3}
+\contentsline {paragraph}{\numberline {5.2.3.1}Example of rule generation}{48}{paragraph.5.2.3.1}
+\contentsline {paragraph}{\numberline {5.2.3.2}Classification accuracy and the number of membership functions in genetic fuzzy logic algorithm}{49}{paragraph.5.2.3.2}
+\contentsline {paragraph}{\numberline {5.2.3.3}Classifiers performance comparison}{50}{paragraph.5.2.3.3}
+\contentsline {subsubsection}{\numberline {5.2.4}Impact of granulation step $G$ on genetic rough sets algorithm efficiency}{51}{subsubsection.5.2.4}
+\contentsline {subsubsection}{\numberline {5.2.5}Comparison of hybrid multistage classifier with other classifiers}{54}{subsubsection.5.2.5}
+\contentsline {section}{\numberline {6}Summary and conclusions}{58}{section.6}
+\contentsline {subsection}{\numberline {6.1}Conclusions from tests}{58}{subsection.6.1}
+\contentsline {subsection}{\numberline {6.2}General conclusions}{60}{subsection.6.2}
+\contentsline {section}{\numberline {7}Future work}{61}{section.7}
+\contentsline {section}{Literature}{62}{Item.81}
+\contentsline {section}{List of figures}{62}{Item.81}
+\contentsline {section}{List of tables}{62}{Item.81}
+\contentsline {section}{\numberline {A}Program description}{69}{appendix.A}
+\contentsline {subsection}{\numberline {A.1}Installation requirements}{69}{subsection.A.1}
+\contentsline {subsection}{\numberline {A.2}Example usage}{70}{subsection.A.2}
+\contentsline {subsection}{\numberline {A.3}Results}{71}{subsection.A.3}

@@ -15,7 +15,7 @@
 \BOOKMARK [3][-]{subsubsection.2.4.1}{Introduction}{subsection.2.4}
 \BOOKMARK [3][-]{subsubsection.2.4.2}{Fuzzy reasoning from data }{subsection.2.4}
 \BOOKMARK [3][-]{subsubsection.2.4.3}{Genetic-based machine learning approaches}{subsection.2.4}
-\BOOKMARK [2][-]{subsection.2.5}{Attribute reduction}{section.2}
+\BOOKMARK [2][-]{subsection.2.5}{Attribute selection}{section.2}
 \BOOKMARK [2][-]{subsection.2.6}{Genetic algorithm}{section.2}
 \BOOKMARK [2][-]{subsection.2.7}{Hybrid classifiers}{section.2}
 \BOOKMARK [1][-]{section.3}{Algorithm construction}{}
@@ -41,7 +41,7 @@
 \BOOKMARK [3][-]{subsubsection.5.2.4}{Impact of granulation step G on genetic rough sets algorithm efficiency}{subsection.5.2}
 \BOOKMARK [3][-]{subsubsection.5.2.5}{Comparison of hybrid multistage classifier with other classifiers}{subsection.5.2}
 \BOOKMARK [1][-]{section.6}{Summary and conclusions}{}
-\BOOKMARK [2][-]{subsection.6.1}{Conclusions from conducted experiments}{section.6}
+\BOOKMARK [2][-]{subsection.6.1}{Conclusions from tests}{section.6}
 \BOOKMARK [2][-]{subsection.6.2}{General conclusions}{section.6}
 \BOOKMARK [1][-]{section.7}{Future work}{}
 \BOOKMARK [1][-]{Item.81}{Literature}{}

@@ -17,15 +17,19 @@ can be summarized in six steps \cite{bib34}, \cite{bib35}:
         is needed first. To calculate the proper interval eq. (\ref{eq:interval})
         is used:
         \begin{equation}
-            v_{pi}^{i} = \frac{f_{i}}{G}\cdot(f_{i, max}-f_{i,min})
+            v_{pi}^{i} = \lfloor \frac{f_{i}}{G}\cdot(f_{i,
+            max}-f_{i,min})\rfloor
             \label{eq:interval}
         \end{equation}
         where $v_{pi}^{i}$ is the interval label for $i$-th attribute; $f_i$ is
         the $i$-th real attribute value for pattern $x$, $f_{i,min}$ and
         $f_{i,max}$ denote the extend of the $i$-th feature calculated in the
-        training phase. If for any attribute from $x$ in the testing phase 
+        training phase and $\lfloor . \rfloor$ is the operator extracting
+        integer value from real number. If for any attribute from $x$ in the testing phase 
         $f_i > f_{i, max}$ then $v_{pi}^{i}=G-1$ or $f_i < f_{i, min}$ then
         $v_{pi}^{i}=0$, in other cases eq. (\ref{eq:interval}) is applied.
+        If the attributes are discrete then no preprocessing is required and 
+        interval label is the same as feature discrete value.
 
         After this step, the value of each attribute is represented 
         by the number of interval in which this attribute is included. For each
@@ -48,7 +52,7 @@ can be summarized in six steps \cite{bib34}, \cite{bib35}:
         set $FOR(C)$ (rule is activated if the left condition is fulfilled by
         attributes describing $x$).
     \item If there is only one matching rule $r$, then the pattern $x$ is
-        classified to the class which is indicated by $r$ decision attribute $j$, 
+        classified to the class which is indicated by $r$-th decision attribute $j$, 
         because for sure such a rule is belonging to the lower approximation of all rules 
         indicating $j$. Rule $r$ is denoted as a \textit{certain} rule.
     \item If there is more than one matching rule in the set $For(C)$, 
@@ -84,7 +88,7 @@ the pattern $x$ is rejected. The modification is as follows \cite{bib36}:
         returns decision attribute $j$, otherwise if for every attribute $G=1$, then the pattern $x$ is rejected.
 \end{enumerate} 
 The recursion is time consuming so to enhance the process of finding the proper
-decision formulas for different $G$ the decision set $FOR(C)$ are stored in the memory
+decision formulas for different $G$ the decision set $FOR(C)$ is stored in the memory
 for faster retrieval.
 
 \subsection{Multistage hybrid algorithm construction}
@@ -101,7 +105,7 @@ fuzzy logic is proposed and investigated. The next subsections show algorithm co
 \paragraph{Problem formulation}
 \label{cha:Fuzzy_logic_basic_problem_formulation}
 In the fuzzy logic algorithm one of the most important key is creation of rules
-which will ensure proper classification. When there is no expert knowledge about
+which will ensure correct classification. When there is no expert knowledge about
 dataset it is not an easy task to generate them from scratch. In the literature
 one can find many practical examples of how to generate \textit{IF-THEN} rules, from
 the statistical tools to heuristic algorithms. In the recent years the most appealing
@@ -109,8 +113,8 @@ and effective approach is genetic algorithm \cite{bib4}, \cite{bib13}, \cite{bib
 For the algorithm construction we have to make few assumptions:
 \begin{itemize}
     \item for the learning procedure $N$ training patterns are available,
-    \item a set $F$ of linguistic values and their membership functions is given
-        for describing each attribute,
+    \item a set $F$ of linguistic values and their membership functions are given
+        for describing each attribute.
 \end{itemize}
 
 From points enumerated above, the second one is the most important and the choice of the proper membership
@@ -134,7 +138,7 @@ It is impossible to evaluate each potential solution in a reasonable time, espec
     \caption{Example fuzzy partition set for an attribute}
     \label{fig:fuzzy_example}
 \end{figure}
-For classification task single fuzzy rule is in the following form
+For classification task single fuzzy rule is of the following form
 \cite{bib30}, \cite{bib20}:
 $$R_r:\, IF\, x_1=A_{r1}\, AND\, x_2=A_{r2}\, AND\, \ldots\, AND\, x_d=A_{rd}\, THEN\,
 class\, C_r\, with \, CF_r$$
@@ -144,11 +148,20 @@ example from \ref{fig:fuzzy_example} $A_{ri}$ can have one label from the set
 $\{1, 2, \ldots, 9, a, b, \ldots, e \}$); $C_r$ is a consequent fuzzy set
 determining the class label $\{1, \ldots, m\}$, $CF_r$ is a rule strength; $r$
 denotes the number of the rule from the set of all possible rules $\{1, \ldots, N_{rule}\}$. 
-In simulations $N_{rule}$ was chosen to ten. 
+
+In simulations presented in this paper $N_{rule}$ was set to ten. In this place it should be
+explained why this particular number was chosen. In the literature it is recommended to
+use $N_{rule}$ rather small because for greater $N_{rule}$ algorithm's search
+abilities are deteriorated significantly \cite{bib4}, \cite{bib11}.
+Additionally, special tests were performed to determine the optimal number of
+rules in author's software. From researches where $N_{rule}$ was changed from 5
+to 50 the best results were obtained for $N_{rule}=10$.
+
+
 \paragraph{Rule generation}
 \label{cha:Fuzzy_logic_rule_generation}
 The process of rule generation for fuzzy logic without the expert knowledge is
-complex and done in couple steps. At first, using available
+complex and can be done in couple steps. At first, using available
 training set, generate randomly $N_{rule}$ rules. For
 each training pattern $x_p$ calculate the compatibility grade of a single rule
 connected with antecedent part $A_r = (A_{r1}, A_{r2}, \ldots, A_{rd})$ using
@@ -161,7 +174,7 @@ $A_{ri}$:
 If we know how to calculate the compatibility grade of each training pattern
 now we can determine $C_r$ and $CF_r$ for each rule. The fuzzy probability
 $P(class\, j|A_r)$ of class $j$, $j=(1, \ldots, m)$ indicating how pattern $x$ can be associated with class $j$ 
-is given by eq. (\ref{eq:fuzzy_probability})
+is given by eq. (\ref{eq:fuzzy_probability}) \cite{bib30}:
 \begin{equation}
     Pr(class \, j|A_r) = \frac{\sum\limits_{x_p \in class\,
     j}\mu_{A_r}(x_p)}{\sum\limits_{p=1}^m\mu_{A_r}(x_p)}
@@ -204,7 +217,7 @@ taken if no fuzzy rule is compatible with the incoming pattern $x_p$.
 \paragraph{Genetic algorithm for  fuzzy algorithm construction}
 \label{cha:Fuzzy_logic_genetic_algorithm}
 In this section genetic algorithm will be described in greater details. This
-algorithm was used to generate initial number $N_{rule}$ of fuzzy rules for
+algorithm was used to generate an initial number $N_{rule}$ set of fuzzy rules for
 classification. 
 Basic assumptions:
 \begin{itemize}
@@ -232,7 +245,7 @@ Basic assumptions:
         mutation, population generation, fitness evaluation,
     \item as the template for genetic fuzzy algorithm Michigan approach is
         used which means that we have $N_{rule}$ number of individuals in the
-        population,
+        population.
 \end{itemize}
 Next few step will present the whole structure of genetic algorithm used in
 fuzzy logic:
@@ -286,12 +299,17 @@ fuzzy logic:
                 $CF$ is the strength factor of the rule and $w_3$ is the
                 weight (in the simulations $w_3=10$).
                 The best individuals are those which maximize function
-                $F_{fg}$,
+                $F_{fg}$. It is worth noting that function $F_{fg}$ was
+                proposed by author as the extension for most commonly met
+                functions in the literature where only the number of correctly
+                recognized patterns is taken into account in individuals
+                evaluations. In this thesis the complexity of the rule and its
+                strength had to be reconsidered additionally.
         \end{itemize}
     \item cross-over
         \begin{itemize}
             \item from the whole population two individuals are chosen
-                randomly to constitute father and mother parents. With a
+                randomly to constitute parents for further reproduction. With a
                 probability of $0.5$ each allele is picked either from mother
                 or father chromosome. In this way two new
                 individuals are generated (see example in fig.
@@ -319,10 +337,10 @@ fuzzy logic:
                 to generate next population \cite{bib22}. Here, after the end of one
                 generation individuals from the population are merged with
                 those created through cross-over and mutation operations.
-                Later, the average fitness value $F_{avg}$ is calculated in the whole
-                set. To the next generation those individuals are passed which
-                their fitness indicator $F_{fg}$ is greater than the average
-                $F_{fg} \ge F_{avg}$,
+                Later, the average fitness value $F_{avg}$ is calculated for the whole
+                set. In the end those individuals are transfered to the next
+                generation which fulfill the condition that their fitness indicator $F_{fg}$ 
+                is greater than the average $F_{fg} \ge F_{avg}$,
         \end{itemize}
 \end{itemize}
 Of course it can happen that for cross-over and mutation operator
